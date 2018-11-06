@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PaymentDetailsForm = (submitPaymentDetails) => {
+const PaymentDetailsForm = () => {
   return (
     <div className="payment-details-form">
       <h3>Set up payment</h3>
