@@ -1,15 +1,21 @@
 import React from 'react';
+import AppHeader from './AppHeader';
 import NewRecipient from './NewRecipient';
 import Recipient from './Recipient';
+import NewDonation from './NewDonation';
+import AppFooter from './AppFooter';
 
 import '../../styles/components/app.scss';
 
 const App = () => {
   return (
     <React.Fragment>
-      <h1>Hello</h1>
+      <p>The app...</p>
+      <AppHeader />
       <NewRecipient />
       <Recipient />
+      <NewDonation />
+      <AppFooter />
     </React.Fragment>
   )
 };

@@ -1,8 +1,12 @@
 import React from 'react';
+import QRCode from './QRCode'
 
 const Recipient = () => {
   return (
-    <p>Recipient component</p>
+    <React.Fragment>
+      <h2>Recipient Component</h2>
+      <QRCode />
+    </React.Fragment>
   )
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 const RecipientSignUpForm = () => {
   return (
-    <p>Sign-up Form</p>
+    <p>Recipient sign-up form</p>
   )
 };
 

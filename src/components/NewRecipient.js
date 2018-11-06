@@ -3,7 +3,10 @@ import RecipientSignUpForm from './RecipientSignUpForm';
 
 const NewRecipient = () => {
   return (
-    <RecipientSignUpForm />
+    <React.Fragment>
+      <h2>New Recipient</h2>
+      <RecipientSignUpForm />
+    </React.Fragment>
   )
 };
 
