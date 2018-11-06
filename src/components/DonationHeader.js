@@ -3,7 +3,7 @@ import '../../styles/components/donation-header.scss'
 
 const DonationHeader = () => {
   return (
-    <React.Fragment>
+    <div className="donation">
       <h2 className="donation__headline">Cashless donations that make a difference</h2>
       <p className="donation__strapline">Quick. Secure. Cashless.</p>
       <ol className="donation__steps">
@@ -11,7 +11,7 @@ const DonationHeader = () => {
         <li className="donation__step">Set your payment amount.</li>
         <li className="donation__step">Help firsname out.</li>
       </ol>
-    </React.Fragment>
+    </div>
   )
 };
 
