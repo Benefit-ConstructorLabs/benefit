@@ -2,7 +2,7 @@ import React from 'react'
 import DonationForm from '../../src/components/DonationForm';
 import renderer from 'react-test-renderer';
 
-describe('App', () => {
+describe('DonationForm', () => {
   test('should render correctly', () => {
     const tree = renderer
       .create(<DonationForm />)
