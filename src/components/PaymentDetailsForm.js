@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/components/payment-details-form.scss'
 
 const PaymentDetailsForm = () => {
   return (
