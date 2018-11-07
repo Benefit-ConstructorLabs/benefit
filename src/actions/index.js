@@ -5,3 +5,10 @@ export function setDonationAmount(amount) {
     donationAmount: donation,
   };
 }
+
+export function setRecipientPhotoUrl(url) {
+  return {
+    type: 'SET_RECIPIENT_PHOTO_URL',
+    url
+  };
+}
