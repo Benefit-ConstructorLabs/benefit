@@ -20,7 +20,7 @@ exports[`DonationHeader should render correctly 1`] = `
     <li
       className="donation__step"
     >
-      Decide how much you would like to donate to firstname.
+      Decide how much you would like to donate to
     </li>
     <li
       className="donation__step"
@@ -30,7 +30,8 @@ exports[`DonationHeader should render correctly 1`] = `
     <li
       className="donation__step"
     >
-      Help firsname out.
+      Help
+      out.
     </li>
   </ol>
 </div>
