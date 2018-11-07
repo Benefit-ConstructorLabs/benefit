@@ -1,5 +1,8 @@
 # Benefit
 ## Enabling the unbanked to take contactless payments in person.
+
+> [View 'Benefit' repo on Github](https://github.com/Benefit-ConstructorLabs/benefit)
+
 --- 
 
 ### The vision
@@ -39,4 +42,13 @@ Run `npm start` to launch the app and navigate to localhost:8080
 #### Unit Testing
 - Jest
 
----
+#### QR code 
+
+- We used 'qrcode' node package to create the QR code
++ The QR code image is generated inside the app
++ Not reliant on a 3rd party API to create the image
++ THe QR code can be scaled and styled
++ We can set the error correction level
+
+> ['qrcode' node package](https://www.npmjs.com/package/qrcode)
+
