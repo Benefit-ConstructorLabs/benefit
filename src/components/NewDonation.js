@@ -4,9 +4,9 @@ import DonationFormContainer from '../containers/DonationFormContainer';
 import RecipientProfile from './RecipientProfile';
 import DonationPayment from './DonationPayment';
 
-const NewDonation = () => (
+const NewDonation = ({ match }) => (
   <React.Fragment>
-    <DonationHeaderContainer />
+    <DonationHeaderContainer match={match} />
     <DonationFormContainer />
     <RecipientProfile />
     <DonationPayment />
