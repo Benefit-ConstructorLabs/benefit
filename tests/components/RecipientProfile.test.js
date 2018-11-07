@@ -1,12 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from '../../src/components/App';
+import RecipientProfile from '../../src/components/RecipientProfile';
 
-
-describe('App', () => {
+describe('RecipientProfile', () => {
   test('should render correctly', () => {
     const tree = renderer
-      .create(<App />)
+      .create(<RecipientProfile />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

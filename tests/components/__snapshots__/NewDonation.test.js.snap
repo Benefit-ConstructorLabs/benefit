@@ -1,117 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App should render correctly 1`] = `
+exports[`NewDonation should render correctly 1`] = `
 Array [
-  <p>
-    The app...
-  </p>,
-  <h1>
-    App Header — Benefit
-  </h1>,
-  <h2>
-    New Recipient
-  </h2>,
-  <h2
-    className="newrecipient__title"
-  >
-    Start taking digital donations in 3 steps
-  </h2>,
-  <img
-    alt=""
-    height=""
-    src=""
-    width=""
-  />,
-  <form>
-    <label
-      className="newrecipient__intro"
-    >
-      Add your basic information
-    </label>
-    <input
-      placeholder="First name"
-      text="firstname"
-      type="text"
-    />
-    <input
-      placeholder="Last name"
-      text="lastname"
-      type="text"
-    />
-    <input
-      placeholder="Telephone number"
-      text="telephone"
-      type="text"
-    />
-    <button
-      className="newrecipient__upload-button"
-    >
-      Upload a picture
-    </button>
-    <label>
-      Now tell people 3 things about you...
-    </label>
-    <input
-      placeholder="1. I play the piano"
-      text="text"
-      type="text"
-    />
-    <input
-      placeholder="2. I like white coffee"
-      text="text"
-      type="text"
-    />
-    <input
-      placeholder="3. I'm a Rugby fan"
-      text="text"
-      type="text"
-    />
-    <button
-      className="newrecipient__qr-button"
-    >
-      Generate Your Unique QR Code
-    </button>
-  </form>,
-  <p>
-    Recipient sign-up form
-  </p>,
-  <h2>
-    Recipient Component
-  </h2>,
-  <h2>
-    You Unique QR code
-  </h2>,
-  <canvas />,
-  <h3
-    className="recipient__steps"
-  >
-    3 easy steps to receive donations
-  </h3>,
-  <ul
-    className="recipient__steps-list"
-  >
-    <li>
-      Display your unique code to potential donors
-    </li>
-    <li>
-      Donors scan your QR code and set a payment
-    </li>
-    <li>
-      Check your total donations
-    </li>
-  </ul>,
-  <button
-    className="recipient__print-qrcode"
-    type="button"
-  >
-    Print your QR code
-  </button>,
-  <button
-    className="recipient__view-donations"
-    type="button"
-  >
-    See your donation total
-  </button>,
   <div
     className="donation"
   >
@@ -304,8 +194,5 @@ Array [
       Set up donor account
     </button>
   </section>,
-  <h1>
-    App Footer — © 2018 Benefit Team
-  </h1>,
 ]
 `;

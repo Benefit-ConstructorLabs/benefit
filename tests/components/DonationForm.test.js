@@ -1,12 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from '../../src/components/App';
+import DonationForm from '../../src/components/DonationForm';
 
-
-describe('App', () => {
+describe('DonationForm', () => {
   test('should render correctly', () => {
     const tree = renderer
-      .create(<App />)
+      .create(<DonationForm />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
