@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DonationForm should render correctly 1`] = `
+<div
+  className="donation"
+>
+  <img
+    alt="Recipient photo"
+    className="donation__recipient__photo"
+    src="https://via.placeholder.com/150?text=Recipient+photo"
+  />
+  <h3
+    className="donation__purpose"
+  >
+    Donate towards a night in a shelter
+  </h3>
+  <form
+    className="donation__form"
+    onSubmit={[Function]}
+  >
+    <h4>
+      How much?
+    </h4>
+    <p>
+      <input
+        className="donation__form__amount"
+        id="donation__amount"
+        placeholder="£1"
+        type="number"
+      />
+    </p>
+    <p>
+      <input
+        type="range"
+      />
+    </p>
+    <p
+      className="donation__form__quick-amount"
+    >
+      <button
+        className="btn btn__quick-amount"
+      >
+        50p
+      </button>
+      <button
+        className="btn btn__quick-amount"
+      >
+        £1
+      </button>
+      <button
+        className="btn btn__quick-amount"
+      >
+        £2
+      </button>
+    </p>
+    <button
+      className="btn btn__submit"
+      type="submit"
+    >
+      Donate to firstname
+    </button>
+  </form>
+</div>
+`;
