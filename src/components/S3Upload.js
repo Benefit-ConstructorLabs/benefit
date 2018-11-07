@@ -24,10 +24,7 @@ class S3Upload extends React.Component {
       })
       this.props.setRecipientPhotoUrl(data.Location);
     })
-    .catch(error => {
-      console.log({error})
-      response.json({ error: error.message })
-    });
+    .catch(error => response.json({ error: error.message }));
   }
 
   render () {
