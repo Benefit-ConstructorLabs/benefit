@@ -39,5 +39,4 @@ DonationForm.defaultProps = {
   donationAmount: undefined,
 };
 
-
 export default DonationForm;

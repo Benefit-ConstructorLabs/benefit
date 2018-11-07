@@ -12,26 +12,15 @@ exports[`RecipientProfile should render correctly 1`] = `
   <p
     className="recipient-profile__intro"
   >
-    firstName is interested in:
+     
+    is interested in:
   </p>
   <ol
     className="recipient-profile__interests"
   >
     <li
       className="recipient-profile__interest"
-    >
-      First interest
-    </li>
-    <li
-      className="recipient-profile__interest"
-    >
-      Second interest
-    </li>
-    <li
-      className="recipient-profile__interest"
-    >
-      Third interest
-    </li>
+    />
   </ol>
 </div>
 `;
