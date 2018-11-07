@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DonationForm should render correctly 1`] = `
+<div
+  className="payment-details-form"
+>
+  <h3>
+    Set up payment
+  </h3>
+  <form
+    className="payment-details-form__form"
+  >
+    <input
+      placeholder="Card number"
+      type="text"
+    />
+    <input
+      placeholder="Expiry date"
+      type="text"
+    />
+    <input
+      placeholder="CCV"
+      type="text"
+    />
+    <p>
+      Set up a donor account?
+    </p>
+    <p>
+      Continue donating anonymously:
+    </p>
+    <button
+      type="button"
+    >
+      Donate -Price- to -First Name-
+    </button>
+  </form>
+</div>
+`;
