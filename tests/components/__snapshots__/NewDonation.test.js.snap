@@ -39,7 +39,7 @@ Array [
     className="donation"
   >
     <img
-      alt="Recipient photo"
+      alt="Recipient"
       className="donation__recipient__photo"
       src="https://via.placeholder.com/150?text=Recipient+photo"
     />
@@ -73,16 +73,19 @@ Array [
       >
         <button
           className="btn btn__quick-amount"
+          type="button"
         >
           50p
         </button>
         <button
           className="btn btn__quick-amount"
+          type="button"
         >
           £1
         </button>
         <button
           className="btn btn__quick-amount"
+          type="button"
         >
           £2
         </button>
@@ -158,7 +161,9 @@ Array [
       <p>
         Continue donating anonymously:
       </p>
-      <button>
+      <button
+        type="button"
+      >
         Donate -Price- to -First Name-
       </button>
     </form>
@@ -174,7 +179,7 @@ Array [
     <h2
       className="acknowledgement__confirmation"
     >
-      All set. Thanks for helping "FirstName" out!
+      All set. Thanks for helping “ FirstName” out!
     </h2>
     <h3
       className="acknowledgement__question"
@@ -184,6 +189,7 @@ Array [
     <button
       className="btn acknowledgement__account__btn"
       onClick={[Function]}
+      type="button"
     >
       Set up donor account
     </button>

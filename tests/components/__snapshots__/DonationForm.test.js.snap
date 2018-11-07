@@ -5,7 +5,7 @@ exports[`DonationForm should render correctly 1`] = `
   className="donation"
 >
   <img
-    alt="Recipient photo"
+    alt="Recipient"
     className="donation__recipient__photo"
     src="https://via.placeholder.com/150?text=Recipient+photo"
   />
@@ -39,16 +39,19 @@ exports[`DonationForm should render correctly 1`] = `
     >
       <button
         className="btn btn__quick-amount"
+        type="button"
       >
         50p
       </button>
       <button
         className="btn btn__quick-amount"
+        type="button"
       >
         £1
       </button>
       <button
         className="btn btn__quick-amount"
+        type="button"
       >
         £2
       </button>
