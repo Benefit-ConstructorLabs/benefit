@@ -12,15 +12,9 @@ const Recipient = () => (
 
     <h3 className="recipient__steps">3 easy steps to receive donations</h3>
     <ul className="recipient__steps-list">
-      <li>
-        Display your unique code to potential donors
-      </li>
-      <li>
-        Donors scan your QR code and set a payment
-      </li>
-      <li>
-        Check your total donations
-      </li>
+      <li>Display your unique code to potential donors</li>
+      <li>Donors scan your QR code and set a payment</li>
+      <li>Check your total donations</li>
     </ul>
 
     <button type="button" className="recipient__print-qrcode">

@@ -169,7 +169,8 @@ Array [
         <input
           className="donation__form__amount"
           id="donation__amount"
-          placeholder="£1"
+          onChange={[Function]}
+          placeholder="£undefined"
           type="number"
         />
       </p>
