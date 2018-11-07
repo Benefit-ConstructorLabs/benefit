@@ -289,7 +289,7 @@ Array [
     <h2
       className="acknowledgement__confirmation"
     >
-      All set. Thanks for helping “FirstName” out!
+      All set. Thanks for helping “ FirstName” out!
     </h2>
     <h3
       className="acknowledgement__question"
