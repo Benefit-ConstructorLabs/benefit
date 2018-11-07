@@ -1,13 +1,13 @@
 import React from 'react';
 import DonationHeader from './DonationHeader';
-import DonationForm from './DonationForm';
+import DonationFormContainer from '../containers/DonationFormContainer';
 import RecipientProfile from './RecipientProfile';
 import DonationPayment from './DonationPayment';
 
 const NewDonation = () => (
   <React.Fragment>
     <DonationHeader />
-    <DonationForm />
+    <DonationFormContainer />
     <RecipientProfile />
     <DonationPayment />
   </React.Fragment>

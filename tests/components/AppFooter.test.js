@@ -1,12 +1,13 @@
-import React from 'react'
-import AppFooter from '../../src/components/AppFooter';
+import React from 'react';
 import renderer from 'react-test-renderer';
+import AppFooter from '../../src/components/AppFooter';
+
 
 describe('AppFooter', () => {
   test('should render correctly', () => {
     const tree = renderer
       .create(<AppFooter />)
-      .toJSON()
+      .toJSON();
     expect(tree).toMatchSnapshot();
   });
-})
+});
