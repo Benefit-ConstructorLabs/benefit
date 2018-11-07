@@ -11,7 +11,6 @@ CREATE TABLE recipient(
   last_name VARCHAR(100),
   photo VARCHAR(500) NOT NULL UNIQUE,
   tel VARCHAR(20) UNIQUE,
-  qrcode VARCHAR(500) NOT NULL UNIQUE,
   username VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL
 );
@@ -47,9 +46,9 @@ CREATE TABLE biography(
   
 
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, qrcode, username, password) 
+  (id, first_name, last_name, photo, tel, username, password) 
   VALUES 
-  (1, 'John', 'Smith', 'https://unsplash.com/photos/lkMJcGDZLVs', '01234567890', 'https://api.qrserver.com/v1/create-qr-code/?data=http%3A%2F%2Fconstructorlabs-syllabus.herokuapp.com%2Finstall-list%2F%3Fid%3D123456&amp;size=100x100', 'jsmith', '111');
+  (1, 'John', 'Smith', 'https://unsplash.com/photos/lkMJcGDZLVs', '01234567890', 'jsmith', '111');
 ALTER SEQUENCE recipient_id_seq RESTART WITH 2 INCREMENT BY 1;
 
 INSERT INTO donor
