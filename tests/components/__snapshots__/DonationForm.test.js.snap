@@ -32,6 +32,10 @@ exports[`DonationForm should render correctly 1`] = `
     </p>
     <p>
       <input
+        className="donation__form__slider"
+        max="10"
+        min="1"
+        onChange={[Function]}
         type="range"
       />
     </p>
@@ -40,28 +44,35 @@ exports[`DonationForm should render correctly 1`] = `
     >
       <button
         className="btn btn__quick-amount"
+        onClick={[Function]}
         type="button"
-      >
-        50p
-      </button>
-      <button
-        className="btn btn__quick-amount"
-        type="button"
+        value="1"
       >
         £1
       </button>
       <button
         className="btn btn__quick-amount"
+        onClick={[Function]}
         type="button"
+        value="2"
       >
         £2
+      </button>
+      <button
+        className="btn btn__quick-amount"
+        onClick={[Function]}
+        type="button"
+        value="5"
+      >
+        £5
       </button>
     </p>
     <button
       className="btn btn__submit"
       type="submit"
     >
-      Donate to firstname
+      Donate to
+       
     </button>
   </form>
 </div>

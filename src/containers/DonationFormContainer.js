@@ -4,7 +4,10 @@ import { setDonationAmount } from '../actions';
 
 
 const mapStateToProps = state => (
-  { donationAmount: state.donation.donationAmount }
+  {
+    donationAmount: state.donation.donationAmount,
+    firstName: state.recipient.firstName,
+  }
 );
 
 const mapDispatchToProps = {
