@@ -48,8 +48,17 @@ CREATE TABLE biography(
 INSERT INTO recipient 
   (id, first_name, last_name, photo, tel, username, password) 
   VALUES 
-  (1, 'John', 'Smith', 'https://unsplash.com/photos/lkMJcGDZLVs', '01234567890', 'jsmith', '111');
-ALTER SEQUENCE recipient_id_seq RESTART WITH 2 INCREMENT BY 1;
+  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '111');
+INSERT INTO recipient 
+  (id, first_name, last_name, photo, tel, username, password) 
+  VALUES 
+  (2, 'Anna', 'Boolean', 'https://randomuser.me/api/portraits/women/54.jpg', '23456789012', 'aboolean', '222');
+INSERT INTO recipient 
+  (id, first_name, last_name, photo, tel, username, password) 
+  VALUES 
+  (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '333');
+ALTER SEQUENCE recipient_id_seq RESTART WITH 4 INCREMENT BY 1;
+
 
 INSERT INTO recipient 
   (id, first_name, last_name, photo, tel, username, password) 
@@ -85,11 +94,35 @@ INSERT INTO donation
   (id, recipient_id, donor_id, amount, stripe_id)
   VALUES
   (2, 1, 2, 5000, 'asdfghjk2345678');
-ALTER SEQUENCE donation_id_seq RESTART WITH 3 INCREMENT BY 1;
+INSERT INTO donation
+  (id, recipient_id, donor_id, amount, stripe_id)
+  VALUES
+  (3, 2, 1, 508, '2345678g');
+INSERT INTO donation
+  (id, recipient_id, donor_id, amount, stripe_id)
+  VALUES
+  (4, 2, 2, 260, '98765rertyhj');
+INSERT INTO donation
+  (id, recipient_id, donor_id, amount, stripe_id)
+  VALUES
+  (5, 3, 1, 3132, 'oiuytfghjkmn');
+  INSERT INTO donation
+  (id, recipient_id, donor_id, amount, stripe_id)
+  VALUES
+  (6, 3, 2, 9987, 'aiuytrerfg5t8');
+ALTER SEQUENCE donation_id_seq RESTART WITH 7 INCREMENT BY 1;
 
 INSERT INTO biography 
   (id, recipient_id, bio_1, bio_2, bio_3)
   VALUES
   (1, 1, 'I play the trumpet', 'I like black coffee', 'I am an Arsenal fan');
-ALTER SEQUENCE biography_id_seq RESTART WITH 2 INCREMENT BY 1;
+INSERT INTO biography 
+  (id, recipient_id, bio_1, bio_2, bio_3)
+  VALUES
+  (2, 2, 'I have 4 children', 'I like sci-fi', 'I enjoy reading');
+INSERT INTO biography 
+  (id, recipient_id, bio_1, bio_2, bio_3)
+  VALUES
+  (3, 3, 'I make key charms', 'I am saving for a rent deposit', 'I like muffins');
+ALTER SEQUENCE biography_id_seq RESTART WITH 4 INCREMENT BY 1;
 

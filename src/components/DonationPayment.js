@@ -1,12 +1,14 @@
 import React from 'react';
-import PaymentDetailsForm from './PaymentDetailsForm';
-import PaymentAcknowledge from './PaymentAcknowledge';
+
+import PaymentDetailsFormContainer from '../containers/PaymentDetailsFormContainer';
+import PaymentAcknowledgeContainer from '../containers/PaymentAcknowlegeContainer';
+
 
 const DonationPayment = () => (
   <React.Fragment>
     <h2>Donation Payment</h2>
-    <PaymentDetailsForm />
-    <PaymentAcknowledge />
+    <PaymentDetailsFormContainer />
+    <PaymentAcknowledgeContainer />
   </React.Fragment>
 );
 
