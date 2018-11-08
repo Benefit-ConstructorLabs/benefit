@@ -28,6 +28,18 @@ app.get('/api/recipients', (req, res) => {
     .catch(error => res.json({ error: error.message }));
 });
 
+// retrieve recipient by id
+app.get('/api/recipient/:id', (req, res) => {
+  const { id } = req.params;
+  return db.one('SELECT * FROM recipient WHERE id=$1', [id]).then(data => db
+    .one('SELECT * FROM biography WHERE id = $1', [data.id])
+  /* eslint-disable camelcase */
+    .then(({ bio_1, bio_2, bio_3 }) => {
+      res.json(Object.assign({}, data, { bio: [bio_1, bio_2, bio_3] }));
+    }));
+  /* eslint-enable camelcase */
+});
+
 // adds a new recipient to the database
 app.post('/api/recipient', (req, res) => {
   const { recipient } = req.body;
