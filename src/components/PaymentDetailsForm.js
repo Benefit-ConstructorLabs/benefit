@@ -12,6 +12,7 @@ const PaymentDetailsForm = ({ createPaymentDetails, setCardInput, setExpDateInpu
     setCcvInput(event.target.value)
   }
 
+  console.log(cardNumber);
   return (
     <div className="payment-details-form">
       <h3>Set up payment</h3>

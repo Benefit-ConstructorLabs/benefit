@@ -37,10 +37,10 @@ export function receiveStripeToken(stripeToken) {
 // A temporary function to send payment details off to stripe and receive back a fake stripe token
 export function createPaymentDetails() {
   return function (dispatch) {
-    const temporaryStripeToken = 'tok_1DTtwg2eZvKYlo2C0OVGbY7U'
-    dispatch(receiveStripeToken(temporaryStripeToken))
-    dispatch(setCardInput(''))
-    dispatch(setExpDateInput(''))
-    dispatch(setCcvInput(''))
-  }
+    const temporaryStripeToken = 'tok_1DTtwg2eZvKYlo2C0OVGbY7U';
+    dispatch(receiveStripeToken(temporaryStripeToken));
+    dispatch(setCardInput(''));
+    dispatch(setExpDateInput(''));
+    dispatch(setCcvInput(''));
+  };
 }

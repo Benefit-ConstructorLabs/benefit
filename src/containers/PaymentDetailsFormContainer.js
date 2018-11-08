@@ -4,9 +4,9 @@ import { createPaymentDetails, setCardInput, setExpDateInput, setCcvInput } from
 
 function mapStateToProps(state) {
   return {
-    cardNumber: state.cardNumber,
-    expDate: state.expDate,
-    ccv: state.ccv,
+    cardNumber: state.paymentDetails.cardNumber,
+    expDate: state.paymentDetails.expDate,
+    ccv: state.paymentDetails.ccv,
   };
 }
 
