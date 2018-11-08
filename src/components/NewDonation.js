@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DonationHeader from '../../src/components/DonationHeader';
-import DonationForm from '../../src/components/DonationForm';
-import RecipientProfileContainer from '../containers/RecipientProfileContainer';
+import DonationHeader from './DonationHeader';
+import DonationForm from './DonationForm';
+import RecipientProfile from './RecipientProfile';
 import DonationPayment from './DonationPayment';
 
 class NewDonation extends React.Component {
@@ -16,8 +16,7 @@ class NewDonation extends React.Component {
   }
 
   render() {
-    const { match, showPaymentDetails, togglePaymentDetails, firstName, donationAmount, setDonationAmount, photo } = this.props;
-    // const togglePaymentDetails = false;
+    const { match, showPaymentDetails, togglePaymentDetails, firstName, donationAmount, setDonationAmount, photo, bio } = this.props;
     return (
       <React.Fragment>
         {!showPaymentDetails
@@ -25,7 +24,7 @@ class NewDonation extends React.Component {
             <React.Fragment>
               <DonationHeader match={match} firstName={firstName} />
               <DonationForm donationAmount={donationAmount} setDonationAmount={setDonationAmount} firstName={firstName} photo={photo} togglePaymentDetails={togglePaymentDetails} />
-              <RecipientProfileContainer />
+              <RecipientProfile firstName={firstName} bio={bio} />
             </React.Fragment>
           )
         }
@@ -48,9 +47,14 @@ NewDonation.propTypes = {
   showPaymentDetails: PropTypes.bool.isRequired,
   firstName: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
+  bio: PropTypes.arrayOf(PropTypes.string),
   togglePaymentDetails: PropTypes.func.isRequired,
   donationAmount: PropTypes.number.isRequired,
   setDonationAmount: PropTypes.func.isRequired,
 };
+
+NewDonation.defaultProps = {
+  bio: [],
+}
 
 export default NewDonation;
