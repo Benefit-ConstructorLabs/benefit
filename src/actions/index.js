@@ -5,3 +5,5 @@ export function setDonationAmount(amount) {
     donationAmount: donation,
   };
 }
+
+export function createDonorAccount() {}

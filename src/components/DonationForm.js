@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/components/donation-form.scss';
 
-const DonationForm = ({ donationAmount, setDonationAmount }) => (
+const DonationForm = ({ donationAmount, setDonationAmount, firstName, submitDonation }) => (
   <div className="donation">
     <img src="https://via.placeholder.com/150?text=Recipient+photo" alt="Recipient" className="donation__recipient__photo" />
     <h3 className="donation__purpose">Donate towards a night in a shelter</h3>
-    <form onSubmit={event => event.preventDefault()} className="donation__form">
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        submitDonation();
+      }}
+      className="donation__form"
+    >
       <h4>How much?</h4>
       <p>
         <input
@@ -18,14 +24,18 @@ const DonationForm = ({ donationAmount, setDonationAmount }) => (
         />
       </p>
       <p>
-        <input type="range" />
+        <input onChange={event => setDonationAmount(event.target.value)} value={donationAmount} className="donation__form__slider" type="range" min="1" max="10" />
       </p>
       <p className="donation__form__quick-amount">
-        <button type="button" className="btn btn__quick-amount">50p</button>
-        <button type="button" className="btn btn__quick-amount">£1</button>
-        <button type="button" className="btn btn__quick-amount">£2</button>
+        <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="1">£1</button>
+        <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="2">£2</button>
+        <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="5">£5</button>
       </p>
-      <button className="btn btn__submit" type="submit">Donate to firstname</button>
+      <button className="btn btn__submit" type="submit">
+        Donate to
+        {' '}
+        {firstName}
+      </button>
     </form>
   </div>
 );
@@ -33,11 +43,12 @@ const DonationForm = ({ donationAmount, setDonationAmount }) => (
 DonationForm.propTypes = {
   donationAmount: PropTypes.number,
   setDonationAmount: PropTypes.func.isRequired,
+  firstName: PropTypes.string.isRequired,
+  submitDonation: PropTypes.func.isRequired,
 };
 
 DonationForm.defaultProps = {
   donationAmount: undefined,
 };
-
 
 export default DonationForm;
