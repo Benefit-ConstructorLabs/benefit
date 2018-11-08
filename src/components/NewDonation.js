@@ -45,6 +45,7 @@ NewDonation.propTypes = {
     url: PropTypes.string,
   }).isRequired,
   setRecipientFromDB: PropTypes.func.isRequired,
+  togglePaymentDetails: PropTypes.func.isRequired,
 };
 
 export default NewDonation;
