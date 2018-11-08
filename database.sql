@@ -59,7 +59,6 @@ INSERT INTO recipient
   (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '333');
 ALTER SEQUENCE recipient_id_seq RESTART WITH 4 INCREMENT BY 1;
 
-
 INSERT INTO donor
   (id, first_name, last_name, email, password, tel, stripe) 
   VALUES 
