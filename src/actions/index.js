@@ -6,4 +6,14 @@ export function setDonationAmount(amount) {
   };
 }
 
-export function createDonorAccount() {}
+export function createDonorAccount() { }
+
+export function setRecipientFromDB(recipient) {
+  return {
+    type: 'SET_RECIPIENT_FROM_DB',
+    id: recipient.id,
+    firstName: recipient.first_name,
+    photo: recipient.photo,
+    bio: recipient.bio,
+  };
+}
