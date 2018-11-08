@@ -13,35 +13,23 @@ export function setRecipientPhotoUrl(url) {
   };
 }
 
-export function getQRCode (id, QRCodePackage, canvas) { 
+export function getQRCode (id) { 
+  return function(dispatch) {
     fetch(`/api/recipient/${id}`)
     .then(response => response.json())
     .then(body => {
-      const QRCodeUrl = `http://www.benefit.com/recipient/${body[0].id}`;
-      QRCodePackage.toCanvas(
-        canvas,
-        QRCodeUrl,
+      const qrCodeUrl = `http://www.benefit.com/recipient/${body[0].id}`;
+      dispatch(
         {
-          errorCorrectionLevel: 'M',
-          maskPattern: 4,
-          scale: 4,
-          version: 5,
-          color: {
-            dark: '#003366FF',
-            light: '#CDF8FFCC'
-          }
-        },
-        error => {
-          if (error) {
-            // console.error(error);
-          }
-          // console.log('success!');
+          type: 'SET_QRCODE_URL',
+          qrCodeUrl
         }
-      );
-      return {
-        type: 'SET_QRCODE_URL',
-        QRCodeUrl
-      };
+      )
     })
-    .catch(error => response.json({ error: error.message }));
+    .catch(error => console.log(error));
   }
+}
+
+
+
+

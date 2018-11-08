@@ -3,7 +3,7 @@ import QRcode from '../components/QRcode';
 import { getQRCode } from '../actions';
 
 const mapStateToProps = state => (
-  { QRCodeUrl: state.QRCodeUrl }
+  { qrCodeUrl: state.qrCodeUrl }
 );
 
 const mapDispatchToProps = {
