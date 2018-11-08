@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`AppFooter should render correctly 1`] = `
-<h1>
-  App Footer — © 2018 Benefit Team
-</h1>
-`;
