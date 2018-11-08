@@ -9,7 +9,7 @@ class NewDonation extends React.Component {
 
   componentDidMount() {
     const { match } = this.props;
-    fetch(`http://localhost:8080/api/recipient/${match.params.id}`)
+    fetch(`/api/recipient/${match.params.id}`)
       .then(response => response.json())
       .then(recipient => {
         this.props.setRecipientFromDB(recipient);

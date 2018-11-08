@@ -4,7 +4,7 @@ import '../../styles/components/donation-form.scss';
 
 const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, submitDonation }) => (
   <div className="donation">
-    <img src={photo} alt="Recipient" className="donation__recipient__photo" />
+    <img src={photo} />
     <h3 className="donation__purpose">Donate towards a night in a shelter</h3>
     <form
       onSubmit={(event) => {

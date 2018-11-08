@@ -33,10 +33,11 @@ app.get('/api/recipient/:id', (req, res) => {
   const { id } = req.params;
   return db.one('SELECT * FROM recipient WHERE id=$1', [id]).then(data => db
     .one('SELECT * FROM biography WHERE id = $1', [data.id])
-  /* eslint-disable camelcase */
+    /* eslint-disable camelcase */
     .then(({ bio_1, bio_2, bio_3 }) => {
       res.json(Object.assign({}, data, { bio: [bio_1, bio_2, bio_3] }));
-    }));
+    }))
+    .catch(error => res.json({ error: error.message }));
   /* eslint-enable camelcase */
 });
 

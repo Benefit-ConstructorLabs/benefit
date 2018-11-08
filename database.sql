@@ -48,7 +48,7 @@ CREATE TABLE biography(
 INSERT INTO recipient 
   (id, first_name, last_name, photo, tel, username, password) 
   VALUES 
-  (1, 'John', 'Smith', 'https://unsplash.com/photos/lkMJcGDZLVs', '01234567890', 'jsmith', '111');
+  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '111');
 ALTER SEQUENCE recipient_id_seq RESTART WITH 2 INCREMENT BY 1;
 
 INSERT INTO donor
