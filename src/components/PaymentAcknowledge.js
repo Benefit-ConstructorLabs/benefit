@@ -10,6 +10,14 @@ const PaymentAcknowledge = ({ recipientName }) => (
       {recipientName}
       &nbsp;out!
     </h2>
+    <h3 className="acknowledgement__question">Would you like to set up an account?</h3>
+    <button
+      className="btn acknowlegement__account__btn"
+      type="submit"
+      onClick={event => event.preventDefault(event)}
+    >
+      Set up an account
+    </button>
   </section>
 );
 

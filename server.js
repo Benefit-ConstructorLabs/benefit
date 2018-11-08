@@ -31,7 +31,7 @@ app.get('/api/recipients', (req, res) => {
 // retrieve recipient by id
 app.get('/api/recipient/:id', (req, res) => {
   const { id } = req.params;
-  return db.one('SELECT * FROM recipient WHERE id=$1', [id]).then(data => db
+  return db.one('SELECT id, first_name, photo FROM recipient WHERE id=$1', [id]).then(data => db
     .one('SELECT * FROM biography WHERE id = $1', [data.id])
   /* eslint-disable camelcase */
     .then(({ bio_1, bio_2, bio_3 }) => {
@@ -90,13 +90,15 @@ app.post('/api/donation', (req, res) => {
       [donation.recipient_id, donation.donor_id, donation.amount, donation.stripe_id],
     )
     .then((result) => {
+      // the below code is commented out until we can add new donors and send text messages
       const json = {
-        recipient_name: donation.recipient_name,
-        donor_name: donation.donor_name,
-        amount: donation.amount,
+        // recipient_name: donation.recipient_name,
+        // donor_name: donation.donor_name,
+        // amount: donation.amount,
+        // transaction_id: result.id,
         transaction_id: result.id,
       };
-      sendSMS(donation.recipient_name, donation.tel);
+      // sendSMS(donation.recipient_name, donation.tel);
       return res.json(json);
     })
     .catch(error => res.json({ error: error.message }));
