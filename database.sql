@@ -48,15 +48,15 @@ CREATE TABLE biography(
 INSERT INTO recipient 
   (id, first_name, last_name, photo, tel, username, password) 
   VALUES 
-  (1, 'John', 'Smith', 'https://unsplash.com/photos/lkMJcGDZLVs', '01234567890', 'jsmith', '111');
+  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '111');
 INSERT INTO recipient 
   (id, first_name, last_name, photo, tel, username, password) 
   VALUES 
-  (2, 'Anna', 'Boolean', 'https://unsplash.com/photos/Wx2AjoLtpcU', '23456789012', 'aboolean', '222');
+  (2, 'Anna', 'Boolean', 'https://randomuser.me/api/portraits/women/54.jpg', '23456789012', 'aboolean', '222');
 INSERT INTO recipient 
   (id, first_name, last_name, photo, tel, username, password) 
   VALUES 
-  (3, 'Sam', 'Dean', 'https://unsplash.com/photos/XRA6DT2_ReY', '9876543221678', 'sdean', '333');
+  (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '333');
 ALTER SEQUENCE recipient_id_seq RESTART WITH 4 INCREMENT BY 1;
 
 INSERT INTO donor

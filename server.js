@@ -1,10 +1,15 @@
 require('dotenv').config();
 
 const express = require('express');
-
 const app = express();
 const bodyParser = require('body-parser');
 const pgp = require('pg-promise')();
+
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const fileType = require('file-type');
+const bluebird = require('bluebird');
+const multiparty = require('multiparty');
 
 const db = pgp({
   host: 'localhost',
@@ -22,10 +27,59 @@ app.use('/static', express.static('static'));
 app.set('view engine', 'hbs');
 app.set('port', process.env.PORT || 8080);
 
-app.get('/api/recipients', (req, res) => {
+// configure the keys for accessing AWS
+AWS.config.update({
+  region: process.env.S3_REGION,
+  accessKeyId: process.env.S3_ACCESS_KEY_ID,
+  secretAccessKey: process.env.S3_SECRET_ACCESS_KEY
+});
+
+// configure AWS to work with promises
+AWS.config.setPromisesDependency(bluebird);
+
+// abstracts function to upload a file returning a promise
+const uploadFile = (buffer, name, type) => {
+  const params = {
+    ACL: 'public-read',
+    Body: buffer,
+    Bucket: process.env.S3_BUCKET,
+    ContentType: type.mime,
+    Key: `${name}.${type.ext}`
+  };
+  const s3 = new AWS.S3();
+  return s3.upload(params).promise();
+};
+
+// POST route for S3 uploads
+app.post('/api/upload', (request, response) => {
+  const form = new multiparty.Form();
+    form.parse(request, async (error, fields, files) => {
+      try {
+        if (error) throw new Error(error);
+        const path = files.file[0].path;
+        const buffer = fs.readFileSync(path);
+        const type = fileType(buffer);
+        const timestamp = Date.now().toString();
+        const fileName = `${timestamp}-lg`;
+        const data = await uploadFile(buffer, fileName, type);
+        return response.status(200).send(data);
+      } catch (error) {
+        return response.status(400).send(error);
+      }
+    });
+});
+
+app.get('/api/recipient/:id', (req, res) => { 
+  const id = req.params.id
+  db.any(`SELECT * FROM recipient WHERE id=$1`, [id])
+    .then(data => res.json(data))
+    .catch(error => res.json({ error: error.message }));  
+});
+
+app.get('/api/recipient', (req, res) => {
   db.any('SELECT * FROM recipient')
     .then(data => res.json(data))
-    .catch(error => res.json({ error: error.message }));
+    .catch(error => res.json({ error: error.message }));  
 });
 
 // retrieve recipient by id
@@ -33,10 +87,11 @@ app.get('/api/recipient/:id', (req, res) => {
   const { id } = req.params;
   return db.one('SELECT id, first_name, photo FROM recipient WHERE id=$1', [id]).then(data => db
     .one('SELECT * FROM biography WHERE id = $1', [data.id])
-  /* eslint-disable camelcase */
+    /* eslint-disable camelcase */
     .then(({ bio_1, bio_2, bio_3 }) => {
       res.json(Object.assign({}, data, { bio: [bio_1, bio_2, bio_3] }));
-    }));
+    }))
+    .catch(error => res.json({ error: error.message }));
   /* eslint-enable camelcase */
 });
 
