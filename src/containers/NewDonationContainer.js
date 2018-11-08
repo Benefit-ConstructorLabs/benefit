@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import NewDonation from '../components/NewDonation';
 import { setRecipientFromDB } from '../actions';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   donationAmount: state.donation.donationAmount,
 });
 
