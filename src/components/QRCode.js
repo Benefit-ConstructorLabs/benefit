@@ -3,7 +3,7 @@ import QRCodePackage from 'qrcode';
 
 class QRCode extends React.Component {
   componentDidMount () {
-    const id = 2; // id comes from the URL
+    const id = 2; // id comes from the result of the new recipient form submission
     this.props.getQRCode(id);
     this.renderCanvas();
   }
