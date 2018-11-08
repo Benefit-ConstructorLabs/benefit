@@ -12,56 +12,83 @@ Array [
   </h2>,
   <img
     alt=""
-    height=""
+    className="newrecipient__header-image"
     src=""
-    width=""
   />,
-  <form>
-    <label
-      className="newrecipient__intro"
-    >
+  <form
+    className="neerecipient__form"
+    onSubmit={[Function]}
+  >
+    <h2>
       Add your basic information
-    </label>
+    </h2>
     <input
+      onChange={[Function]}
       placeholder="First name"
       text="firstname"
       type="text"
     />
     <input
+      onChange={[Function]}
       placeholder="Last name"
       text="lastname"
       type="text"
+      value={null}
     />
     <input
+      onChange={[Function]}
       placeholder="Telephone number"
       text="telephone"
       type="text"
+      value={null}
+    />
+    <input
+      onChange={[Function]}
+      placeholder="Select your username"
+      text="username"
+      type="text"
+    />
+    <input
+      onChange={[Function]}
+      placeholder="Create your password"
+      text="password"
+      type="password"
     />
     <button
-      className="newrecipient__upload-button"
+      className="newrecipient__btn-upload-image"
+      onClick={[Function]}
+      type="submit"
     >
       Upload a picture
     </button>
-    <label>
+    <h2>
       Now tell people 3 things about you...
-    </label>
+    </h2>
     <input
+      onChange={[Function]}
       placeholder="1. I play the piano"
       text="text"
       type="text"
+      value={null}
     />
     <input
+      onChange={[Function]}
       placeholder="2. I like white coffee"
       text="text"
       type="text"
+      value={null}
     />
     <input
+      onChange={[Function]}
       placeholder="3. I'm a Rugby fan"
       text="text"
       type="text"
+      value={null}
     />
     <button
-      className="newrecipient__qr-button"
+      className="newrecipient__btn-generate-qr-code "
+      onClickUpload={[Function]}
+      type="submit"
     >
       Generate Your Unique QR Code
     </button>
