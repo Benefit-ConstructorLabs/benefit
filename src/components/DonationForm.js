@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/components/donation-form.scss';
 
-const DonationForm = ({ donationAmount, setDonationAmount }) => (
+const DonationForm = ({ setDonationAmount, submitDonation, donationAmount }) => (
   <div className="donation">
     <img src="https://via.placeholder.com/150?text=Recipient+photo" alt="Recipient" className="donation__recipient__photo" />
     <h3 className="donation__purpose">Donate towards a night in a shelter</h3>
-    <form onSubmit={event => event.preventDefault()} className="donation__form">
+    <form
+      onSubmit={(event) => {
+        event.preventDefault();
+        submitDonation();
+      }}
+      className="donation__form"
+    >
       <h4>How much?</h4>
       <p>
         <input
@@ -33,6 +39,7 @@ const DonationForm = ({ donationAmount, setDonationAmount }) => (
 DonationForm.propTypes = {
   donationAmount: PropTypes.number,
   setDonationAmount: PropTypes.func.isRequired,
+  submitDonation: PropTypes.func.isRequired,
 };
 
 DonationForm.defaultProps = {

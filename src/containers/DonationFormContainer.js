@@ -3,7 +3,7 @@ import DonationForm from '../components/DonationForm';
 import { setDonationAmount } from '../actions';
 
 
-const mapStateToProps = state => (
+export const mapStateToProps = state => (
   { donationAmount: state.donation.donationAmount }
 );
 
