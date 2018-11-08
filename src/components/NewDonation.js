@@ -7,23 +7,28 @@ import DonationPayment from './DonationPayment';
 
 class NewDonation extends React.Component {
   componentDidMount() {
-    const { setRecipientFromDB } = this.props;
+    const { getRecipientFromDB } = this.props;
     const { match } = this.props;
-    fetch(`/api/recipient/${match.params.id}`)
-      .then(response => response.json())
-      .then(recipient => (setRecipientFromDB(recipient)))
-      .catch(error => (console.log('FETCH ERROR', error.message)));
+    getRecipientFromDB(match.params.id);
   }
 
   render() {
-    const { match, showPaymentDetails, togglePaymentDetails, firstName, donationAmount, setDonationAmount, photo, bio } = this.props;
+    const { match, showPaymentDetails,
+      togglePaymentDetails, firstName, donationAmount,
+      setDonationAmount, photo, bio } = this.props;
     return (
       <React.Fragment>
         {!showPaymentDetails
           && (
             <React.Fragment>
               <DonationHeader match={match} firstName={firstName} />
-              <DonationForm donationAmount={donationAmount} setDonationAmount={setDonationAmount} firstName={firstName} photo={photo} togglePaymentDetails={togglePaymentDetails} />
+              <DonationForm
+                donationAmount={donationAmount}
+                setDonationAmount={setDonationAmount}
+                firstName={firstName}
+                photo={photo}
+                togglePaymentDetails={togglePaymentDetails}
+              />
               <RecipientProfile firstName={firstName} bio={bio} />
             </React.Fragment>
           )
@@ -43,7 +48,7 @@ NewDonation.propTypes = {
     path: PropTypes.string,
     url: PropTypes.string,
   }).isRequired,
-  setRecipientFromDB: PropTypes.func.isRequired,
+  getRecipientFromDB: PropTypes.func.isRequired,
   showPaymentDetails: PropTypes.bool.isRequired,
   firstName: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
@@ -55,6 +60,6 @@ NewDonation.propTypes = {
 
 NewDonation.defaultProps = {
   bio: [],
-}
+};
 
 export default NewDonation;

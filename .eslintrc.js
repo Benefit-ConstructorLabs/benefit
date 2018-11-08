@@ -11,6 +11,7 @@ module.exports = {
     "object-curly-newline": ["error", {
       "ImportDeclaration": "never"
     }],
-    "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }]
+    "no-underscore-dangle": ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION_COMPOSE__"] }],
+    "func-names": ["error", "never"]
   },
 };

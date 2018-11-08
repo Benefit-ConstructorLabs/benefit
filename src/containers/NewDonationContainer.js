@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NewDonation from '../components/NewDonation';
-import { setRecipientFromDB, setDonationAmount, togglePaymentDetails } from '../actions';
+import { getRecipientFromDB, setDonationAmount, togglePaymentDetails } from '../actions';
 
 export const mapStateToProps = state => ({
   donationAmount: state.donation.donationAmount,
@@ -11,7 +11,7 @@ export const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  setRecipientFromDB,
+  getRecipientFromDB,
   setDonationAmount,
   togglePaymentDetails,
 };
