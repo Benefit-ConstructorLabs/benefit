@@ -3,6 +3,7 @@ import '../../styles/components/payment-details-form.scss';
 
 const PaymentDetailsForm = ({ createPaymentDetails, setCardInput, setExpDateInput, setCcvInput, cardNumber, expDate, ccv}) => {
   function handleCardChange(event){
+    setCardInput(event.target.value)
   }
   function handleExpDateChange(event){
     setExpDateInput(event.target.value)
@@ -10,7 +11,7 @@ const PaymentDetailsForm = ({ createPaymentDetails, setCardInput, setExpDateInpu
   function handleCcvChange(event){
     setCcvInput(event.target.value)
   }
-  
+
   return (
     <div className="payment-details-form">
       <h3>Set up payment</h3>
@@ -28,13 +29,13 @@ const PaymentDetailsForm = ({ createPaymentDetails, setCardInput, setExpDateInpu
           type="date"
           placeholder="Expiry date"
           value={expDate}
-          onChange={handleExpDateChange}
+          onChange={event => handleExpDateChange(event)}
         />
         <input
           type="text"
           placeholder="CCV"
           value={ccv}
-          onChange={handleCcvChange}
+          onChange={event => handleCcvChange(event)}
         />
         <p>Set up a donor account?</p>
         <p>Continue donating anonymously:</p>
