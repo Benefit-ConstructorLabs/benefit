@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`AppHeader should render correctly 1`] = `
-<h1>
-  App Header — Benefit
-</h1>
-`;

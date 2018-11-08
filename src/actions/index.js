@@ -44,3 +44,4 @@ export function createPaymentDetails() {
     dispatch(setCcvInput(''));
   };
 }
+
