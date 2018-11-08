@@ -6,6 +6,16 @@ export function setDonationAmount(amount) {
   };
 }
 
+export function setRecipientFromDB(recipient) {
+  return {
+    type: 'SET_RECIPIENT_FROM_DB',
+    id: recipient.id,
+    firstName: recipient.first_name,
+    photo: recipient.photo,
+    bio: recipient.bio,
+  };
+}
+
 export function setCardInput(cardNumber) {
   return {
     type: 'SET_CARD_INPUT',

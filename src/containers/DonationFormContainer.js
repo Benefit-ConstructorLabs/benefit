@@ -6,6 +6,7 @@ const mapStateToProps = state => (
   {
     donationAmount: state.donation.donationAmount,
     firstName: state.recipient.firstName,
+    photo: state.recipient.photo,
   }
 );
 
