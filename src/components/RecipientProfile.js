@@ -11,8 +11,8 @@ const RecipientProfile = ({ firstName, bio }) => (
       is interested in:
     </p>
     <ol className="recipient-profile__interests">
-      {bio.map(interest => (
-        <li className="recipient-profile__interest">{interest}</li>
+      {bio.map((interest, i) => (
+        <li key={i} className="recipient-profile__interest">{interest}</li>
       ))}
     </ol>
   </div>
