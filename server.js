@@ -30,7 +30,7 @@ app.get('/api/recipients', (req, res) => {
 
 // adds a new recipient to the database
 app.post('/api/recipient', (req, res) => {
-  const { recipient } = req.body;
+  const recipient = req.body;
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(

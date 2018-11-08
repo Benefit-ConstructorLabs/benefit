@@ -40,7 +40,7 @@ Array [
     />
     <input
       placeholder="Telephone number"
-      text="telephone"
+      text="tel"
       type="text"
     />
     <button

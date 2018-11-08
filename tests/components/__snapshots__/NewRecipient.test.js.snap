@@ -38,7 +38,7 @@ Array [
     <input
       onChange={[Function]}
       placeholder="Telephone number"
-      text="telephone"
+      text="tel"
       type="text"
       value={null}
     />

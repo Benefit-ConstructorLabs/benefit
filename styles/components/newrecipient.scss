@@ -1,11 +1,14 @@
 .newrecipient {
-  & __title {
+  &__title {
   }
 
   &__header-image {
   }
 
   &__form {
+    & li {
+      list-style: none;
+    }
   }
 
   &__btn-upload-image {
