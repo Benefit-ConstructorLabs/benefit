@@ -6,6 +6,12 @@ export function setDonationAmount(amount) {
   };
 }
 
+export function togglePaymentDetails() {
+  return {
+    type: 'TOGGLE_PAYMENT_DETAILS',
+  };
+}
+
 export function setRecipientFromDB(recipient) {
   return {
     type: 'SET_RECIPIENT_FROM_DB',

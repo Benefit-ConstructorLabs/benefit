@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/components/donation-form.scss';
 
-const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, submitDonation }) => (
+const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, togglePaymentDetails }) => (
   <div className="donation">
     <img src={photo} />
     <h3 className="donation__purpose">Donate towards a night in a shelter</h3>
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        submitDonation();
+        togglePaymentDetails();
       }}
       className="donation__form"
     >
@@ -44,7 +44,9 @@ DonationForm.propTypes = {
   donationAmount: PropTypes.number,
   setDonationAmount: PropTypes.func.isRequired,
   firstName: PropTypes.string.isRequired,
-  submitDonation: PropTypes.func.isRequired,
+  photo: PropTypes.string.isRequired,
+  togglePaymentDetails: PropTypes.func.isRequired,
+
 };
 
 DonationForm.defaultProps = {
