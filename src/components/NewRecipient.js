@@ -19,11 +19,6 @@ const NewRecipient = () => (
         <li><input type="text" name="firstname" placeholder="First name" /></li>
         <li><input type="text" name="lastname" placeholder="Last name" /></li>
         <li><input type="text" name="telephone" placeholder="Telephone number" /></li>
-        <li>x
-          {/* {this.state.recipientPhotoUrl &&
-          <p>{this.state.recipientPhotoUrl}</p>
-          } */}
-        </li>
         <li><S3UploadContainer /></li>
         <li><label>Now tell people 3 things about you...</label></li>
         <li><input type="text" name="bio1" placeholder="1" /></li>
