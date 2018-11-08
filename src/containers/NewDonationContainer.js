@@ -4,6 +4,7 @@ import { setRecipientFromDB } from '../actions';
 
 const mapStateToProps = state => ({
   donationAmount: state.donation.donationAmount,
+  togglePaymentDetails: state.view.togglePaymentDetails,
 });
 
 const mapDispatchToProps = {
