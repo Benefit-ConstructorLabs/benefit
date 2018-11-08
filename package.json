@@ -13,6 +13,9 @@
     "presets": [
       "@babel/preset-react",
       "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
     ]
   },
   "repository": {
@@ -26,12 +29,17 @@
   },
   "homepage": "https://github.com/Benefit-ConstructorLabs/benefit#readme",
   "dependencies": {
+    "aws-sdk": "^2.350.0",
     "bcrypt": "^3.0.2",
+    "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.6",
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
+    "file-type": "^10.4.0",
+    "fs": "0.0.1-security",
     "hbs": "^4.0.1",
+    "multiparty": "^4.2.1",
     "node": "^11.0.0",
     "pg-promise": "^8.5.1",
     "prop-types": "^15.6.2",
@@ -46,6 +54,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
