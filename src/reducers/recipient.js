@@ -9,9 +9,8 @@ const recipient = (state = { firstName: '', bio: [], photo: '' }, action) => {
         recipientID: action.id,
         photo: action.photo,
       };
-    // TODO is this in use?
-    case 'SET_RECIPIENT_FIRSTNAME':
-      return Object.assign({}, state, { firstName: action.firstName });
+    case 'SET_RECIPIENT_ID':
+      return Object.assign({}, state, { recipientIdForQrCode: action.id });
     default:
       return state;
   }

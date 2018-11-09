@@ -3,7 +3,7 @@ import S3Upload from '../components/S3Upload';
 import { setRecipientPhotoUrl } from '../actions';
 
 const mapStateToProps = state => (
-  { recipientPhotoUrl: state.recipientPhotoUrl.url }
+  { recipientImageUrl: state.recipientImageUrl.url }
 );
 
 const mapDispatchToProps = {

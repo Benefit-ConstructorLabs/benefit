@@ -15,7 +15,7 @@ class S3Upload extends React.Component {
     formData.append('file', fileObj);
     fetch('/api/upload', {
         method: 'post',
-        body: formData        
+        body: formData     
     })
     .then(response => response.json())
     .then(data => {
