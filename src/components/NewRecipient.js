@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import S3UploadContainer from '../containers/S3UploadContainer';
 import RecipientSignUpForm from './RecipientSignUpForm';
-// import NewRecipientContainer from '../containers/NewRecipientContainer';
 
 import '../../styles/components/newrecipient.scss';
 
@@ -119,6 +119,9 @@ const NewRecipient = ({
               value={bio3}
               onChange={event => handleChange(event)}
             />
+          </li>
+          <li>
+            <S3UploadContainer />
           </li>
         </ul>
         <button className="newrecipient__btn-submit " type="submit">

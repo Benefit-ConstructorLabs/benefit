@@ -1,21 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AppHeader from './AppHeader';
 import NewRecipientContainer from '../containers/NewRecipientContainer';
 import Recipient from './Recipient';
 import NewDonation from './NewDonation';
+import NewDonationContainer from '../containers/NewDonationContainer';
 import AppFooter from './AppFooter';
 
 import '../../styles/components/app.scss';
 
 const App = () => (
-  <React.Fragment>
-    <p>The app...</p>
-    <AppHeader />
-    <NewRecipientContainer />
-    <Recipient />
-    <NewDonation />
-    <AppFooter />
-  </React.Fragment>
+  <Router>
+    <React.Fragment>
+      <p>The app...</p>
+      <AppHeader />
+      <Route exact path="/recipient/" component={NewRecipient} />
+      <Route exact path="/recipient/:id" component={Recipient} />
+      <Route path="/recipient/:id/donation" component={NewDonationContainer} />
+      <AppFooter />
+    </React.Fragment>
+  </Router>
 );
 
 export default App;

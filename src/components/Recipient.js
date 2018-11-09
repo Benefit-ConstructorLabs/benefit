@@ -1,14 +1,14 @@
 import React from 'react';
-import QRCode from './QRCode';
+import QRCodeContainer from '../containers/QRCodeContainer';
 import '../../styles/components/recipient.scss';
 
-const Recipient = () => (
+const Recipient = ({ match }) => (
   <React.Fragment>
-    <h2>Recipient Component</h2>
+    <h2>Recipient {match.params.id} Component</h2>
 
     <h2>You Unique QR code</h2>
 
-    <QRCode />
+    <QRCodeContainer />
 
     <h3 className="recipient__steps">3 easy steps to receive donations</h3>
     <ul className="recipient__steps-list">

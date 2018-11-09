@@ -48,7 +48,6 @@ CREATE TABLE biography
   FOREIGN KEY (recipient_id) REFERENCES recipient(id)
 );
 
-
 INSERT INTO recipient
   (id, first_name, last_name, photo, tel, username, password)
 VALUES
@@ -107,6 +106,7 @@ INSERT INTO biography
   (id, recipient_id, bio_1, bio_2, bio_3)
 VALUES
   (1, 1, 'I play the trumpet', 'I like black coffee', 'I am an Arsenal fan');
+
 INSERT INTO biography
   (id, recipient_id, bio_1, bio_2, bio_3)
 VALUES

@@ -2,23 +2,30 @@ import React from 'react';
 import QRCodePackage from 'qrcode';
 
 class QRCode extends React.Component {
-  componentDidMount() {
-    this.renderQRCode();
+  componentDidMount () {
+    const id = 2; // id comes from the result of the new recipient form submission
+    this.props.getQRCode(id);
+    this.renderCanvas();
   }
 
-  renderQRCode() {
-    // url will come from container -> this.props.url
-    const url = 'http://www.benefit.com/recipient/3';
+  componentDidUpdate () {
+    this.renderCanvas();
+  }
+
+  renderCanvas() {
+    if (!this.canvas) {
+      return;
+    }
     QRCodePackage.toCanvas(
       this.canvas,
-      url,
+      this.props.qrCodeUrl,
       {
         errorCorrectionLevel: 'M',
         maskPattern: 4,
         scale: 4,
         version: 5,
         color: {
-          dark: '#00737EFF',
+          dark: '#003366FF',
           light: '#CDF8FFCC'
         }
       },
@@ -32,13 +39,14 @@ class QRCode extends React.Component {
   }
 
   render() {
+    console.log(this.props)
+    const canvas = !!this.props.qrCodeUrl && 
+    <div>
+      <canvas ref={element => {this.canvas = element}}/>
+    </div>
     return (
       <React.Fragment>
-        <canvas
-          ref={element => {
-            this.canvas = element;
-          }}
-        />
+        {canvas}
       </React.Fragment>
     );
   }

@@ -1,16 +1,30 @@
 import React from 'react';
+import PropType from 'prop-types';
 import '../../styles/components/recipient-profile.scss';
 
-const RecipientProfile = () => (
+const RecipientProfile = ({ firstName, bio }) => (
   <div className="recipient-profile">
     <h3 className="recipient-profile__headline">Fancy a chat?</h3>
-    <p className="recipient-profile__intro">firstName is interested in:</p>
+    <p className="recipient-profile__intro">
+      {firstName}
+      {' '}
+      is interested in:
+    </p>
     <ol className="recipient-profile__interests">
-      <li className="recipient-profile__interest">First interest</li>
-      <li className="recipient-profile__interest">Second interest</li>
-      <li className="recipient-profile__interest">Third interest</li>
+      {bio.map((interest, i) => (
+        <li key={i} className="recipient-profile__interest">{interest}</li>
+      ))}
     </ol>
   </div>
 );
+
+RecipientProfile.propTypes = {
+  firstName: PropType.string.isRequired,
+  bio: PropType.arrayOf(PropType.string),
+};
+
+RecipientProfile.defaultProps = {
+  bio: [undefined],
+};
 
 export default RecipientProfile;
