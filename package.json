@@ -6,6 +6,11 @@
   "engines": {
     "node": "8.1.2"
   },
+  "root": "build/",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  },
   "scripts": {
     "test": "jest",
     "dev": "webpack --mode development",
