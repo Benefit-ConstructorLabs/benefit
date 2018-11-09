@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "contactless donations platform",
   "main": "server.js",
+  "engines": {
+    "node": "8.1.2"
+  },
   "scripts": {
     "test": "jest",
     "dev": "webpack --mode development",
@@ -47,6 +50,7 @@
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
