@@ -25,12 +25,10 @@ export function getQRCode(id) {
       .then(response => response.json())
       .then((body) => {
         const qrCodeUrl = `http://localhost:8080/recipient/${body[0].id}/donation`;
-        dispatch(
-          {
-            type: 'SET_QRCODE_URL',
-            qrCodeUrl,
-          },
-        );
+        dispatch({
+          type: 'SET_QRCODE_URL',
+          qrCodeUrl,
+        });
       })
       .catch(error => console.log(error));
   };
@@ -51,7 +49,7 @@ export function getRecipientFromDB(id) {
     fetch(`/api/recipient/${id}`)
       .then(response => response.json())
       .then(recipient => dispatch(setRecipientFromDB(recipient)))
-      .catch(error => (console.log('FETCH ERROR', error.message)));
+      .catch(error => console.log('FETCH ERROR', error.message));
   };
 }
 
@@ -93,10 +91,3 @@ export function createPaymentDetails() {
     dispatch(setCcvInput(''));
   };
 }
-
-export function handleSignUp() {
-  return {
-    type: 'TOGGLE_SIGNUP',
-  };
-}
-
