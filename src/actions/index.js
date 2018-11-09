@@ -12,6 +12,12 @@ export function togglePaymentDetails() {
   };
 }
 
+export function toggleDonationComplete() {
+  return {
+    type: 'TOGGLE_DONATION_COMPLETE',
+  };
+}
+
 export function setRecipientPhotoUrl(url) {
   return {
     type: 'SET_RECIPIENT_PHOTO_URL',
@@ -99,4 +105,3 @@ export function handleSignUp() {
     type: 'TOGGLE_SIGNUP',
   };
 }
-
