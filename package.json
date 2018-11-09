@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "contactless donations platform",
   "main": "server.js",
+  "engines": {
+    "node": "10.13.0"
+  },
   "scripts": {
     "test": "jest",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
+    "heroku-postbuild": "npm run build",
     "start": "nodemon server.js"
   },
   "babel": {
