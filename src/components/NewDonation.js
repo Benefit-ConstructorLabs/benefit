@@ -15,7 +15,7 @@ class NewDonation extends React.Component {
   render() {
     const { match, showPaymentDetails,
       togglePaymentDetails, firstName, donationAmount,
-      setDonationAmount, photo, bio } = this.props;
+      setDonationAmount, photo, bio, donationComplete } = this.props;
     return (
       <React.Fragment>
         {!showPaymentDetails
@@ -34,7 +34,9 @@ class NewDonation extends React.Component {
           )
         }
         {showPaymentDetails
-          && <DonationPayment />
+          && <DonationPayment
+            donationComplete={donationComplete}
+          />
         }
       </React.Fragment>
     );

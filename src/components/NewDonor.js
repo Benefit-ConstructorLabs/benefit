@@ -3,66 +3,107 @@ import PropTypes from 'prop-types';
 import '../../styles/components/new-donor.scss';
 
 const NewDonor = ({
-  firstname,
-  //   lastname,
-  //   telephone,
-  //   email,
-  //   password,
-  //   cardNo,
-  //   cardExp,
-  //   cardCCV,
-  setInput,
-  //   setLastnameInput,
-  //   setTelephone,
-  //   setEmail,
-  //   setPassword,
-  //   setCardNo,
-  //   setCardExp,
-  //   setCardCCV,
-  //   submitForm,
+  firstName,
+  lastName,
+  tel,
+  email,
+  password,
+  cardNo,
+  cardExp,
+  cardCCV,
+  setDonorInputField,
+  addDonor,
 }) => {
   function handleChange(event) {
-    setInput(event.target.value);
+    setDonorInputField(event.target.name, event.target.value);
   }
   return (
     <React.Fragment>
-      <form className="signup">
+      <form
+        className="newdonor"
+        onSubmit={(event) => {
+          event.preventDefault();
+          addDonor();
+        }}
+      >
         <ul>
           <h3>Add your basic information</h3>
           <li>
             <input
               type="text"
-              name="firstname"
-              value={firstname}
+              name="firstName"
+              value={firstName}
               placeholder="First name"
-              onChange={() => handleChange}
+              onChange={event => handleChange(event)}
             />
           </li>
           <li>
-            <input type="text" name="lastname" placeholder="Last name" />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last name"
+              value={lastName}
+              onChange={event => handleChange(event)}
+            />
           </li>
           <li>
-            <input type="text" name="telephone" placeholder="Telephone number" />
+            <input
+              type="text"
+              name="tel"
+              value={tel}
+              placeholder="Telephone number"
+              onChange={event => handleChange(event)}
+            />
           </li>
 
           <li>
-            <input type="email" name="email" placeholder="Email" />
+            <input
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Email"
+              onChange={event => handleChange(event)}
+            />
           </li>
           <li>
-            <input type="password" name="password" placeholder="Password" />
+            <input
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={event => handleChange(event)}
+            />
           </li>
           <h3>Your payment information: </h3>
           <li>
-            <input type="text" name="cardNo" placeholder="Card Number" />
+            <input
+              type="text"
+              name="cardNo"
+              value={cardNo}
+              placeholder="Card Number"
+              onChange={event => handleChange(event)}
+            />
           </li>
           <li>
-            <input type="text" name="cardExp" placeholder="Expiry Date" />
+            <input
+              type="text"
+              name="cardExp"
+              value={cardExp}
+              placeholder="Expiry Date"
+              onChange={event => handleChange(event)}
+            />
           </li>
           <li>
-            <input type="text" name="cardCCV" placeholder="CCV" />
+            <input
+              type="text"
+              name="cardCCV"
+              value={cardCCV}
+              placeholder="CCV"
+              onChange={event => handleChange(event)}
+            />
           </li>
         </ul>
-        <button onClick={e => e.preventDefault()} type="submit">
+        <button type="submit" className="btn newdonor__btn">
           Create account
         </button>
       </form>
@@ -71,23 +112,16 @@ const NewDonor = ({
 };
 
 NewDonor.propTypes = {
-  firstname: PropTypes.string.isRequired,
-  //   lastname: PropTypes.string.isRequired,
-  //   telephone: PropTypes.string.isRequired,
-  //   email: PropTypes.string.isRequired,
-  //   password: PropTypes.string.isRequired,
-  //   cardNo: PropTypes.string.isRequired,
-  //   cardExp: PropTypes.string.isRequired,
-  //   cardCCV: PropTypes.string.isRequired,
-  setInput: PropTypes.func.isRequired,
-  //   setLastnameInput: PropTypes.func.isRequired,
-  //   setTelephone: PropTypes.func.isRequired,
-  //   setEmail: PropTypes.func.isRequired,
-  //   setPassword: PropTypes.func.isRequired,
-  //   setCardNo: PropTypes.func.isRequired,
-  //   setCardExp: PropTypes.func.isRequired,
-  //   setCardCCV: PropTypes.func.isRequired,
-  //   submitForm: PropTypes.func.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  tel: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  cardNo: PropTypes.string.isRequired,
+  cardExp: PropTypes.string.isRequired,
+  cardCCV: PropTypes.string.isRequired,
+  setDonorInputField: PropTypes.func.isRequired,
+  addDonor: PropTypes.func.isRequired,
 };
 
 export default NewDonor;
