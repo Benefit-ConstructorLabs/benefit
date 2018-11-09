@@ -8,15 +8,15 @@ import '../../styles/components/newrecipient.scss';
 const NewRecipient = ({
   addRecipient,
   setInputField,
-  first_name,
-  last_name,
+  firstName,
+  lastName,
   tel,
   username,
   password,
   photo,
-  bio_1,
-  bio_2,
-  bio_3,
+  bio1,
+  bio2,
+  bio3,
 }) => {
   function handleChange(event) {
     setInputField(event.target.name, event.target.value);
@@ -38,18 +38,18 @@ const NewRecipient = ({
           <li>
             <input
               type="text"
-              name="first_name"
+              name="firstName"
               placeholder="First name"
-              value={first_name}
+              value={firstName}
               onChange={event => handleChange(event)}
             />
           </li>
           <li>
             <input
               type="text"
-              name="last_name"
+              name="lastName"
               placeholder="Last name"
-              value={last_name}
+              value={lastName}
               onChange={event => handleChange(event)}
             />
           </li>
@@ -96,27 +96,27 @@ const NewRecipient = ({
           <li>
             <input
               type="text"
-              name="bio_1"
+              name="bio1"
               placeholder="I play..."
-              value={bio_1}
+              value={bio1}
               onChange={event => handleChange(event)}
             />
           </li>
           <li>
             <input
               type="text"
-              name="bio_2"
+              name="bio2"
               placeholder="I like..."
-              value={bio_2}
+              value={bio2}
               onChange={event => handleChange(event)}
             />
           </li>
           <li>
             <input
               type="text"
-              name="bio_3"
+              name="bio3"
               placeholder="I enjoy..."
-              value={bio_3}
+              value={bio3}
               onChange={event => handleChange(event)}
             />
           </li>
@@ -134,25 +134,25 @@ const NewRecipient = ({
 NewRecipient.propTypes = {
   addRecipient: PropTypes.func.isRequired,
   setInputField: PropTypes.func.isRequired,
-  first_name: PropTypes.string.isRequired,
-  last_name: PropTypes.string,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string,
   tel: PropTypes.string,
   username: PropTypes.string,
   password: PropTypes.string,
   photo: PropTypes.string,
-  bio_1: PropTypes.string,
-  bio_2: PropTypes.string,
-  bio_3: PropTypes.string,
+  bio1: PropTypes.string,
+  bio2: PropTypes.string,
+  bio3: PropTypes.string,
 };
 
 NewRecipient.defaultProps = {
-  last_name: '',
+  lastName: '',
   tel: '',
   username: '',
   password: '',
   photo: '',
-  bio_1: '',
-  bio_2: '',
-  bio_3: '',
+  bio1: '',
+  bio2: '',
+  bio3: '',
 };
 export default NewRecipient;
