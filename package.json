@@ -11,7 +11,7 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "heroku-postbuild": "npm run build",
-    "start": "nodemon server.js"
+    "start": "server.js"
   },
   "babel": {
     "presets": [
