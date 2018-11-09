@@ -5,7 +5,7 @@
   "main": "server.js",
   "engines": {
     "node": "10.13.0"
-  }
+  },
   "scripts": {
     "test": "jest",
     "dev": "webpack --mode development",
