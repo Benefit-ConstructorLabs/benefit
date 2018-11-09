@@ -99,4 +99,3 @@ export function handleSignUp() {
     type: 'TOGGLE_SIGNUP',
   };
 }
-

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import QRcode from '../components/QRcode';
+import QRcode from '../components/QRCode';
 import { getQRCode } from '../actions';
 
 const mapStateToProps = state => (
@@ -7,7 +7,7 @@ const mapStateToProps = state => (
 );
 
 const mapDispatchToProps = {
-    getQRCode,
+  getQRCode,
 };
 
 export default connect(
