@@ -67,13 +67,13 @@ app.post('/api/upload', (request, response) => {
     } catch (error) {
       return response.status(400).send(error);
     }
-  });
 });
 
 app.get('/api/recipient', (req, res) => {
   db.any('SELECT * FROM recipient')
     .then(data => res.json(data))
     .catch(error => res.json({ error: error.message }));
+
 });
 
 // retrieve recipient by id

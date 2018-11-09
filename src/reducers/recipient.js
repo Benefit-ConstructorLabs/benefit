@@ -1,4 +1,4 @@
-const recipient = (state = { firstName: 'Bill', bio: ['I like trumpet', 'I support Arsenal'] }, action) => {
+const recipient = (state = { firstName: '', bio: [], photo: '' }, action) => {
   switch (action.type) {
     case 'SET_RECIPIENT_FROM_DB':
       return {
