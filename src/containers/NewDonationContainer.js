@@ -1,14 +1,19 @@
 import { connect } from 'react-redux';
 import NewDonation from '../components/NewDonation';
-import { setRecipientFromDB } from '../actions';
+import { getRecipientFromDB, setDonationAmount, togglePaymentDetails } from '../actions';
 
 export const mapStateToProps = state => ({
   donationAmount: state.donation.donationAmount,
-  togglePaymentDetails: state.view.togglePaymentDetails,
+  showPaymentDetails: state.view.showPaymentDetails,
+  firstName: state.recipient.firstName,
+  photo: state.recipient.photo,
+  bio: state.recipient.bio,
 });
 
 const mapDispatchToProps = {
-  setRecipientFromDB,
+  getRecipientFromDB,
+  setDonationAmount,
+  togglePaymentDetails,
 };
 
 export default connect(
