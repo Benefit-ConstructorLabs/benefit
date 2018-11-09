@@ -157,7 +157,7 @@ app.post('/api/donation', (req, res) => {
 
 // add new donor to the database
 app.post('/api/donor', (req, res) => {
-  const { donor } = req.body;
+  const donor = req.body;
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(

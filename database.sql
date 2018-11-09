@@ -22,7 +22,7 @@ CREATE TABLE donor(
   email VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL,
   tel VARCHAR(20) NOT NULL UNIQUE,
-  stripe JSON NOT NULL
+  stripe JSON
 );
 
 CREATE TABLE donation(

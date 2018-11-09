@@ -140,3 +140,35 @@ export function addRecipient() {
   };
 }
 
+export function setDonorInputField(fieldName, fieldValue) {
+  return {
+    type: 'SET_DONOR_INPUT',
+    fieldName,
+    fieldValue,
+  };
+}
+
+export function addDonor() {
+  return function (dispatch, getState) {
+    const { donor } = getState();
+    const newDataKeysObject = {
+      first_name: donor.firstName,
+      last_name: donor.lastName,
+      email: donor.email,
+      password: donor.password,
+      tel: donor.tel,
+    };
+    fetch('/api/donor', {
+      method: 'post',
+      body: JSON.stringify(newDataKeysObject),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then((donorID) => {
+        console.log(donorID);
+      });
+  };
+}
+
