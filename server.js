@@ -53,33 +53,20 @@ const uploadFile = (buffer, name, type) => {
 // POST route for S3 uploads
 app.post('/api/upload', (request, response) => {
   const form = new multiparty.Form();
-    form.parse(request, async (error, fields, files) => {
-      try {
-        if (error) throw new Error(error);
-        const path = files.file[0].path;
-        const buffer = fs.readFileSync(path);
-        const type = fileType(buffer);
-        const timestamp = Date.now().toString();
-        const fileName = `${timestamp}-lg`;
-        const data = await uploadFile(buffer, fileName, type);
-        return response.status(200).send(data);
-      } catch (error) {
-        return response.status(400).send(error);
-      }
-    });
-});
-
-app.get('/api/recipient/:id', (req, res) => { 
-  const id = req.params.id
-  db.any(`SELECT * FROM recipient WHERE id=$1`, [id])
-    .then(data => res.json(data))
-    .catch(error => res.json({ error: error.message }));  
-});
-
-app.get('/api/recipient', (req, res) => {
-  db.any('SELECT * FROM recipient')
-    .then(data => res.json(data))
-    .catch(error => res.json({ error: error.message }));  
+  form.parse(request, async (error, fields, files) => {
+    try {
+      if (error) throw new Error(error);
+      const path = files.file[0].path;
+      const buffer = fs.readFileSync(path);
+      const type = fileType(buffer);
+      const timestamp = Date.now().toString();
+      const fileName = `${timestamp}-lg`;
+      const data = await uploadFile(buffer, fileName, type);
+      return response.status(200).send(data);
+    } catch (error) {
+      return response.status(400).send(error);
+    }
+  });
 });
 
 // retrieve recipient by id
