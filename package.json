@@ -4,7 +4,7 @@
   "description": "contactless donations platform",
   "main": "server.js",
   "engines": {
-    "node": "10.13.0"
+    "node": "8.11.4"
   },
   "scripts": {
     "test": "jest",
