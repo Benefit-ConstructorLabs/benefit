@@ -74,7 +74,6 @@ app.get('/api/recipient', (req, res) => {
   db.any('SELECT * FROM recipient')
     .then(data => res.json(data))
     .catch(error => res.json({ error: error.message }));
-
 });
 
 // retrieve recipient by id
@@ -94,7 +93,7 @@ app.get('/api/recipient/:id', (req, res) => {
 
 // add new recipient to the database
 app.post('/api/recipient', (req, res) => {
-  const { recipient } = req.body;
+  const recipient = req.body;
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
