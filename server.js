@@ -67,6 +67,7 @@ app.post('/api/upload', (request, response) => {
     } catch (error) {
       return response.status(400).send(error);
     }
+  });
 });
 
 app.get('/api/recipient', (req, res) => {
