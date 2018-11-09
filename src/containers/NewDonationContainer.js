@@ -8,6 +8,7 @@ export const mapStateToProps = state => ({
   firstName: state.recipient.firstName,
   photo: state.recipient.photo,
   bio: state.recipient.bio,
+  donationComplete: state.view.donationComplete,
 });
 
 const mapDispatchToProps = {
