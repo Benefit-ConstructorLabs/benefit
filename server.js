@@ -69,19 +69,6 @@ app.post('/api/upload', (request, response) => {
   });
 });
 
-// app.get('/api/recipient/:id', (req, res) => { 
-//   const id = req.params.id
-//   db.any(`SELECT * FROM recipient WHERE id=$1`, [id])
-//     .then(data => res.json(data))
-//     .catch(error => res.json({ error: error.message }));  
-// });
-
-// app.get('/api/recipient', (req, res) => {
-//   db.any('SELECT * FROM recipient')
-//     .then(data => res.json(data))
-//     .catch(error => res.json({ error: error.message }));  
-// });
-
 // retrieve recipient by id
 app.get('/api/recipient/:id', (req, res) => {
   const { id } = req.params;
