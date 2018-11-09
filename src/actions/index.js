@@ -91,3 +91,45 @@ export function createPaymentDetails() {
     dispatch(setCcvInput(''));
   };
 }
+
+export function submitRecipientForm() {
+  return {
+    type: 'SUBMIT_RECIPIENT_FORM',
+  };
+}
+
+export function setInputField(fieldName, fieldValue) {
+  return {
+    type: 'SET_RECIPIENT_INPUT',
+    fieldName,
+    fieldValue,
+  };
+}
+
+export function addRecipient() {
+  return function (dispatch, getState) {
+    const { recipient } = getState();
+    const newDataKeysObject = {
+      first_name: recipient.firstName,
+      last_name: recipient.lastName,
+      username: recipient.username,
+      password: recipient.password,
+      photo: recipient.photo,
+      tel: recipient.tel,
+      bio_1: recipient.bio1,
+      bio_2: recipient.bio2,
+      bio_3: recipient.bio3,
+    };
+    fetch('/api/recipient', {
+      method: 'post',
+      body: JSON.stringify(newDataKeysObject),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then((recipientID) => {
+        console.log(recipientID);
+      });
+  };
+}
