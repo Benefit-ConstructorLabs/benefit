@@ -30,7 +30,7 @@ export function getQRCode(id) {
     fetch(`/api/recipient/${id}`)
       .then(response => response.json())
       .then((body) => {
-        const qrCodeUrl = `http://localhost:8080/recipient/${body[0].id}/donation`;
+        const qrCodeUrl = `/recipient/${body.id}/donation`;
         dispatch({
           type: 'SET_QRCODE_URL',
           qrCodeUrl,
@@ -114,13 +114,13 @@ export function setInputField(fieldName, fieldValue) {
 
 export function addRecipient() {
   return function (dispatch, getState) {
-    const { recipient } = getState();
+    const { recipient, recipientImageUrl } = getState();
     const newDataKeysObject = {
       first_name: recipient.firstName,
       last_name: recipient.lastName,
       username: recipient.username,
       password: recipient.password,
-      photo: recipient.photo,
+      photo: recipientImageUrl.url,
       tel: recipient.tel,
       bio_1: recipient.bio1,
       bio_2: recipient.bio2,
@@ -134,9 +134,16 @@ export function addRecipient() {
       },
     })
       .then(response => response.json())
-      .then((recipientID) => {
-        console.log(recipientID);
+      .then((body) => {
+        dispatch(setRecipientIdForQrCode(body.recipient_id));
       });
+  };
+}
+
+export function setRecipientIdForQrCode(id) {
+  return {
+    type: 'SET_RECIPIENT_ID',
+    id,
   };
 }
 
@@ -171,4 +178,3 @@ export function addDonor() {
       });
   };
 }
-
