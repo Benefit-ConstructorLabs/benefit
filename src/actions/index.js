@@ -24,7 +24,7 @@ export function getQRCode(id) {
     fetch(`/api/recipient/${id}`)
       .then(response => response.json())
       .then((body) => {
-        const qrCodeUrl = `http://localhost:8080/recipient/${body[0].id}/donation`;
+        const qrCodeUrl = `/recipient/${body[0].id}/donation`;
         dispatch(
           {
             type: 'SET_QRCODE_URL',
