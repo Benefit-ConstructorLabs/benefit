@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import PaymentDetailsForm from '../components/PaymentDetailsForm';
-import { createPaymentDetails, setCardInput, setExpDateInput, setCcvInput } from '../actions';
+import { createPaymentDetails, toggleDonationComplete, setCardInput, setExpDateInput, setCcvInput } from '../actions';
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
     cardNumber: state.paymentDetails.cardNumber,
     expDate: state.paymentDetails.expDate,
@@ -24,6 +25,10 @@ function mapDispatchToProps(dispatch) {
     },
     createPaymentDetails: (paymentDetails) => {
       dispatch(createPaymentDetails(paymentDetails));
+    },
+    toggleDonationComplete: () => {
+      console.log('fired');
+      dispatch(toggleDonationComplete());
     },
   };
 }
