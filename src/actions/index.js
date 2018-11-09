@@ -93,3 +93,10 @@ export function createPaymentDetails() {
     dispatch(setCcvInput(''));
   };
 }
+
+export function handleSignUp() {
+  return {
+    type: 'TOGGLE_SIGNUP',
+  };
+}
+
