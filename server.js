@@ -13,7 +13,7 @@ const bluebird = require('bluebird');
 const multiparty = require('multiparty');
 
 const db = pgp({
-  host: 'localhost',
+  host: process.env.DB_HOST,
   port: 5432,
   database: process.env.DB_NAME,
   user: process.env.DB_USERNAME,
@@ -83,7 +83,7 @@ app.get('/api/recipient/:id', (req, res) => {
     .one('SELECT id, first_name, photo FROM recipient WHERE id=$1', [id])
     .then(data => db
       .one('SELECT * FROM biography WHERE id = $1', [data.id])
-    /* eslint-disable camelcase */
+      /* eslint-disable camelcase */
       .then(({ bio_1, bio_2, bio_3 }) => {
         res.json(Object.assign({}, data, { bio: [bio_1, bio_2, bio_3] }));
       }))
