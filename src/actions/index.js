@@ -30,6 +30,7 @@ export function getQRCode(id) {
     fetch(`/api/recipient/${id}`)
       .then(response => response.json())
       .then((body) => {
+<<<<<<< HEAD
         const qrCodeUrl = `/recipient/${body[0].id}/donation`;
         dispatch(
           {
@@ -37,6 +38,13 @@ export function getQRCode(id) {
             qrCodeUrl,
           },
         );
+=======
+        const qrCodeUrl = `/recipient/${body.id}/donation`;
+        dispatch({
+          type: 'SET_QRCODE_URL',
+          qrCodeUrl,
+        });
+>>>>>>> staging
       })
       .catch(error => console.log(error));
   };
@@ -116,13 +124,13 @@ export function setInputField(fieldName, fieldValue) {
 
 export function addRecipient() {
   return function (dispatch, getState) {
-    const { recipient } = getState();
+    const { recipient, recipientImageUrl } = getState();
     const newDataKeysObject = {
       first_name: recipient.firstName,
       last_name: recipient.lastName,
       username: recipient.username,
       password: recipient.password,
-      photo: recipient.photo,
+      photo: recipientImageUrl.url,
       tel: recipient.tel,
       bio_1: recipient.bio1,
       bio_2: recipient.bio2,
@@ -136,9 +144,47 @@ export function addRecipient() {
       },
     })
       .then(response => response.json())
-      .then((recipientID) => {
-        console.log(recipientID);
+      .then((body) => {
+        dispatch(setRecipientIdForQrCode(body.recipient_id));
       });
   };
 }
 
+export function setRecipientIdForQrCode(id) {
+  return {
+    type: 'SET_RECIPIENT_ID',
+    id,
+  };
+}
+
+export function setDonorInputField(fieldName, fieldValue) {
+  return {
+    type: 'SET_DONOR_INPUT',
+    fieldName,
+    fieldValue,
+  };
+}
+
+export function addDonor() {
+  return function (dispatch, getState) {
+    const { donor } = getState();
+    const newDataKeysObject = {
+      first_name: donor.firstName,
+      last_name: donor.lastName,
+      email: donor.email,
+      password: donor.password,
+      tel: donor.tel,
+    };
+    fetch('/api/donor', {
+      method: 'post',
+      body: JSON.stringify(newDataKeysObject),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then((donorID) => {
+        console.log(donorID);
+      });
+  };
+}

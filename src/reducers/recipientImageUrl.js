@@ -1,4 +1,4 @@
-const recipientPhotoUrl = (state = { url: '' }, action) => {
+const recipientImageUrl = (state = { url: '' }, action) => {
     switch (action.type) {
       case 'SET_RECIPIENT_PHOTO_URL':
         return Object.assign({}, state, { url: action.url });
@@ -7,5 +7,5 @@ const recipientPhotoUrl = (state = { url: '' }, action) => {
     }
   };
   
-  export default recipientPhotoUrl;
+  export default recipientImageUrl;
   

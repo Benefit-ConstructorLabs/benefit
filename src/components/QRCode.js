@@ -3,8 +3,6 @@ import QRCodePackage from 'qrcode';
 
 class QRCode extends React.Component {
   componentDidMount () {
-    const id = 2; // id comes from the result of the new recipient form submission
-    this.props.getQRCode(id);
     this.renderCanvas();
   }
 
@@ -18,7 +16,7 @@ class QRCode extends React.Component {
     }
     QRCodePackage.toCanvas(
       this.canvas,
-      this.props.qrCodeUrl,
+      `${window.location.origin}/recipient/${this.props.id}/donation`,
       {
         errorCorrectionLevel: 'M',
         maskPattern: 4,
@@ -31,16 +29,16 @@ class QRCode extends React.Component {
       },
       error => {
         if (error) {
-          // console.error(error);
+          console.error(error);
         }
-        // console.log('success!');
+        console.log('success!');
       }
     );
   }
 
   render() {
     console.log(this.props)
-    const canvas = !!this.props.qrCodeUrl && 
+    const canvas = !!this.props.id && 
     <div>
       <canvas ref={element => {this.canvas = element}}/>
     </div>
