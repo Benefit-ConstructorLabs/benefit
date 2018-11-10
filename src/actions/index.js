@@ -30,21 +30,11 @@ export function getQRCode(id) {
     fetch(`/api/recipient/${id}`)
       .then(response => response.json())
       .then((body) => {
-<<<<<<< HEAD
-        const qrCodeUrl = `/recipient/${body[0].id}/donation`;
-        dispatch(
-          {
-            type: 'SET_QRCODE_URL',
-            qrCodeUrl,
-          },
-        );
-=======
         const qrCodeUrl = `/recipient/${body.id}/donation`;
         dispatch({
           type: 'SET_QRCODE_URL',
           qrCodeUrl,
         });
->>>>>>> staging
       })
       .catch(error => console.log(error));
   };
