@@ -34,9 +34,7 @@ class NewDonation extends React.Component {
           )
         }
         {showPaymentDetails
-          && <DonationPayment
-            donationComplete={donationComplete}
-          />
+          && <DonationPayment donationComplete={donationComplete} />
         }
       </React.Fragment>
     );
@@ -58,6 +56,7 @@ NewDonation.propTypes = {
   togglePaymentDetails: PropTypes.func.isRequired,
   donationAmount: PropTypes.number.isRequired,
   setDonationAmount: PropTypes.func.isRequired,
+  donationComplete: PropTypes.bool.isRequired,
 };
 
 NewDonation.defaultProps = {
