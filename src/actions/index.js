@@ -112,6 +112,13 @@ export function setInputField(fieldName, fieldValue) {
   };
 }
 
+export function setRecipientIdForQrCode(id) {
+  return {
+    type: 'SET_RECIPIENT_ID',
+    id,
+  };
+}
+
 export function addRecipient() {
   return function (dispatch, getState) {
     const { recipient, recipientImageUrl } = getState();
@@ -137,13 +144,6 @@ export function addRecipient() {
       .then((body) => {
         dispatch(setRecipientIdForQrCode(body.recipient_id));
       });
-  };
-}
-
-export function setRecipientIdForQrCode(id) {
-  return {
-    type: 'SET_RECIPIENT_ID',
-    id,
   };
 }
 
