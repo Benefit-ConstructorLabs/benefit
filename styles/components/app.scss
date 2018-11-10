@@ -1,14 +1,3 @@
-h1 {
-  color: red;
-}
+@import '../base.scss';
 
-.example-appear {
-  opacity: 0.01;
-  transform: translateX(100%);
-}
 
-.example-appear.example-appear-active {
-  opacity: 1;
-  transform: translateX(0);
-  transition: all 0.5s linear;
-}

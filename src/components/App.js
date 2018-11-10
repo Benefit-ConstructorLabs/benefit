@@ -13,7 +13,6 @@ import '../../styles/components/app.scss';
 const App = () => (
   <Router>
     <React.Fragment>
-      <p>The app...</p>
       <AppHeader />
       <Route exact path="/recipient/" component={NewRecipientContainer} />
       <Route exact path="/recipient/:id" component={AnimationWrapper(Recipient)} />

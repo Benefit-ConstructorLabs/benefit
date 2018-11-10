@@ -1,0 +1,33 @@
+@import '../node_modules/normalize-scss/sass/normalize/import-now';
+
+@import '_colors.scss';
+@import '_typography.scss';
+
+html{
+  box-sizing: border-box
+}
+
+*,*::before,*::after{
+ box-sizing: inherit;
+}
+
+body{
+  font-family: $body-font;
+}
+
+.btn{
+  background : white;
+  border: 1px solid $grey;
+  border-radius: 6px;
+  display:block;
+  margin: 0 auto;
+  padding: 0.5rem;
+  box-shadow: 0 2px 5px $grey;
+  width: 90%;
+  &__primary{
+    color: white;
+    background: $primary-color;
+    text-transform: uppercase; 
+  }
+}
+

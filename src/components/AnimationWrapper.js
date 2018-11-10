@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransitionGroup } from 'react-transition-group';
+import '../../styles/components/animation-wrapper.scss';
 
 const AnimationWrapper = Component => (
   (props) => {
