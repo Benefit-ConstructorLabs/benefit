@@ -4,13 +4,15 @@
   "description": "contactless donations platform",
   "main": "server.js",
   "engines": {
-    "node": "8.1.2"
+    "node": "11.1.0"
   },
   "scripts": {
     "test": "jest",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "nodemon server.js"
+    "heroku-postbuild": "npm run build",
+    "start": "server.js",
+    "start-dev": "nodemon server.js"
   },
   "babel": {
     "presets": [
@@ -52,6 +54,7 @@
     "react-redux": "^5.1.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-spring": "^6.1.8",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "twilio": "^3.23.2"

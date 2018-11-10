@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import QRcode from '../components/QRcode';
+import QRcode from '../components/QRCode';
 import { getQRCode, setRecipientIdForQrCode } from '../actions';
 
-const mapStateToProps = state => {
-  return { 
+const mapStateToProps = state => (
+  {
     qrCodeUrl: state.qrCodeUrl,
-    recipientIdForQrCode: state.recipient.recipientIdForQrCode
+    recipientIdForQrCode: state.recipient.recipientIdForQrCode,
   }
-};
+);
 
 const mapDispatchToProps = {
-    getQRCode,
-    setRecipientIdForQrCode
+  getQRCode,
+  setRecipientIdForQrCode,
 };
 
 export default connect(
