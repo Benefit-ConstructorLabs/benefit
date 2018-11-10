@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Transition } from 'react-spring';
 import DonationHeader from './DonationHeader';
 import DonationForm from './DonationForm';
 import RecipientProfile from './RecipientProfile';
