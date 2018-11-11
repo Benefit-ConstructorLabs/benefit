@@ -4,22 +4,22 @@ import QRCodeContainer from '../containers/QRCodeContainer';
 import '../../styles/components/recipient.scss';
 
 const Recipient = ({ match }) => (
-  <React.Fragment>
-    <h2>Your Unique QR code</h2>
+  <section className="recipient">
+    <h2 className="recipient__title">Your Unique QR code</h2>
     <QRCodeContainer id={match.params.id} />
-    <h3 className="recipient__steps">3 easy steps to receive donations</h3>
-    <ul className="recipient__steps-list">
-      <li>Display your unique code to potential donors</li>
-      <li>Donors scan your QR code and set a payment</li>
-      <li>Check your total donations</li>
-    </ul>
-    <button type="button" className="recipient__print-qrcode">
+    <h3 className="recipient__steps">Three easy steps to receive donations</h3>
+    <ol className="recipient__steps-list">
+      <li className="recipient__steps-list__item">Display your unique code to potential donors</li>
+      <li className="recipient__steps-list__item">Donors scan your QR code and set a payment</li>
+      <li className="recipient__steps-list__item">Check your total donations</li>
+    </ol>
+    <button type="button" className="btn btn__print-qrcode">
       Print your QR code
     </button>
-    <button type="button" className="recipient__view-donations">
+    <button type="button" className="btn btn__view-donations">
       See your donation total
     </button>
-  </React.Fragment>
+  </section>
 );
 
 Recipient.propTypes = {

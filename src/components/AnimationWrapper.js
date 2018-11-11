@@ -15,10 +15,6 @@ const AnimationWrapper = Component => (
         transitionLeave={false}
       >
         <div>
-          <p>
-            Wrapped page for recipient
-            {match.params.id}
-          </p>
           <Component {...props} />
         </div>
       </CSSTransitionGroup>
