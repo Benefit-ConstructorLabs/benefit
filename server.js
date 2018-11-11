@@ -82,7 +82,7 @@ app.get('/api/recipient/:id', (req, res) => {
   return db
     .one('SELECT id, first_name, photo FROM recipient WHERE id=$1', [id])
     .then(data => db
-      .one('SELECT * FROM biography WHERE id = $1', [data.id])
+      .one('SELECT * FROM biography WHERE recipient_id = $1', [data.id])
       /* eslint-disable camelcase */
       .then(({ bio_1, bio_2, bio_3 }) => {
         res.json(Object.assign({}, data, { bio: [bio_1, bio_2, bio_3] }));
