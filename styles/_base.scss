@@ -15,14 +15,17 @@ body{
   font-family: $body-font;
 }
 
-.btn{
+.btn, a.btn{
   background : white;
   border: 1px solid $grey;
   border-radius: 6px;
+  color: black;
   display:block;
   margin: 0 auto;
   padding: 0.5rem;
   box-shadow: 0 2px 5px $grey;
+  text-decoration: none;
+  text-align: center;
   width: 90%;
   &__primary{
     color: white;
