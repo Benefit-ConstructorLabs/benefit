@@ -1,13 +1,46 @@
+@import '../base.scss';
+
 .donation{
+  &__recipient__photo{
+    border: 10px solid $primary-color;
+    border-radius: 5rem;
+    display: block;
+    height: 10rem;
+    margin: 0 auto;
+    width: 10rem;
+  }
+  &__purpose{
+    font-size: 1.5rem;
+    margin-top: 0.25rem;
+    text-align:center;
+  }
   &__form{
-    &__amount{
-      background: gainsboro;
+    border: 1px solid $grey;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    &__heading{
+      background-color: $primary-color;
+      color: white;
+      margin:0 0 0.5rem 0;
+      padding: 0.5rem;
+    }
+    input {
+      border: 1px solid $grey;
+      margin: -0.25rem 0 0 0.5rem;
+      flex: 1;
+      &.donation__form__amount{
+        font-size: 3rem;
+        line-height: 3rem;
+        text-align: center;
+        width:95%;
+      }
     }
     &__slider{
       -webkit-appearance: none;
-      width: 100%;
+      width: 95%;
       height: 25px;
-      background: #d3d3d3;
+      padding: 0;
+      background: $grey;
       outline: none;
       opacity: 0.7;
       -webkit-transition: .2s;
@@ -17,7 +50,7 @@
         appearance: none;
         width: 25px;
         height: 25px;
-        background: #4CAF50;
+        background:$primary-color;
         cursor: pointer;
       }
       &:hover {
@@ -28,15 +61,18 @@
           appearance: none;
           width: 25px;
           height: 25px;
-          background: #4CAF50;
+          background: $primary-color;
           cursor: pointer;
       }
       &::-moz-range-thumb {
           width: 25px;
           height: 25px;
-          background: #4CAF50;
+          background: $primary-color;
           cursor: pointer;
       }
+    }
+    .btn__quick-amount{
+    margin-bottom: 1rem;
     }
   }
 }

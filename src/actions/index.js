@@ -1,5 +1,6 @@
 export function setDonationAmount(amount) {
-  const donation = amount ? parseInt(amount, 10) : undefined;
+  const donationValue = amount.replace('£', '');
+  const donation = donationValue ? parseInt(donationValue, 10) : undefined;
   return {
     type: 'SET_DONATION_AMOUNT',
     donationAmount: donation,

@@ -5,6 +5,8 @@ import DonationForm from './DonationForm';
 import RecipientProfile from './RecipientProfile';
 import DonationPayment from './DonationPayment';
 
+import '../../styles/components/donation.scss';
+
 class NewDonation extends React.Component {
   componentDidMount() {
     const { getRecipientFromDB } = this.props;
@@ -20,7 +22,7 @@ class NewDonation extends React.Component {
       <React.Fragment>
         {!showPaymentDetails
           && (
-            <React.Fragment>
+            <div className="donation">
               <DonationHeader match={match} firstName={firstName} />
               <DonationForm
                 donationAmount={donationAmount}
@@ -30,7 +32,7 @@ class NewDonation extends React.Component {
                 togglePaymentDetails={togglePaymentDetails}
               />
               <RecipientProfile firstName={firstName} bio={bio} />
-            </React.Fragment>
+            </div>
           )
         }
         {showPaymentDetails
