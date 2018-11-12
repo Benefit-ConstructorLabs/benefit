@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Transition } from 'react-spring';
 import DonationHeader from './DonationHeader';
 import DonationForm from './DonationForm';
 import RecipientProfile from './RecipientProfile';
@@ -35,9 +34,7 @@ class NewDonation extends React.Component {
           )
         }
         {showPaymentDetails
-          && <DonationPayment
-            donationComplete={donationComplete}
-          />
+          && <DonationPayment donationComplete={donationComplete} />
         }
       </React.Fragment>
     );
@@ -59,6 +56,7 @@ NewDonation.propTypes = {
   togglePaymentDetails: PropTypes.func.isRequired,
   donationAmount: PropTypes.number.isRequired,
   setDonationAmount: PropTypes.func.isRequired,
+  donationComplete: PropTypes.bool.isRequired,
 };
 
 NewDonation.defaultProps = {

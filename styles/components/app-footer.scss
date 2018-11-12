@@ -1,0 +1,14 @@
+@import '../base';
+
+footer{
+  background-color: $primary-color;
+  color: white;
+  height: 5vh;
+  padding:0.5rem;
+  .copyright{
+    font-size: 0.8rem;
+    text-align:center;
+    text-transform: uppercase;
+    margin:0;
+  }
+}
