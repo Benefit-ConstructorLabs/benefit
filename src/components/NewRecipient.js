@@ -10,16 +10,18 @@ function setInputClass(errors, touched) {
 }
 
 function StyledMessage({ errors, touched, values, elem }) {
-  // console.info('test', { errors, touched, values, elem })
+  console.log(errors, touched, values, elem);
   if (errors[elem] && touched[elem]) {
     return (<div className={errors[elem] ? 'errorMessage' : 'validMessage'}><i className="fas cross fa-1x fa-times" />{errors[elem]}</div>);
+  }
+  if (elem === 'upload') {
+    return (<div className="validMessage"><i className="fas tick fa-1x fa-check-square" /></div>);
   }
   if (!errors[elem] && values[elem] !== '') {
     return (<div className="validMessage"><i className="fas tick fa-1x fa-check-square" /></div>);
   }
   return null;
 }
-
 
 class NewRecipient extends React.Component {
   componentWillReceiveProps(newProps) {
@@ -32,6 +34,7 @@ class NewRecipient extends React.Component {
 
   render() {
     const {
+      recipientImageUrl,
       addRecipient,
     } = this.props;
     return (
@@ -39,7 +42,7 @@ class NewRecipient extends React.Component {
         <h2 className="newrecipient__title">Start taking digital donations in 3 steps</h2>
         <img src="" alt="" className="newrecipient__header-image" />
         <Formik
-          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '', bio1: '', bio2: '', bio3: '' }}
+          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '', bio1: '', bio2: '', bio3: '', upload: '' }}
           validate={(values) => {
             const errors = {};
             if (!values.firstName) {
@@ -59,6 +62,9 @@ class NewRecipient extends React.Component {
             } else if (values.password.length < 9) {
               errors.password = 'Password must have at least 8 characters';
             }
+            if (!recipientImageUrl) {
+              errors.upload = 'Required';
+            }
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
@@ -74,7 +80,6 @@ class NewRecipient extends React.Component {
             errors,
             touched,
             handleChange,
-            handleFocus,
             handleBlur,
             handleSubmit,
             isSubmitting,
@@ -95,11 +100,15 @@ class NewRecipient extends React.Component {
                       placeholder="First name"
                       value={values.firstName}
                       onChange={handleChange}
-                      onFocus={handleFocus}
                       onBlur={handleBlur}
                       className={setInputClass(errors.firstName, touched.firstName)}
                     />
-                    <StyledMessage errors={errors} touched={touched} values={values} elem="firstName" />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="firstName"
+                    />
                   </label>
                 </li>
                 <li>
@@ -112,11 +121,15 @@ class NewRecipient extends React.Component {
                       placeholder="Last name"
                       value={values.lastName}
                       onChange={handleChange}
-                      onFocus={handleFocus}
                       onBlur={handleBlur}
                       className={setInputClass(errors.lastName, touched.lastName)}
                     />
-                    <StyledMessage errors={errors} touched={touched} values={values} elem="lastName" />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="lastName"
+                    />
                   </label>
                 </li>
                 <li>
@@ -129,11 +142,15 @@ class NewRecipient extends React.Component {
                       placeholder="Telephone number"
                       value={values.tel}
                       onChange={handleChange}
-                      onFocus={handleFocus}
                       onBlur={handleBlur}
-                      className={setInputClass(errors.lastName, touched.lastName)}
+                      className={setInputClass(errors.tel, touched.tel)}
                     />
-                    <StyledMessage errors={errors} touched={touched} values={values} elem="tel" />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="tel"
+                    />
                   </label>
                 </li>
                 <li>
@@ -146,15 +163,19 @@ class NewRecipient extends React.Component {
                       placeholder="Choose a username"
                       value={values.username}
                       onChange={handleChange}
-                      onFocus={handleFocus}
                       onBlur={handleBlur}
                       className={setInputClass(errors.username, touched.username)}
                     />
-                    <StyledMessage errors={errors} touched={touched} values={values} elem="username" />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="username"
+                    />
                   </label>
                 </li>
                 <li>
-                  <label htmlFor="passowrd">
+                  <label htmlFor="password">
                     Password
                     <input
                       type="password"
@@ -163,19 +184,31 @@ class NewRecipient extends React.Component {
                       placeholder="Enter a password"
                       value={values.password}
                       onChange={handleChange}
-                      onFocus={handleFocus}
                       onBlur={handleBlur}
                       className={setInputClass(errors.password, touched.password)}
                     />
-                    <StyledMessage errors={errors} touched={touched} values={values} elem="password" />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="password"
+                    />
                   </label>
                 </li>
                 <li>
                   <S3UploadContainer />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="upload"
+                  />
                 </li>
               </ul>
 
-              <h3 className="newrecipient__form__heading">Tell people three things about yourself</h3>
+              <h3 className="newrecipient__form__heading">
+                Tell people three things about yourself
+              </h3>
               <ul>
                 <li>
                   <input
@@ -185,7 +218,6 @@ class NewRecipient extends React.Component {
                     placeholder="I play..."
                     value={values.bio1}
                     onChange={handleChange}
-                    onFocus={handleFocus}
                     onBlur={handleBlur}
                   />
                 </li>
@@ -197,7 +229,6 @@ class NewRecipient extends React.Component {
                     placeholder="I like..."
                     value={values.bio2}
                     onChange={handleChange}
-                    onFocus={handleFocus}
                     onBlur={handleBlur}
                   />
                 </li>
@@ -209,12 +240,15 @@ class NewRecipient extends React.Component {
                     placeholder="I enjoy..."
                     value={values.bio3}
                     onChange={handleChange}
-                    onFocus={handleFocus}
                     onBlur={handleBlur}
                   />
                 </li>
               </ul>
-              <button className="btn btn__primary btn__submit" type="submit" disabled={isSubmitting}>
+              <button
+                className="btn btn__primary btn__submit"
+                type="submit"
+                disabled={isSubmitting}
+              >
                 Create account
               </button>
             </form>
@@ -227,6 +261,7 @@ class NewRecipient extends React.Component {
 
 NewRecipient.propTypes = {
   addRecipient: PropTypes.func.isRequired,
+  recipientImageUrl: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string,
   tel: PropTypes.string,
