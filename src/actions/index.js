@@ -46,6 +46,9 @@ export function setRecipientFromDB(recipient) {
     type: 'SET_RECIPIENT_FROM_DB',
     id: recipient.id,
     firstName: recipient.first_name,
+    lastName: recipient.last_name,
+    username: recipient.username,
+    tel: recipient.tel,
     photo: recipient.photo,
     bio: recipient.bio,
   };
@@ -177,5 +180,29 @@ export function addDonor() {
       .then((donorID) => {
         console.log(donorID);
       });
+  };
+}
+
+export function setDonationsFromDB(donations) {
+  return {
+    type: 'SET_RECIEVED_DONATIONS_FROM_DB',
+    donations,
+  };
+}
+
+export function getDonationsByID(id) {
+  return function (dispatch) {
+    fetch(`/api/donations/${id}`)
+      .then(response => response.json())
+      .then(donations => dispatch(setDonationsFromDB(donations)))
+      // .then(() => dispatch(getRecipientFromDB(id)))
+      .catch(error => console.log(error.message));
+  };
+}
+
+export function getProfileDetailsByID(id) {
+  return function (dispatch) {
+    dispatch(getDonationsByID(id));
+    dispatch(getRecipientFromDB(id));
   };
 }
