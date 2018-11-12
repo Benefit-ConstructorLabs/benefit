@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import '../../styles/components/donation-form.scss';
 
 const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, togglePaymentDetails }) => (
-
-  <div className="donation">
-    <img src={photo} />
-    <h3 className="donation__purpose">Donate towards a night in a shelter</h3>
+  <React.Fragment>
+    <img className="donation__recipient__photo" alt={firstName} src={photo} />
+    <h3 className="donation__purpose">
+      {`Donate to ${firstName}`}
+    </h3>
     <form
       onSubmit={(event) => {
         event.preventDefault();
@@ -14,13 +15,13 @@ const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, tog
       }}
       className="donation__form"
     >
-      <h4>How much?</h4>
+      <h3 className="donation__form__heading">How much?</h3>
       <p>
         <input
-          type="number"
-          className="donation__form__amount"
+          type="text"
+          className="nolabel donation__form__amount"
           id="donation__amount"
-          value={donationAmount === undefined ? '' : donationAmount}
+          value={donationAmount === undefined ? '£' : `£${donationAmount}`}
           onChange={event => setDonationAmount(event.target.value)}
         />
       </p>
@@ -32,13 +33,13 @@ const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, tog
         <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="2">£2</button>
         <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="5">£5</button>
       </p>
-      <button className="btn btn__submit" type="submit">
+      <button className="btn btn__primary btn__submit" type="submit">
         Donate to
         {' '}
         {firstName}
       </button>
     </form>
-  </div>
+  </React.Fragment>
 );
 
 DonationForm.propTypes = {

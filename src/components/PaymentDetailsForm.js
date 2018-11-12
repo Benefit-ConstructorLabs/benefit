@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/components/payment-details-form.scss';
 
-const PaymentDetailsForm = ({ createPaymentDetails, toggleDonationComplete, setCardInput, setExpDateInput, setCcvInput, cardNumber, expDate, ccv}) => {
+const PaymentDetailsForm = ({ createPaymentDetails, toggleDonationComplete, setCardInput, setExpDateInput, setCcvInput, cardNumber, expDate, ccv, donationAmount, firstName }) => {
   function handleCardChange(event) {
     setCardInput(event.target.value);
   }
@@ -13,39 +13,48 @@ const PaymentDetailsForm = ({ createPaymentDetails, toggleDonationComplete, setC
   }
 
   return (
-    <div className="payment-details-form">
-      <h3>Set up payment</h3>
+    <div className="payment-details">
+      <h2>Set up payment</h2>
       <p>Already have an account?</p>
-      <p>Login</p>
+      <button className="btn" type="button">Login</button>
 
-      <p>Continue donating anonymously:</p>
+      <h3 className="payment-details__heading">Continue donating anonymously</h3>
       <form
-        className="payment-details-form__form"
+        className="payment-details__form"
         onSubmit={(event) => {
           event.preventDefault();
           toggleDonationComplete();
           createPaymentDetails();
         }}
       >
-        <input
-          type="text"
-          placeholder="Card number"
-          value={cardNumber}
-          onChange={event => handleCardChange(event)}
-        />
-        <input
-          type="date"
-          placeholder="Expiry date"
-          value={expDate}
-          onChange={event => handleExpDateChange(event)}
-        />
-        <input
-          type="text"
-          placeholder="CCV"
-          value={ccv}
-          onChange={event => handleCcvChange(event)}
-        />
-        <button type="submit">Donate -Price- to -First Name-</button>
+        <p>
+          <input
+            className="nolabel"
+            type="text"
+            placeholder="Card number"
+            value={cardNumber}
+            onChange={event => handleCardChange(event)}
+          />
+        </p>
+        <p>
+          <input
+            className="nolabel"
+            type="date"
+            placeholder="Expiry date"
+            value={expDate}
+            onChange={event => handleExpDateChange(event)}
+          />
+        </p>
+        <p>
+          <input
+            className="nolabel"
+            type="text"
+            placeholder="CCV"
+            value={ccv}
+            onChange={event => handleCcvChange(event)}
+          />
+        </p>
+        <button className="btn btn__primary btn__submit" type="submit">{`Donate £${donationAmount} to ${firstName}`}</button>
       </form>
     </div>
   );
