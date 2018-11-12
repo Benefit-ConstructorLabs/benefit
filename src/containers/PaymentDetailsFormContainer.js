@@ -12,25 +12,13 @@ const mapStateToProps = state => (
   }
 );
 
-function mapDispatchToProps(dispatch) {
-  return {
-    setCardInput: (cardInput) => {
-      dispatch(setCardInput(cardInput));
-    },
-    setExpDateInput: (expDateInput) => {
-      dispatch(setExpDateInput(expDateInput));
-    },
-    setCcvInput: (ccvInput) => {
-      dispatch(setCcvInput(ccvInput));
-    },
-    createPaymentDetails: (paymentDetails) => {
-      dispatch(createPaymentDetails(paymentDetails));
-    },
-    toggleDonationComplete: () => {
-      dispatch(toggleDonationComplete());
-    },
-  };
-}
+const mapDispatchToProps = {
+  setCardInput,
+  setExpDateInput,
+  setCcvInput,
+  createPaymentDetails,
+  toggleDonationComplete,
+};
 
 export default connect(
   mapStateToProps,

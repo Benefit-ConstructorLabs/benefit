@@ -57,15 +57,15 @@ app.post('/api/upload', (request, response) => {
   form.parse(request, async (error, fields, files) => {
     try {
       if (error) throw new Error(error);
-      const path = files.file[0].path;
+      const { path } = files.file[0];
       const buffer = fs.readFileSync(path);
       const type = fileType(buffer);
       const timestamp = Date.now().toString();
       const fileName = `${timestamp}-lg`;
       const data = await uploadFile(buffer, fileName, type);
       return response.status(200).send(data);
-    } catch (error) {
-      return response.status(400).send(error);
+    } catch (err) {
+      return response.status(400).send(err);
     }
   });
 });
