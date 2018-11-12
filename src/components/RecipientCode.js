@@ -16,14 +16,11 @@ const RecipientCode = ({ routeParams }) => (
     <button type="button" className="btn btn__print-qrcode">
       Print your QR code
     </button>
-    <button type="button" className="btn btn__view-donations">
-      See your donation total
-    </button>
   </section>
 );
 
 RecipientCode.propTypes = {
-  match: PropTypes.shape({
+  routeParams: PropTypes.shape({
     isExact: PropTypes.bool,
     params: PropTypes.shape({ id: PropTypes.string }),
     path: PropTypes.string,

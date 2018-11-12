@@ -1,17 +1,17 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
-const RecipientBalance = () => {
+const RecipientBalance = ({ donations }) => {
   return (
 
-    <section className="recipient-account">
-      <h2 className="recipient-account__title">Your current balance</h2>
-      <p className="recipient-account__balance">£13</p>
+    <section className="recipient__account">
+      <h2 className="recipient__account__title">Your current balance</h2>
+      <p className="recipient__account__balance">£13</p>
       <h3>Latest donations</h3>
-      <ul className="donations">
-        <li className="donation">
-          <img src="https://via.placeholder.com/50" alt="donor" />
-          <span className="recipient-account__donation donor">Anon.</span>
+      <ul className="recipient__account__donations">
+        <li className="recipient__account__donations__donation">
+          <img className="donor__photo" src="https://via.placeholder.com/50" alt="donor" />
+          <span className="donor__name">Anon.</span>
           <span className="amount">£3.00</span>
         </li>
       </ul>

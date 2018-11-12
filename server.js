@@ -172,7 +172,9 @@ app.post('/api/donor', (req, res) => {
 app.get('/api/donations/:id', (req, res) => {
   const { id } = req.params;
   return db
-    .any('SELECT SUM(amount) FROM donation WHERE recipient_id=$1', [id])
+    .any(`SELECT donor.first_name, donor.last_name, donation.amount
+          FROM donor, donation WHERE recipient_id=$1
+          AND donor.id = donation.donor_id`, [id])
     .then(amounts => res.json(amounts))
     .catch(error => res.json({ error: error.message }));
 });

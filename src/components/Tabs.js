@@ -20,6 +20,12 @@ class Recipient extends React.Component {
     const { onClickTabItem, props: { children }, state: { activeTab } } = this;
     return (
       <div className="tabs">
+        <div className="tab-content">
+          {children.map((child) => {
+            if (child.props.label !== activeTab) return undefined;
+            return child;
+          })}
+        </div>
         <ol className="tab-list">
           {children.map((child) => {
             const { label } = child.props;
@@ -33,13 +39,6 @@ class Recipient extends React.Component {
             );
           })}
         </ol>
-        <div className="tab-content">
-          {children.map((child) => {
-            if (child.props.label !== activeTab) return undefined;
-            console.log(child.props);
-            return child;
-          })}
-        </div>
       </div>
     );
   }

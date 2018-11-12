@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import RecipientProfile from '../components/RecipientProfile';
+import Recipient from '../components/Recipient';
 
 export const mapStateToProps = state => (
   {
@@ -10,4 +10,4 @@ export const mapStateToProps = state => (
 
 export default connect(
   mapStateToProps,
-)(RecipientProfile);
+)(Recipient);

@@ -5,7 +5,8 @@ const RecipientProfile = () => {
   // const { firstName, LastName, photo, username, bio } = recipient;
   return (
     <section className="recipient__profile">
-      <h2 className="title">Your details</h2>
+      <h2 className="recipient__profile__title">Your details</h2>
+      <img className="recipient__profile__photo" alt="recipient" src="http://via.placeholder.com/150" />
       <dl>
         <dt>Name</dt>
         <dd>John Smith</dd>

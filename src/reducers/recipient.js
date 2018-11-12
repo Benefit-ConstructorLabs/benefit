@@ -1,4 +1,4 @@
-const recipient = (state = { firstName: '', bio: [], photo: '' }, action) => {
+const recipient = (state = { firstName: '', bio: [], photo: '', donations: [] }, action) => {
   switch (action.type) {
     case 'SET_RECIPIENT_INPUT':
       return Object.assign({}, state, { [action.fieldName]: action.fieldValue });
@@ -11,6 +11,8 @@ const recipient = (state = { firstName: '', bio: [], photo: '' }, action) => {
       };
     case 'SET_RECIPIENT_ID':
       return Object.assign({}, state, { recipientIdForQrCode: action.id });
+    case 'SET_RECIPIENT_DONATIONS_FROM_DB':
+      return Object;
     default:
       return state;
   }

@@ -11,7 +11,7 @@ const Recipient = match => (
   <Tabs>
     <RecipientCode label="QR Code" routeParams={match} />
     <RecipientBalance label="Balance" />
-    <RecipientProfile label="Profile" />
+    {/* <RecipientProfile label="Profile" /> */}
   </Tabs>
 );
 

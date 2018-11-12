@@ -38,7 +38,6 @@ class QRCode extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { id } = this.props;
     const canvas = !!id
       && (

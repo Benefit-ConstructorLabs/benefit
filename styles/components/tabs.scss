@@ -1,18 +1,28 @@
+@import '../base';
 
+.tabs{
+  height: 85vh;
+  position: relative;
+}
 .tab-list {
-  border-bottom: 1px solid #ccc;
-  padding-left: 0;
+  background: $grey;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  height: 5vh;
+  width: 100%;
 }
 
 .tab-list-item {
+  flex: 1;
   display: inline-block;
   list-style: none;
-  margin-bottom: -1px;
   padding: 0.5rem 0.75rem;
+  margin: -1px 0 0 0;
 }
 
 .tab-list-active {
   background-color: white;
-  border: solid #ccc;
-  border-width: 1px 1px 0 1px;
 }
