@@ -39,7 +39,7 @@ class NewRecipient extends React.Component {
         <h2 className="newrecipient__title">Start taking digital donations in 3 steps</h2>
         <img src="" alt="" className="newrecipient__header-image" />
         <Formik
-          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '' }}
+          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '', bio1: '', bio2: '', bio3: '' }}
           validate={(values) => {
             const errors = {};
             if (!values.firstName) {
