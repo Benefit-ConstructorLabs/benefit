@@ -1,39 +1,28 @@
 import React from 'react';
-import PropType from 'prop-types';
-import '../../styles/components/recipient-profile.scss';
+// import PropTypes from 'prop-types';
 
-const RecipientProfile = ({ firstName, bio }) => (
-  <div className="recipient-profile">
-    {bio
-      && (
-        <React.Fragment>
-          <h3 className="recipient-profile__headline">
-            {`You could have a chat with ${firstName}.`}
-          </h3>
-
-          <ul className="recipient-profile__interests">
-            {bio.map((interest) => {
-              if (interest) {
-                return (
-                  <li key={interest} className="recipient-profile__interest">
-                    {`“${interest}”`}
-                  </li>
-                );
-              }
-            })}
+const RecipientProfile = () => {
+  // const { firstName, LastName, photo, username, bio } = recipient;
+  return (
+    <section className="recipient__profile">
+      <h2 className="title">Your details</h2>
+      <dl>
+        <dt>Name</dt>
+        <dd>John Smith</dd>
+        <dt>Username</dt>
+        <dd>Jono23</dd>
+        <dt>Your bio</dt>
+        <dd>
+          <ul>
+            <li>I like cheese</li>
+            <li>I can ride a unicycle</li>
+            <li>I used to live on a boat</li>
           </ul>
-        </React.Fragment>
-      )}
-  </div>
-);
+        </dd>
+      </dl>
 
-RecipientProfile.propTypes = {
-  firstName: PropType.string.isRequired,
-  bio: PropType.arrayOf(PropType.string),
-};
-
-RecipientProfile.defaultProps = {
-  bio: [undefined],
+    </section>
+  );
 };
 
 export default RecipientProfile;
