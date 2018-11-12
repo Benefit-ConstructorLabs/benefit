@@ -11,6 +11,12 @@ const fs = require('fs');
 const fileType = require('file-type');
 const bluebird = require('bluebird');
 const multiparty = require('multiparty');
+// passport
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const LocalStrategy = require('passport-local').Strategy;
+
 
 const db = pgp({
   host: 'localhost',
@@ -23,10 +29,102 @@ const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
 
+// PASSPORT helper function to get user by username
+function getUserByUsername(username) {
+  return db.one('SELECT id, first_name, username, password FROM recipient WHERE username=$1', [username]);
+}
+
+// PASSPORT
+function getUserById(id) {
+  console.log('5. Use user id to load user from DB')
+    return db.one('SELECT id, first_name, username, password FROM recipient WHERE username=$1', [id])
+};
+
 app.use(bodyParser.json());
 app.use('/static', express.static('static'));
 app.set('view engine', 'hbs');
+app.use(cookieParser());
+app.use(require('express-session')({
+  secret: 'some random text #^*%!!', // used to generate session ids
+  resave: false,
+  saveUninitialized: false,
+}));
+
 app.set('port', process.env.PORT || 8080);
+
+// PASSPORT serialise user into session
+passport.serializeUser(function(user, done) {
+  console.log("4. Extract user id from user for serialisation")
+  done(null, user.id);
+});
+
+// PASSPORT deserialise user from session
+passport.deserializeUser(function(id, done) {
+  const user = getUserById(id);
+  done(null, user);
+});
+
+// PASSPORT configure passport to use local strategy
+// that is use locally stored credentials
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    const user = getUserByUsername(username);
+    if (!user) return done(null, false);
+    bcrypt.compare(password, user.hash, function(err,res){
+      if(err){
+      return done(null, false)
+      } else {
+      return  done(null,user)
+      }
+  })}
+))
+
+// PASSPORT initialise passport and session
+app.use(passport.initialize());
+app.use(passport.session());
+
+// PASSPORT middleware function to check user is logged in
+function isLoggedIn(req, res, next){
+  console.log('6. Check that we have a logged in user before allowing access to protected route')
+  if( req.user && req.user.id ){
+    next();
+  } else {
+    // set response to error 401 not authorised
+    res.redirect('/');
+  }
+}
+
+// PASSPORT
+app.get('/', function(req, res){
+  res.render('index', {});
+});
+
+// PASSORT login page
+app.get('/', function(req, res){
+  console.log('1. Receive username and password')
+  res.render('login', {});
+})
+
+// PASSPORT route to accept logins
+app.post('/api/login', passport.authenticate('local', { session: true }), function(req, res) {
+  res.status(200).end();
+});
+
+// PASSPORT profile page - only accessible to logged in users
+app.get('/wallet', isLoggedIn, function(req, res){
+  // send user info. It should strip password at this stage
+  console.log("5. Use user id to load user from DB")
+  res.render('wallet', {user:req.user});
+});
+
+// PASSPORT route to log out users
+app.get('/logout', function(req, res){
+  console.log("7. Log user out")
+  // log user out and redirect them to home page
+  req.logout();
+  // have res.json ('Sucessfully logged out!')
+  res.redirect('/');
+});
 
 // configure the keys for accessing AWS
 AWS.config.update({
@@ -80,7 +178,7 @@ app.get('/api/recipient', (req, res) => {
 app.get('/api/recipient/:id', (req, res) => {
   const { id } = req.params;
   return db
-    .one('SELECT id, first_name, photo FROM recipient WHERE id=$1', [id])
+    .one('SELECT id, first_name, password, photo FROM recipient WHERE id=$1', [id])
     .then(data => db
       .one('SELECT * FROM biography WHERE id = $1', [data.id])
     /* eslint-disable camelcase */
@@ -93,7 +191,7 @@ app.get('/api/recipient/:id', (req, res) => {
 
 // add new recipient to the database
 app.post('/api/recipient', (req, res) => {
-  const recipient = req.body;
+  const { recipient } = req.body;
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
@@ -157,7 +255,7 @@ app.post('/api/donation', (req, res) => {
 
 // add new donor to the database
 app.post('/api/donor', (req, res) => {
-  const donor = req.body;
+  const { donor } = req.body;
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(
