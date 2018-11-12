@@ -120,9 +120,9 @@ export function setRecipientIdForQrCode(id) {
   };
 }
 
-export function addRecipient() {
+export function addRecipient(recipient) {
   return function (dispatch, getState) {
-    const { recipient, recipientImageUrl } = getState();
+    const { recipientImageUrl } = getState();
     const newDataKeysObject = {
       first_name: recipient.firstName,
       last_name: recipient.lastName,
