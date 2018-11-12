@@ -1,0 +1,30 @@
+$body-font: 'Open Sans', sans-serif;
+$display-font: 'Palanquin', sans-serif;
+
+h1,h2,h3,h4,h5,h6{
+  font-family: $display-font;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin: 0.25rem 0 0.5rem 0;
+}
+
+ ol, ul{
+    margin-bottom: 1.5rem;
+    padding:0 2rem;
+    li{
+    line-height: 1.4;
+    margin: 0.5rem 0;
+  }
+}
+ul{
+  list-style-type: none;
+  padding: 0;
+}
+  

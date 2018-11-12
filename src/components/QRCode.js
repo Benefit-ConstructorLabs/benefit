@@ -1,22 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import QRCodePackage from 'qrcode';
 
 class QRCode extends React.Component {
-  componentDidMount () {
+  componentDidMount() {
     this.renderCanvas();
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this.renderCanvas();
   }
 
   renderCanvas() {
+    const { id } = this.props;
     if (!this.canvas) {
       return;
     }
     QRCodePackage.toCanvas(
       this.canvas,
-      `${window.location.origin}/recipient/${this.props.id}/donation`,
+      `${window.location.origin}/recipient/${id}/donation`,
       {
         errorCorrectionLevel: 'M',
         maskPattern: 4,
@@ -24,24 +26,26 @@ class QRCode extends React.Component {
         version: 5,
         color: {
           dark: '#003366FF',
-          light: '#CDF8FFCC'
-        }
+          light: '#CDF8FFCC',
+        },
       },
-      error => {
+      (error) => {
         if (error) {
           console.error(error);
         }
-        console.log('success!');
-      }
+      },
     );
   }
 
   render() {
-    console.log(this.props)
-    const canvas = !!this.props.id && 
-    <div>
-      <canvas ref={element => {this.canvas = element}}/>
-    </div>
+    console.log(this.props);
+    const { id } = this.props;
+    const canvas = !!id
+      && (
+        <div className="recipient__qrcode">
+          <canvas ref={(element) => { this.canvas = element; }} />
+        </div>
+      );
     return (
       <React.Fragment>
         {canvas}
@@ -49,5 +53,9 @@ class QRCode extends React.Component {
     );
   }
 }
+
+QRCode.propTypes = {
+  id: PropTypes.string.isRequired,
+};
 
 export default QRCode;

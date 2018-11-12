@@ -1,7 +1,10 @@
 import React from 'react';
+import '../../styles/components/app-footer.scss';
 
 const AppFooter = () => (
-  <h1>App Footer &mdash; &copy; 2018 Benefit Team</h1>
+  <footer>
+    <p className="copyright">&copy; 2018 Benefit Team</p>
+  </footer>
 );
 
 export default AppFooter;

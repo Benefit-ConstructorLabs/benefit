@@ -7,7 +7,7 @@ describe('DonationForm', () => {
     const mockSetDonationAmount = jest.fn();
     const mockSubmitDonation = jest.fn();
     const tree = renderer
-      .create(<DonationForm setDonationAmount={mockSetDonationAmount} submitDonation={mockSubmitDonation} donationAMount="5" />)
+      .create(<DonationForm setDonationAmount={mockSetDonationAmount} submitDonation={mockSubmitDonation} donationAmount="5" />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

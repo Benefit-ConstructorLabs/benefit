@@ -1,0 +1,10 @@
+@import '../base.scss';
+
+.app__title{
+  background: url('/static/assets/images/logo.png') center no-repeat;
+  background-size: contain;
+  border-bottom: 1px solid $primary-color;
+  height: 10vh;
+  text-indent: -100%;
+  margin: 0 0 0.25rem 0;
+}

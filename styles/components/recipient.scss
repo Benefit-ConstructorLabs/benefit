@@ -1,13 +1,14 @@
 .recipient {
-    &__steps {
-        &-list {
-            //
-        }
-    }
-    &__print-qrcode {
-        //
-    }
-    &__view-donations {
-        //
-    }
+  height: 85vh;
+  padding: 0.5rem;
+  &__title{
+    text-align:center;
+  }
+  &__qrcode{
+    text-align:center;
+    margin: 1rem;
+  }
+  .btn__print-qrcode {
+    margin-bottom: 1rem;
+  }
 }

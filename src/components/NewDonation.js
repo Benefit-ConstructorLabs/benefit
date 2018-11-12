@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Transition } from 'react-spring';
 import DonationHeader from './DonationHeader';
 import DonationForm from './DonationForm';
 import RecipientProfile from './RecipientProfile';
 import DonationPayment from './DonationPayment';
+
+import '../../styles/components/donation.scss';
 
 class NewDonation extends React.Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class NewDonation extends React.Component {
       <React.Fragment>
         {!showPaymentDetails
           && (
-            <React.Fragment>
+            <div className="donation">
               <DonationHeader match={match} firstName={firstName} />
               <DonationForm
                 donationAmount={donationAmount}
@@ -31,13 +32,11 @@ class NewDonation extends React.Component {
                 togglePaymentDetails={togglePaymentDetails}
               />
               <RecipientProfile firstName={firstName} bio={bio} />
-            </React.Fragment>
+            </div>
           )
         }
         {showPaymentDetails
-          && <DonationPayment
-            donationComplete={donationComplete}
-          />
+          && <DonationPayment donationComplete={donationComplete} />
         }
       </React.Fragment>
     );
@@ -59,6 +58,7 @@ NewDonation.propTypes = {
   togglePaymentDetails: PropTypes.func.isRequired,
   donationAmount: PropTypes.number.isRequired,
   setDonationAmount: PropTypes.func.isRequired,
+  donationComplete: PropTypes.bool.isRequired,
 };
 
 NewDonation.defaultProps = {

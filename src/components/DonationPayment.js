@@ -5,7 +5,6 @@ import PaymentAcknowledgeContainer from '../containers/PaymentAcknowlegeContaine
 
 const DonationPayment = ({ donationComplete }) => (
   <React.Fragment>
-    <h2>Donation Payment</h2>
     {!donationComplete
       && (
         <PaymentDetailsFormContainer />

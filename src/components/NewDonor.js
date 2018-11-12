@@ -18,18 +18,19 @@ const NewDonor = ({
     setDonorInputField(event.target.name, event.target.value);
   }
   return (
-    <React.Fragment>
+    <section className="newdonor">
       <form
-        className="newdonor"
         onSubmit={(event) => {
           event.preventDefault();
           addDonor();
         }}
       >
+        <h3>Add your basic information</h3>
         <ul>
-          <h3>Add your basic information</h3>
+
           <li>
             <input
+              className="nolabel"
               type="text"
               name="firstName"
               value={firstName}
@@ -39,6 +40,7 @@ const NewDonor = ({
           </li>
           <li>
             <input
+              className="nolabel"
               type="text"
               name="lastName"
               placeholder="Last name"
@@ -48,6 +50,7 @@ const NewDonor = ({
           </li>
           <li>
             <input
+              className="nolabel"
               type="text"
               name="tel"
               value={tel}
@@ -58,6 +61,7 @@ const NewDonor = ({
 
           <li>
             <input
+              className="nolabel"
               type="email"
               name="email"
               value={email}
@@ -67,6 +71,7 @@ const NewDonor = ({
           </li>
           <li>
             <input
+              className="nolabel"
               type="password"
               name="password"
               value={password}
@@ -74,9 +79,10 @@ const NewDonor = ({
               onChange={event => handleChange(event)}
             />
           </li>
-          <h3>Your payment information: </h3>
+          <h3>Add your payment details</h3>
           <li>
             <input
+              className="nolabel"
               type="text"
               name="cardNo"
               value={cardNo}
@@ -86,6 +92,7 @@ const NewDonor = ({
           </li>
           <li>
             <input
+              className="nolabel"
               type="text"
               name="cardExp"
               value={cardExp}
@@ -95,6 +102,7 @@ const NewDonor = ({
           </li>
           <li>
             <input
+              className="nolabel"
               type="text"
               name="cardCCV"
               value={cardCCV}
@@ -103,11 +111,11 @@ const NewDonor = ({
             />
           </li>
         </ul>
-        <button type="submit" className="btn newdonor__btn">
+        <button type="submit" className="btn btn__primary newdonor__btn">
           Create account
         </button>
       </form>
-    </React.Fragment>
+    </section>
   );
 };
 

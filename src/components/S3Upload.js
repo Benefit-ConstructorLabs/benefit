@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class S3Upload extends React.Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
-      uploadLocation: null
+      uploadLocation: null,
     };
   }
 
@@ -14,28 +15,42 @@ class S3Upload extends React.Component {
     const fileObj = event.target.files[0];
     formData.append('file', fileObj);
     fetch('/api/upload', {
-        method: 'post',
-        body: formData     
+      method: 'post',
+      body: formData,
     })
-    .then(response => response.json())
-    .then(data => {
-      this.setState({
-        uploadLocation: data.Location
+      .then(response => response.json())
+      .then((data) => {
+        const { setRecipientPhotoUrl } = this.props;
+        this.setState({
+          uploadLocation: data.Location,
+        });
+        setRecipientPhotoUrl(data.Location);
       })
-      this.props.setRecipientPhotoUrl(data.Location);
-    })
-    .catch(error => response.json({ error: error.message }));
+      .catch(error => error.json({ error: error.message }));
   }
 
-  render () {
+  render() {
+    const { uploadLocation } = this.state;
     return (
       <React.Fragment>
-        {this.state.uploadLocation &&
-        <div><img src={this.state.uploadLocation} height="100"/></div>}
-        <input label='Upload a picture' title='Upload a picture' type='file' onChange={this.uploadFile} />
+        {uploadLocation
+          && (
+            <div className="newrecipient__photo">
+              <img alt="portrait" src={uploadLocation} height="100" />
+            </div>
+          )
+        }
+        <label className="fileUpload" htmlFor="pictureupload">
+          Add a photo
+          <input id="pictureUpload" type="file" onChange={this.uploadFile} />
+        </label>
       </React.Fragment>
     );
   }
 }
+
+S3Upload.propTypes = {
+  setRecipientPhotoUrl: PropTypes.func.isRequired,
+};
 
 export default S3Upload;

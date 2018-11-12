@@ -1,15 +1,11 @@
 .acknowledgement{
-    align-self: center;
-    &__notification{
-        align-self: center;
-    }
-    &__confirmation{
-        align-self: center;
-    }
-    &__question{
-        align-self: center;
-    }
-    &__account__btn{
-        align-self: center;
-    }
+  height: 85vh;
+  padding: 1rem;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  &__account{
+    margin: 1rem 0;
+  }
 }

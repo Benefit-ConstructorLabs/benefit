@@ -4,17 +4,26 @@ import '../../styles/components/recipient-profile.scss';
 
 const RecipientProfile = ({ firstName, bio }) => (
   <div className="recipient-profile">
-    <h3 className="recipient-profile__headline">Fancy a chat?</h3>
-    <p className="recipient-profile__intro">
-      {firstName}
-      {' '}
-      is interested in:
-    </p>
-    <ol className="recipient-profile__interests">
-      {bio.map((interest, i) => (
-        <li key={i} className="recipient-profile__interest">{interest}</li>
-      ))}
-    </ol>
+    {bio
+      && (
+        <React.Fragment>
+          <h3 className="recipient-profile__headline">
+            {`You could have a chat with ${firstName}.`}
+          </h3>
+
+          <ul className="recipient-profile__interests">
+            {bio.map((interest) => {
+              if (interest) {
+                return (
+                  <li key={interest} className="recipient-profile__interest">
+                    {`“${interest}”`}
+                  </li>
+                );
+              }
+            })}
+          </ul>
+        </React.Fragment>
+      )}
   </div>
 );
 
