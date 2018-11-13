@@ -79,27 +79,27 @@ ALTER SEQUENCE donor_id_seq RESTART WITH 3 INCREMENT BY 1;
 INSERT INTO donation
   (id, recipient_id, donor_id, amount, stripe_id)
   VALUES
-  (1, 1, 1, 500, 'serfvboiuygtfdfghj3456');
+  (1, 1, 1, 200, 'serfvboiuygtfdfghj3456');
 INSERT INTO donation
   (id, recipient_id, donor_id, amount, stripe_id)
   VALUES
-  (2, 1, 2, 5000, 'asdfghjk2345678');
+  (2, 1, 2, 1000, 'asdfghjk2345678');
 INSERT INTO donation
   (id, recipient_id, donor_id, amount, stripe_id)
   VALUES
-  (3, 2, 1, 508, '2345678g');
+  (3, 2, 1, 500, '2345678g');
 INSERT INTO donation
   (id, recipient_id, donor_id, amount, stripe_id)
   VALUES
-  (4, 2, 2, 260, '98765rertyhj');
+  (4, 2, 2, 300, '98765rertyhj');
 INSERT INTO donation
   (id, recipient_id, donor_id, amount, stripe_id)
   VALUES
-  (5, 3, 1, 3132, 'oiuytfghjkmn');
+  (5, 3, 1, 3000, 'oiuytfghjkmn');
   INSERT INTO donation
   (id, recipient_id, donor_id, amount, stripe_id)
   VALUES
-  (6, 3, 2, 9987, 'aiuytrerfg5t8');
+  (6, 3, 2, 9000, 'aiuytrerfg5t8');
 ALTER SEQUENCE donation_id_seq RESTART WITH 7 INCREMENT BY 1;
 
 INSERT INTO biography 

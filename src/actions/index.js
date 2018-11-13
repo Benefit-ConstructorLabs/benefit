@@ -161,13 +161,16 @@ export function setDonorInputField(fieldName, fieldValue) {
 
 export function addDonor() {
   return function (dispatch, getState) {
-    const { donor } = getState();
+    const { donor, recipientImageUrl } = getState();
     const newDataKeysObject = {
-      first_name: donor.firstName,
-      last_name: donor.lastName,
-      email: donor.email,
-      password: donor.password,
-      tel: donor.tel,
+      donor: {
+        first_name: donor.firstName,
+        last_name: donor.lastName,
+        photo: recipientImageUrl.url,
+        email: donor.email,
+        password: donor.password,
+        tel: donor.tel,
+      },
     };
     fetch('/api/donor', {
       method: 'post',

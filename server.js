@@ -272,8 +272,8 @@ app.post('/api/donor', (req, res) => {
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(
-      'INSERT INTO donor (first_name, last_name, username, password, tel, stripe) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
-      [donor.first_name, donor.last_name, donor.email, hash, donor.tel, donor.stripe],
+      'INSERT INTO donor (first_name, last_name, photo, username, password, tel, stripe, type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
+      [donor.first_name, donor.last_name, donor.photo, donor.email, hash, donor.tel, donor.stripe, 'donor'],
     ))
     .then(result => res.json(result))
     .catch(error => res.json({ error: error.message }));
