@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../styles/components/payment-details-form.scss';
+import {Elements} from 'react-stripe-elements';
+import InjectedCheckoutForm from './CheckoutForm';
 
 const PaymentDetailsForm = ({ createPaymentDetails, toggleDonationComplete, setCardInput, setExpDateInput, setCcvInput, cardNumber, expDate, ccv, donationAmount, firstName }) => {
   function handleCardChange(event) {
@@ -56,6 +58,9 @@ const PaymentDetailsForm = ({ createPaymentDetails, toggleDonationComplete, setC
         </p>
         <button className="btn btn__primary btn__submit" type="submit">{`Donate £${donationAmount} to ${firstName}`}</button>
       </form>
+      <Elements>
+        <InjectedCheckoutForm />
+      </Elements>
     </div>
   );
 };
