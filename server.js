@@ -289,7 +289,7 @@ app.get('/api/donor/:id', (req, res) = {
 app.get('/api/donations/recipient/:id', (req, res) => {
   const { id } = req.params;
   return db
-    .any(`SELECT donation.id, donor.first_name, donor.last_name, donation.amount
+    .any(`SELECT donation.id, donor.photo, donor.first_name, donor.last_name, donation.amount
           FROM donor, donation WHERE recipient_id=$1
           AND donor.id = donation.donor_id`, [id])
     .then(amounts => res.json(amounts))
