@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NewRecipient from '../components/NewRecipient';
-import { setInputField, addRecipient } from '../actions';
+import { addRecipient } from '../actions';
 
 const mapStateToProps = state => ({
   firstName: state.recipient.firstName,
@@ -13,12 +13,9 @@ const mapStateToProps = state => ({
   bio2: state.recipient.bio2,
   bio3: state.recipient.bio3,
   recipientIdForQrCode: state.recipient.recipientIdForQrCode,
-  recipientImageUrl: state.recipientImage.url,
-  uploadBlur: state.recipientImage.uploadBlur,
 });
 
 const mapDispatchToProps = {
-  setInputField,
   addRecipient,
 };
 

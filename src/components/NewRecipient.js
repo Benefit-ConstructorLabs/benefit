@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
-import S3UploadContainer from '../containers/S3UploadContainer';
+import S3Upload from './S3Upload';
 import '../../styles/components/newrecipient.scss';
 import '../../styles/components/temp-styles.scss';
 
@@ -10,11 +10,12 @@ function setInputClass(errors, touched) {
 }
 
 function StyledMessage({ errors, touched, values, elem }) {
-  if (elem === 'upload') {
-    console.log(errors, touched, values, elem);
-  }
   if (errors[elem] && touched[elem]) {
-    return (<div className={errors[elem] ? 'errorMessage' : 'validMessage'}><i className="fas cross fa-1x fa-times" />{errors[elem]}</div>);
+    return (
+      <div className={errors[elem] ? 'errorMessage' : 'validMessage'}>
+        <i className="fas cross fa-1x fa-times" />
+        {errors[elem]}
+      </div>);
   }
   if (!errors[elem] && values[elem] !== '') {
     return (<div className="validMessage"><i className="fas tick fa-1x fa-check-square" /></div>);
@@ -194,7 +195,7 @@ class NewRecipient extends React.Component {
                   </label>
                 </li>
                 <li>
-                  <S3UploadContainer
+                  <S3Upload
                     name="imageUrl"
                     value={values.imageUrl}
                     onChange={handleChange}
@@ -264,33 +265,20 @@ class NewRecipient extends React.Component {
 
 NewRecipient.propTypes = {
   addRecipient: PropTypes.func.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string,
-  tel: PropTypes.string,
-  username: PropTypes.string,
-  password: PropTypes.string,
-  bio1: PropTypes.string,
-  bio2: PropTypes.string,
-  bio3: PropTypes.string,
+  history: PropTypes.string.isRequired,
   recipientIdForQrCode: PropTypes.number,
 };
 
 NewRecipient.defaultProps = {
-  tel: '',
-  username: '',
-  password: '',
-  bio1: '',
-  bio2: '',
-  bio3: '',
   recipientIdForQrCode: null,
 };
 
-// StyledMessage.propTypes = {
-//   // TODO: Add proper PropTypes, Jim is sorry.
-//   errors: PropTypes.shape({}).isRequired,
-//   touched: PropTypes.shape({}).isRequired,
-//   values: PropTypes.shape({}).isRequired,
-//   elem: PropTypes.shape({}).isRequired,
-// };
+StyledMessage.propTypes = {
+  // TODO: Add proper PropTypes, Jim is sorry.
+  errors: PropTypes.shape({}).isRequired,
+  touched: PropTypes.shape({}).isRequired,
+  values: PropTypes.shape({}).isRequired,
+  elem: PropTypes.shape({}).isRequired,
+};
 
 export default NewRecipient;

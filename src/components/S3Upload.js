@@ -16,7 +16,7 @@ class S3Upload extends React.Component {
     if (!fileObj) {
       onChange({
         target: { name, value: '' },
-      })
+      });
     }
 
     formData.append('file', fileObj);
@@ -48,7 +48,6 @@ class S3Upload extends React.Component {
     const { value } = this.props;
     return (
       <React.Fragment>
-        
         {value
             && (
               <div className="newrecipient__photo">
@@ -56,10 +55,12 @@ class S3Upload extends React.Component {
               </div>
             )
           }
-          
+
         <label className="fileUpload" htmlFor="pictureupload">
           Add a photo
-          <button type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>{value ? 'Replace' : 'Select'} image</button>
+          <button type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>
+            {value ? 'Replace image' : 'Select image'}
+          </button>
           <input
             ref={this.inputRef}
             id="pictureUpload"
@@ -74,7 +75,6 @@ class S3Upload extends React.Component {
 }
 
 S3Upload.propTypes = {
-  onBlur: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string,

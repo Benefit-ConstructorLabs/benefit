@@ -3,7 +3,6 @@ import donation from './donation';
 import recipient from './recipient';
 import paymentDetails from './paymentDetails';
 import view from './view';
-import recipientImage from './recipientImage';
 import qrCodeUrl from './qrCodeUrl';
 import donor from './donor';
 
@@ -12,7 +11,6 @@ export default combineReducers({
   recipient,
   view,
   paymentDetails,
-  recipientImage,
   qrCodeUrl,
   donor,
 });

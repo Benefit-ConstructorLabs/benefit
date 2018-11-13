@@ -19,20 +19,6 @@ export function toggleDonationComplete() {
   };
 }
 
-export function setRecipientImageUrl(url) {
-  return {
-    type: 'SET_RECIPIENT_IMAGE_URL',
-    url,
-  };
-}
-
-export function setUploadBlur(blur) {
-  return {
-    type: 'SET_UPLOAD_BLUR',
-    blur,
-  };
-}
-
 export function getQRCode(id) {
   return function (dispatch) {
     fetch(`/api/recipient/${id}`)
@@ -109,14 +95,6 @@ export function createPaymentDetails() {
 export function submitRecipientForm() {
   return {
     type: 'SUBMIT_RECIPIENT_FORM',
-  };
-}
-
-export function setInputField(fieldName, fieldValue) {
-  return {
-    type: 'SET_RECIPIENT_INPUT',
-    fieldName,
-    fieldValue,
   };
 }
 
