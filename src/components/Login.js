@@ -1,7 +1,6 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import RecipientWallet from './RecipientWallet';
 
 class Login extends React.Component {
   componentWillReceiveProps({ isLoggedIn: isNowLoggedIn, userID, type = 'recipient', history }) {
@@ -54,7 +53,6 @@ class Login extends React.Component {
             Log In
           </button>
         </form>
-        {/* <PrivateRoute path="/wallet" component={RecipientWallet} /> */}
       </React.Fragment>
     );
   }
