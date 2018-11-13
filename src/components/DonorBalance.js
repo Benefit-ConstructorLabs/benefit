@@ -11,12 +11,13 @@ const DonorBalance = ({ donations }) => {
       <p className="donor__account__balance">{`£${donationTotal}`}</p>
       <h3>Latest donations</h3>
       <ul className="donor__account__donations">
+        {console.log(donations, 'From donation balance component')}
         {donations.map((donation) => {
-          const { id, firstName, amount, photo } = donation;
+          const { id, first_name, amount, photo } = donation;
           return (
             <li className="donor__account__donations__donation" key={id}>
               <img className="recipient__photo" src={photo} alt="recipient" />
-              <span className="recipient__name">{firstName}.</span>
+              <span className="recipient__name">{first_name}</span>
               <span className="amount">{`£${amount}`}</span>
             </li>
           );

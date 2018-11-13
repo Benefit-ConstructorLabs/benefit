@@ -7,6 +7,7 @@ import RecipientContainer from '../containers/RecipientContainer';
 import NewDonationContainer from '../containers/NewDonationContainer';
 import NewDonorContainer from '../containers/NewDonorContainer';
 import LoginContainer from '../containers/LoginContainer';
+import DonorContainer from '../containers/DonorContainer';
 import AppFooter from './AppFooter';
 
 import '../../styles/components/app.scss';
@@ -19,8 +20,8 @@ const App = () => (
       <Route exact path="/recipient/" component={NewRecipientContainer} />
       <PrivateRouteContainer exact path="/recipient/:id" component={RecipientContainer} />
       <Route path="/recipient/:id/donation" component={NewDonationContainer} />
-      <Route path="/donor" component={NewDonorContainer} />
-      <Route path="/donor/:id" component={DonorContainer} />
+      <Route exact path="/donor" component={NewDonorContainer} />
+      <Route exact path="/donor/:id" component={DonorContainer} />
       <AppFooter />
     </React.Fragment>
   </Router>
