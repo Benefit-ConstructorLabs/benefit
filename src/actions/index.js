@@ -19,13 +19,6 @@ export function toggleDonationComplete() {
   };
 }
 
-export function setRecipientPhotoUrl(url) {
-  return {
-    type: 'SET_RECIPIENT_PHOTO_URL',
-    url,
-  };
-}
-
 export function getQRCode(id) {
   return function (dispatch) {
     fetch(`/api/recipient/${id}`)
@@ -145,14 +138,6 @@ export function submitRecipientForm() {
   };
 }
 
-export function setInputField(fieldName, fieldValue) {
-  return {
-    type: 'SET_RECIPIENT_INPUT',
-    fieldName,
-    fieldValue,
-  };
-}
-
 export function setRecipientIdForQrCode(id) {
   return {
     type: 'SET_RECIPIENT_ID',
@@ -160,9 +145,8 @@ export function setRecipientIdForQrCode(id) {
   };
 }
 
-export function addRecipient() {
-  return function (dispatch, getState) {
-    const { recipient, recipientImageUrl } = getState();
+export function addRecipient(recipient) {
+  return function (dispatch) {
     const newDataKeysObject = {
       recipient: {
         first_name: recipient.firstName,
