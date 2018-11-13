@@ -309,7 +309,7 @@ export function getDonorFromDB(id) {
 }
 
 export function getDonorDetailsByID(id) {
-  return funtion(dispatch) {
+  return function (dispatch) {
     dispatch(getDonationsByDonorID(id));
     dispatch(getDonorFromDB(id));
   };
