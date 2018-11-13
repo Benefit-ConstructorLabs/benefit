@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import AppHeader from './AppHeader';
 import NewRecipientContainer from '../containers/NewRecipientContainer';
-import AnimationWrapper from './AnimationWrapper';
-import Recipient from './Recipient';
+// import AnimationWrapper from './AnimationWrapper';
+import RecipientContainer from '../containers/RecipientContainer';
 import NewDonationContainer from '../containers/NewDonationContainer';
 import NewDonorContainer from '../containers/NewDonorContainer';
 import AppFooter from './AppFooter';
@@ -15,7 +15,8 @@ const App = () => (
     <React.Fragment>
       <AppHeader />
       <Route exact path="/recipient/" component={NewRecipientContainer} />
-      <Route exact path="/recipient/:id" component={AnimationWrapper(Recipient)} />
+      {/* <Route exact path="/recipient/:id" component={AnimationWrapper(Recipient)} /> */}
+      <Route exact path="/recipient/:id" component={RecipientContainer} />
       <Route path="/recipient/:id/donation" component={NewDonationContainer} />
       <Route path="/donor" component={NewDonorContainer} />
       <AppFooter />

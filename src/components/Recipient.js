@@ -1,34 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import QRCodeContainer from '../containers/QRCodeContainer';
+// import PropTypes from 'prop-types';
+import Tabs from './Tabs';
+import RecipientCode from './RecipientCode';
+import RecipientBalance from './RecipientBalance';
+import RecipientProfile from './RecipientProfile';
+
 import '../../styles/components/recipient.scss';
 
-const Recipient = ({ match }) => (
-  <section className="recipient">
-    <h2 className="recipient__title">Your Unique QR code</h2>
-    <QRCodeContainer id={match.params.id} />
-    <h3 className="recipient__steps">Three easy steps to receive donations</h3>
-    <ol className="recipient__steps-list">
-      <li className="recipient__steps-list__item">Display your unique code to potential donors</li>
-      <li className="recipient__steps-list__item">Donors scan your QR code and set a payment</li>
-      <li className="recipient__steps-list__item">Check your total donations</li>
-    </ol>
-    <button type="button" className="btn btn__print-qrcode">
-      Print your QR code
-    </button>
-    <button type="button" className="btn btn__view-donations">
-      See your donation total
-    </button>
-  </section>
-);
+class Recipient extends React.Component {
+  componentDidMount() {
+    const { match, getProfileDetailsByID } = this.props;
+    getProfileDetailsByID(match.params.id);
+  }
 
-Recipient.propTypes = {
-  match: PropTypes.shape({
-    isExact: PropTypes.bool,
-    params: PropTypes.shape({ id: PropTypes.string }),
-    path: PropTypes.string,
-    url: PropTypes.string,
-  }).isRequired,
-};
+  render() {
+    const { match, donations, profile } = this.props;
+    console.log(donations);
+    return (
+      <Tabs>
+        <RecipientCode label="QR Code" routeParams={match} />
+        <RecipientBalance label="Balance" donations={donations} />
+        <RecipientProfile label="Profile" profile={profile} />
+      </Tabs>
+    );
+  }
+}
 
 export default Recipient;

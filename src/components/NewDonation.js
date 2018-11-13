@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DonationHeader from './DonationHeader';
 import DonationForm from './DonationForm';
-import RecipientProfile from './RecipientProfile';
+import RecipientInterests from './RecipientInterests';
 import DonationPayment from './DonationPayment';
 
 import '../../styles/components/donation.scss';
@@ -31,7 +31,7 @@ class NewDonation extends React.Component {
                 photo={photo}
                 togglePaymentDetails={togglePaymentDetails}
               />
-              <RecipientProfile firstName={firstName} bio={bio} />
+              <RecipientInterests firstName={firstName} bio={bio} />
             </div>
           )
         }
