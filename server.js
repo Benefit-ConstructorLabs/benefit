@@ -248,7 +248,7 @@ app.post('/api/donation', (req, res) => {
   const { donation } = req.body;
   return db
     .one(
-      'INSERT INTO donation (recipient_id, donor_id, amount, stripe_id) VALUES ($1, $2, $3, $4) RETURNING id',
+      'INSERT INTO donation (recipient_id, donor_id, amount, stripe_id, time_stamp) VALUES ($1, $2, $3, $4, clock_timestamp()) RETURNING id',
       [donation.recipient_id, donation.donor_id, donation.amount, donation.stripe_id],
     )
     .then((result) => {

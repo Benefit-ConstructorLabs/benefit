@@ -34,6 +34,7 @@ CREATE TABLE donation(
   donor_id INT,
   amount INT NOT NULL,
   stripe_id VARCHAR(200) NOT NULL,
+  time_stamp TIMESTAMP WITH TIME ZONE,
   FOREIGN KEY (recipient_id) REFERENCES recipient(id),
   FOREIGN KEY (donor_id) REFERENCES donor(id)
 );
@@ -77,29 +78,29 @@ INSERT INTO donor
 ALTER SEQUENCE donor_id_seq RESTART WITH 3 INCREMENT BY 1;
 
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (1, 1, 1, 200, 'serfvboiuygtfdfghj3456');
+  (1, 1, 1, 200, 'serfvboiuygtfdfghj3456', '2018-10-21T10:37:33.735972+01:00');
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (2, 1, 2, 1000, 'asdfghjk2345678');
+  (2, 1, 2, 1000, 'asdfghjk2345678', '2018-10-22T10:37:33.735972+01:00');
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (3, 2, 1, 500, '2345678g');
+  (3, 2, 1, 500, '2345678g', '2018-10-12T10:37:33.735972+01:00');
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (4, 2, 2, 300, '98765rertyhj');
+  (4, 2, 2, 300, '98765rertyhj', '2018-09-22T10:37:33.735972+01:00');
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (5, 3, 1, 3000, 'oiuytfghjkmn');
+  (5, 3, 1, 3000, 'oiuytfghjkmn', '2018-09-02T10:37:33.735972+01:00');
   INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (6, 3, 2, 9000, 'aiuytrerfg5t8');
+  (6, 3, 2, 9000, 'aiuytrerfg5t8', '2018-08-12T10:37:33.735972+01:00');
 ALTER SEQUENCE donation_id_seq RESTART WITH 7 INCREMENT BY 1;
 
 INSERT INTO biography 
