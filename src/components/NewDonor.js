@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import S3UploadContainer from '../containers/S3UploadContainer';
+// import S3UploadContainer from '../containers/S3UploadContainer';
 import '../../styles/components/new-donor.scss';
 
 const NewDonor = ({
@@ -79,9 +79,7 @@ const NewDonor = ({
               onChange={event => handleChange(event)}
             />
           </li>
-          <li>
-            <S3UploadContainer />
-          </li>
+          <li>{/* <S3UploadContainer /> */}</li>
           <h3>Add your payment details</h3>
           <li>
             <input
