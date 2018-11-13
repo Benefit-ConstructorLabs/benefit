@@ -33,7 +33,7 @@ CREATE TABLE donation(
   recipient_id INT,
   donor_id INT,
   amount INT NOT NULL,
-  stripe_id VARCHAR(200) NOT NULL UNIQUE,
+  stripe_id VARCHAR(200) NOT NULL,
   FOREIGN KEY (recipient_id) REFERENCES recipient(id),
   FOREIGN KEY (donor_id) REFERENCES donor(id)
 );
