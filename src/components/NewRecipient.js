@@ -64,6 +64,7 @@ class NewRecipient extends React.Component {
             if (!values.imageUrl) {
               errors.imageUrl = 'Required';
             }
+            console.log(errors, Object.values(errors));
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
@@ -253,7 +254,7 @@ class NewRecipient extends React.Component {
                 type="submit"
                 disabled={isSubmitting}
               >
-                Create account
+                {Object.keys(touched).length === 0 || Object.keys(errors).length > 0 ? 'Complete required details' : 'Create account'}
               </button>
             </form>
           )}
