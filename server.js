@@ -324,7 +324,6 @@ app.get('/api/donations/donor/:id', (req, res) => {
 });
 
 app.use('/.well-known/apple-developer-merchantid-domain-association', (req, res) => {
-  console.log(process.env.STRIPE_SECRET_KEY);
   res.send(process.env.APPLE_DEVELOPER_MERCHANT_ID);
 });
 
