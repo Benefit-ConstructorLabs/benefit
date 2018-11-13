@@ -266,7 +266,6 @@ class NewRecipient extends React.Component {
 
 NewRecipient.propTypes = {
   addRecipient: PropTypes.func.isRequired,
-  history: PropTypes.string.isRequired,
   recipientIdForQrCode: PropTypes.number,
 };
 
@@ -279,7 +278,7 @@ StyledMessage.propTypes = {
   errors: PropTypes.shape({}).isRequired,
   touched: PropTypes.shape({}).isRequired,
   values: PropTypes.shape({}).isRequired,
-  elem: PropTypes.shape({}).isRequired,
+  elem: PropTypes.string.isRequired,
 };
 
 export default NewRecipient;
