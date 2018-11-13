@@ -1,9 +1,8 @@
 // CheckoutForm.js
-import React from 'react';
-import {injectStripe} from 'react-stripe-elements';
+//import React from 'react';
 
-// import AddressSection from './AddressSection';
-import CardSection from './CardSection';
+
+
 
 class CheckoutForm extends React.Component {
   handleSubmit = (ev) => {
@@ -39,4 +38,4 @@ class CheckoutForm extends React.Component {
   }
 }
 
-export default injectStripe(CheckoutForm);
+//export default injectStripe(CheckoutForm);

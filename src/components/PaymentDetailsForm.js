@@ -1,18 +1,11 @@
 import React from 'react';
 import '../../styles/components/payment-details-form.scss';
-import {Elements} from 'react-stripe-elements';
-import InjectedCheckoutForm from './CheckoutForm';
+import {injectStripe} from 'react-stripe-elements';
 
-const PaymentDetailsForm = ({ createPaymentDetails, toggleDonationComplete, setCardInput, setExpDateInput, setCcvInput, cardNumber, expDate, ccv, donationAmount, firstName }) => {
-  function handleCardChange(event) {
-    setCardInput(event.target.value);
-  }
-  function handleExpDateChange(event) {
-    setExpDateInput(event.target.value);
-  }
-  function handleCcvChange(event) {
-    setCcvInput(event.target.value);
-  }
+// import AddressSection from './AddressSection';
+import CardSection from './CardSection';
+
+const PaymentDetailsForm = ({ stripe, createPaymentDetails, toggleDonationComplete, donationAmount, firstName }) => {
 
   return (
     <div className="payment-details">
@@ -25,44 +18,23 @@ const PaymentDetailsForm = ({ createPaymentDetails, toggleDonationComplete, setC
         className="payment-details__form"
         onSubmit={(event) => {
           event.preventDefault();
-          toggleDonationComplete();
-          createPaymentDetails();
+          // create stripe token from card details
+          // Within the context of `Elements`, this call to createToken knows which Element to
+          // tokenize, since there's only one in this group.
+          // stripe.createToken(element, tokenData)
+          stripe.createToken()
+            .then(({ token }) => {
+              console.log('Received Stripe token:', token);
+              toggleDonationComplete();
+              createPaymentDetails(token.id);
+            });
         }}
       >
-        <p>
-          <input
-            className="nolabel"
-            type="text"
-            placeholder="Card number"
-            value={cardNumber}
-            onChange={event => handleCardChange(event)}
-          />
-        </p>
-        <p>
-          <input
-            className="nolabel"
-            type="date"
-            placeholder="Expiry date"
-            value={expDate}
-            onChange={event => handleExpDateChange(event)}
-          />
-        </p>
-        <p>
-          <input
-            className="nolabel"
-            type="text"
-            placeholder="CCV"
-            value={ccv}
-            onChange={event => handleCcvChange(event)}
-          />
-        </p>
+        <CardSection />
         <button className="btn btn__primary btn__submit" type="submit">{`Donate £${donationAmount} to ${firstName}`}</button>
       </form>
-      <Elements>
-        <InjectedCheckoutForm />
-      </Elements>
     </div>
   );
 };
 
-export default PaymentDetailsForm;
+export default injectStripe(PaymentDetailsForm);
