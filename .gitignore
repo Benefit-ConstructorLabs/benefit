@@ -3,5 +3,6 @@
 /node_modules
 /static/bundle.js
 /static/bundle.js.map
+/static/.well-known/
 .DS_Store
 /tests/components/__snapshots__
