@@ -21,7 +21,7 @@ const App = () => (
       <PrivateRouteContainer exact path="/recipient/:id" component={RecipientContainer} />
       <Route path="/recipient/:id/donation" component={NewDonationContainer} />
       <Route exact path="/donor" component={NewDonorContainer} />
-      <Route exact path="/donor/:id" component={DonorContainer} />
+      <PrivateRouteContainer exact path="/donor/:id" component={DonorContainer} />
       <AppFooter />
     </React.Fragment>
   </Router>

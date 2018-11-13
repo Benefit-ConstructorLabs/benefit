@@ -107,7 +107,7 @@ export function createPaymentDetails() {
       donation: {
         recipient_id: recipient.recipientID,
         donor_id: donor.donorID,
-        amount: (donation.donationAmount * 100),
+        amount: donation.donationAmount * 100,
         stripe_id: temporaryStripeToken,
       },
     };
@@ -148,15 +148,17 @@ export function setRecipientIdForQrCode(id) {
 export function addRecipient(recipient) {
   return function (dispatch) {
     const newDataKeysObject = {
-      first_name: recipient.firstName,
-      last_name: recipient.lastName,
-      username: recipient.username,
-      password: recipient.password,
-      photo: recipient.imageUrl,
-      tel: recipient.tel,
-      bio_1: recipient.bio1,
-      bio_2: recipient.bio2,
-      bio_3: recipient.bio3,
+      recipient: {
+        first_name: recipient.firstName,
+        last_name: recipient.lastName,
+        username: recipient.username,
+        password: recipient.password,
+        photo: recipientImageUrl.url,
+        tel: recipient.tel,
+        bio_1: recipient.bio1,
+        bio_2: recipient.bio2,
+        bio_3: recipient.bio3,
+      },
     };
     fetch('/api/recipient', {
       method: 'post',
@@ -221,7 +223,6 @@ export function setUserFromPassport(user) {
     type: 'SET_USER_FROM_PASSPORT',
     isLoggedIn: true,
     userID: user.userId,
-    // username: user.username,
     userType: user.userType,
   };
 }
@@ -319,7 +320,6 @@ export function setDonorFromDB(donor) {
     photo: donor.photo,
   };
 }
-
 
 export function getDonorFromDB(id) {
   return function (dispatch) {
