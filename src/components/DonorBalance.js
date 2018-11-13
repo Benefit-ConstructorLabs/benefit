@@ -11,7 +11,6 @@ const DonorBalance = ({ donations }) => {
       <p className="donor__account__balance">{`£${donationTotal}`}</p>
       <h3>Latest donations</h3>
       <ul className="donor__account__donations">
-        {console.log(donations, 'From donation balance component')}
         {donations.map((donation) => {
           const { id, first_name, amount, photo } = donation;
           return (

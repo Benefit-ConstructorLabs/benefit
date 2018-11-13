@@ -281,7 +281,7 @@ app.post('/api/donor', (req, res) => {
 
 // get donor by id
 app.get('/api/donor/:id', (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   return db.one('SELECT id, first_name, last_name, tel, username, photo FROM donor WHERE id=$1', [id])
     .then(details => res.json(details))
     .catch(error => res.json({ error: error.message }));

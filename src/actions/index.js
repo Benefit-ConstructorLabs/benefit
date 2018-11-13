@@ -193,7 +193,6 @@ export function setLoginDetails(fieldName, fieldValue) {
 }
 
 export function setUserFromPassport(user) {
-  console.log(user, 'from setUserFromPassport');
   return {
     type: 'SET_USER_FROM_PASSPORT',
     isLoggedIn: true,
@@ -224,7 +223,6 @@ export function login() {
         throw new Error(`HTTP Error ${response.status} (${response.statusText})`);
       })
       .then((loggedinUser) => {
-        console.log(loggedinUser);
         dispatch(setUserFromPassport(loggedinUser));
       })
       .catch(error => console.log('FETCH to POST ERROR', error.message));

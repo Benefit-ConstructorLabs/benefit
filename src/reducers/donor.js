@@ -13,8 +13,8 @@ const donor = (state = {
     case 'SET_DONOR_FROM_DB':
       return Object.assign({}, state, {
         id: action.id,
-        firstName: action.first_name,
-        lastName: action.last_name,
+        firstName: action.firstName,
+        lastName: action.lastName,
         username: action.username,
         tel: action.tel,
         photo: action.photo,
