@@ -190,7 +190,7 @@ app.get('/api/recipient', (req, res) => {
 });
 
 // retrieve recipient by id
-app.get('/api/recipient/:id', isLoggedIn, (req, res) => {
+app.get('/api/recipient/:id', (req, res) => {
   const { id } = req.params;
   return db
     .one('SELECT id, first_name, last_name, tel, username, photo FROM recipient WHERE id=$1', [id])
