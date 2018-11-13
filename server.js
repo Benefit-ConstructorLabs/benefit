@@ -120,7 +120,7 @@ app.get('/', (req, res) => {
 
 // PASSPORT route to accept logins
 app.post('/api/login', passport.authenticate('local', { session: true }), (req, res) => {
-  res.json({ userId: req.user.id });
+  res.json({ userId: req.user.id, userType: req.user.type });
 });
 
 // PASSPORT profile page - only accessible to logged in users

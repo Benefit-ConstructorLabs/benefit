@@ -114,7 +114,7 @@ export function createPaymentDetails() {
       donation: {
         recipient_id: recipient.recipientID,
         donor_id: donor.donorID,
-        amount: (donation.donationAmount * 100),
+        amount: donation.donationAmount * 100,
         stripe_id: temporaryStripeToken,
       },
     };
@@ -237,7 +237,6 @@ export function setUserFromPassport(user) {
     type: 'SET_USER_FROM_PASSPORT',
     isLoggedIn: true,
     userID: user.userId,
-    // username: user.username,
     userType: user.userType,
   };
 }
@@ -335,7 +334,6 @@ export function setDonorFromDB(donor) {
     photo: donor.photo,
   };
 }
-
 
 export function getDonorFromDB(id) {
   return function (dispatch) {
