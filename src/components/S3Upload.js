@@ -29,6 +29,10 @@ class S3Upload extends React.Component {
       .catch(error => error.json({ error: error.message }));
   }
 
+  handleBlur() {
+    console.log('upload blurred')
+  }
+
   render() {
     const { uploadLocation } = this.state;
     return (
@@ -42,7 +46,12 @@ class S3Upload extends React.Component {
         }
         <label className="fileUpload" htmlFor="pictureupload">
           Add a photo
-          <input id="pictureUpload" type="file" onChange={this.uploadFile} />
+          <input
+            id="pictureUpload"
+            type="file"
+            onBlur={this.handleBlur}
+            onChange={this.uploadFile}
+          />
         </label>
       </React.Fragment>
     );
