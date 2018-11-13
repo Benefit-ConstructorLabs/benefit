@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import DonationForm from '../components/DonationForm';
-import { setDonationAmount, togglePaymentDetails } from '../actions';
+import { setDonationAmount, togglePaymentDetails, setDonorID } from '../actions';
 
 export const mapStateToProps = state => (
   {
@@ -13,6 +13,7 @@ export const mapStateToProps = state => (
 const mapDispatchToProps = {
   setDonationAmount,
   togglePaymentDetails,
+  setDonorID,
 };
 
 export default connect(

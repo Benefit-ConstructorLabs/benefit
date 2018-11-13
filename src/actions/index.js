@@ -88,11 +88,48 @@ export function receiveStripeToken(stripeToken) {
   };
 }
 
-// A temporary function to send payment details off to stripe and receive back a fake stripe token
+export function setDonorID(donorID) {
+  return {
+    type: 'SET_DONOR_ID',
+    donorID,
+  };
+}
+export function setDonationID(donationID) {
+  return {
+    type: 'SET_DONATION_ID',
+    donationID,
+  };
+}
+
+// Create donation, send details to stripe and receive back token
+// Stripe token hardcoded
 export function createPaymentDetails() {
-  return function (dispatch) {
-    const temporaryStripeToken = 'tok_1DTtwg2eZvKYlo2C0OVGbY7U';
-    dispatch(receiveStripeToken(temporaryStripeToken));
+  return function (dispatch, getState) {
+    const { donor, recipient, donation } = getState();
+    const temporaryStripeToken = 'tok_1DTtwg2eZvKYlo2C0OVGbY7U_3';
+    const newDataKeysObject = {
+      donation: {
+        recipient_id: recipient.recipientID,
+        donor_id: donor.donorID,
+        amount: (donation.donationAmount * 100),
+        stripe_id: temporaryStripeToken,
+      },
+    };
+    console.log(newDataKeysObject);
+    fetch('/api/donation', {
+      method: 'post',
+      body: JSON.stringify(newDataKeysObject),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then((donationID) => {
+        console.log(donationID);
+        dispatch(receiveStripeToken(temporaryStripeToken));
+        dispatch(setDonationID(donationID));
+      });
+
     dispatch(setCardInput(''));
     dispatch(setExpDateInput(''));
     dispatch(setCcvInput(''));
