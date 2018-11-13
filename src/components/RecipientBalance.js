@@ -27,7 +27,7 @@ const RecipientBalance = ({ donations }) => {
 
       </ul>
     </section>
-  )
+  );
 };
 
 export default RecipientBalance;

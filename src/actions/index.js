@@ -254,19 +254,43 @@ export function setDonationsFromDB(donations) {
   };
 }
 
-export function getDonationsByID(id) {
+export function getDonationsByRecipientID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/${id}`)
+    fetch(`/api/donations/recipient/${id}`)
       .then(response => response.json())
       .then(donations => dispatch(setDonationsFromDB(donations)))
-      // .then(() => dispatch(getRecipientFromDB(id)))
       .catch(error => console.log(error.message));
   };
 }
 
 export function getProfileDetailsByID(id) {
   return function (dispatch) {
-    dispatch(getDonationsByID(id));
+    dispatch(getDonationsByRecipientID(id));
     dispatch(getRecipientFromDB(id));
+  };
+}
+
+export function getDonationsByDonorID(id) {
+  return function (dispatch) {
+    fetch(`/api/donations/donor/${id}`)
+      .then(response => response.json())
+      .then(donations => dispatch(setDonorDonationsFromDB(donations)))
+      .catch(error => console.log(error.message));
+  };
+}
+
+export function getDonorFromDB(id) {
+  return function (dispatch) {
+    fetch(`/api/donor/${id}`, { credentials: 'same-origin' })
+      .then(response => response.json())
+      .then(recipient => dispatch(setRecipientFromDB(recipient)))
+      .catch(error => console.log('FETCH ERROR', error.message));
+  };
+}
+
+export function getDonorDetailsByID(id) {
+  return funtion(dispatch) {
+    dispatch(getDonationsByDonorID(id));
+    dispatch(getDonorFromDB(id));
   };
 }
