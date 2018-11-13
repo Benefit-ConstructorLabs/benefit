@@ -1,0 +1,39 @@
+.login{
+  display:none;
+}
+
+.dashboard{
+  // height: 85vh;
+  max-width: 1024px;
+  margin: auto;
+  display: grid;
+  grid-template-areas: 
+  "a a . . ."
+  "d e . . ."
+  "f f f f f "
+  "f f f f f "
+  "g . h . i ";
+  &__title{
+    grid-area: a;
+  }
+  &__totals{
+    &__overall{
+    grid-area: d;
+    }
+    &__daily {
+      grid-area: e;
+    }
+  }
+  &__progress{
+    grid-area: f;
+  }
+  &__signups{
+    grid-area: g;
+  }
+  &__donations{
+    grid-area: h;
+  }
+  &__daily{
+    grid-area: i;
+  }
+}
