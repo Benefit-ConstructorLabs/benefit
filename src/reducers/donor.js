@@ -10,6 +10,7 @@ const donor = (
     cardNo: '',
     cardExp: '',
     cardCCV: '',
+    donations: [],
   },
   action,
 ) => {
