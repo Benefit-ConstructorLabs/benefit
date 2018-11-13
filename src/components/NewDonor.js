@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import S3UploadContainer from '../containers/S3UploadContainer';
 import '../../styles/components/new-donor.scss';
 
 const NewDonor = ({
@@ -27,7 +28,6 @@ const NewDonor = ({
       >
         <h3>Add your basic information</h3>
         <ul>
-
           <li>
             <input
               className="nolabel"
@@ -78,6 +78,9 @@ const NewDonor = ({
               placeholder="Password"
               onChange={event => handleChange(event)}
             />
+          </li>
+          <li>
+            <S3UploadContainer />
           </li>
           <h3>Add your payment details</h3>
           <li>
