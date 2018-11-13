@@ -2,14 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom';
 import AppHeader from './AppHeader';
 import NewRecipientContainer from '../containers/NewRecipientContainer';
-<<<<<<< HEAD
-import AnimationWrapper from './AnimationWrapper';
 import PrivateRouteContainer from '../containers/PrivateRouteContainer';
-import Recipient from './Recipient';
-=======
-// import AnimationWrapper from './AnimationWrapper';
 import RecipientContainer from '../containers/RecipientContainer';
->>>>>>> staging
 import NewDonationContainer from '../containers/NewDonationContainer';
 import NewDonorContainer from '../containers/NewDonorContainer';
 import LoginContainer from '../containers/LoginContainer';
