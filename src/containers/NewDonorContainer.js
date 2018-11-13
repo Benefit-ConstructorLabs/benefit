@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NewDonor from '../components/NewDonor';
-import { setDonorInputField, addDonor } from '../actions';
+import { addDonor } from '../actions';
 
 const mapStateToProps = state => ({
   firstName: state.donor.firstName,
@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  setDonorInputField,
+  // setDonorInputField,
   addDonor,
 };
 
