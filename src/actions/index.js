@@ -56,7 +56,7 @@ export function setRecipientFromDB(recipient) {
 
 export function getRecipientFromDB(id) {
   return function (dispatch) {
-    fetch(`/api/recipient/${id}`)
+    fetch(`/api/recipient/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(recipient => dispatch(setRecipientFromDB(recipient)))
       .catch(error => console.log('FETCH ERROR', error.message));
@@ -180,6 +180,70 @@ export function addDonor() {
       .then((donorID) => {
         console.log(donorID);
       });
+  };
+}
+
+// passport actions
+export function setLoginDetails(fieldName, fieldValue) {
+  return {
+    type: 'SET_LOGIN_DETAILS',
+    fieldName,
+    fieldValue,
+  };
+}
+
+export function setUserFromPassport(user) {
+  console.log(user, 'from setUserFromPassport');
+  return {
+    type: 'SET_USER_FROM_PASSPORT',
+    isLoggedIn: true,
+    userID: user.userId,
+    // username: user.username,
+    userType: user.userType,
+  };
+}
+
+export function login() {
+  return function (dispatch, getState) {
+    const { login: user } = getState();
+    const loginData = {
+      username: user.username,
+      password: user.password,
+    };
+    fetch('/api/login', {
+      method: 'post',
+      body: JSON.stringify(loginData),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(`HTTP Error ${response.status} (${response.statusText})`);
+      })
+      .then((loggedinUser) => {
+        console.log(loggedinUser);
+        dispatch(setUserFromPassport(loggedinUser));
+      })
+      .catch(error => console.log('FETCH to POST ERROR', error.message));
+  };
+}
+
+export function setLogout() {
+  return { type: 'SET_LOGOUT' };
+}
+
+export function logout() {
+  return function (dispatch) {
+    fetch('/api/logout')
+      .then(response => response.json())
+      .then((body) => {
+        console.log(body);
+        dispatch(setLogout());
+      })
+      .catch(error => console.log(error));
   };
 }
 
