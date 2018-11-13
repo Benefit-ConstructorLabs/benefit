@@ -12,17 +12,20 @@ CREATE TABLE recipient(
   photo VARCHAR(500) NOT NULL UNIQUE,
   tel VARCHAR(20) UNIQUE,
   username VARCHAR(100) NOT NULL UNIQUE,
-  password VARCHAR(200) NOT NULL
+  password VARCHAR(200) NOT NULL,
+  type VARCHAR(20)
 );
 
 CREATE TABLE donor(
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL UNIQUE,
+  photo VARCHAR(500) NOT NULL UNIQUE,
+  username VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL,
   tel VARCHAR(20) NOT NULL UNIQUE,
-  stripe JSON
+  stripe JSON,
+  type VARCHAR(20)
 );
 
 CREATE TABLE donation(
@@ -44,33 +47,32 @@ CREATE TABLE biography(
   FOREIGN KEY (recipient_id) REFERENCES recipient(id)
 );
 
-
-INSERT INTO recipient
-  (id, first_name, last_name, photo, tel, username, password)
-  VALUES
-  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '111');
-INSERT INTO recipient
-  (id, first_name, last_name, photo, tel, username, password)
-  VALUES
-  (2, 'Anna', 'Boolean', 'https://randomuser.me/api/portraits/women/54.jpg', '23456789012', 'aboolean', '222');
-INSERT INTO recipient
-  (id, first_name, last_name, photo, tel, username, password)
-  VALUES
-  (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '333');
+INSERT INTO recipient 
+  (id, first_name, last_name, photo, tel, username, password, type) 
+  VALUES 
+  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
+INSERT INTO recipient 
+  (id, first_name, last_name, photo, tel, username, password, type) 
+  VALUES 
+  (2, 'Anna', 'Boolean', 'https://randomuser.me/api/portraits/women/54.jpg', '23456789012', 'aboolean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
+INSERT INTO recipient 
+  (id, first_name, last_name, photo, tel, username, password, type) 
+  VALUES 
+  (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
 ALTER SEQUENCE recipient_id_seq RESTART WITH 4 INCREMENT BY 1;
 
 INSERT INTO donor
-  (id, first_name, last_name, email, password, tel, stripe)
-  VALUES
-  (1, 'Anon', 'Anonymous', 'anon@anonymous.com', '123', '02345678989', '{
+  (id, first_name, last_name, photo, username, password, tel, stripe, type) 
+  VALUES 
+  (1, 'Anon', 'Anonymous', '/static/assets/images/donorplaceholder.jpg', 'anon@anonymous.com', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', '02345678989', '{
   "stripe": "Some stripe stuff"
-  }');
+  }', 'donor');
 INSERT INTO donor
-  (id, first_name, last_name, email, password, tel, stripe)
-  VALUES
-  (2, 'Bill', 'Gates', 'bill@gates.com', 'Apple', '07850123368', '{
+  (id, first_name, last_name, photo, username, password, tel, stripe, type) 
+  VALUES 
+  (2, 'Barry', 'Allen', 'https://randomuser.me/api/portraits/men/6.jpg', 'barry@flash.com', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', '07850123368', '{
   "stripe": "Some more stripe stuff"
-  }');
+  }', 'donor');
 ALTER SEQUENCE donor_id_seq RESTART WITH 3 INCREMENT BY 1;
 
 INSERT INTO donation

@@ -5,7 +5,6 @@ import '../../styles/components/animation-wrapper.scss';
 
 const AnimationWrapper = Component => (
   (props) => {
-    const { match } = props;
     return (
       <CSSTransitionGroup
         transitionName="example"
