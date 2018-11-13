@@ -188,7 +188,7 @@ app.get('/api/recipient', (req, res) => {
 });
 
 // retrieve recipient by id
-app.get('/api/recipient/:id', (req, res) => {
+app.get('/api/recipient/:id', isLoggedIn, (req, res) => {
   const { id } = req.params;
   return db
     .one('SELECT id, first_name, last_name, tel, username, photo FROM recipient WHERE id=$1', [id])
@@ -208,7 +208,7 @@ app.post('/api/recipient', (req, res) => {
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
-      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
+      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
       [
         recipient.first_name,
         recipient.last_name,
@@ -216,6 +216,7 @@ app.post('/api/recipient', (req, res) => {
         recipient.photo,
         recipient.username,
         hash,
+        'recipient',
       ],
     ))
     .then(result => db.one(

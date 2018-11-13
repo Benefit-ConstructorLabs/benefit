@@ -164,15 +164,17 @@ export function addRecipient() {
   return function (dispatch, getState) {
     const { recipient, recipientImageUrl } = getState();
     const newDataKeysObject = {
-      first_name: recipient.firstName,
-      last_name: recipient.lastName,
-      username: recipient.username,
-      password: recipient.password,
-      photo: recipientImageUrl.url,
-      tel: recipient.tel,
-      bio_1: recipient.bio1,
-      bio_2: recipient.bio2,
-      bio_3: recipient.bio3,
+      recipient: {
+        first_name: recipient.firstName,
+        last_name: recipient.lastName,
+        username: recipient.username,
+        password: recipient.password,
+        photo: recipientImageUrl.url,
+        tel: recipient.tel,
+        bio_1: recipient.bio1,
+        bio_2: recipient.bio2,
+        bio_3: recipient.bio3,
+      },
     };
     fetch('/api/recipient', {
       method: 'post',
