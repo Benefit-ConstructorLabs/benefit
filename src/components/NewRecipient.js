@@ -64,12 +64,11 @@ class NewRecipient extends React.Component {
             if (!values.imageUrl) {
               errors.imageUrl = 'Required';
             }
-            console.log(errors, Object.values(errors));
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              console.log(JSON.stringify(values, null, 2));
+              // console.log(JSON.stringify(values, null, 2));
               setSubmitting(false);
               addRecipient(values);
             }, 400);
