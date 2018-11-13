@@ -49,9 +49,9 @@
     "hbs": "^4.0.1",
     "multiparty": "^4.2.1",
     "node": "^11.0.0",
+    "normalize-scss": "^7.0.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
-    "normalize-scss": "^7.0.1",
     "pg-promise": "^8.5.1",
     "prop-types": "^15.6.2",
     "qrcode": "^1.3.2",
@@ -64,6 +64,7 @@
     "react-transition-group": "^1.2.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "stripe": "^6.15.0",
     "twilio": "^3.23.2"
   },
   "devDependencies": {
