@@ -125,9 +125,9 @@ export function createPaymentDetails() {
     })
       .then(response => response.json())
       .then((donationID) => {
-        console.log(donationID);
+        console.log(donationID.transaction_id);
         dispatch(receiveStripeToken(temporaryStripeToken));
-        dispatch(setDonationID(donationID));
+        dispatch(setDonationID(donationID.transaction_id));
       });
 
     dispatch(setCardInput(''));
