@@ -194,7 +194,7 @@ app.get('/api/recipient/:id', (req, res) => {
     .one('SELECT id, first_name, last_name, tel, username, photo FROM recipient WHERE id=$1', [id])
     .then(data => db
       .one('SELECT * FROM biography WHERE recipient_id = $1', [data.id])
-    /* eslint-disable camelcase */
+      /* eslint-disable camelcase */
       .then(({ bio_1, bio_2, bio_3 }) => {
         res.json(Object.assign({}, data, { bio: [bio_1, bio_2, bio_3] }));
       }))
@@ -279,13 +279,32 @@ app.post('/api/donor', (req, res) => {
     .catch(error => res.json({ error: error.message }));
 });
 
-// retrieve all donations for recipient by id
-app.get('/api/donations/:id', (req, res) => {
+// get donor by id
+app.get('/api/donor/:id', (req, res) => {
+  const { id } = req.params;
+  return db.one('SELECT id, first_name, last_name, tel, username, photo FROM donor WHERE id=$1', [id])
+    .then(details => res.json(details))
+    .catch(error => res.json({ error: error.message }));
+});
+
+// retrieve all donations by recipient id
+app.get('/api/donations/recipient/:id', (req, res) => {
   const { id } = req.params;
   return db
     .any(`SELECT donation.id, donor.photo, donor.first_name, donor.last_name, donation.amount
           FROM donor, donation WHERE recipient_id=$1
           AND donor.id = donation.donor_id`, [id])
+    .then(amounts => res.json(amounts))
+    .catch(error => res.json({ error: error.message }));
+});
+
+// retrieve all donations by donor id
+app.get('/api/donations/donor/:id', (req, res) => {
+  const { id } = req.params;
+  return db
+    .any(`SELECT donation.id, recipient.first_name, recipient.photo,  donation.amount
+          FROM recipient, donation WHERE donor_id=$1
+          AND recipient.id = donation.recipient_id`, [id])
     .then(amounts => res.json(amounts))
     .catch(error => res.json({ error: error.message }));
 });

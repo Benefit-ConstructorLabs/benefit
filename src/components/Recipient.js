@@ -15,7 +15,6 @@ class Recipient extends React.Component {
 
   render() {
     const { match, donations, profile } = this.props;
-    console.log(donations);
     return (
       <Tabs>
         <RecipientCode label="QR Code" routeParams={match} />

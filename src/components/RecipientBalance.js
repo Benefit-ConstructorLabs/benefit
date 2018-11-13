@@ -17,7 +17,6 @@ const RecipientBalance = ({ donations }) => {
               <img className="donor__photo" src={`${photo}`} alt="donor" />
               <span className="donor__name">
                 {`${first_name} ${last_name}`}
-.
               </span>
               <span className="amount">{`£${amount}`}</span>
             </li>

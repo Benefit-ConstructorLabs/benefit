@@ -233,7 +233,6 @@ export function setLoginDetails(fieldName, fieldValue) {
 }
 
 export function setUserFromPassport(user) {
-  console.log(user, 'from setUserFromPassport');
   return {
     type: 'SET_USER_FROM_PASSPORT',
     isLoggedIn: true,
@@ -264,7 +263,6 @@ export function login() {
         throw new Error(`HTTP Error ${response.status} (${response.statusText})`);
       })
       .then((loggedinUser) => {
-        console.log(loggedinUser);
         dispatch(setUserFromPassport(loggedinUser));
       })
       .catch(error => console.log('FETCH to POST ERROR', error.message));
@@ -294,19 +292,63 @@ export function setDonationsFromDB(donations) {
   };
 }
 
-export function getDonationsByID(id) {
+export function getDonationsByRecipientID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/${id}`)
+    fetch(`/api/donations/recipient/${id}`)
       .then(response => response.json())
       .then(donations => dispatch(setDonationsFromDB(donations)))
-      // .then(() => dispatch(getRecipientFromDB(id)))
       .catch(error => console.log(error.message));
   };
 }
 
 export function getProfileDetailsByID(id) {
   return function (dispatch) {
-    dispatch(getDonationsByID(id));
+    dispatch(getDonationsByRecipientID(id));
     dispatch(getRecipientFromDB(id));
+  };
+}
+
+export function setDonorDonationsFromDB(donations) {
+  return {
+    type: 'SET_DONOR_DONATIONS_FROM_DB',
+    donations,
+  };
+}
+
+export function getDonationsByDonorID(id) {
+  return function (dispatch) {
+    fetch(`/api/donations/donor/${id}`)
+      .then(response => response.json())
+      .then(donations => dispatch(setDonorDonationsFromDB(donations)))
+      .catch(error => console.log(error.message));
+  };
+}
+
+export function setDonorFromDB(donor) {
+  return {
+    type: 'SET_DONOR_FROM_DB',
+    id: donor.id,
+    firstName: donor.first_name,
+    lastName: donor.last_name,
+    username: donor.username,
+    tel: donor.tel,
+    photo: donor.photo,
+  };
+}
+
+
+export function getDonorFromDB(id) {
+  return function (dispatch) {
+    fetch(`/api/donor/${id}`, { credentials: 'same-origin' })
+      .then(response => response.json())
+      .then(donor => dispatch(setDonorFromDB(donor)))
+      .catch(error => console.log('FETCH ERROR', error.message));
+  };
+}
+
+export function getDonorDetailsByID(id) {
+  return function (dispatch) {
+    dispatch(getDonationsByDonorID(id));
+    dispatch(getDonorFromDB(id));
   };
 }
