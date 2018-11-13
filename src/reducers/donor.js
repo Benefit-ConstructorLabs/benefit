@@ -1,4 +1,18 @@
-const donor = (state = { donorID: 1 }, action) => {
+const donor = (
+  state = {
+    id: null,
+    donorID: 1,
+    firstName: '',
+    lastName: '',
+    tel: '',
+    email: '',
+    password: '',
+    cardNo: '',
+    cardExp: '',
+    cardCCV: '',
+  },
+  action,
+) => {
   switch (action.type) {
     case 'SET_DONOR_INPUT':
       return Object.assign({}, state, { [action.fieldName]: action.fieldValue });
