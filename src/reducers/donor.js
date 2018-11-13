@@ -2,6 +2,17 @@ const donor = (state = {}, action) => {
   switch (action.type) {
     case 'SET_DONOR_INPUT':
       return Object.assign({}, state, { [action.fieldName]: action.fieldValue });
+    case 'SET_DONOR_FROM_DB':
+      return Object.assign({}, state, {
+        id: action.id,
+        firstName: action.first_name,
+        lastName: action.last_name,
+        username: action.username,
+        tel: action.tel,
+        photo: action.photo,
+      });
+    case 'SET_DONOR_DONATIONS_FROM_DB':
+      return Object.assign({}, state, { donations: action.donations });
     default:
       return state;
   }

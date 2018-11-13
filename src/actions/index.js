@@ -270,6 +270,13 @@ export function getProfileDetailsByID(id) {
   };
 }
 
+export function setDonorDonationsFromDB(donations) {
+  return {
+    type: 'SET_DONOR_DONATIONS_FROM_DB',
+    donations,
+  };
+}
+
 export function getDonationsByDonorID(id) {
   return function (dispatch) {
     fetch(`/api/donations/donor/${id}`)
@@ -279,11 +286,24 @@ export function getDonationsByDonorID(id) {
   };
 }
 
+export function setDonorFromDB(donor) {
+  return {
+    type: 'SET_DONOR_FROM_DB',
+    id: donor.id,
+    firstName: donor.first_name,
+    lastName: donor.last_name,
+    username: donor.username,
+    tel: donor.tel,
+    photo: donor.photo,
+  };
+}
+
+
 export function getDonorFromDB(id) {
   return function (dispatch) {
     fetch(`/api/donor/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
-      .then(recipient => dispatch(setRecipientFromDB(recipient)))
+      .then(donor => dispatch(setDonorFromDB(donor)))
       .catch(error => console.log('FETCH ERROR', error.message));
   };
 }
