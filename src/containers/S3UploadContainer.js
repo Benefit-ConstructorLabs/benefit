@@ -1,13 +1,17 @@
 import { connect } from 'react-redux';
 import S3Upload from '../components/S3Upload';
-import { setRecipientPhotoUrl } from '../actions';
+import { setRecipientImageUrl, setUploadBlur } from '../actions';
 
 const mapStateToProps = state => (
-  { recipientImageUrl: state.recipientImageUrl.url }
+  {
+    recipientImageUrl: state.recipientImage.url,
+    uploadBlur: state.recipientImage.uploadBlur,
+  }
 );
 
 const mapDispatchToProps = {
-  setRecipientPhotoUrl,
+  setRecipientImageUrl,
+  setUploadBlur,
 };
 
 export default connect(

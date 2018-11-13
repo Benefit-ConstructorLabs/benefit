@@ -13,7 +13,8 @@ const mapStateToProps = state => ({
   bio2: state.recipient.bio2,
   bio3: state.recipient.bio3,
   recipientIdForQrCode: state.recipient.recipientIdForQrCode,
-  recipientImageUrl: state.recipientImageUrl.url,
+  recipientImageUrl: state.recipientImage.url,
+  uploadBlur: state.recipientImage.uploadBlur,
 });
 
 const mapDispatchToProps = {

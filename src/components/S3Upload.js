@@ -4,15 +4,21 @@ import PropTypes from 'prop-types';
 class S3Upload extends React.Component {
   constructor() {
     super();
-    this.state = {
-      uploadLocation: null,
-    };
+    this.inputRef = React.createRef();
   }
 
   uploadFile = (event) => {
     event.preventDefault();
+    const { onChange, name } = this.props;
     const formData = new FormData();
     const fileObj = event.target.files[0];
+
+    if (!fileObj) {
+      onChange({
+        target: { name, value: '' },
+      })
+    }
+
     formData.append('file', fileObj);
     fetch('/api/upload', {
       method: 'post',
@@ -20,36 +26,45 @@ class S3Upload extends React.Component {
     })
       .then(response => response.json())
       .then((data) => {
-        const { setRecipientPhotoUrl } = this.props;
-        this.setState({
-          uploadLocation: data.Location,
-        });
-        setRecipientPhotoUrl(data.Location);
+        if (onChange) {
+          onChange({
+            target: { name, value: data.Location },
+          });
+        }
       })
       .catch(error => error.json({ error: error.message }));
   }
 
-  handleBlur() {
-    console.log('upload blurred')
+  handleMouseDown = (event) => {
+    event.preventDefault();
+    this.inputRef.current.click();
+  }
+
+  handleClick = (event) => {
+    event.preventDefault();
   }
 
   render() {
-    const { uploadLocation } = this.state;
+    const { value } = this.props;
     return (
       <React.Fragment>
-        {uploadLocation
-          && (
-            <div className="newrecipient__photo">
-              <img alt="portrait" src={uploadLocation} height="100" />
-            </div>
-          )
-        }
+        
+        {value
+            && (
+              <div className="newrecipient__photo">
+                <img alt="portrait" src={value} height="100" />
+              </div>
+            )
+          }
+          
         <label className="fileUpload" htmlFor="pictureupload">
           Add a photo
+          <button type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>{value ? 'Replace' : 'Select'} image</button>
           <input
+            ref={this.inputRef}
             id="pictureUpload"
             type="file"
-            onBlur={this.handleBlur}
+            style={{ display: 'none' }}
             onChange={this.uploadFile}
           />
         </label>
@@ -59,7 +74,14 @@ class S3Upload extends React.Component {
 }
 
 S3Upload.propTypes = {
-  setRecipientPhotoUrl: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+};
+
+S3Upload.defaultProps = {
+  value: '',
 };
 
 export default S3Upload;

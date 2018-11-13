@@ -10,12 +10,11 @@ function setInputClass(errors, touched) {
 }
 
 function StyledMessage({ errors, touched, values, elem }) {
-  console.log(errors, touched, values, elem);
+  if (elem === 'upload') {
+    console.log(errors, touched, values, elem);
+  }
   if (errors[elem] && touched[elem]) {
     return (<div className={errors[elem] ? 'errorMessage' : 'validMessage'}><i className="fas cross fa-1x fa-times" />{errors[elem]}</div>);
-  }
-  if (elem === 'upload') {
-    return (<div className="validMessage"><i className="fas tick fa-1x fa-check-square" /></div>);
   }
   if (!errors[elem] && values[elem] !== '') {
     return (<div className="validMessage"><i className="fas tick fa-1x fa-check-square" /></div>);
@@ -34,7 +33,6 @@ class NewRecipient extends React.Component {
 
   render() {
     const {
-      recipientImageUrl,
       addRecipient,
     } = this.props;
     return (
@@ -42,7 +40,7 @@ class NewRecipient extends React.Component {
         <h2 className="newrecipient__title">Start taking digital donations in 3 steps</h2>
         <img src="" alt="" className="newrecipient__header-image" />
         <Formik
-          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '', bio1: '', bio2: '', bio3: '', upload: '' }}
+          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '', bio1: '', bio2: '', bio3: '', imageUrl: '' }}
           validate={(values) => {
             const errors = {};
             if (!values.firstName) {
@@ -62,8 +60,8 @@ class NewRecipient extends React.Component {
             } else if (values.password.length < 9) {
               errors.password = 'Password must have at least 8 characters';
             }
-            if (!recipientImageUrl) {
-              errors.upload = 'Required';
+            if (!values.imageUrl) {
+              errors.imageUrl = 'Required';
             }
             return errors;
           }}
@@ -196,12 +194,17 @@ class NewRecipient extends React.Component {
                   </label>
                 </li>
                 <li>
-                  <S3UploadContainer />
+                  <S3UploadContainer
+                    name="imageUrl"
+                    value={values.imageUrl}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
                   <StyledMessage
                     errors={errors}
                     touched={touched}
                     values={values}
-                    elem="upload"
+                    elem="imageUrl"
                   />
                 </li>
               </ul>
@@ -261,7 +264,6 @@ class NewRecipient extends React.Component {
 
 NewRecipient.propTypes = {
   addRecipient: PropTypes.func.isRequired,
-  recipientImageUrl: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string,
   tel: PropTypes.string,
@@ -274,7 +276,6 @@ NewRecipient.propTypes = {
 };
 
 NewRecipient.defaultProps = {
-  // lastName: '',
   tel: '',
   username: '',
   password: '',

@@ -19,10 +19,17 @@ export function toggleDonationComplete() {
   };
 }
 
-export function setRecipientPhotoUrl(url) {
+export function setRecipientImageUrl(url) {
   return {
-    type: 'SET_RECIPIENT_PHOTO_URL',
+    type: 'SET_RECIPIENT_IMAGE_URL',
     url,
+  };
+}
+
+export function setUploadBlur(blur) {
+  return {
+    type: 'SET_UPLOAD_BLUR',
+    blur,
   };
 }
 
@@ -121,14 +128,13 @@ export function setRecipientIdForQrCode(id) {
 }
 
 export function addRecipient(recipient) {
-  return function (dispatch, getState) {
-    const { recipientImageUrl } = getState();
+  return function (dispatch) {
     const newDataKeysObject = {
       first_name: recipient.firstName,
       last_name: recipient.lastName,
       username: recipient.username,
       password: recipient.password,
-      photo: recipientImageUrl.url,
+      photo: recipient.imageUrl,
       tel: recipient.tel,
       bio_1: recipient.bio1,
       bio_2: recipient.bio2,
