@@ -122,7 +122,7 @@ app.get('/', (req, res) => {
 
 // PASSPORT route to accept logins
 app.post('/api/login', passport.authenticate('local', { session: true }), (req, res) => {
-  res.json({ userId: req.user.id });
+  res.json({ userId: req.user.id, userType: req.user.type });
 });
 
 // PASSPORT profile page - only accessible to logged in users
@@ -169,15 +169,15 @@ app.post('/api/upload', (request, response) => {
   form.parse(request, async (error, fields, files) => {
     try {
       if (error) throw new Error(error);
-      const path = files.file[0].path;
+      const { path } = files.file[0];
       const buffer = fs.readFileSync(path);
       const type = fileType(buffer);
       const timestamp = Date.now().toString();
       const fileName = `${timestamp}-lg`;
       const data = await uploadFile(buffer, fileName, type);
       return response.status(200).send(data);
-    } catch (error) {
-      return response.status(400).send(error);
+    } catch (err) {
+      return response.status(400).send(err);
     }
   });
 });
@@ -190,13 +190,13 @@ app.get('/api/recipient', (req, res) => {
 });
 
 // retrieve recipient by id
-app.get('/api/recipient/:id', (req, res) => {
+app.get('/api/recipient/:id', isLoggedIn, (req, res) => {
   const { id } = req.params;
   return db
     .one('SELECT id, first_name, last_name, tel, username, photo FROM recipient WHERE id=$1', [id])
     .then(data => db
       .one('SELECT * FROM biography WHERE recipient_id = $1', [data.id])
-    /* eslint-disable camelcase */
+      /* eslint-disable camelcase */
       .then(({ bio_1, bio_2, bio_3 }) => {
         res.json(Object.assign({}, data, { bio: [bio_1, bio_2, bio_3] }));
       }))
@@ -210,7 +210,7 @@ app.post('/api/recipient', (req, res) => {
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
-      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
+      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
       [
         recipient.first_name,
         recipient.last_name,
@@ -218,6 +218,7 @@ app.post('/api/recipient', (req, res) => {
         recipient.photo,
         recipient.username,
         hash,
+        'recipient',
       ],
     ))
     .then(result => db.one(
@@ -261,7 +262,7 @@ app.post('/api/donation', (req, res) => {
   // enter in the database
   return db
     .one(
-      'INSERT INTO donation (recipient_id, donor_id, amount, stripe_id) VALUES ($1, $2, $3, $4) RETURNING id',
+      'INSERT INTO donation (recipient_id, donor_id, amount, stripe_id, time_stamp) VALUES ($1, $2, $3, $4, clock_timestamp()) RETURNING id',
       [donation.recipient_id, donation.donor_id, donation.amount, donation.stripe_id],
     )
     .then((result) => {
@@ -285,20 +286,39 @@ app.post('/api/donor', (req, res) => {
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(
-      'INSERT INTO donor (first_name, last_name, username, password, tel, stripe) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
-      [donor.first_name, donor.last_name, donor.email, hash, donor.tel, donor.stripe],
+      'INSERT INTO donor (first_name, last_name, photo, username, password, tel, stripe, type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
+      [donor.first_name, donor.last_name, donor.photo, donor.email, hash, donor.tel, donor.stripe, 'donor'],
     ))
     .then(result => res.json(result))
     .catch(error => res.json({ error: error.message }));
 });
 
-// retrieve all donations for recipient by id
-app.get('/api/donations/:id', (req, res) => {
+// get donor by id
+app.get('/api/donor/:id', (req, res) => {
+  const { id } = req.params;
+  return db.one('SELECT id, first_name, last_name, tel, username, photo FROM donor WHERE id=$1', [id])
+    .then(details => res.json(details))
+    .catch(error => res.json({ error: error.message }));
+});
+
+// retrieve all donations by recipient id
+app.get('/api/donations/recipient/:id', (req, res) => {
   const { id } = req.params;
   return db
     .any(`SELECT donation.id, donor.photo, donor.first_name, donor.last_name, donation.amount
           FROM donor, donation WHERE recipient_id=$1
           AND donor.id = donation.donor_id`, [id])
+    .then(amounts => res.json(amounts))
+    .catch(error => res.json({ error: error.message }));
+});
+
+// retrieve all donations by donor id
+app.get('/api/donations/donor/:id', (req, res) => {
+  const { id } = req.params;
+  return db
+    .any(`SELECT donation.id, recipient.first_name, recipient.photo,  donation.amount
+          FROM recipient, donation WHERE donor_id=$1
+          AND recipient.id = donation.recipient_id`, [id])
     .then(amounts => res.json(amounts))
     .catch(error => res.json({ error: error.message }));
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../../styles/components/payment-details-form.scss';
 import {injectStripe} from 'react-stripe-elements';
 
@@ -18,10 +19,6 @@ const PaymentDetailsForm = ({ stripe, createPaymentDetails, toggleDonationComple
         className="payment-details__form"
         onSubmit={(event) => {
           event.preventDefault();
-          // create stripe token from card details
-          // Within the context of `Elements`, this call to createToken knows which Element to
-          // tokenize, since there's only one in this group.
-          // stripe.createToken(element, tokenData)
           stripe.createToken()
             .then(({ token }) => {
               console.log('Received Stripe token:', token);
@@ -35,6 +32,13 @@ const PaymentDetailsForm = ({ stripe, createPaymentDetails, toggleDonationComple
       </form>
     </div>
   );
+
+
+PaymentDetailsForm.propTypes = {
+  createPaymentDetails: PropTypes.func.isRequired,
+  toggleDonationComplete: PropTypes.func.isRequired,
+  donationAmount: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
 };
 
 export default injectStripe(PaymentDetailsForm);

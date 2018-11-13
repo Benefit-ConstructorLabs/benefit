@@ -5,6 +5,11 @@ DROP DATABASE benefit;
 CREATE DATABASE benefit;
 
 -- Switch inside the new database and insert this code
+CREATE TABLE organisation(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE recipient(
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(100) NOT NULL,
@@ -13,7 +18,9 @@ CREATE TABLE recipient(
   tel VARCHAR(20) UNIQUE,
   username VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL,
-  type VARCHAR(20)
+  type VARCHAR(20),
+  organisation_id INT,
+  FOREIGN KEY (organisation_id) REFERENCES organisation(id)
 );
 
 CREATE TABLE donor(
@@ -34,6 +41,7 @@ CREATE TABLE donation(
   donor_id INT,
   amount INT NOT NULL,
   stripe_id VARCHAR(200) NOT NULL,
+  time_stamp TIMESTAMP WITH TIME ZONE,
   FOREIGN KEY (recipient_id) REFERENCES recipient(id),
   FOREIGN KEY (donor_id) REFERENCES donor(id)
 );
@@ -47,18 +55,24 @@ CREATE TABLE biography(
   FOREIGN KEY (recipient_id) REFERENCES recipient(id)
 );
 
+INSERT INTO organisation
+(id, name)
+VALUES
+(1, 'Macmillan Cancer Support');
+ALTER SEQUENCE organisation_id_seq RESTART WITH 2 INCREMENT BY 1;
+
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id) 
   VALUES 
-  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
+  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1);
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id) 
   VALUES 
-  (2, 'Anna', 'Boolean', 'https://randomuser.me/api/portraits/women/54.jpg', '23456789012', 'aboolean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
+  (2, 'Anna', 'Boolean', 'https://randomuser.me/api/portraits/women/54.jpg', '23456789012', 'aboolean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1);
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id) 
   VALUES 
-  (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
+  (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1);
 ALTER SEQUENCE recipient_id_seq RESTART WITH 4 INCREMENT BY 1;
 
 INSERT INTO donor
@@ -76,29 +90,29 @@ INSERT INTO donor
 ALTER SEQUENCE donor_id_seq RESTART WITH 3 INCREMENT BY 1;
 
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (1, 1, 1, 500, 'serfvboiuygtfdfghj3456');
+  (1, 1, 1, 200, 'serfvboiuygtfdfghj3456', '2018-10-21T10:37:33.735972+01:00');
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (2, 1, 2, 5000, 'asdfghjk2345678');
+  (2, 1, 2, 1000, 'asdfghjk2345678', '2018-10-22T10:37:33.735972+01:00');
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (3, 2, 1, 508, '2345678g');
+  (3, 2, 1, 500, '2345678g', '2018-10-12T10:37:33.735972+01:00');
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (4, 2, 2, 260, '98765rertyhj');
+  (4, 2, 2, 300, '98765rertyhj', '2018-09-22T10:37:33.735972+01:00');
 INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (5, 3, 1, 3132, 'oiuytfghjkmn');
+  (5, 3, 1, 3000, 'oiuytfghjkmn', '2018-09-02T10:37:33.735972+01:00');
   INSERT INTO donation
-  (id, recipient_id, donor_id, amount, stripe_id)
+  (id, recipient_id, donor_id, amount, stripe_id, time_stamp)
   VALUES
-  (6, 3, 2, 9987, 'aiuytrerfg5t8');
+  (6, 3, 2, 9000, 'aiuytrerfg5t8', '2018-08-12T10:37:33.735972+01:00');
 ALTER SEQUENCE donation_id_seq RESTART WITH 7 INCREMENT BY 1;
 
 INSERT INTO biography
@@ -114,3 +128,4 @@ INSERT INTO biography
   VALUES
   (3, 3, 'I make key charms', 'I am saving for a rent deposit', 'I like muffins');
 ALTER SEQUENCE biography_id_seq RESTART WITH 4 INCREMENT BY 1;
+

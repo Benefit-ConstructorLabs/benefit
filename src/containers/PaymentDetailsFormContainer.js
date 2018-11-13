@@ -9,16 +9,10 @@ const mapStateToProps = state => (
   }
 );
 
-function mapDispatchToProps(dispatch) {
-  return {
-    createPaymentDetails: (paymentDetails) => {
-      dispatch(createPaymentDetails(paymentDetails));
-    },
-    toggleDonationComplete: () => {
-      dispatch(toggleDonationComplete());
-    },
-  };
-}
+const mapDispatchToProps = {
+  createPaymentDetails,
+  toggleDonationComplete,
+};
 
 export default connect(
   mapStateToProps,

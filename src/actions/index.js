@@ -19,13 +19,6 @@ export function toggleDonationComplete() {
   };
 }
 
-export function setRecipientPhotoUrl(url) {
-  return {
-    type: 'SET_RECIPIENT_PHOTO_URL',
-    url,
-  };
-}
-
 export function getQRCode(id) {
   return function (dispatch) {
     fetch(`/api/recipient/${id}`)
@@ -123,14 +116,6 @@ export function submitRecipientForm() {
   };
 }
 
-export function setInputField(fieldName, fieldValue) {
-  return {
-    type: 'SET_RECIPIENT_INPUT',
-    fieldName,
-    fieldValue,
-  };
-}
-
 export function setRecipientIdForQrCode(id) {
   return {
     type: 'SET_RECIPIENT_ID',
@@ -138,19 +123,20 @@ export function setRecipientIdForQrCode(id) {
   };
 }
 
-export function addRecipient() {
-  return function (dispatch, getState) {
-    const { recipient, recipientImageUrl } = getState();
+export function addRecipient(recipient) {
+  return function (dispatch) {
     const newDataKeysObject = {
-      first_name: recipient.firstName,
-      last_name: recipient.lastName,
-      username: recipient.username,
-      password: recipient.password,
-      photo: recipientImageUrl.url,
-      tel: recipient.tel,
-      bio_1: recipient.bio1,
-      bio_2: recipient.bio2,
-      bio_3: recipient.bio3,
+      recipient: {
+        first_name: recipient.firstName,
+        last_name: recipient.lastName,
+        username: recipient.username,
+        password: recipient.password,
+        photo: recipientImageUrl.url,
+        tel: recipient.tel,
+        bio_1: recipient.bio1,
+        bio_2: recipient.bio2,
+        bio_3: recipient.bio3,
+      },
     };
     fetch('/api/recipient', {
       method: 'post',
@@ -176,13 +162,16 @@ export function setDonorInputField(fieldName, fieldValue) {
 
 export function addDonor() {
   return function (dispatch, getState) {
-    const { donor } = getState();
+    const { donor, recipientImageUrl } = getState();
     const newDataKeysObject = {
-      first_name: donor.firstName,
-      last_name: donor.lastName,
-      email: donor.email,
-      password: donor.password,
-      tel: donor.tel,
+      donor: {
+        first_name: donor.firstName,
+        last_name: donor.lastName,
+        photo: recipientImageUrl.url,
+        email: donor.email,
+        password: donor.password,
+        tel: donor.tel,
+      },
     };
     fetch('/api/donor', {
       method: 'post',
@@ -208,12 +197,10 @@ export function setLoginDetails(fieldName, fieldValue) {
 }
 
 export function setUserFromPassport(user) {
-  console.log(user, 'from setUserFromPassport');
   return {
     type: 'SET_USER_FROM_PASSPORT',
     isLoggedIn: true,
     userID: user.userId,
-    // username: user.username,
     userType: user.userType,
   };
 }
@@ -239,7 +226,6 @@ export function login() {
         throw new Error(`HTTP Error ${response.status} (${response.statusText})`);
       })
       .then((loggedinUser) => {
-        console.log(loggedinUser);
         dispatch(setUserFromPassport(loggedinUser));
       })
       .catch(error => console.log('FETCH to POST ERROR', error.message));
@@ -269,19 +255,62 @@ export function setDonationsFromDB(donations) {
   };
 }
 
-export function getDonationsByID(id) {
+export function getDonationsByRecipientID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/${id}`)
+    fetch(`/api/donations/recipient/${id}`)
       .then(response => response.json())
       .then(donations => dispatch(setDonationsFromDB(donations)))
-      // .then(() => dispatch(getRecipientFromDB(id)))
       .catch(error => console.log(error.message));
   };
 }
 
 export function getProfileDetailsByID(id) {
   return function (dispatch) {
-    dispatch(getDonationsByID(id));
+    dispatch(getDonationsByRecipientID(id));
     dispatch(getRecipientFromDB(id));
+  };
+}
+
+export function setDonorDonationsFromDB(donations) {
+  return {
+    type: 'SET_DONOR_DONATIONS_FROM_DB',
+    donations,
+  };
+}
+
+export function getDonationsByDonorID(id) {
+  return function (dispatch) {
+    fetch(`/api/donations/donor/${id}`)
+      .then(response => response.json())
+      .then(donations => dispatch(setDonorDonationsFromDB(donations)))
+      .catch(error => console.log(error.message));
+  };
+}
+
+export function setDonorFromDB(donor) {
+  return {
+    type: 'SET_DONOR_FROM_DB',
+    id: donor.id,
+    firstName: donor.first_name,
+    lastName: donor.last_name,
+    username: donor.username,
+    tel: donor.tel,
+    photo: donor.photo,
+  };
+}
+
+export function getDonorFromDB(id) {
+  return function (dispatch) {
+    fetch(`/api/donor/${id}`, { credentials: 'same-origin' })
+      .then(response => response.json())
+      .then(donor => dispatch(setDonorFromDB(donor)))
+      .catch(error => console.log('FETCH ERROR', error.message));
+  };
+}
+
+export function getDonorDetailsByID(id) {
+  return function (dispatch) {
+    dispatch(getDonationsByDonorID(id));
+    dispatch(getDonorFromDB(id));
   };
 }
