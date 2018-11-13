@@ -47,7 +47,6 @@ CREATE TABLE biography(
   bio_3 TEXT,
   FOREIGN KEY (recipient_id) REFERENCES recipient(id)
 );
-  
 
 INSERT INTO recipient 
   (id, first_name, last_name, photo, tel, username, password, type) 
@@ -103,17 +102,16 @@ INSERT INTO donation
   (6, 3, 2, 9000, 'aiuytrerfg5t8', '2018-08-12T10:37:33.735972+01:00');
 ALTER SEQUENCE donation_id_seq RESTART WITH 7 INCREMENT BY 1;
 
-INSERT INTO biography 
+INSERT INTO biography
   (id, recipient_id, bio_1, bio_2, bio_3)
   VALUES
   (1, 1, 'I play the trumpet', 'I like black coffee', 'I am an Arsenal fan');
-INSERT INTO biography 
+INSERT INTO biography
   (id, recipient_id, bio_1, bio_2, bio_3)
   VALUES
   (2, 2, 'I have 4 children', 'I like sci-fi', 'I enjoy reading');
-INSERT INTO biography 
+INSERT INTO biography
   (id, recipient_id, bio_1, bio_2, bio_3)
   VALUES
   (3, 3, 'I make key charms', 'I am saving for a rent deposit', 'I like muffins');
 ALTER SEQUENCE biography_id_seq RESTART WITH 4 INCREMENT BY 1;
-
