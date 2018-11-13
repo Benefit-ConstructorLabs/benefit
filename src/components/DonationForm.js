@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/components/donation-form.scss';
 
-const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, togglePaymentDetails }) => (
+const DonationForm = ({ donationAmount, setDonationAmount, setDonorID, firstName, photo, togglePaymentDetails }) => (
   <React.Fragment>
     <img className="donation__recipient__photo" alt={firstName} src={photo} />
     <h3 className="donation__purpose">
@@ -13,6 +13,7 @@ const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, tog
       onSubmit={(event) => {
         event.preventDefault();
         togglePaymentDetails();
+        setDonorID();
       }}
       className="donation__form"
     >

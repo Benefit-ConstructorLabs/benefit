@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/components/payment-details-form.scss';
+import {Elements} from 'react-stripe-elements';
+import InjectedCheckoutForm from './CheckoutForm';
 
 const PaymentDetailsForm = ({
   createPaymentDetails,
@@ -61,6 +63,9 @@ const PaymentDetailsForm = ({
         {`Donate £${donationAmount} to ${firstName}`}
       </button>
     </form>
+      <Elements>
+        <InjectedCheckoutForm />
+      </Elements>
   </div>
 );
 

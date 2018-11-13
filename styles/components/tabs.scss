@@ -1,0 +1,28 @@
+@import '../base';
+
+.tabs{
+  height: 85vh;
+  position: relative;
+}
+.tab-list {
+  background: $grey;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  height: 5vh;
+  width: 100%;
+}
+
+.tab-list-item {
+  flex: 1;
+  display: inline-block;
+  list-style: none;
+  padding: 0.5rem 0.75rem;
+  margin: -1px 0 0 0;
+}
+
+.tab-list-active {
+  background-color: white;
+}

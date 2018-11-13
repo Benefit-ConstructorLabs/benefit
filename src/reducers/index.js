@@ -5,6 +5,7 @@ import paymentDetails from './paymentDetails';
 import view from './view';
 import qrCodeUrl from './qrCodeUrl';
 import donor from './donor';
+import login from './login';
 
 export default combineReducers({
   donation,
@@ -13,4 +14,5 @@ export default combineReducers({
   paymentDetails,
   qrCodeUrl,
   donor,
+  login,
 });
