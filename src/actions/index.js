@@ -207,6 +207,24 @@ export function login() {
   };
 }
 
+export function checkLogin() {
+  return function (dispatch) {
+    fetch('/api/user', { credentials: 'same-origin' })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(`HTTP Error ${response.status} (${response.statusText})`);
+      })
+      .then((user) => {
+        if (user.userId) {
+          dispatch(setUserFromPassport(user));
+        }
+      })
+      .catch(error => console.log('FETCH to GET ERROR', error.message));
+  };
+}
+
 export function setLogout() {
   return { type: 'SET_LOGOUT' };
 }
@@ -232,7 +250,7 @@ export function setDonationsFromDB(donations) {
 
 export function getDonationsByRecipientID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/recipient/${id}`)
+    fetch(`/api/donations/recipient/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(donations => dispatch(setDonationsFromDB(donations)))
       .catch(error => console.log(error.message));
@@ -255,7 +273,7 @@ export function setDonorDonationsFromDB(donations) {
 
 export function getDonationsByDonorID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/donor/${id}`)
+    fetch(`/api/donations/donor/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(donations => dispatch(setDonorDonationsFromDB(donations)))
       .catch(error => console.log(error.message));
