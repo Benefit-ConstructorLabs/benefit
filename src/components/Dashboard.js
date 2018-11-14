@@ -4,6 +4,7 @@ import {
   ComposedChart, BarChart, PieChart, Pie, Radar, RadarChart, PolarGrid,
   PolarAngleAxis, PolarRadiusAxis, Cell, XAxis, YAxis, Tooltip, Legend, CartesianGrid, Area, Bar, Line
 } from 'recharts';
+import { format } from 'date-fns';
 import '../../styles/components/dashboard.scss';
 
 class Dashboard extends React.Component {
@@ -130,7 +131,7 @@ class Dashboard extends React.Component {
                 return (
                   <tr key={id}>
                     <td>{id}</td>
-                    <td>{time}</td>
+                    <td>{format(time, 'D/M/YYYY')}</td>
                     <td>{amount}</td>
                     <td>{recipient}</td>
                     <td>{donor}</td>
