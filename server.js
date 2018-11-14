@@ -333,7 +333,8 @@ app.get('/api/donations/organisation/:id', (req, res) => {
           FROM donation, recipient, donor
           WHERE recipient.id = donation.recipient_id
           AND donor.id = donation.donor_id
-          AND recipient.organisation_id = $1`, [id])
+          AND recipient.organisation_id = $1
+          ORDER BY time DESC`, [id])
     .then(donations => res.json(donations))
     .catch(error => res.json({ error: error.message }));
 });

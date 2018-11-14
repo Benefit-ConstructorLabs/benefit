@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  ComposedChart, BarChart, PieChart, Pie, Radar, RadarChart, PolarGrid,
-  PolarAngleAxis, PolarRadiusAxis, Cell, XAxis, YAxis, Tooltip, Legend, CartesianGrid, Area, Bar, Line
+  ComposedChart, BarChart, PieChart, Pie, Radar,
+  RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
+  Cell, XAxis, YAxis, Tooltip, Legend,
+  CartesianGrid, Area, Bar, Line,
 } from 'recharts';
 import { format } from 'date-fns';
 import '../../styles/components/dashboard.scss';
 
 class Dashboard extends React.Component {
-
   componentDidMount() {
     const { id, getDonationsByOrganisationID } = this.props;
     getDonationsByOrganisationID(id);
@@ -25,8 +26,8 @@ class Dashboard extends React.Component {
     ];
 
     const signupData = [
-      { name: 'Recipients', today: 40, other: 200, },
-      { name: 'Donors', today: 300, other: 1308, },
+      { name: 'Recipients', today: 40, other: 200 },
+      { name: 'Donors', today: 300, other: 1308 },
     ];
 
     // pie chart
@@ -37,9 +38,9 @@ class Dashboard extends React.Component {
       { name: '£10', value: 100 },
       { name: '£1', value: 200 },
       { name: '£20', value: 40 },
-    ]
+    ];
 
-    //radar
+    // radar
     const dailyData = [
       { subject: 'Monday', A: 120, B: 110, fullMark: 150 },
       { subject: 'Tuesday', A: 98, B: 130, fullMark: 150 },
@@ -124,7 +125,14 @@ class Dashboard extends React.Component {
           </RadarChart>
         </section>
         <section className="dashboard__donations">
-          <table>
+          <table className="dashboard__donations__table">
+            <thead>
+              <td>ID</td>
+              <td>Date</td>
+              <td>Amount</td>
+              <td>Recipient</td>
+              <td>Donor</td>
+            </thead>
             <tbody>
               {donations.map((donation) => {
                 const { id, time, amount, recipient, donor } = donation;
@@ -132,7 +140,7 @@ class Dashboard extends React.Component {
                   <tr key={id}>
                     <td>{id}</td>
                     <td>{format(time, 'D/M/YYYY')}</td>
-                    <td>{amount}</td>
+                    <td>{`£ ${Number.parseFloat(amount / 10).toFixed(2)}`}</td>
                     <td>{recipient}</td>
                     <td>{donor}</td>
                   </tr>

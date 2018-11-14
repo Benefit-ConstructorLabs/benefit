@@ -40,5 +40,9 @@
   }
   &__donations{
     grid-area: j;
+    &__table{
+
+    width: 100%;
+  }
   }
 }
