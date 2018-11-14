@@ -6,7 +6,7 @@ import {
   Cell, XAxis, YAxis, Tooltip, Legend,
   CartesianGrid, Area, Bar, Line,
 } from 'recharts';
-import { format } from 'date-fns';
+import { format, getTime } from 'date-fns';
 import '../../styles/components/dashboard.scss';
 
 class Dashboard extends React.Component {
@@ -16,14 +16,21 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    const progressData = [
-      { name: 'Page A', uv: 590, pv: 800, amt: 1400 },
-      { name: 'Page B', uv: 868, pv: 967, amt: 1506 },
-      { name: 'Page C', uv: 1397, pv: 1098, amt: 1989 },
-      { name: 'Page D', uv: 1480, pv: 1200, amt: 2228 },
-      { name: 'Page E', uv: 1520, pv: 1108, amt: 3100 },
-      { name: 'Page F', uv: 1400, pv: 680, amt: 3700 },
-    ];
+    const { donations } = this.props;
+
+    let total = 0;
+    let todayTotal = 0;
+
+    const timelineData = [...donations];
+    timelineData.reverse();
+
+    const timeSeries = timelineData.map((donation, index) => {
+      const { time, amount } = donation;
+      total += (amount / 10);
+      return {
+        time: getTime(time), amount: amount / 10, total, average: total / (index + 1),
+      };
+    });
 
     const signupData = [
       { name: 'Recipients', today: 40, other: 200 },
@@ -50,33 +57,30 @@ class Dashboard extends React.Component {
       { subject: 'Saturday', A: 65, B: 85, fullMark: 150 },
     ];
 
-    const { donations } = this.props;
-
-
     return (
 
       <section className="dashboard">
         <h2 className="dashboard__title">Dashboard</h2>
         <dl className="dashboard__totals__overall">
           <dd>Total</dd>
-          <dt>£14500</dt>
+          <dt>{`£${total}`}</dt>
         </dl>
         <dl className="dashboard__totals__daily">
           <dd>Today’s total</dd>
           <dt>£564</dt>
         </dl>
         <section className="dashboard__progress">
-          <ComposedChart width={960} height={400} data={progressData}
+          <ComposedChart width={960} height={400} data={timeSeries}
             margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-            <CartesianGrid stroke='#f5f5f5' />
-            <XAxis dataKey="name" />
-            <YAxis yAxisId="left" orientation="left" stroke="#BADA55" />
-            <YAxis yAxisId="right" orientation="right" stroke="#8884d8" />
+            <CartesianGrid stroke="#f5f5f5" />
+            <XAxis dataKey="time" type="number" domain={['auto', 'auto']} tickFormatter={time => format(time, 'D/M/YYYY')} />
+            <YAxis yAxisId="left" orientation="left" stroke="#BADA55" label={{ value: 'total (£)', angle: -90, position: 'insideLeft' }} />
+            <YAxis yAxisId="right" orientation="right" stroke="#8884d8" label={{ value: 'donation (£)', angle: -90, position: 'insideRight' }} />
             <Tooltip />
             <Legend />
-            <Area yAxisId="left" type='monotone' dataKey='amt' fill='#BADA55' stroke='#BADA55' />
-            <Bar yAxisId="right" dataKey='pv' barSize={40} fill='#413ea0' />
-            <Line yAxisId="right" type='monotone' dataKey='uv' stroke='#ff7300' />
+            <Area yAxisId="left" type='monotone' dataKey='total' fill="#BADA55" stroke="#BADA55" />
+            <Bar yAxisId="right" dataKey='amount' barSize={40} fill='#413ea0' />
+            <Line yAxisId="right" type='monotone' dataKey='average' stroke="#ff7300" />
           </ComposedChart>
         </section>
 
@@ -127,11 +131,13 @@ class Dashboard extends React.Component {
         <section className="dashboard__donations">
           <table className="dashboard__donations__table">
             <thead>
-              <td>ID</td>
-              <td>Date</td>
-              <td>Amount</td>
-              <td>Recipient</td>
-              <td>Donor</td>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Recipient</th>
+                <th>Donor</th>
+              </tr>
             </thead>
             <tbody>
               {donations.map((donation) => {

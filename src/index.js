@@ -7,15 +7,15 @@ import { StripeProvider } from 'react-stripe-elements';
 import rootReducer from './reducers';
 import App from './components/App';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(
-  thunkMiddleware,
-)));
-
-
-// const store = createStore(rootReducer, applyMiddleware(
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(
 //   thunkMiddleware,
-// ));
+// )));
+
+
+const store = createStore(rootReducer, applyMiddleware(
+  thunkMiddleware,
+));
 
 ReactDOM.render(
   <Provider store={store}>
