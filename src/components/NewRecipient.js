@@ -58,7 +58,7 @@ class NewRecipient extends React.Component {
             }
             if (!values.password) {
               errors.password = 'Required';
-            } else if (values.password.length < 9) {
+            } else if (values.password.length < 8) {
               errors.password = 'Password must have at least 8 characters';
             }
             if (!values.imageUrl) {

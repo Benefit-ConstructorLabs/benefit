@@ -25,9 +25,12 @@ function StyledMessage({ errors, touched, values, elem }) {
 
 class NewDonor extends React.Component {
   componentWillReceiveProps(newProps) {
-    // const { history } = this.props;
-    // const url = `/donor/${newProps.recipientIdForQrCode}`;
-    // history.push(url);
+    const { newDonorId, history } = this.props;
+    console.log(newDonorId, history, newProps, newProps.newDonorId);
+    if (newProps.newDonorId !== newDonorId) {
+      const url = `/donor/${newProps.newDonorId}`;
+      history.push(url);
+    }
   }
 
   render() {
@@ -58,7 +61,7 @@ class NewDonor extends React.Component {
             }
             if (!values.password) {
               errors.password = 'Required';
-            } else if (values.password.length < 9) {
+            } else if (values.password.length < 8) {
               errors.password = 'Password must have at least 8 characters';
             }
             if (!values.imageUrl) {
@@ -220,7 +223,7 @@ class NewDonor extends React.Component {
                     className="validMessage"
                     type="text"
                     name="cardNo"
-                    value=""
+                    defaultValue=""
                     placeholder="Card Number"
                   />
                 </li>
@@ -229,7 +232,7 @@ class NewDonor extends React.Component {
                     className="validMessage"
                     type="text"
                     name="cardExp"
-                    value=""
+                    defaultValue=""
                     placeholder="Expiry Date"
                   />
                 </li>
@@ -238,7 +241,7 @@ class NewDonor extends React.Component {
                     className="validMessage"
                     type="text"
                     name="cardCCV"
-                    value=""
+                    defaultValue=""
                     placeholder="CCV"
                   />
                 </li>
@@ -258,9 +261,13 @@ class NewDonor extends React.Component {
   }
 }
 
-
 NewDonor.propTypes = {
   addDonor: PropTypes.func.isRequired,
+  newDonorId: PropTypes.string,
+};
+
+NewDonor.defaultProps = {
+  newDonorId: undefined,
 };
 
 export default NewDonor;

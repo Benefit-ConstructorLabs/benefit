@@ -1,21 +1,16 @@
 import { connect } from 'react-redux';
 import NewDonor from '../components/NewDonor';
-import { addDonor } from '../actions';
+import { addDonor, setNewDonorId } from '../actions';
 
-const mapStateToProps = state => ({
-  firstName: state.donor.firstName,
-  lastName: state.donor.lastName,
-  tel: state.donor.tel,
-  email: state.donor.email,
-  password: state.donor.password,
-  cardNo: state.donor.cardNo,
-  cardExp: state.donor.cardExp,
-  cardCCV: state.donor.cardCCV,
-});
+const mapStateToProps = state => (
+  {
+    newDonorId: state.donor.newDonorId,
+  }
+);
 
 const mapDispatchToProps = {
-  // setDonorInputField,
   addDonor,
+  setNewDonorId,
 };
 
 export default connect(

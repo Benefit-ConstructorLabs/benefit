@@ -2,6 +2,7 @@ const donor = (
   state = {
     id: null,
     donorID: 1,
+    newDonorId: 1,
     firstName: '',
     lastName: '',
     tel: '',
@@ -28,6 +29,8 @@ const donor = (
       });
     case 'SET_DONOR_DONATIONS_FROM_DB':
       return Object.assign({}, state, { donations: action.donations });
+    case 'SET_NEW_DONOR_ID':
+      return Object.assign({}, state, { newDonorId: action.newDonorId });
     case 'SET_DONOR_ID':
       return Object.assign({}, state, { donorID: action.donorID });
     default:

@@ -284,12 +284,12 @@ app.post('/api/donation', (req, res) => {
 // add new donor to the database
 app.post('/api/donor', (req, res) => {
   const donor = req.body;
-  const stripe = { stripe: { name: 'bob' } }; // Matt to add stripe stuff here
+  const stripeTemp = { stripe: { name: 'bob' } }; // Matt to add stripe stuff here
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(
       'INSERT INTO donor (first_name, last_name, photo, username, password, tel, stripe, type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
-      [donor.firstName, donor.lastName, donor.imageUrl, donor.email, hash, donor.tel, JSON.stringify(stripe), 'donor'],
+      [donor.firstName, donor.lastName, donor.imageUrl, donor.email, hash, donor.tel, JSON.stringify(stripeTemp), 'donor'],
     ))
     .then(result => console.log(result) || res.json(result))
     .catch(error => res.json({ error }));
