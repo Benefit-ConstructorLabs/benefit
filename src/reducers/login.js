@@ -9,7 +9,6 @@ const login = (
       return Object.assign({}, state, {
         isLoggedIn: true,
         userId: action.userID,
-        // username: action.username,
         userType: action.userType,
       });
     case 'SET_LOGOUT':

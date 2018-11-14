@@ -5,6 +5,11 @@ DROP DATABASE benefit;
 CREATE DATABASE benefit;
 
 -- Switch inside the new database and insert this code
+CREATE TABLE organisation(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE recipient(
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(100) NOT NULL,
@@ -13,7 +18,9 @@ CREATE TABLE recipient(
   tel VARCHAR(20) UNIQUE,
   username VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL,
-  type VARCHAR(20)
+  type VARCHAR(20),
+  organisation_id INT,
+  FOREIGN KEY (organisation_id) REFERENCES organisation(id)
 );
 
 CREATE TABLE donor(
@@ -48,18 +55,24 @@ CREATE TABLE biography(
   FOREIGN KEY (recipient_id) REFERENCES recipient(id)
 );
 
+INSERT INTO organisation
+(id, name)
+VALUES
+(1, 'Macmillan Cancer Support');
+ALTER SEQUENCE organisation_id_seq RESTART WITH 2 INCREMENT BY 1;
+
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id) 
   VALUES 
-  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
+  (1, 'John', 'Smith', 'https://randomuser.me/api/portraits/men/33.jpg', '01234567890', 'jsmith', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1);
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id) 
   VALUES 
-  (2, 'Anna', 'Boolean', 'https://randomuser.me/api/portraits/women/54.jpg', '23456789012', 'aboolean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
+  (2, 'Anna', 'Boolean', 'https://randomuser.me/api/portraits/women/54.jpg', '23456789012', 'aboolean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1);
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id) 
   VALUES 
-  (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient');
+  (3, 'Sam', 'Dean', 'https://randomuser.me/api/portraits/men/82.jpg', '9876543221678', 'sdean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1);
 ALTER SEQUENCE recipient_id_seq RESTART WITH 4 INCREMENT BY 1;
 
 INSERT INTO donor
@@ -115,3 +128,4 @@ INSERT INTO biography
   VALUES
   (3, 3, 'I make key charms', 'I am saving for a rent deposit', 'I like muffins');
 ALTER SEQUENCE biography_id_seq RESTART WITH 4 INCREMENT BY 1;
+

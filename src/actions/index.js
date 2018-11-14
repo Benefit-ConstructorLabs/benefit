@@ -56,27 +56,6 @@ export function getRecipientFromDB(id) {
   };
 }
 
-export function setCardInput(cardNumber) {
-  return {
-    type: 'SET_CARD_INPUT',
-    cardNumber,
-  };
-}
-
-export function setExpDateInput(expDate) {
-  return {
-    type: 'SET_EXP_DATE_INPUT',
-    expDate,
-  };
-}
-
-export function setCcvInput(ccv) {
-  return {
-    type: 'SET_CCV_INPUT',
-    ccv,
-  };
-}
-
 export function receiveStripeToken(stripeToken) {
   return {
     type: 'RECEIVE_STRIPE_TOKEN',
@@ -99,16 +78,15 @@ export function setDonationID(donationID) {
 
 // Create donation, send details to stripe and receive back token
 // Stripe token hardcoded
-export function createPaymentDetails() {
+export function createPaymentDetails(token) {
   return function (dispatch, getState) {
     const { donor, recipient, donation } = getState();
-    const temporaryStripeToken = 'tok_1DTtwg2eZvKYlo2C0OVGbY7U_3';
     const newDataKeysObject = {
       donation: {
         recipient_id: recipient.recipientID,
         donor_id: donor.donorID,
         amount: (donation.donationAmount * 100),
-        stripe_id: temporaryStripeToken,
+        stripe_id: token,
       },
     };
     console.log(newDataKeysObject);
@@ -122,7 +100,7 @@ export function createPaymentDetails() {
       .then(response => response.json())
       .then((donationID) => {
         console.log(donationID.transaction_id);
-        dispatch(receiveStripeToken(temporaryStripeToken));
+        dispatch(receiveStripeToken(token));
         dispatch(setDonationID(donationID.transaction_id));
       });
 
@@ -190,7 +168,6 @@ export function setUserFromPassport(user) {
     type: 'SET_USER_FROM_PASSPORT',
     isLoggedIn: true,
     userID: user.userId,
-    // username: user.username,
     userType: user.userType,
   };
 }
@@ -288,7 +265,6 @@ export function setDonorFromDB(donor) {
     photo: donor.photo,
   };
 }
-
 
 export function getDonorFromDB(id) {
   return function (dispatch) {

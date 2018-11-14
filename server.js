@@ -1,4 +1,6 @@
 require('dotenv').config();
+// Send donation details off to stripe to charge token
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const express = require('express');
 
@@ -120,7 +122,7 @@ app.get('/', (req, res) => {
 
 // PASSPORT route to accept logins
 app.post('/api/login', passport.authenticate('local', { session: true }), (req, res) => {
-  res.json({ userId: req.user.id });
+  res.json({ userId: req.user.id, userType: req.user.type });
 });
 
 // PASSPORT profile page - only accessible to logged in users
@@ -208,7 +210,7 @@ app.post('/api/recipient', (req, res) => {
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
-      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id',
+      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
       [
         recipient.firstName,
         recipient.lastName,
@@ -216,6 +218,7 @@ app.post('/api/recipient', (req, res) => {
         recipient.imageUrl,
         recipient.username,
         hash,
+        'recipient',
       ],
     ))
     .then(result => db.one(
@@ -246,6 +249,17 @@ const sendSMS = (name, tel) => {
 // add donation to the database
 app.post('/api/donation', (req, res) => {
   const { donation } = req.body;
+
+  // Token is created using Checkout or Elements!
+  // Get the payment token ID submitted by the form:
+
+  const charge = stripe.charges.create({
+    amount: donation.amount,
+    currency: 'usd',
+    description: 'Example charge',
+    source: donation.stripe_id,
+  });
+  // enter in the database
   return db
     .one(
       'INSERT INTO donation (recipient_id, donor_id, amount, stripe_id, time_stamp) VALUES ($1, $2, $3, $4, clock_timestamp()) RETURNING id',

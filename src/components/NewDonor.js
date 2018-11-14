@@ -152,7 +152,6 @@ class NewDonor extends React.Component {
                     />
                   </label>
                 </li>
-
                 <li>
                   <label htmlFor="tel">
                     Email
@@ -258,6 +257,7 @@ class NewDonor extends React.Component {
     );
   }
 }
+
 
 NewDonor.propTypes = {
   addDonor: PropTypes.func.isRequired,

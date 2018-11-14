@@ -3,11 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Login extends React.Component {
-  componentWillReceiveProps({ isLoggedIn: isNowLoggedIn, userID, type = 'recipient', history }) {
+  componentWillReceiveProps({ isLoggedIn: isNowLoggedIn, userID, userType, history }) {
     const { isLoggedIn: wasLoggedIn } = this.props;
 
     if (!wasLoggedIn && isNowLoggedIn) {
-      history.push(`/${type}/${userID}`);
+      history.push(`/${userType}/${userID}`);
     }
   }
 
@@ -63,7 +63,7 @@ export default Login;
 Login.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   userID: PropTypes.number,
-  type: PropTypes.oneOf([undefined, 'recipient', 'donor']),
+  userType: PropTypes.oneOf([undefined, 'recipient', 'donor']),
   username: PropTypes.string,
   password: PropTypes.string,
   login: PropTypes.func.isRequired,
@@ -74,5 +74,5 @@ Login.defaultProps = {
   username: '',
   password: '',
   userID: 0,
-  type: undefined,
+  userType: undefined,
 };
