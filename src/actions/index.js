@@ -145,6 +145,9 @@ export function setNewDonorId(newDonorId) {
 
 export function addDonor(donor) {
   return function (dispatch) {
+
+    // need to make sure stripe token is put through as part of donor
+    console.log(donor);
     fetch('/api/donor', {
       method: 'post',
       body: JSON.stringify(donor),

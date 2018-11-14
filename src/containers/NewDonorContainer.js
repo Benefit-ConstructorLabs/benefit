@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import NewDonor from '../components/NewDonor';
+import NewDonorWrapper from '../components/NewDonorWrapper';
 import { addDonor, setNewDonorId } from '../actions';
 
 const mapStateToProps = state => (
@@ -16,4 +16,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(NewDonor);
+)(NewDonorWrapper);

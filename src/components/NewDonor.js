@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
+
+import { injectStripe } from 'react-stripe-elements';
+
+// import PaymentDetailsFormContainer from './PaymentDetailsFormContainer'
 import S3Upload from './S3Upload';
+import CardSection from './CardSection'
 import '../../styles/components/new-donor.scss';
 import '../../styles/components/temp-styles.scss';
 
@@ -77,7 +82,11 @@ class NewDonor extends React.Component {
             setTimeout(() => {
               console.log(JSON.stringify(values, null, 2));
               setSubmitting(false);
-              addDonor(values);
+              stripe.createToken().then(({ token }) => {
+                console.log('Received Stripe token:', token);
+                values['stripeToken'] = token.id;
+                addDonor(values);
+              });
             }, 400);
           }}
         >
@@ -221,35 +230,8 @@ class NewDonor extends React.Component {
                 Add your payment details
               </h3>
 
-              <ul>
-                <li>
-                  <input
-                    className="validMessage"
-                    type="text"
-                    name="cardNo"
-                    defaultValue=""
-                    placeholder="Card Number"
-                  />
-                </li>
-                <li>
-                  <input
-                    className="validMessage"
-                    type="text"
-                    name="cardExp"
-                    defaultValue=""
-                    placeholder="Expiry Date"
-                  />
-                </li>
-                <li>
-                  <input
-                    className="validMessage"
-                    type="text"
-                    name="cardCCV"
-                    defaultValue=""
-                    placeholder="CCV"
-                  />
-                </li>
-              </ul>
+              <CardSection />
+
               <button
                 className="btn btn__primary btn__submit"
                 type="submit"
@@ -274,4 +256,4 @@ NewDonor.defaultProps = {
   newDonorId: undefined,
 };
 
-export default NewDonor;
+export default injectStripe(NewDonor);
