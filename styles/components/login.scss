@@ -1,0 +1,12 @@
+@import '../colors';
+
+.dropdown {
+  display: none;
+  &--open {
+    display: block;
+  }
+}
+
+.fas {
+  color: $primary-color;
+}
