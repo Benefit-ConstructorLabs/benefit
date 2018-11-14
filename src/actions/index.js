@@ -85,7 +85,7 @@ export function createPaymentDetails(token) {
       donation: {
         recipient_id: recipient.recipientID,
         donor_id: donor.donorID,
-        amount: (donation.donationAmount * 100),
+        amount: donation.donationAmount * 100,
         stripe_id: token,
       },
     };
@@ -169,6 +169,7 @@ export function setUserFromPassport(user) {
     isLoggedIn: true,
     userID: user.userId,
     userType: user.userType,
+    name: user.name,
   };
 }
 
