@@ -325,6 +325,10 @@ app.get('/api/donations/donor/:id', (req, res) => {
     .catch(error => res.json({ error: error.message }));
 });
 
+app.use('/.well-known/apple-developer-merchantid-domain-association', (req, res) => {
+  res.send(process.env.APPLE_DEVELOPER_MERCHANT_ID);
+});
+
 app.use('/', (req, res) => {
   res.render('index');
 });
