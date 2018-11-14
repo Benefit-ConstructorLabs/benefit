@@ -50,8 +50,12 @@ class NewRecipient extends React.Component {
             if (!values.lastName) {
               errors.lastName = 'Required';
             }
+            const telTrimmed = values.tel.split(' ').join('');
+            const validTelNum = !isNaN(telTrimmed) && telTrimmed.length === 11;
             if (!values.tel) {
               errors.tel = 'Required';
+            } else if (!validTelNum) {
+              errors.tel = 'Invalid number. Use numbers which are 11 digits long';
             }
             if (!values.username) {
               errors.username = 'Required';
@@ -138,7 +142,7 @@ class NewRecipient extends React.Component {
                       type="text"
                       name="tel"
                       id="tel"
-                      placeholder="Telephone number"
+                      placeholder="Eg. 07993 852 721"
                       value={values.tel}
                       onChange={handleChange}
                       onBlur={handleBlur}
