@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/components/payment-details-form.scss';
 import { injectStripe } from 'react-stripe-elements';
+import PaymentRequestButton from './PaymentRequestButton'
 
 // import AddressSection from './AddressSection';
 import CardSection from './CardSection';
@@ -32,6 +33,11 @@ const PaymentDetailsForm = ({
         });
       }}
     >
+      <PaymentRequestButton
+        createPaymentDetails={createPaymentDetails}
+        toggleDonationComplete={toggleDonationComplete}
+        donationAmount={donationAmount}
+      />
       <CardSection />
       <button
         className="btn btn__primary btn__submit"
@@ -46,7 +52,7 @@ const PaymentDetailsForm = ({
 PaymentDetailsForm.propTypes = {
   createPaymentDetails: PropTypes.func.isRequired,
   toggleDonationComplete: PropTypes.func.isRequired,
-  donationAmount: PropTypes.string.isRequired,
+  donationAmount: PropTypes.number.isRequired,
   firstName: PropTypes.string.isRequired,
 };
 

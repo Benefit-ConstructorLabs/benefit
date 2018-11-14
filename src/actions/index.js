@@ -63,10 +63,9 @@ export function receiveStripeToken(stripeToken) {
   };
 }
 
-export function setDonorID(donorID) {
+export function setDonorID() {
   return {
     type: 'SET_DONOR_ID',
-    donorID,
   };
 }
 export function setDonationID(donationID) {
@@ -89,7 +88,7 @@ export function createPaymentDetails(token) {
         stripe_id: token,
       },
     };
-    console.log(newDataKeysObject);
+    console.log('donation object sent to server', newDataKeysObject);
     fetch('/api/donation', {
       method: 'post',
       body: JSON.stringify(newDataKeysObject),
@@ -99,14 +98,10 @@ export function createPaymentDetails(token) {
     })
       .then(response => response.json())
       .then((donationID) => {
-        console.log(donationID.transaction_id);
+        console.log('returned transaction id', donationID.transaction_id);
         dispatch(receiveStripeToken(token));
         dispatch(setDonationID(donationID.transaction_id));
       });
-
-    dispatch(setCardInput(''));
-    dispatch(setExpDateInput(''));
-    dispatch(setCcvInput(''));
   };
 }
 
