@@ -25,9 +25,12 @@ function StyledMessage({ errors, touched, values, elem }) {
 
 class NewDonor extends React.Component {
   componentWillReceiveProps(newProps) {
-    // const { history } = this.props;
-    // const url = `/donor/${newProps.recipientIdForQrCode}`;
-    // history.push(url);
+    const { newDonorId, history } = this.props;
+    console.log(newDonorId, history, newProps, newProps.newDonorId);
+    if (newProps.newDonorId !== newDonorId) {
+      const url = `/donor/${newProps.newDonorId}`;
+      history.push(url);
+    }
   }
 
   render() {
@@ -48,8 +51,12 @@ class NewDonor extends React.Component {
             if (!values.lastName) {
               errors.lastName = 'Required';
             }
+            const telTrimmed = values.tel.split(' ').join('');
+            const validTelNum = !isNaN(telTrimmed) && telTrimmed.length === 11;
             if (!values.tel) {
               errors.tel = 'Required';
+            } else if (!validTelNum) {
+              errors.tel = 'Invalid number. Use numbers which are 11 digits long';
             }
             if (!values.email) {
               errors.email = 'Required';
@@ -58,7 +65,7 @@ class NewDonor extends React.Component {
             }
             if (!values.password) {
               errors.password = 'Required';
-            } else if (values.password.length < 9) {
+            } else if (values.password.length < 8) {
               errors.password = 'Password must have at least 8 characters';
             }
             if (!values.imageUrl) {
@@ -138,7 +145,7 @@ class NewDonor extends React.Component {
                       type="text"
                       name="tel"
                       id="tel"
-                      placeholder="Telephone number"
+                      placeholder="Eg. 07993 852 721"
                       value={values.tel}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -220,7 +227,7 @@ class NewDonor extends React.Component {
                     className="validMessage"
                     type="text"
                     name="cardNo"
-                    value=""
+                    defaultValue=""
                     placeholder="Card Number"
                   />
                 </li>
@@ -229,7 +236,7 @@ class NewDonor extends React.Component {
                     className="validMessage"
                     type="text"
                     name="cardExp"
-                    value=""
+                    defaultValue=""
                     placeholder="Expiry Date"
                   />
                 </li>
@@ -238,7 +245,7 @@ class NewDonor extends React.Component {
                     className="validMessage"
                     type="text"
                     name="cardCCV"
-                    value=""
+                    defaultValue=""
                     placeholder="CCV"
                   />
                 </li>
@@ -258,9 +265,13 @@ class NewDonor extends React.Component {
   }
 }
 
-
 NewDonor.propTypes = {
   addDonor: PropTypes.func.isRequired,
+  newDonorId: PropTypes.string,
+};
+
+NewDonor.defaultProps = {
+  newDonorId: undefined,
 };
 
 export default NewDonor;

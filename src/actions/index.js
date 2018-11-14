@@ -63,12 +63,12 @@ export function receiveStripeToken(stripeToken) {
   };
 }
 
-export function setDonorID(donorID) {
+export function setDonorID() {
   return {
     type: 'SET_DONOR_ID',
-    donorID,
   };
 }
+
 export function setDonationID(donationID) {
   return {
     type: 'SET_DONATION_ID',
@@ -89,7 +89,7 @@ export function createPaymentDetails(token) {
         stripe_id: token,
       },
     };
-    console.log(newDataKeysObject);
+    console.log('donation object sent to server', newDataKeysObject);
     fetch('/api/donation', {
       method: 'post',
       body: JSON.stringify(newDataKeysObject),
@@ -99,14 +99,10 @@ export function createPaymentDetails(token) {
     })
       .then(response => response.json())
       .then((donationID) => {
-        console.log(donationID.transaction_id);
+        console.log('returned transaction id', donationID.transaction_id);
         dispatch(receiveStripeToken(token));
         dispatch(setDonationID(donationID.transaction_id));
       });
-
-    dispatch(setCardInput(''));
-    dispatch(setExpDateInput(''));
-    dispatch(setCcvInput(''));
   };
 }
 
@@ -135,23 +131,34 @@ export function addRecipient(recipient) {
       .then(response => response.json())
       .then((body) => {
         dispatch(setRecipientIdForQrCode(body.recipient_id));
-      });
+      })
+      .catch(error => console.error(error));
+  };
+}
+
+export function setNewDonorId(newDonorId) {
+  return {
+    type: 'SET_NEW_DONOR_ID',
+    newDonorId,
   };
 }
 
 export function addDonor(donor) {
-  fetch('/api/donor', {
-    method: 'post',
-    body: JSON.stringify(donor),
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
-    .then(response => response.json())
-    .then((donorID) => {
-      console.log(donorID);
+  return function (dispatch) {
+    fetch('/api/donor', {
+      method: 'post',
+      body: JSON.stringify(donor),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
-    .catch(error => console.error(error));
+      .then(response => response.json())
+      .then((newDonor) => {
+        console.info(newDonor);
+        dispatch(setNewDonorId(newDonor.id));
+      })
+      .catch(error => console.error(error));
+  };
 }
 
 // passport actions

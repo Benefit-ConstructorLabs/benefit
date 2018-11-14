@@ -250,13 +250,10 @@ const sendSMS = (name, tel) => {
 app.post('/api/donation', (req, res) => {
   const { donation } = req.body;
 
-  // Token is created using Checkout or Elements!
-  // Get the payment token ID submitted by the form:
-
   const charge = stripe.charges.create({
     amount: donation.amount,
-    currency: 'usd',
-    description: 'Example charge',
+    currency: 'gbp',
+    description: 'Example Donation',
     source: donation.stripe_id,
   });
   // enter in the database
@@ -267,6 +264,7 @@ app.post('/api/donation', (req, res) => {
     )
     .then((result) => {
       // the below code is commented out until we can add new donors and send text messages
+      console.log(result);
       const json = {
         // recipient_name: donation.recipient_name,
         // donor_name: donation.donor_name,
@@ -274,6 +272,8 @@ app.post('/api/donation', (req, res) => {
         // transaction_id: result.id,
         transaction_id: result.id,
       };
+
+      console.log(json);
       // sendSMS(donation.recipient_name, donation.tel);
       return res.json(json);
     })
@@ -284,12 +284,12 @@ app.post('/api/donation', (req, res) => {
 // add new donor to the database
 app.post('/api/donor', (req, res) => {
   const donor = req.body;
-  const stripe = { stripe: { name: 'bob' } }; // Matt to add stripe stuff here
+  const stripeTemp = { stripe: { name: 'bob' } }; // Matt to add stripe stuff here
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(
       'INSERT INTO donor (first_name, last_name, photo, username, password, tel, stripe, type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
-      [donor.firstName, donor.lastName, donor.imageUrl, donor.email, hash, donor.tel, JSON.stringify(stripe), 'donor'],
+      [donor.firstName, donor.lastName, donor.imageUrl, donor.email, hash, donor.tel, JSON.stringify(stripeTemp), 'donor'],
     ))
     .then(result => console.log(result) || res.json(result))
     .catch(error => res.json({ error }));
