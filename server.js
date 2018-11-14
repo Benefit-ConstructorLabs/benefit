@@ -323,6 +323,21 @@ app.get('/api/donations/donor/:id', (req, res) => {
     .catch(error => res.json({ error: error.message }));
 });
 
+// retrieve all donations by organisation id
+app.get('/api/donations/organisation/:id', (req, res) => {
+  const { id } = req.params;
+  return db
+    .any(`SELECT donation.id, donation.time_stamp as time, donation.amount,
+          CONCAT(recipient.first_name,' ',recipient.last_name) as recipient,
+          CONCAT(donor.first_name,' ',donor.last_name) as donor
+          FROM donation, recipient, donor
+          WHERE recipient.id = donation.recipient_id
+          AND donor.id = donation.donor_id
+          AND recipient.organisation_id = $1`, [id])
+    .then(donations => res.json(donations))
+    .catch(error => res.json({ error: error.message }));
+});
+
 app.use('/', (req, res) => {
   res.render('index');
 });

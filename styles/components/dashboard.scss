@@ -12,7 +12,9 @@
   "d e . . ."
   "f f f f f "
   "f f f f f "
-  "g . h . i ";
+  "g . h . i "
+  "j j j j j ";
+
   &__title{
     grid-area: a;
   }
@@ -30,10 +32,13 @@
   &__signups{
     grid-area: g;
   }
-  &__donations{
+  &__amounts{
     grid-area: h;
   }
   &__daily{
     grid-area: i;
+  }
+  &__donations{
+    grid-area: j;
   }
 }
