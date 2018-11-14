@@ -32,7 +32,7 @@ const donor = (
     case 'SET_NEW_DONOR_ID':
       return Object.assign({}, state, { newDonorId: action.newDonorId });
     case 'SET_DONOR_ID':
-      return Object.assign({}, state, { donorID: action.donorID });
+      return Object.assign({}, state, { donorID: 1 });
     default:
       return state;
   }
