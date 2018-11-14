@@ -68,7 +68,7 @@ class NewRecipient extends React.Component {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              // console.log(JSON.stringify(values, null, 2));
+              console.log(JSON.stringify(values, null, 2));
               setSubmitting(false);
               addRecipient(values);
             }, 400);

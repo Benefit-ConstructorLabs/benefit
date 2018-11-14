@@ -125,22 +125,9 @@ export function setRecipientIdForQrCode(id) {
 
 export function addRecipient(recipient) {
   return function (dispatch) {
-    const newDataKeysObject = {
-      recipient: {
-        first_name: recipient.firstName,
-        last_name: recipient.lastName,
-        username: recipient.username,
-        password: recipient.password,
-        photo: recipientImageUrl.url,
-        tel: recipient.tel,
-        bio_1: recipient.bio1,
-        bio_2: recipient.bio2,
-        bio_3: recipient.bio3,
-      },
-    };
     fetch('/api/recipient', {
       method: 'post',
-      body: JSON.stringify(newDataKeysObject),
+      body: JSON.stringify(recipient),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -152,39 +139,19 @@ export function addRecipient(recipient) {
   };
 }
 
-export function setDonorInputField(fieldName, fieldValue) {
-  return {
-    type: 'SET_DONOR_INPUT',
-    fieldName,
-    fieldValue,
-  };
-}
-
-export function addDonor() {
-  return function (dispatch, getState) {
-    const { donor, recipientImageUrl } = getState();
-    const newDataKeysObject = {
-      donor: {
-        first_name: donor.firstName,
-        last_name: donor.lastName,
-        photo: recipientImageUrl.url,
-        email: donor.email,
-        password: donor.password,
-        tel: donor.tel,
-      },
-    };
-    fetch('/api/donor', {
-      method: 'post',
-      body: JSON.stringify(newDataKeysObject),
-      headers: {
-        'Content-Type': 'application/json',
-      },
+export function addDonor(donor) {
+  fetch('/api/donor', {
+    method: 'post',
+    body: JSON.stringify(donor),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => response.json())
+    .then((donorID) => {
+      console.log(donorID);
     })
-      .then(response => response.json())
-      .then((donorID) => {
-        console.log(donorID);
-      });
-  };
+    .catch(error => console.error(error));
 }
 
 // passport actions

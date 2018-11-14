@@ -206,24 +206,24 @@ app.get('/api/recipient/:id', (req, res) => {
 
 // add new recipient to the database
 app.post('/api/recipient', (req, res) => {
-  const { recipient } = req.body;
+  const recipient = req.body;
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
       'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
       [
-        recipient.first_name,
-        recipient.last_name,
+        recipient.firstName,
+        recipient.lastName,
         recipient.tel,
-        recipient.photo,
+        recipient.imageUrl,
         recipient.username,
         hash,
         'recipient',
       ],
     ))
     .then(result => db.one(
-      'INSERT INTO biography (recipient_id, bio_1, bio_2, bio_3) VALUES ($1, $2, $3, $4)RETURNING recipient_id',
-      [result.id, recipient.bio_1, recipient.bio_2, recipient.bio_3],
+      'INSERT INTO biography (recipient_id, bio_1, bio_2, bio_3) VALUES ($1, $2, $3, $4) RETURNING recipient_id',
+      [result.id, recipient.bio1, recipient.bio2, recipient.bio3],
     ))
     .then(result => res.json(result))
     .catch(error => res.json({ error: error.message }));
@@ -280,17 +280,19 @@ app.post('/api/donation', (req, res) => {
     .catch(error => res.json({ error: error.message }));
 });
 
+
 // add new donor to the database
 app.post('/api/donor', (req, res) => {
-  const { donor } = req.body;
+  const donor = req.body;
+  const stripe = { stripe: { name: 'bob' } }; // Matt to add stripe stuff here
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(
       'INSERT INTO donor (first_name, last_name, photo, username, password, tel, stripe, type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
-      [donor.first_name, donor.last_name, donor.photo, donor.email, hash, donor.tel, donor.stripe, 'donor'],
+      [donor.firstName, donor.lastName, donor.imageUrl, donor.email, hash, donor.tel, JSON.stringify(stripe), 'donor'],
     ))
-    .then(result => res.json(result))
-    .catch(error => res.json({ error: error.message }));
+    .then(result => console.log(result) || res.json(result))
+    .catch(error => res.json({ error }));
 });
 
 // get donor by id
