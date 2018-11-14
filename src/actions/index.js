@@ -158,9 +158,9 @@ export function addDonor(donor) {
       },
     })
       .then(response => response.json())
-      .then((newDonorId) => {
-        console.info(newDonorId);
-        dispatch(setNewDonorId(newDonorId));
+      .then((newDonor) => {
+        console.info(newDonor);
+        dispatch(setNewDonorId(newDonor.id));
       })
       .catch(error => console.error(error));
   };

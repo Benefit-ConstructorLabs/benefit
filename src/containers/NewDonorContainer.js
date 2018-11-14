@@ -4,7 +4,7 @@ import { addDonor, setNewDonorId } from '../actions';
 
 const mapStateToProps = state => (
   {
-    newDonorID: state.donor.newDonorID,
+    newDonorId: state.donor.newDonorId,
   }
 );
 

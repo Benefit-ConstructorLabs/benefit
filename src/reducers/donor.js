@@ -2,7 +2,7 @@ const donor = (
   state = {
     id: null,
     donorID: 1,
-    newDonorID: 1,
+    newDonorId: 1,
     firstName: '',
     lastName: '',
     tel: '',
