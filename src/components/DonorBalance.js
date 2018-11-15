@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/components/donor.scss'
 
 const DonorBalance = ({ donations }) => {
   const donationTotal = donations.reduce((acc, donation) => {
@@ -7,8 +8,10 @@ const DonorBalance = ({ donations }) => {
 
   return (
     <section className="donor__account">
-      <h2 className="donor__account__title">Your total donations</h2>
-      <p className="donor__account__balance">{`£${donationTotal}`}</p>
+      <div>
+        <h2 className="donor__account__title">Your total donations</h2>
+        <p className="donor__account__balance">{`£${donationTotal}`}</p>
+      </div>
       <h3>Latest donations</h3>
       <ul className="donor__account__donations">
         {donations.map((donation) => {
