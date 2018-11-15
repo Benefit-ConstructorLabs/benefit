@@ -32,6 +32,9 @@ body{
     background: $primary-color;
     text-transform: uppercase; 
   }
+  &__upload{
+    width: 50%;
+  }
 }
 
 
@@ -40,14 +43,20 @@ form{
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   h3 {
-    background-color: $primary-color;
-    color: white;
+    // background-color: $primary-color;
+    color: $primary-color;
     margin:0 0 0.5rem 0;
     padding: 0.5rem;
   }
+  ul{
+    margin:1rem 0.5rem;
+    li{
+      margin: 1rem 0;
+    }
+  }
   input {
     border: 1px solid $grey;
-    margin: -0.25rem 0 0 0.5rem;
+    // margin: 0;
     padding: 1rem;
     flex: 1;
     &.nolabel{

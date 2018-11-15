@@ -36,15 +36,29 @@ li {
     margin: 1rem 0;
 }
 
-input, button {
+input {
     font-size: 1rem;
     padding: 0.7rem 1rem;
     border-radius: 0.3rem;
-    -webkit-filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.15));
-    filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.15));
+    // -webkit-filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.15));
+    // filter: drop-shadow(0 0 0.3rem rgba(0,0,0,0.15));
     letter-spacing: 0.03rem;
     min-width: 12rem;
 }
+
+
+
+label.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
 
 input {
     background-color: rgb(255, 255, 255);
