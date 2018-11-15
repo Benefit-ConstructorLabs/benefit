@@ -50,20 +50,24 @@ class AppHeader extends React.Component {
     const classes = cx('dropdown', {
       'dropdown--open': dropdown,
     });
+    const loginMessage = isLoggedIn ? 'Log Out' : 'Log In';
+    const loginClass = isLoggedIn ? 'fas active fa-inverse fa-1x fa-user-circle' : 'fas inactive fa-inverse fa-1x fa-user-circle';
     return (
-      <header>
-        <h1 className="app__title">Benefit</h1>
-        <button className="btn btn__login" onClick={this.handleClick} type="submit">
-          {!isLoggedIn ? 'Log In' : 'Log Out'}
-        </button>
+      <header className="app__header">
+        {/* <h1 className="app__title">Better Change</h1> */}
+        <img className="logo" src="../../static/assets/images/better-change-logo.png" alt="logo" />
         {!isLoggedIn ? (
           <LoginContainer classes={classes} />
         ) : (
           <div>
-            <i className="fas fa-user" />
+            {/* <i className="fas fa-1x fa-user-circle" /> */}
             {` ${name}`}
           </div>
         )}
+        <a href="#" className="login__text" onClick={this.handleClick}>
+          {loginMessage}
+          {<i className={loginClass} />}
+        </a>
       </header>
     );
   }

@@ -16,13 +16,13 @@ body{
   background: $background-light-grey;
 }
 
-
 .btn, a.btn{
   background : white;
   border: 1px solid $grey;
   border-radius: 6px;
   box-shadow: 0 2px 5px $grey;
   color: black;
+  cursor: pointer;
   display:block;
   font-weight: 700;
   margin: 0.5rem auto;
@@ -33,9 +33,11 @@ body{
   width: 90%;
   &__primary{
     background: $primary-pink;
+    opacity: 0.75;
     color: white;
     &:hover {
-      background-color:$primary-blue; 
+      // background-color:$primary-blue; 
+      opacity: 1;
     }
   }
   &__secondary{
@@ -53,10 +55,9 @@ form{
   h3 {
     color: $primary-color;
     margin:0 0 0.5rem 0;
-    padding: 0.5rem;
   }
   ul{
-    margin:1rem 0.5rem;
+    margin: 1rem 1rem;
     padding: 0;
     li {
       list-style: none;
@@ -86,15 +87,15 @@ form{
   .errorMessage, .validMessage {
     color: $primary-pink;
     display: inline-block;
-    margin-left: 0.5rem;
+    margin-left: 1rem;
     padding: 0;
   }
   .validMessage {
     color: $secondary-green; 
   }
   .fas {
-    color: inherit;
-    font-size: 1.5rem;
+    // color: inherit;
+    font-size: 1.8rem;
   }
 }
 
