@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import AnimationWrapper from './AnimationWrapper';
 
 const RecipientBalance = ({ donations }) => {
   const donationTotal = donations.reduce((acc, donation) => acc + donation.amount, 0);
@@ -11,12 +12,12 @@ const RecipientBalance = ({ donations }) => {
       <h3>Latest donations</h3>
       <ul className="recipient__account__donations">
         {donations.map((donation) => {
-          const { id, photo, first_name, last_name, amount } = donation;
+          const { id, photo, first_name: firstName, last_name: lastName, amount } = donation;
           return (
             <li className="recipient__account__donations__donation" key={id}>
               <img className="donor__photo" src={`${photo}`} alt="donor" />
               <span className="donor__name">
-                {`${first_name} ${last_name}`}
+                {`${firstName} ${lastName}`}
               </span>
               <span className="amount">{`£${amount}`}</span>
             </li>
@@ -27,4 +28,8 @@ const RecipientBalance = ({ donations }) => {
   );
 };
 
-export default RecipientBalance;
+RecipientBalance.propTypes = {
+  donations: PropTypes.instanceOf(Array).isRequired,
+};
+
+export default AnimationWrapper(RecipientBalance);
