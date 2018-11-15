@@ -307,3 +307,20 @@ export function getDonorDetailsByID(id) {
     dispatch(getDonorFromDB(id));
   };
 }
+
+
+export function setOrganisationDonations(donations) {
+  return {
+    type: 'SET_ORGANISATION_DONATIONS',
+    donations,
+  };
+}
+
+export function getDonationsByOrganisationID(id) {
+  return function (dispatch) {
+    fetch(`/api/donations/organisation/${id}`)
+      .then(response => response.json())
+      .then(donations => dispatch(setOrganisationDonations(donations)))
+      .catch(error => console.log(error.message));
+  };
+}
