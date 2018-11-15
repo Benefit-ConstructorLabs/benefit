@@ -50,15 +50,23 @@ function getUserById(id) {
     });
 }
 
+const cookieExpirationDate = new Date();
+const cookieExpirationDays = 20;
+cookieExpirationDate.setDate(cookieExpirationDate.getDate() + cookieExpirationDays);
+
 app.use(bodyParser.json());
 app.use('/static', express.static('static'));
 app.set('view engine', 'hbs');
-app.use(cookieParser());
+app.use(cookieParser('some random text #^*%!!'));
 app.use(
   require('express-session')({
     secret: 'some random text #^*%!!', // used to generate session ids
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      expires: cookieExpirationDate, // use expires instead of maxAge
+    },
   }),
 );
 
@@ -124,6 +132,13 @@ app.get('/', (req, res) => {
 app.post('/api/login', passport.authenticate('local', { session: true }), (req, res) => {
   res.json({ userId: req.user.id, userType: req.user.type, name: req.user.first_name });
 });
+
+app.get('/api/user', (req, res) => {
+  const userMaybe = req.user
+    ? { userId: req.user.id, userType: req.user.type, name: req.user.first_name }
+    : {};
+  res.json(userMaybe);
+})
 
 // PASSPORT profile page - only accessible to logged in users
 app.get('/api/wallet', isLoggedIn, (req, res) => {

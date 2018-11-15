@@ -6,11 +6,13 @@ import { Provider } from 'react-redux';
 import { StripeProvider } from 'react-stripe-elements';
 import rootReducer from './reducers';
 import App from './components/App';
+import { checkLogin } from './actions';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(
-  thunkMiddleware,
-)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
+
+// TODO: Sue jim for improper use
+store.dispatch(checkLogin());
 
 ReactDOM.render(
   <Provider store={store}>

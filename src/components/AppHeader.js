@@ -14,10 +14,16 @@ class AppHeader extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillReceiveProps({ isLoggedIn: isNowLoggedIn, userID, userType, history }) {
+  componentWillReceiveProps({ isLoggedIn: isNowLoggedIn, userID, userType, location, history }) {
     const { isLoggedIn: wasLoggedIn } = this.props;
     if (!wasLoggedIn && isNowLoggedIn) {
-      history.push(`/${userType}/${userID}`);
+      let redirectTo = `/${userType}/${userID}`;
+
+      if (location.state && location.state.from) {
+        redirectTo = location.state.from.pathname;
+      }
+
+      history.push(redirectTo);
     }
   }
 
