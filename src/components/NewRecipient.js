@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import S3Upload from './S3Upload';
-// import '../../styles/components/newrecipient.scss';
-import '../../styles/components/temp-styles.scss';
 
 function setInputClass(errors, touched) {
   return errors && touched ? 'errorInput' : 'validInput';
@@ -14,7 +12,7 @@ function StyledMessage({ errors, touched, values, elem }) {
     return (
       <div className={errors[elem] ? 'errorMessage' : 'validMessage'}>
         <i className="fas cross fa-1x fa-times" />
-        {errors[elem]}
+        {/* {errors[elem]} */}
       </div>);
   }
   if (!errors[elem] && values[elem] !== '') {

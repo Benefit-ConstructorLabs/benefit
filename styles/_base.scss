@@ -13,24 +13,33 @@ html{
 
 body{
   font-family: $body-font;
+  background: $background-light-grey;
 }
+
 
 .btn, a.btn{
   background : white;
   border: 1px solid $grey;
   border-radius: 6px;
+  box-shadow: 0 2px 5px $grey;
   color: black;
   display:block;
-  margin: 0 auto;
-  padding: 0.5rem;
-  box-shadow: 0 2px 5px $grey;
-  text-decoration: none;
+  font-weight: 700;
+  margin: 0.5rem auto;
+  padding: 1rem;
   text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
   width: 90%;
   &__primary{
+    background: $primary-pink;
     color: white;
-    background: $primary-color;
-    text-transform: uppercase; 
+    &:hover {
+      background-color:$primary-blue; 
+    }
+  }
+  &__secondary{
+    color: $primary-blue;
   }
   &__upload{
     width: 50%;
@@ -39,28 +48,64 @@ body{
 
 
 form{
-  border: 1px solid $grey;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
   h3 {
-    // background-color: $primary-color;
     color: $primary-color;
     margin:0 0 0.5rem 0;
     padding: 0.5rem;
   }
   ul{
     margin:1rem 0.5rem;
-    li{
+    padding: 0;
+    li {
+      list-style: none;
+      // display: flex;
+      // flex-direction: row;
       margin: 1rem 0;
     }
   }
   input {
-    border: 1px solid $grey;
-    // margin: 0;
-    padding: 1rem;
-    flex: 1;
-    &.nolabel{
-      width:95%;
-    }
+      background-color: rgb(255, 255, 255);
+      border: 0.2rem solid rgb(209, 209, 209);
+      font-size: 1rem;
+      padding: 1rem;
+      border: 1px solid $background-mid-grey;
+      border-radius: 0.3rem;
+      letter-spacing: 0.03rem;
+      min-width: 12rem;
+      width: 90%;
+  }
+  // Formik validation styles //
+  .errorInput {
+    border: 0.05rem solid $primary-pink;
+  }
+  .validInput {
+    border: 0.05rem solid $background-mid-grey;
+  }
+  .errorMessage, .validMessage {
+    color: $primary-pink;
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0;
+  }
+  .validMessage {
+    color: $secondary-green; 
+  }
+  .fas {
+    color: inherit;
+    font-size: 1.5rem;
   }
 }
+
+/* helper styles */
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }

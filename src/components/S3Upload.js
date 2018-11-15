@@ -58,7 +58,7 @@ class S3Upload extends React.Component {
 
         <label className="fileUpload visuallyhidden" htmlFor="pictureupload">
           Add a photo </label>
-        <button className="btn btn__primary btn__upload" type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>
+        <button className="btn btn__secondary btn__upload" type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>
           {value ? 'Change photo' : 'Add photo'}
         </button>
         <input
