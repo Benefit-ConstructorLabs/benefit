@@ -20,8 +20,6 @@ class Dashboard extends React.Component {
 
     let total = 0;
 
-    console.log('TODAY', donations.filter(item => isToday(item.time)));
-
     const todaysTotal = (donations.filter(item => isToday(item.time)).reduce(((acc, item) => acc + item.amount), 0) / 100).toFixed(2);
 
     // console.log('TODAY', todaysDonations);
@@ -38,19 +36,16 @@ class Dashboard extends React.Component {
     });
 
     const signupData = [
-      { name: 'Recipients', today: 40, other: 200 },
-      { name: 'Donors', today: 300, other: 1308 },
+      { name: 'Recipients', today: 4, other: 13 },
+      { name: 'Donors', today: 14, other: 148 },
     ];
 
     // radar
-    console.log('DONATIONS', donations);
 
     const dailySeries = donations.map((item) => {
       const { time, amount } = item;
       return { day: format(time, 'dddd'), amount: amount / 100 };
     });
-
-    console.log('DAILY SERIES', dailySeries);
 
     const days = [
       { day: 'Monday', amount: 0 },
@@ -69,12 +64,9 @@ class Dashboard extends React.Component {
       }
     });
 
-    console.log('DAILY TOTALS', days);
-
     return (
-
-      <section className="dashboard" >
-        <h2 className="dashboard__title">Your Dashboard</h2>
+      <section className="dashboard">
+        <h2 className="dashboard__title">Dashboard (beta)</h2>
         <dl className="dashboard__totals__overall">
           <dd>Total Donations</dd>
           <dt>{`£${total}`}</dt>
