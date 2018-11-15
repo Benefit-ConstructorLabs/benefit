@@ -1,0 +1,88 @@
+@import '../base';
+
+.login{
+  display:none;
+}
+
+.dashboard{
+  // height: 85vh;
+  max-width: 1024px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-areas: 
+  "a a a . ."
+  "d d e e ."
+  "f f f f f "
+  "f f f f f "
+  "g g i i i "
+  "j j j j j ";
+
+  &__title{
+    grid-area: a;
+  }
+  dl{
+    margin: 2rem 0;
+    dd{
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-left: 0;
+    }
+    dt{
+      font-size: 2rem;
+    }
+  }
+  &__totals{
+    &__overall{
+    grid-area: d;
+    }
+    &__daily {
+      grid-area: e;
+    }
+  }
+  &__progress{
+    border-top: 1px solid $grey;
+    grid-area: f;
+    padding: 1rem;
+  }
+  &__signups{
+    border-top: 1px solid $grey;
+    border-bottom: 1px solid $grey;
+    grid-area: g;
+    padding: 1rem;
+
+  }
+  &__amounts{
+    grid-area: h;
+  }
+  &__daily{
+    // align-self: center;
+    border-top: 1px solid $grey;
+    border-left: 1px solid $grey;
+    border-bottom: 1px solid $grey;
+    grid-area: i;
+    padding: 1rem;
+  }
+  &__donations{
+    grid-area: j;
+    padding: 1rem;
+    &__table{
+      border-top: 1px solid $grey;
+      border-collapse: collapse;
+      margin: 0.5rem 0 2rem 0;
+      text-align: left;
+      width: 100%;
+      th, td{
+        border-bottom: 1px solid $grey;
+        padding: 0.5rem 0 0.5rem 0.25rem;
+      }
+      tr:nth-child(even){
+        background: $grey;
+      }
+    }
+  }
+}
+
+.recharts-polar-angle-axis-tick-value{
+  font-size: 0.9rem;
+}

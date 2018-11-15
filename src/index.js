@@ -8,11 +8,11 @@ import rootReducer from './reducers';
 // import { checkLogin } from './actions';
 import AppWrapperContainer from './containers/AppWrapperContainer';
 
+// const store = createStore(rootReducer, applyMiddleware(
+//   thunkMiddleware,
+// ));
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
-
-// TODO: Sue jim for improper use
-// store.dispatch(checkLogin());
 
 ReactDOM.render(
   <Provider store={store}>

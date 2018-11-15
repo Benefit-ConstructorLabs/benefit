@@ -7,6 +7,7 @@ import RecipientContainer from '../containers/RecipientContainer';
 import NewDonationContainer from '../containers/NewDonationContainer';
 import NewDonorContainer from '../containers/NewDonorContainer';
 import DonorContainer from '../containers/DonorContainer';
+import DashboardContainer from '../containers/DashboardContainer';
 import AppFooter from './AppFooter';
 
 import '../../styles/components/app.scss';
@@ -20,6 +21,7 @@ const App = () => (
       <Route path="/recipient/:id/donation" component={NewDonationContainer} />
       <Route exact path="/donor" component={NewDonorContainer} />
       <PrivateRouteContainer exact path="/donor/:id" component={DonorContainer} />
+      <Route exact path="/organisation/:id/dashboard" component={DashboardContainer} />
       <AppFooter />
     </React.Fragment>
   </Router>
