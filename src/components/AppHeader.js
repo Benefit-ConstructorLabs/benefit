@@ -16,13 +16,18 @@ class AppHeader extends React.Component {
 
   componentWillReceiveProps({ isLoggedIn: isNowLoggedIn, userID, userType, location, history }) {
     const { isLoggedIn: wasLoggedIn } = this.props;
+    let redirectTo = '';
     if (!wasLoggedIn && isNowLoggedIn) {
-      let redirectTo = `/${userType}/${userID}`;
-
+      redirectTo = `/${userType}/${userID}`;
       if (location.state && location.state.from) {
         redirectTo = location.state.from.pathname;
       }
-
+      history.push(redirectTo);
+    } else if (wasLoggedIn && isNowLoggedIn) {
+      redirectTo = `/${userType}/${userID}`;
+      history.push(redirectTo);
+    } else {
+      redirectTo = '/login';
       history.push(redirectTo);
     }
   }
@@ -68,6 +73,15 @@ AppHeader.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   logout: PropTypes.func.isRequired,
+  userID: PropTypes.number,
+  userType: PropTypes.string,
+  location: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
+};
+
+AppHeader.defaultProps = {
+  userID: null,
+  userType: '',
 };
 
 export default AppHeader;
