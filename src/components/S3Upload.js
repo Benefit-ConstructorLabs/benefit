@@ -49,26 +49,25 @@ class S3Upload extends React.Component {
     return (
       <React.Fragment>
         {value
-            && (
-              <div className="newrecipient__photo">
-                <img alt="portrait" src={value} height="100" />
-              </div>
-            )
-          }
+          && (
+            <div className="newrecipient__photo">
+              <img alt="portrait" src={value} height="100" />
+            </div>
+          )
+        }
 
-        <label className="fileUpload" htmlFor="pictureupload">
-          Add a photo
-          <button type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>
-            {value ? 'Replace image' : 'Select image'}
-          </button>
-          <input
-            ref={this.inputRef}
-            id="pictureUpload"
-            type="file"
-            style={{ display: 'none' }}
-            onChange={this.uploadFile}
-          />
-        </label>
+        <label className="fileUpload visuallyhidden" htmlFor="pictureupload">
+          Add a photo </label>
+        <button className="btn btn__secondary btn__upload" type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>
+          {value ? 'Change photo' : 'Add photo'}
+        </button>
+        <input
+          ref={this.inputRef}
+          id="pictureUpload"
+          type="file"
+          style={{ display: 'none' }}
+          onChange={this.uploadFile}
+        />
       </React.Fragment>
     );
   }

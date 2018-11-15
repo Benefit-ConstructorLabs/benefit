@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import S3Upload from './S3Upload';
-import '../../styles/components/newrecipient.scss';
-import '../../styles/components/temp-styles.scss';
 
 function setInputClass(errors, touched) {
   return errors && touched ? 'errorInput' : 'validInput';
@@ -14,7 +12,7 @@ function StyledMessage({ errors, touched, values, elem }) {
     return (
       <div className={errors[elem] ? 'errorMessage' : 'validMessage'}>
         <i className="fas cross fa-1x fa-times" />
-        {errors[elem]}
+        {/* {errors[elem]} */}
       </div>);
   }
   if (!errors[elem] && values[elem] !== '') {
@@ -72,7 +70,6 @@ class NewRecipient extends React.Component {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              console.log(JSON.stringify(values, null, 2));
               setSubmitting(false);
               addRecipient(values);
             }, 400);
@@ -87,15 +84,12 @@ class NewRecipient extends React.Component {
             handleSubmit,
             isSubmitting,
           }) => (
-            <form
-              className="newrecipient__form"
-              onSubmit={handleSubmit}
-            >
-              <h3 className="newrecipient__form__heading">Add your personal details</h3>
-              <ul>
-                <li>
-                  <label htmlFor="firstName">
-                    First name
+              <form className="newrecipient__form" onSubmit={handleSubmit} >
+                <h3 className="newrecipient__form__heading">Add your personal details</h3>
+                <ul>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="firstName">
+                      First name</label>
                     <input
                       type="text"
                       name="firstName"
@@ -112,11 +106,11 @@ class NewRecipient extends React.Component {
                       values={values}
                       elem="firstName"
                     />
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="lastName">
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="lastName">
                       Last name
+                      </label>
                     <input
                       type="text"
                       name="lastName"
@@ -133,11 +127,10 @@ class NewRecipient extends React.Component {
                       values={values}
                       elem="lastName"
                     />
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="tel">
-                    Telephone
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="tel">
+                      Telephone</label>
                     <input
                       type="text"
                       name="tel"
@@ -154,11 +147,11 @@ class NewRecipient extends React.Component {
                       values={values}
                       elem="tel"
                     />
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="username">
-                    Username
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="username">
+                      Username
+                      </label>
                     <input
                       type="text"
                       name="username"
@@ -175,11 +168,9 @@ class NewRecipient extends React.Component {
                       values={values}
                       elem="username"
                     />
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="password">
-                    Password
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="password">Password</label>
                     <input
                       type="password"
                       name="password"
@@ -196,71 +187,70 @@ class NewRecipient extends React.Component {
                       values={values}
                       elem="password"
                     />
-                  </label>
-                </li>
-                <li>
-                  <S3Upload
-                    name="imageUrl"
-                    value={values.imageUrl}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  <StyledMessage
-                    errors={errors}
-                    touched={touched}
-                    values={values}
-                    elem="imageUrl"
-                  />
-                </li>
-              </ul>
+                  </li>
+                  <li>
+                    <S3Upload
+                      name="imageUrl"
+                      value={values.imageUrl}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="imageUrl"
+                    />
+                  </li>
+                </ul>
 
-              <h3 className="newrecipient__form__heading">
-                Tell people three things about yourself
+                <h3 className="newrecipient__form__heading">
+                  Tell people three things about yourself
               </h3>
-              <ul>
-                <li>
-                  <input
-                    type="text"
-                    name="bio1"
-                    className="nolabel"
-                    placeholder="I play..."
-                    value={values.bio1}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="bio2"
-                    className="nolabel"
-                    placeholder="I like..."
-                    value={values.bio2}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="bio3"
-                    className="nolabel"
-                    placeholder="I enjoy..."
-                    value={values.bio3}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                </li>
-              </ul>
-              <button
-                className="btn btn__primary btn__submit"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                {Object.keys(touched).length === 0 || Object.keys(errors).length > 0 ? 'Complete required details' : 'Create account'}
-              </button>
-            </form>
-          )}
+                <ul>
+                  <li>
+                    <input
+                      type="text"
+                      name="bio1"
+                      className="nolabel"
+                      placeholder="I play..."
+                      value={values.bio1}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </li>
+                  <li>
+                    <input
+                      type="text"
+                      name="bio2"
+                      className="nolabel"
+                      placeholder="I like..."
+                      value={values.bio2}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </li>
+                  <li>
+                    <input
+                      type="text"
+                      name="bio3"
+                      className="nolabel"
+                      placeholder="I enjoy..."
+                      value={values.bio3}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </li>
+                </ul>
+                <button
+                  className="btn btn__primary btn__submit"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {Object.keys(touched).length === 0 || Object.keys(errors).length > 0 ? 'Complete required details' : 'Create account'}
+                </button>
+              </form>
+            )}
         </Formik>
       </div>
     );

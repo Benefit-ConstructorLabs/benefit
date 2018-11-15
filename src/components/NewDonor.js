@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import S3Upload from './S3Upload';
 import '../../styles/components/new-donor.scss';
-import '../../styles/components/temp-styles.scss';
 
 function setInputClass(errors, touched) {
   return errors && touched ? 'errorInput' : 'validInput';
@@ -14,7 +13,7 @@ function StyledMessage({ errors, touched, values, elem }) {
     return (
       <div className={errors[elem] ? 'errorMessage' : 'validMessage'}>
         <i className="fas cross fa-1x fa-times" />
-        {errors[elem]}
+        {/* {errors[elem]} */}
       </div>);
   }
   if (!errors[elem] && values[elem] !== '') {
@@ -42,7 +41,7 @@ class NewDonor extends React.Component {
         <h3>Add your basic information</h3>
         <img src="" alt="" className="newdonor__header-image" />
         <Formik
-          initialValues={{ firstName: '', lastName: '', tel: '', email: '', password: '', imageUrl: '' }}
+          initialValues={{ firstName: '', lastName: '', tel: '', email: '', password: '', imageUrl: '', cardNum: '', cardExp: '', cardCCV: '' }}
           validate={(values) => {
             const errors = {};
             if (!values.firstName) {
@@ -71,6 +70,15 @@ class NewDonor extends React.Component {
             if (!values.imageUrl) {
               errors.imageUrl = 'Required';
             }
+            if (!values.cardNum) {
+              errors.cardNum = 'Required';
+            }
+            if (!values.cardNum) {
+              errors.cardExp = 'Required';
+            }
+            if (!values.cardNum) {
+              errors.cardCCV = 'Required';
+            }
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
@@ -90,15 +98,13 @@ class NewDonor extends React.Component {
             handleSubmit,
             isSubmitting,
           }) => (
-            <form
-              className="newrecipient__form"
-              onSubmit={handleSubmit}
-            >
-              <h3 className="newrecipient__form__heading">Add your personal details</h3>
-              <ul>
-                <li>
-                  <label htmlFor="firstName">
-                    First name
+              <form className="newrecipient__form" onSubmit={handleSubmit}>
+                <h3 className="newrecipient__form__heading">Add your personal details</h3>
+                <ul>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="firstName">
+                      First name
+                    </label>
                     <input
                       type="text"
                       name="firstName"
@@ -115,11 +121,11 @@ class NewDonor extends React.Component {
                       values={values}
                       elem="firstName"
                     />
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="lastName">
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="lastName">
                       Last name
+                    </label>
                     <input
                       type="text"
                       name="lastName"
@@ -136,11 +142,11 @@ class NewDonor extends React.Component {
                       values={values}
                       elem="lastName"
                     />
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="tel">
-                    Telephone
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="tel">
+                      Telephone
+                    </label>
                     <input
                       type="text"
                       name="tel"
@@ -157,11 +163,11 @@ class NewDonor extends React.Component {
                       values={values}
                       elem="tel"
                     />
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="tel">
-                    Email
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="email">
+                      Email
+                    </label>
                     <input
                       type="text"
                       name="email"
@@ -178,11 +184,9 @@ class NewDonor extends React.Component {
                       values={values}
                       elem="email"
                     />
-                  </label>
-                </li>
-                <li>
-                  <label htmlFor="password">
-                    Password
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="password">Password</label>
                     <input
                       type="password"
                       name="password"
@@ -199,66 +203,95 @@ class NewDonor extends React.Component {
                       values={values}
                       elem="password"
                     />
-                  </label>
-                </li>
-                <li>
-                  <S3Upload
-                    name="imageUrl"
-                    value={values.imageUrl}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  <StyledMessage
-                    errors={errors}
-                    touched={touched}
-                    values={values}
-                    elem="imageUrl"
-                  />
-                </li>
-              </ul>
+                  </li>
+                  <li>
+                    <S3Upload
+                      name="imageUrl"
+                      value={values.imageUrl}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="imageUrl"
+                    />
+                  </li>
+                </ul>
 
-              <h3 className="newrecipient__form__heading">
-                Add your payment details
-              </h3>
+                <h3 className="newrecipient__form__heading">
+                  Add your payment details
+                </h3>
 
-              <ul>
-                <li>
-                  <input
-                    className="validMessage"
-                    type="text"
-                    name="cardNo"
-                    defaultValue=""
-                    placeholder="Card Number"
-                  />
-                </li>
-                <li>
-                  <input
-                    className="validMessage"
-                    type="text"
-                    name="cardExp"
-                    defaultValue=""
-                    placeholder="Expiry Date"
-                  />
-                </li>
-                <li>
-                  <input
-                    className="validMessage"
-                    type="text"
-                    name="cardCCV"
-                    defaultValue=""
-                    placeholder="CCV"
-                  />
-                </li>
-              </ul>
-              <button
-                className="btn btn__primary btn__submit"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                {Object.keys(touched).length === 0 || Object.keys(errors).length > 0 ? 'Complete required details' : 'Create account'}
-              </button>
-            </form>
-          )}
+                <ul>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="cardNum">Card number</label>
+                    <input
+                      className={setInputClass(errors.cardNum, touched.cardNum)}
+                      type="text"
+                      id="cardNum"
+                      name="cardNum"
+                      value={values.cardNum}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      placeholder="Card Number"
+                    />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="cardNum"
+                    />
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="cardExp">Card number</label>
+                    <input
+                      className={setInputClass(errors.cardExp, touched.cardExp)}
+                      type="text"
+                      id="cardExp"
+                      name="cardExp"
+                      placeholder="Expiry Date"
+                      value={values.cardExp}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="cardExp"
+                    />
+                  </li>
+                  <li>
+                    <label className="visuallyhidden" htmlFor="cardCCV">Card number</label>
+                    <input
+                      className={setInputClass(errors.cardCCV, touched.cardCCV)}
+                      type="text"
+                      id="cardCCV"
+                      name="cardCCV"
+                      placeholder="CCV"
+                      value={values.cardCCV}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    <StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="cardCCV"
+                    />
+                  </li>
+                </ul>
+                <button
+                  className="btn btn__primary btn__submit"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  {Object.keys(touched).length === 0 || Object.keys(errors).length > 0 ? 'Complete required details' : 'Create account'}
+                </button>
+              </form>
+            )}
         </Formik>
       </div>
     );
