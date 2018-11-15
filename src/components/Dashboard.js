@@ -27,13 +27,17 @@ class Dashboard extends React.Component {
     const timelineData = [...donations];
     timelineData.reverse();
 
+    console.log(timelineData);
+
     const timeSeries = timelineData.map((item, index) => {
       const { time, amount } = item;
       total += (amount / 100);
       return {
-        time: getTime(time), donation: amount / 100, total, average: total / (index + 1),
+        time: getTime(time), donation: (amount / 100), total, average: total / (index + 1),
       };
     });
+
+    console.log(timeSeries);
 
     const signupData = [
       { name: 'Recipients', today: 4, other: 13 },
@@ -84,14 +88,15 @@ class Dashboard extends React.Component {
             margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="time" type="number" stroke="#aaa" domain={['dataMin', 'dataMax']} tickFormatter={time => format(time, 'D MMM')} />
+            <XAxis dataKey="time" type="number" stroke="#aaa" domain={['dataMin', 'auto']} tickFormatter={time => format(time, 'D MMM')} />
             <YAxis yAxisId="left" orientation="left" stroke="#aaa" label={{ value: 'total (£)', angle: -90, position: 'left' }} />
             <YAxis yAxisId="right" orientation="right" stroke="#aaa" label={{ value: 'donation (£)', angle: -90, position: 'right' }} />
             <Tooltip labelFormatter={label => format(label, 'D/M/YYYY')} formatter={value => `£${value.toFixed(2)}`} />
             <Legend />
             <Area yAxisId="left" type="monotone" dataKey="total" fill="#ccc" stroke="#aaa" />
-            <Bar yAxisId="right" dataKey="donation" fill="#555" />
+
             <Line yAxisId="right" type="monotone" dataKey="average" stroke="#888" />
+            <Bar yAxisId="right" dataKey="donation" barSize={20} fill="#aaa" />
           </ComposedChart>
         </section>
 
