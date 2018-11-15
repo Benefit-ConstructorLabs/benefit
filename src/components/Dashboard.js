@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  ComposedChart, BarChart, PieChart, Pie, Radar,
-  RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis,
-  Cell, XAxis, YAxis, Tooltip, Legend,
-  CartesianGrid, Area, Bar, Line,
-} from 'recharts';
+import { BarChart, Bar } from 'recharts';
+import { RadarChart, Radar, PolarGrid, PolarAngleAxis } from 'recharts';
+import { Legend, XAxis, YAxis, Tooltip } from 'recharts';
+import { ComposedChart, CartesianGrid, Area, Line } from 'recharts';
 import { format, getTime, isToday } from 'date-fns';
 import '../../styles/components/dashboard.scss';
 
@@ -20,14 +18,14 @@ class Dashboard extends React.Component {
 
     let total = 0;
 
-    const todaysTotal = (donations.filter(item => isToday(item.time)).reduce(((acc, item) => acc + item.amount), 0) / 100).toFixed(2);
+    const todaysTotal = (donations.filter(item => isToday(item.time))
+      .reduce(((acc, item) => acc + item.amount), 0) / 100)
+      .toFixed(2);
 
     // console.log('TODAY', todaysDonations);
 
     const timelineData = [...donations];
     timelineData.reverse();
-
-    console.log(timelineData);
 
     const timeSeries = timelineData.map((item, index) => {
       const { time, amount } = item;
@@ -36,8 +34,6 @@ class Dashboard extends React.Component {
         time: getTime(time), donation: (amount / 100), total, average: total / (index + 1),
       };
     });
-
-    console.log(timeSeries);
 
     const signupData = [
       { name: 'Recipients', today: 4, other: 13 },
@@ -102,7 +98,10 @@ class Dashboard extends React.Component {
 
         <section className="dashboard__signups">
           <h3>Sign-ups by type</h3>
-          <BarChart width={300} height={400} data={signupData}
+          <BarChart
+            width={300}
+            height={400}
+            data={signupData}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" />
@@ -153,8 +152,8 @@ class Dashboard extends React.Component {
         </section>
       </section>
     );
-  };
-};
+  }
+}
 
 Dashboard.propTypes = {
   id: PropTypes.number.isRequired,
