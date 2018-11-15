@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BarChart, Bar } from 'recharts';
-import { RadarChart, Radar, PolarGrid, PolarAngleAxis } from 'recharts';
-import { Legend, XAxis, YAxis, Tooltip } from 'recharts';
-import { ComposedChart, CartesianGrid, Area, Line, ErrorBar } from 'recharts';
+import { RadarChart, Radar, PolarGrid, PolarAngleAxis, BarChart, Bar, Legend, XAxis, YAxis, Tooltip, ComposedChart, CartesianGrid, Area, Line } from 'recharts';
 import { format, getTime, isToday } from 'date-fns';
 import '../../styles/components/dashboard.scss';
 
