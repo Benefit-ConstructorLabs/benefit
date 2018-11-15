@@ -50,6 +50,7 @@ DonationForm.propTypes = {
   firstName: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
   togglePaymentDetails: PropTypes.func.isRequired,
+  setDonorID: PropTypes.func.isRequired,
 };
 
 DonationForm.defaultProps = {

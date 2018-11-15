@@ -63,12 +63,12 @@ export function receiveStripeToken(stripeToken) {
   };
 }
 
-export function setDonorID(donorID) {
+export function setDonorID() {
   return {
     type: 'SET_DONOR_ID',
-    donorID,
   };
 }
+
 export function setDonationID(donationID) {
   return {
     type: 'SET_DONATION_ID',
@@ -85,11 +85,11 @@ export function createPaymentDetails(token) {
       donation: {
         recipient_id: recipient.recipientID,
         donor_id: donor.donorID,
-        amount: (donation.donationAmount * 100),
+        amount: donation.donationAmount * 100,
         stripe_id: token,
       },
     };
-    console.log(newDataKeysObject);
+    console.log('donation object sent to server', newDataKeysObject);
     fetch('/api/donation', {
       method: 'post',
       body: JSON.stringify(newDataKeysObject),
@@ -99,14 +99,10 @@ export function createPaymentDetails(token) {
     })
       .then(response => response.json())
       .then((donationID) => {
-        console.log(donationID.transaction_id);
+        console.log('returned transaction id', donationID.transaction_id);
         dispatch(receiveStripeToken(token));
         dispatch(setDonationID(donationID.transaction_id));
       });
-
-    dispatch(setCardInput(''));
-    dispatch(setExpDateInput(''));
-    dispatch(setCcvInput(''));
   };
 }
 
@@ -125,22 +121,9 @@ export function setRecipientIdForQrCode(id) {
 
 export function addRecipient(recipient) {
   return function (dispatch) {
-    const newDataKeysObject = {
-      recipient: {
-        first_name: recipient.firstName,
-        last_name: recipient.lastName,
-        username: recipient.username,
-        password: recipient.password,
-        photo: recipientImageUrl.url,
-        tel: recipient.tel,
-        bio_1: recipient.bio1,
-        bio_2: recipient.bio2,
-        bio_3: recipient.bio3,
-      },
-    };
     fetch('/api/recipient', {
       method: 'post',
-      body: JSON.stringify(newDataKeysObject),
+      body: JSON.stringify(recipient),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -148,42 +131,33 @@ export function addRecipient(recipient) {
       .then(response => response.json())
       .then((body) => {
         dispatch(setRecipientIdForQrCode(body.recipient_id));
-      });
+      })
+      .catch(error => console.error(error));
   };
 }
 
-export function setDonorInputField(fieldName, fieldValue) {
+export function setNewDonorId(newDonorId) {
   return {
-    type: 'SET_DONOR_INPUT',
-    fieldName,
-    fieldValue,
+    type: 'SET_NEW_DONOR_ID',
+    newDonorId,
   };
 }
 
-export function addDonor() {
-  return function (dispatch, getState) {
-    const { donor, recipientImageUrl } = getState();
-    const newDataKeysObject = {
-      donor: {
-        first_name: donor.firstName,
-        last_name: donor.lastName,
-        photo: recipientImageUrl.url,
-        email: donor.email,
-        password: donor.password,
-        tel: donor.tel,
-      },
-    };
+export function addDonor(donor) {
+  return function (dispatch) {
     fetch('/api/donor', {
       method: 'post',
-      body: JSON.stringify(newDataKeysObject),
+      body: JSON.stringify(donor),
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then(response => response.json())
-      .then((donorID) => {
-        console.log(donorID);
-      });
+      .then((newDonor) => {
+        console.info(newDonor);
+        dispatch(setNewDonorId(newDonor.id));
+      })
+      .catch(error => console.error(error));
   };
 }
 
@@ -202,6 +176,7 @@ export function setUserFromPassport(user) {
     isLoggedIn: true,
     userID: user.userId,
     userType: user.userType,
+    name: user.name,
   };
 }
 
@@ -232,6 +207,24 @@ export function login() {
   };
 }
 
+export function checkLogin() {
+  return function (dispatch) {
+    fetch('/api/user', { credentials: 'same-origin' })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(`HTTP Error ${response.status} (${response.statusText})`);
+      })
+      .then((user) => {
+        if (user.userId) {
+          dispatch(setUserFromPassport(user));
+        }
+      })
+      .catch(error => console.log('FETCH to GET ERROR', error.message));
+  };
+}
+
 export function setLogout() {
   return { type: 'SET_LOGOUT' };
 }
@@ -257,7 +250,7 @@ export function setDonationsFromDB(donations) {
 
 export function getDonationsByRecipientID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/recipient/${id}`)
+    fetch(`/api/donations/recipient/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(donations => dispatch(setDonationsFromDB(donations)))
       .catch(error => console.log(error.message));
@@ -280,7 +273,7 @@ export function setDonorDonationsFromDB(donations) {
 
 export function getDonationsByDonorID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/donor/${id}`)
+    fetch(`/api/donations/donor/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(donations => dispatch(setDonorDonationsFromDB(donations)))
       .catch(error => console.log(error.message));

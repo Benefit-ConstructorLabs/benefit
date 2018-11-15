@@ -1,18 +1,10 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
+import '../../styles/components/login.scss';
 
 class Login extends React.Component {
-  componentWillReceiveProps({ isLoggedIn: isNowLoggedIn, userID, userType, history }) {
-    const { isLoggedIn: wasLoggedIn } = this.props;
-
-    if (!wasLoggedIn && isNowLoggedIn) {
-      history.push(`/${userType}/${userID}`);
-    }
-  }
-
   render() {
-    const { username, password, login, setLoginDetails } = this.props;
+    const { username, password, login, setLoginDetails, classes } = this.props;
 
     function handleChange(event) {
       setLoginDetails(event.target.name, event.target.value);
@@ -21,7 +13,7 @@ class Login extends React.Component {
     return (
       <React.Fragment>
         <form
-          className="login"
+          className={classes}
           onSubmit={(event) => {
             event.preventDefault();
             login();
@@ -50,7 +42,7 @@ class Login extends React.Component {
             </li>
           </ul>
           <button className="btn btn__login" type="submit">
-            Log In
+            Submit
           </button>
         </form>
       </React.Fragment>

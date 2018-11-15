@@ -1,5 +1,5 @@
 const login = (
-  state = { isLoggedIn: false, userId: null, username: '', userType: null, password: '' },
+  state = { isLoggedIn: false, userId: null, username: '', userType: null, password: '', name: '' },
   action,
 ) => {
   switch (action.type) {
@@ -10,6 +10,7 @@ const login = (
         isLoggedIn: true,
         userId: action.userID,
         userType: action.userType,
+        name: action.name,
       });
     case 'SET_LOGOUT':
       return Object.assign({}, state, {
@@ -18,6 +19,7 @@ const login = (
         username: '',
         userType: null,
         password: '',
+        name: '',
       });
     default:
       return state;

@@ -50,15 +50,23 @@ function getUserById(id) {
     });
 }
 
+const cookieExpirationDate = new Date();
+const cookieExpirationDays = 20;
+cookieExpirationDate.setDate(cookieExpirationDate.getDate() + cookieExpirationDays);
+
 app.use(bodyParser.json());
 app.use('/static', express.static('static'));
 app.set('view engine', 'hbs');
-app.use(cookieParser());
+app.use(cookieParser('some random text #^*%!!'));
 app.use(
   require('express-session')({
     secret: 'some random text #^*%!!', // used to generate session ids
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      expires: cookieExpirationDate, // use expires instead of maxAge
+    },
   }),
 );
 
@@ -122,8 +130,15 @@ app.get('/', (req, res) => {
 
 // PASSPORT route to accept logins
 app.post('/api/login', passport.authenticate('local', { session: true }), (req, res) => {
-  res.json({ userId: req.user.id, userType: req.user.type });
+  res.json({ userId: req.user.id, userType: req.user.type, name: req.user.first_name });
 });
+
+app.get('/api/user', (req, res) => {
+  const userMaybe = req.user
+    ? { userId: req.user.id, userType: req.user.type, name: req.user.first_name }
+    : {};
+  res.json(userMaybe);
+})
 
 // PASSPORT profile page - only accessible to logged in users
 app.get('/api/wallet', isLoggedIn, (req, res) => {
@@ -206,24 +221,24 @@ app.get('/api/recipient/:id', (req, res) => {
 
 // add new recipient to the database
 app.post('/api/recipient', (req, res) => {
-  const { recipient } = req.body;
+  const recipient = req.body;
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
       'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
       [
-        recipient.first_name,
-        recipient.last_name,
+        recipient.firstName,
+        recipient.lastName,
         recipient.tel,
-        recipient.photo,
+        recipient.imageUrl,
         recipient.username,
         hash,
         'recipient',
       ],
     ))
     .then(result => db.one(
-      'INSERT INTO biography (recipient_id, bio_1, bio_2, bio_3) VALUES ($1, $2, $3, $4)RETURNING recipient_id',
-      [result.id, recipient.bio_1, recipient.bio_2, recipient.bio_3],
+      'INSERT INTO biography (recipient_id, bio_1, bio_2, bio_3) VALUES ($1, $2, $3, $4) RETURNING recipient_id',
+      [result.id, recipient.bio1, recipient.bio2, recipient.bio3],
     ))
     .then(result => res.json(result))
     .catch(error => res.json({ error: error.message }));
@@ -250,13 +265,10 @@ const sendSMS = (name, tel) => {
 app.post('/api/donation', (req, res) => {
   const { donation } = req.body;
 
-  // Token is created using Checkout or Elements!
-  // Get the payment token ID submitted by the form:
-
   const charge = stripe.charges.create({
     amount: donation.amount,
-    currency: 'usd',
-    description: 'Example charge',
+    currency: 'gbp',
+    description: 'Example Donation',
     source: donation.stripe_id,
   });
   // enter in the database
@@ -267,6 +279,7 @@ app.post('/api/donation', (req, res) => {
     )
     .then((result) => {
       // the below code is commented out until we can add new donors and send text messages
+      console.log(result);
       const json = {
         // recipient_name: donation.recipient_name,
         // donor_name: donation.donor_name,
@@ -274,23 +287,27 @@ app.post('/api/donation', (req, res) => {
         // transaction_id: result.id,
         transaction_id: result.id,
       };
+
+      console.log(json);
       // sendSMS(donation.recipient_name, donation.tel);
       return res.json(json);
     })
     .catch(error => res.json({ error: error.message }));
 });
 
+
 // add new donor to the database
 app.post('/api/donor', (req, res) => {
-  const { donor } = req.body;
+  const donor = req.body;
+  const stripeTemp = { stripe: { name: 'bob' } }; // Matt to add stripe stuff here
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(
       'INSERT INTO donor (first_name, last_name, photo, username, password, tel, stripe, type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
-      [donor.first_name, donor.last_name, donor.photo, donor.email, hash, donor.tel, donor.stripe, 'donor'],
+      [donor.firstName, donor.lastName, donor.imageUrl, donor.email, hash, donor.tel, JSON.stringify(stripeTemp), 'donor'],
     ))
-    .then(result => res.json(result))
-    .catch(error => res.json({ error: error.message }));
+    .then(result => console.log(result) || res.json(result))
+    .catch(error => res.json({ error }));
 });
 
 // get donor by id
@@ -337,6 +354,10 @@ app.get('/api/donations/organisation/:id', (req, res) => {
           ORDER BY time DESC`, [id])
     .then(donations => res.json(donations))
     .catch(error => res.json({ error: error.message }));
+});
+
+app.use('/.well-known/apple-developer-merchantid-domain-association', (req, res) => {
+  res.send(process.env.APPLE_DEVELOPER_MERCHANT_ID);
 });
 
 app.use('/', (req, res) => {

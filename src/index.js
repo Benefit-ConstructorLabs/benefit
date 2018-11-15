@@ -6,16 +6,13 @@ import { Provider } from 'react-redux';
 import { StripeProvider } from 'react-stripe-elements';
 import rootReducer from './reducers';
 import App from './components/App';
+import { checkLogin } from './actions';
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// const store = createStore(rootReducer, composeEnhancers(applyMiddleware(
+// const store = createStore(rootReducer, applyMiddleware(
 //   thunkMiddleware,
-// )));
-
-
-const store = createStore(rootReducer, applyMiddleware(
-  thunkMiddleware,
-));
+// ));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMiddleware)));
 
 ReactDOM.render(
   <Provider store={store}>
