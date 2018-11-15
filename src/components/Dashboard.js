@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { BarChart, Bar } from 'recharts';
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis } from 'recharts';
 import { Legend, XAxis, YAxis, Tooltip } from 'recharts';
-import { ComposedChart, CartesianGrid, Area, Line } from 'recharts';
+import { ComposedChart, CartesianGrid, Area, Line, ErrorBar } from 'recharts';
 import { format, getTime, isToday } from 'date-fns';
 import '../../styles/components/dashboard.scss';
 
@@ -69,7 +69,7 @@ class Dashboard extends React.Component {
         <h2 className="dashboard__title">Dashboard (beta)</h2>
         <dl className="dashboard__totals__overall">
           <dd>Total Donations</dd>
-          <dt>{`£${total}`}</dt>
+          <dt>{`£${total.toFixed(2)}`}</dt>
         </dl>
         <dl className="dashboard__totals__daily">
           <dd>Today’s total</dd>
@@ -84,15 +84,14 @@ class Dashboard extends React.Component {
             margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="time" type="number" stroke="#aaa" domain={['dataMin', 'auto']} tickFormatter={time => format(time, 'D MMM')} />
+            <XAxis dataKey="time" type="number" stroke="#aaa" domain={['auto', 'auto']} tickFormatter={time => format(time, 'D MMM')} />
             <YAxis yAxisId="left" orientation="left" stroke="#aaa" label={{ value: 'total (£)', angle: -90, position: 'left' }} />
             <YAxis yAxisId="right" orientation="right" stroke="#aaa" label={{ value: 'donation (£)', angle: -90, position: 'right' }} />
             <Tooltip labelFormatter={label => format(label, 'D/M/YYYY')} formatter={value => `£${value.toFixed(2)}`} />
             <Legend />
-            <Area yAxisId="left" type="monotone" dataKey="total" fill="#ccc" stroke="#aaa" />
-
-            <Line yAxisId="right" type="monotone" dataKey="average" stroke="#888" />
-            <Bar yAxisId="right" dataKey="donation" barSize={20} fill="#aaa" />
+            <Area yAxisId="left" type="basisOpen" dataKey="total" fill="#BCF1FF" stroke="#AB90A4" />
+            <Line yAxisId="right" type="basisOpen" dataKey="average" stroke="#D1008E" />
+            <Bar yAxisId="right" dataKey="donation" barSize={10} fill="#350078" />
           </ComposedChart>
         </section>
 
@@ -109,8 +108,8 @@ class Dashboard extends React.Component {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="other" stackId="a" fill="#ccc" />
-            <Bar dataKey="today" stackId="a" fill="#333" />
+            <Bar dataKey="other" stackId="a" fill="#BCF1FF" />
+            <Bar dataKey="today" stackId="a" fill="#350078" />
           </BarChart>
         </section>
 
@@ -120,7 +119,7 @@ class Dashboard extends React.Component {
             <PolarGrid />
             <PolarAngleAxis dataKey="day" />
             <Tooltip formatter={value => `£${value.toFixed()}`} />
-            <Radar name="Donations" dataKey="amount" stroke="#bbb" fill="#ddd" fillOpacity={0.6} />
+            <Radar name="Donations" dataKey="amount" stroke="#bbb" fill="#BCF1FF" fillOpacity={0.6} />
           </RadarChart>
         </section>
         <section className="dashboard__donations">
