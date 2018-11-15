@@ -16,9 +16,9 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMid
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <StripeProvider apiKey="pk_test_fy9Zps4yuxSNHtPrVr5vr02d"> */}
-    <AppWrapperContainer />
-    {/* </StripeProvider> */}
+    <StripeProvider apiKey="pk_test_fy9Zps4yuxSNHtPrVr5vr02d">
+      <AppWrapperContainer />
+    </StripeProvider>
   </Provider>,
   document.getElementById('root'),
 );
