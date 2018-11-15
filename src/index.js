@@ -5,8 +5,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import { StripeProvider } from 'react-stripe-elements';
 import rootReducer from './reducers';
-import App from './components/App';
-import { checkLogin } from './actions';
+// import { checkLogin } from './actions';
+import AppWrapperContainer from './containers/AppWrapperContainer';
 
 // const store = createStore(rootReducer, applyMiddleware(
 //   thunkMiddleware,
@@ -17,7 +17,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunkMid
 ReactDOM.render(
   <Provider store={store}>
     <StripeProvider apiKey="pk_test_fy9Zps4yuxSNHtPrVr5vr02d">
-      <App />
+      <AppWrapperContainer />
     </StripeProvider>
   </Provider>,
   document.getElementById('root'),

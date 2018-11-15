@@ -207,6 +207,13 @@ export function login() {
   };
 }
 
+export function setHasCheckedUser() {
+  return {
+    type: 'SET_HAS_CHECKED_USER',
+    hasCheckedUser: true,
+  };
+}
+
 export function checkLogin() {
   return function (dispatch) {
     fetch('/api/user', { credentials: 'same-origin' })
@@ -220,6 +227,7 @@ export function checkLogin() {
         if (user.userId) {
           dispatch(setUserFromPassport(user));
         }
+        dispatch(setHasCheckedUser());
       })
       .catch(error => console.log('FETCH to GET ERROR', error.message));
   };
