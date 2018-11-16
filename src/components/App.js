@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom';
 import AppHeaderContainer from '../containers/AppHeaderContainer';
 import NewRecipientContainer from '../containers/NewRecipientContainer';
+import HomePage from '../components/HomePage';
 import PrivateRouteContainer from '../containers/PrivateRouteContainer';
 import RecipientContainer from '../containers/RecipientContainer';
 import NewDonationContainer from '../containers/NewDonationContainer';
@@ -16,6 +17,7 @@ const App = () => (
   <Router>
     <React.Fragment>
       <AppHeaderContainer />
+      <Route exact path="/" component={HomePage} />
       <Route exact path="/recipient/" component={NewRecipientContainer} />
       <PrivateRouteContainer exact path="/recipient/:id" component={RecipientContainer} />
       <Route path="/recipient/:id/donation" component={NewDonationContainer} />

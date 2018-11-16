@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Tabs from './Tabs';
 import RecipientCode from './RecipientCode';
 import RecipientBalance from './RecipientBalance';
@@ -24,5 +24,12 @@ class Recipient extends React.Component {
     );
   }
 }
+
+Recipient.propTypes = {
+  match: PropTypes.instanceOf(Object).isRequired,
+  donations: PropTypes.instanceOf(Array).isRequired,
+  getProfileDetailsByID: PropTypes.func.isRequired,
+  profile: PropTypes.instanceOf(Array).isRequired,
+};
 
 export default Recipient;
