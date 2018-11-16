@@ -87,15 +87,22 @@ form{
   .errorMessage, .validMessage {
     color: $primary-pink;
     display: inline-block;
+    border-radius: 3px;
     margin-left: 1rem;
-    padding: 0;
   }
   .validMessage {
-    color: $secondary-green; 
+    color: $secondary-green;
+    padding: 0;
+    font-size: 2rem;
+  }
+  .errorMessage {
+    background-color: $background-mid-grey;
+    color: $background-dark-grey;
+    padding: 0 0.3rem;
+    font-size: 1.8rem;
   }
   .fas {
-    // color: inherit;
-    font-size: 1.8rem;
+    // font-size: 1.8rem;
   }
 }
 
