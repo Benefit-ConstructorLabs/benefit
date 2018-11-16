@@ -10,7 +10,7 @@ const HomePage = () => (
         src="./static/assets/images/better-change-logo-homepage.png"
         alt="homepage logo"
       />
-      <p className="intro">Chashless donations that make a difference</p>
+      <p className="intro">Cashless donations that make a difference</p>
       <img
         className="intro__photo"
         src="./static/assets/images/iPhone.png"
@@ -25,7 +25,7 @@ const HomePage = () => (
       <Link className="btn btn__secondary" to="/donor">
         Become a donor
       </Link>
-      <h3>Better Change solves a modern-day problem</h3>
+      <h3 className="getStarted__strapline">Better Change solves a modern-day problem</h3>
       <p>
         Have you ever wanted to donate to a good cause but didn’t have any cash on you. Or you were
         put off because we are unsure of where your money was going?

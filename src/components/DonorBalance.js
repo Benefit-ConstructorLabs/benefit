@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AnimationWrapper from './AnimationWrapper';
+import '../../styles/components/donor.scss'
 
 const DonorBalance = ({ donations }) => {
   const donationTotal = donations.reduce((acc, donation) => acc + donation.amount, 0);
@@ -20,9 +21,8 @@ const DonorBalance = ({ donations }) => {
               <span className="amount">{`£${amount}`}</span>
             </li>
           );
-        })
+         })
         }
-
       </ul>
     </section>
   );
