@@ -12,8 +12,20 @@ html{
 }
 
 body{
+  background: $background-dark-grey;
   font-family: $body-font;
+}
+
+#root {
   background: $background-light-grey;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  // margin: auto;
+  // max-width: 400px;
+  div:first-of-type{
+    padding: 0.5rem;
+    margin: auto;
+    max-width: 400px;
+  }
 }
 
 

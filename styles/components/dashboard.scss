@@ -4,8 +4,16 @@
   display:none;
 }
 
+#root{
+  // max-width: 1200px !important;
+}
+
+#root div.recharts-wrapper:first-of-type{
+      margin: 0;
+    }
+
 .dashboard{
-  max-width: 1024px;
+  max-width: 960px;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(5,1fr);
@@ -44,7 +52,12 @@
     border-top: 1px solid $grey;
     grid-area: f;
     padding: 1rem;
+
   }
+
+  
+  
+
   &__signups{
     border-top: 1px solid $grey;
     border-bottom: 1px solid $grey;
