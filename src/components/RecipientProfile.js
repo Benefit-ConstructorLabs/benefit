@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import AnimationWrapper from './AnimationWrapper';
 
 const RecipientProfile = ({ profile }) => {
   const { firstName, lastName, photo, username, tel, bio } = profile;
@@ -30,4 +31,8 @@ const RecipientProfile = ({ profile }) => {
   );
 };
 
-export default RecipientProfile;
+RecipientProfile.propTypes = {
+  profile: PropTypes.instanceOf(Array).isRequired,
+};
+
+export default AnimationWrapper(RecipientProfile);
