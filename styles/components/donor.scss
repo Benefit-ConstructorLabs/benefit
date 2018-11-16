@@ -1,8 +1,8 @@
 @import '../base';
 
 .donor, .donor__account, .donor__profile {
-  height: 85vh;
   padding: 0.5rem;
+  padding-bottom: 8rem;
   &__title{
     text-align: left;
   }
@@ -53,23 +53,28 @@
 
 .donor__profile{
   &__photo{
-    border: 10px solid $primary-color;
     border-radius: 5rem;
     display: block;
-    height: 10rem;
+    height: 8rem;
     margin: 0 auto;
-    width: 10rem;
+    width: 8rem;
+    box-shadow: 1px 0px 4px $background-mid-grey;
+  }
+  dl{
+    margin: 0rem 1.5rem 0rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
   }
   dt{
     font-weight: 600;
-    float: left;
-    clear: left;
-    margin-bottom: 1rem;
-    width: 30%;
+    width: 50%;
+    color: $text-black;
+    margin: 1rem 0 1rem 0;
   }
   dd{
-    float:left;
-    margin-left: 0;
-    width: 60%;
+    text-align: right;
+    width: 50%;
+    margin: 1rem 0 1rem 0;
+    color: $primary-blue;
   }
 }

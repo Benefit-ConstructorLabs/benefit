@@ -1,12 +1,10 @@
 @import '../base';
 
-.recipient,
-.recipient__account,
-.recipient__profile {
-  height: 85vh;
+.recipient, .recipient__account, .recipient__profile {
   padding: 0.5rem;
-  &__title {
-    text-align: center;
+  padding-bottom: 8rem;
+  &__title{
+    text-align: left;
   }
   &__qrcode {
     text-align: center;
@@ -47,50 +45,71 @@
 
 .recipient__account {
   &__balance {
-    font-size: 4rem;
+    font-weight: bold;
     text-align: center;
+    padding: 20px;
+    margin: 20px 20px 50px 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px $grey;
   }
-  &__donations {
-    &__donation {
+
+  &__donations{
+    margin: 20px;
+    color: $primary-color;
+    &__donation{
       display: flex;
-      justify-content: space-between;
-      align-content: center;
-      .donor__photo,
-      .donor__name,
-      .amount {
-        align-self: center;
+      align-items: center;
+      height: auto;
+      .donor__photo{
+        text-align: center;
+        height: auto;
+        width: auto;
       }
-      .donor__photo {
-        border: 4px solid $primary-color;
+      .donor__name{
+        flex-grow: 4;
+        padding-left: 20px;
+      }
+      .amount{
+        flex-grow: 1;
+        text-align: right;
+      }
+      .donor__photo{
         border-radius: 25px;
-        height: 50px;
-        width: 50px;
+        height: 48px;
+        width: 48px;
+        box-shadow: 0px 2px 3px $background-mid-grey;
       }
     }
   }
 }
 
-.recipient__profile {
-  &__photo {
-    border: 10px solid $primary-color;
+.recipient__profile{
+  &__photo{
+
     border-radius: 5rem;
     display: block;
-    height: 10rem;
+    height: 8rem;
     margin: 0 auto;
-    width: 10rem;
+    width: 8rem;
+    box-shadow: 1px 0px 4px $background-mid-grey;
+  }
+  dl{
+    margin: 0rem 1.5rem 0rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
   }
   dt {
     font-weight: 600;
-    float: left;
-    clear: left;
-    margin-bottom: 1rem;
-    width: 30%;
+    width: 50%;
+    color: $primary-blue;
+    margin: 1rem 0 1rem 0;
   }
-  dd {
-    float: left;
-    margin-left: 0;
-    width: 60%;
-    ul {
+  dd{
+    text-align: right;
+    width: 50%;
+    margin: 1rem 0 1rem 0;
+    ul{
       margin: 0;
       li:first-child {
         margin-top: 0;
