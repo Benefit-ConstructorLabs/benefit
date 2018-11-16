@@ -18,7 +18,7 @@ const HomePage = () => (
       />
     </header>
     <section className="getStarted">
-      <h2 className="getStarted__header">Give generoulsy</h2>
+      <h2 className="getStarted__header">Give generously</h2>
       <Link className="btn btn__secondary" to="/recipient">
         Receive donations
       </Link>

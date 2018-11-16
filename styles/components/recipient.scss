@@ -45,7 +45,7 @@
 
 .recipient__account {
   &__balance {
-    font-weight: bold;
+    font-size: 3rem;
     text-align: center;
     padding: 20px;
     margin: 20px 20px 50px 20px;
@@ -86,7 +86,6 @@
 
 .recipient__profile{
   &__photo{
-
     border-radius: 5rem;
     display: block;
     height: 8rem;
@@ -101,13 +100,13 @@
   }
   dt {
     font-weight: 600;
-    width: 50%;
+    width: 45%;
     color: $primary-blue;
     margin: 1rem 0 1rem 0;
   }
   dd{
     text-align: right;
-    width: 50%;
+    width: 55%;
     margin: 1rem 0 1rem 0;
     ul{
       margin: 0;

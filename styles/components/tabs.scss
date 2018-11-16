@@ -1,5 +1,9 @@
 @import '../base';
 
+#root div.tabs:first-of-type{
+      padding: 0;
+    }
+
 .tabs{
   height: 85vh;
   position: relative;
