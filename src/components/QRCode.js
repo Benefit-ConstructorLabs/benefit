@@ -25,8 +25,8 @@ class QRCode extends React.Component {
         scale: 4,
         version: 5,
         color: {
-          dark: '#003366FF',
-          light: '#CDF8FFCC',
+          dark: '#000000',
+          light: '#FFFFFF',
         },
       },
       (error) => {
@@ -39,17 +39,16 @@ class QRCode extends React.Component {
 
   render() {
     const { id } = this.props;
-    const canvas = !!id
-      && (
-        <div className="recipient__qrcode">
-          <canvas ref={(element) => { this.canvas = element; }} />
-        </div>
-      );
-    return (
-      <React.Fragment>
-        {canvas}
-      </React.Fragment>
+    const canvas = !!id && (
+      <div className="recipient__qrcode">
+        <canvas
+          ref={(element) => {
+            this.canvas = element;
+          }}
+        />
+      </div>
     );
+    return <React.Fragment>{canvas}</React.Fragment>;
   }
 }
 
