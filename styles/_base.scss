@@ -19,7 +19,6 @@ body {
 }
 
 #root {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
   div:first-of-type {
     padding: 0.5rem;
     margin: auto;
@@ -54,7 +53,9 @@ a.btn {
     color: $primary-blue;
   }
   &__upload {
-    width: 50%;
+    width: 85%;
+    margin: 0;
+    margin-right: 0;
   }
 }
 
@@ -70,8 +71,6 @@ form {
     padding: 0;
     li {
       list-style: none;
-      // display: flex;
-      // flex-direction: row;
       margin: 1rem 0;
     }
   }
@@ -84,7 +83,7 @@ form {
     border-radius: 0.3rem;
     letter-spacing: 0.03rem;
     min-width: 12rem;
-    width: 90%;
+    width: 85%;
   }
   // Formik validation styles //
   .errorInput {
@@ -106,7 +105,6 @@ form {
     font-size: 2rem;
   }
   .errorMessage {
-    background-color: $background-mid-grey;
     color: $background-dark-grey;
     padding: 0 0.3rem;
     font-size: 1.8rem;
@@ -115,6 +113,7 @@ form {
     // font-size: 1.8rem;
   }
 }
+
 
 /* helper styles */
 .visuallyhidden {
