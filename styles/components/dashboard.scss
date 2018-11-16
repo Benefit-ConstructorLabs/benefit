@@ -4,9 +4,6 @@
   display:none;
 }
 
-#root{
-  // max-width: 1200px !important;
-}
 
 #root div.recharts-wrapper:first-of-type{
       margin: 0;
@@ -90,7 +87,7 @@
         padding: 0.5rem 0 0.5rem 0.25rem;
       }
       tr:nth-child(even){
-        background: $grey;
+        background: $background-light-grey;
       }
     }
   }

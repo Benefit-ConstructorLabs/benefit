@@ -12,15 +12,12 @@ html{
 }
 
 body{
-  background: $background-dark-grey;
   font-family: $body-font;
+  color: $primary-blue;
 }
 
 #root {
-  background: $background-light-grey;
   box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-  // margin: auto;
-  // max-width: 400px;
   div:first-of-type{
     padding: 0.5rem;
     margin: auto;
@@ -41,7 +38,6 @@ body{
   padding: 1rem;
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
   width: 90%;
   &__primary{
     background: $primary-pink;
