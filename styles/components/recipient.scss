@@ -41,6 +41,10 @@
   }
 }
 
+.recipient {
+  background: url('/static/assets/images/background-block-light-grey.png') 41% 131% no-repeat;
+}
+
 .recipient__account {
   &__balance {
     font-size: 4rem;
