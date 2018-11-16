@@ -1,15 +1,28 @@
 @import '../base.scss';
 
 .homepage {
+  background: url('/static/assets/images/homepage_bg_gradient.png') 98% -12% no-repeat;
   header *,
   section * {
     width: 80%;
     margin: auto;
   }
+
+  .getStarted {
+    padding-bottom: 5rem;
+    background: url('/static/assets/images/homepage_bg_gradient.png') -73px -42px no-repeat;
+    p {
+      color: white;
+    }
+  }
+
   .intro {
-    font-size: 1.5rem;
-    width: 60%;
+    color: $text-yellow;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.2;
     margin-left: 25%;
+    width: 55%;
   }
   .intro__logo {
     display: block;
@@ -22,21 +35,43 @@
 
   .getStarted__header {
     transform: rotate(-8deg);
-    margin-bottom: 20%;
+    margin: 0 0 20% 15%;
+  }
+
+  h2 {
+    font-size: 2rem;
   }
 
   .btn__secondary {
-    width: 80%;
-    text-transform: none;
+    background-color: $secondary-light-blue;
+    font-weight: 700;
     margin: 5% auto;
+    text-transform: none;
+    width: 80%;
+  }
+
+  .getStarted__strapline {
+    color: $secondary-light-blue;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1.5rem 10%;
+  }
+
+  blockquote {
+    color: $primary-blue;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 2.5rem 0 1.5rem 10%;
   }
 
   p {
     font-size: 1.2rem;
     line-height: 1.4;
+    padding-bottom: 1.5rem;
   }
 
   .testimonial__photo {
     width: 100%;
+    margin-bottom: 2rem;
   }
 }
