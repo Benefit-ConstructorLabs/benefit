@@ -1,0 +1,42 @@
+@import '../base.scss';
+
+.homepage {
+  header *,
+  section * {
+    width: 80%;
+    margin: auto;
+  }
+  .intro {
+    font-size: 1.5rem;
+    width: 60%;
+    margin-left: 25%;
+  }
+  .intro__logo {
+    display: block;
+    margin: 10% 10% 0% 10%;
+  }
+  .intro__photo {
+    display: block;
+    margin: 10% 10% 0% 10%;
+  }
+
+  .getStarted__header {
+    transform: rotate(-8deg);
+    margin-bottom: 20%;
+  }
+
+  .btn__secondary {
+    width: 80%;
+    text-transform: none;
+    margin: 5% auto;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .testimonial__photo {
+    width: 100%;
+  }
+}

@@ -9,7 +9,9 @@ const PaymentAcknowledge = ({ firstName }) => (
       {`All done.Thanks for helping ${firstName} out!`}
     </h2>
     <h3 className="acknowledgement__account">Would you like to set up an account?</h3>
-    <Link className="btn btn__primary" to="/donor">Set up an account</Link>
+    <Link className="btn btn__primary" to="/donor">
+      Set up an account
+    </Link>
   </section>
 );
 

@@ -4,22 +4,18 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import '../../styles/components/animation-wrapper.scss';
 
 const AnimationWrapper = Component => (
-  (props) => {
-    return (
-      <CSSTransitionGroup
-        transitionName="example"
-        transitionAppear={true}
-        transitionAppearTimeout={500}
-        transitionEnter={false}
-        transitionLeave={false}
-      >
-        <div>
-          <Component {...props} />
-        </div>
-      </CSSTransitionGroup>
-    );
-  }
-);
+  props => (
+    <CSSTransitionGroup
+      transitionName="example"
+      transitionAppear={true}
+      transitionAppearTimeout={500}
+    >
+      <div>
+        <Component {...props} />
+      </div>
+    </CSSTransitionGroup>
+  ));
+
 
 AnimationWrapper.propTypes = {
   match: PropTypes.shape({

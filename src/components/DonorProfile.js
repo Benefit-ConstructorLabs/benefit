@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import AnimationWrapper from './AnimationWrapper';
 
 const DonorProfile = ({ profile }) => {
   const { firstName, lastName, photo, username, tel } = profile;
@@ -15,9 +16,12 @@ const DonorProfile = ({ profile }) => {
         <dt>Telephone</dt>
         <dd>{tel}</dd>
       </dl>
-
     </section>
   );
 };
 
-export default DonorProfile;
+DonorProfile.propTypes = {
+  profile: PropTypes.instanceOf(Array).isRequired,
+};
+
+export default AnimationWrapper(DonorProfile);
