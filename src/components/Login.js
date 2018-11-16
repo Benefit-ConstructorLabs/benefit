@@ -38,7 +38,7 @@ const Login = ({ username, password, login, setLoginDetails, classes }) => {
             />
           </li>
         </ul>
-        <button className="btn btn__login" type="submit">
+        <button className="btn btn__login-submit" type="submit">
           Submit
         </button>
       </form>
