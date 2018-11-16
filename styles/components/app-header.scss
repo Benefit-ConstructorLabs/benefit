@@ -1,20 +1,43 @@
 @import '../base.scss';
 
 .app__header {
+  align-content: center;
   background-color: $primary-blue;
   display: flex;
   flex-direction: row;
+  height: 5rem;
   justify-content: space-between;
-  padding: 1rem;
-  height: 10vh;
+  position: relative;
 }
 
 .app__title {
-  text-indent: -100%;
+  align-self: flex-start;
+  margin: 1.75rem 0 1rem 1rem;
+  font-size: 1.5rem;
+  a {
+    text-decoration: none;
+    color:white;
+    opacity: 1;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.app__username{
+  color:white;
+  align-self:center;
 }
 
 .dropdown--open {
   background-color: $primary-blue;
+  position: absolute;
+  right: 0;
+  top: 4.8rem;
+  width: 100%;
+  input { 
+    width: 100%;
+  }
 }
 
 .active, .inactive {
@@ -39,5 +62,9 @@
 .login__text {
   color: $primary-pink;
   padding:0;
-  margin:0;
+  margin:0 1rem 0 0;
+  align-self: center;
+  &:hover {
+    text-decoration: none;
+  }
 }
