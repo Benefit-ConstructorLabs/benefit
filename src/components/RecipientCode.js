@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import AnimationWrapper from './AnimationWrapper';
 import QRCodeContainer from '../containers/QRCodeContainer';
 import '../../styles/components/recipient.scss';
 
@@ -29,4 +30,4 @@ RecipientCode.propTypes = {
   }).isRequired,
 };
 
-export default RecipientCode;
+export default AnimationWrapper(RecipientCode);
