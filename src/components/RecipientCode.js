@@ -7,7 +7,7 @@ import '../../styles/components/recipient.scss';
 const RecipientCode = ({ routeParams }) => (
   <section className="recipient">
     {/* {console.log(routeParams)} */}
-    <h2 className="recipient__title">Your Unique QR code</h2>
+    <h2 className="recipient__title">Your unique QR code</h2>
     <QRCodeContainer id={routeParams.params.id} />
     <h3 className="recipient__steps">Three easy steps to receive donations</h3>
     <ol className="recipient__steps-list">
@@ -16,6 +16,7 @@ const RecipientCode = ({ routeParams }) => (
       <li className="recipient__steps-list__item">Check your total donations</li>
     </ol>
     <button type="button" className="btn btn__print-qrcode">
+      <i className="fas fa-print" />
       Print your QR code
     </button>
   </section>
