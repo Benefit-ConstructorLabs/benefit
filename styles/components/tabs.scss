@@ -5,7 +5,7 @@
   position: relative;
 }
 .tab-list {
-  background: $grey;
+  background: $primary-pink;
   display: flex;
   padding: 0;
   margin: 0;
@@ -13,6 +13,8 @@
   bottom: 0;
   height: 5vh;
   width: 100%;
+  color: white;
+  min-height: 65px
 }
 
 .tab-list-item {
@@ -21,8 +23,10 @@
   list-style: none;
   padding: 0.5rem 0.75rem;
   margin: -1px 0 0 0;
+  text-align: center;
 }
 
 .tab-list-active {
   background-color: white;
+  color: $primary-blue;
 }
