@@ -6,8 +6,8 @@ const RecipientProfile = ({ profile }) => {
   const { firstName, lastName, photo, username, tel, bio } = profile;
   return (
     <section className="recipient__profile">
-      <h2 className="recipient__profile__title">Your details</h2>
       <img className="recipient__profile__photo" alt="recipient" src={photo} />
+      <h3 className="recipient__profile__title">Your details</h3>
       <dl>
         <dt>Name</dt>
         <dd>{`${firstName} ${lastName}`}</dd>
