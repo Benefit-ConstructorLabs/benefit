@@ -1,8 +1,8 @@
 @import '../base';
 
 .donor, .donor__account, .donor__profile {
-  height: 85vh;
   padding: 0.5rem;
+  padding-bottom: 8rem;
   &__title{
     text-align: left;
   }
