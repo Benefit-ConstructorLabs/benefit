@@ -49,7 +49,7 @@ export function setRecipientFromDB(recipient) {
 
 export function getRecipientFromDB(id) {
   return function (dispatch) {
-    fetch(`/api/recipient/${id}`, { credentials: 'same-origin' })
+    return fetch(`/api/recipient/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(recipient => dispatch(setRecipientFromDB(recipient)))
       .catch(error => console.log('FETCH ERROR', error.message));

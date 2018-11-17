@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import PaymentDetailsForm from '../../src/components/PaymentDetailsForm';
 
 describe('DonationForm', () => {
-  test('should render correctly', () => {
+  test.skip('should render correctly', () => {
     const tree = renderer
       .create(<PaymentDetailsForm />)
       .toJSON();
