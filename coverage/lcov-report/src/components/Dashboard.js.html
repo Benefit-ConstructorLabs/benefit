@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/Dashboard.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> Dashboard.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.13% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/32</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.57% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/28</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import PropTypes from 'prop-types';
+import { RadarChart, Radar, PolarGrid, PolarAngleAxis, BarChart, Bar, Legend, XAxis, YAxis, Tooltip, ComposedChart, CartesianGrid, Area, Line } from 'recharts';
+import { format, getTime, isToday } from 'date-fns';
+import '../../styles/components/dashboard.scss';
+&nbsp;
+class Dashboard extends React.Component {
+<span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
+    const { id, getDonationsByOrganisationID } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+<span class="cstat-no" title="statement not covered" >    getDonationsByOrganisationID(id);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  re</span>nder() {
+    const { donations } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+&nbsp;
+    let total = <span class="cstat-no" title="statement not covered" >0;</span>
+&nbsp;
+    const todaysTotal = <span class="cstat-no" title="statement not covered" >(donations.filter(<span class="fstat-no" title="function not covered" >it</span>em =&gt; <span class="cstat-no" title="statement not covered" >isToday(item.time))</span></span>
+      .reduce((<span class="fstat-no" title="function not covered" >(a</span>cc, item) =&gt; <span class="cstat-no" title="statement not covered" >acc + item.amount)</span>, 0) / 100)
+      .toFixed(2);
+&nbsp;
+    // console.log('TODAY', todaysDonations);
+&nbsp;
+    const timelineData = <span class="cstat-no" title="statement not covered" >[...donations];</span>
+<span class="cstat-no" title="statement not covered" >    timelineData.reverse();</span>
+&nbsp;
+    const timeSeries = <span class="cstat-no" title="statement not covered" >timelineData.map(<span class="fstat-no" title="function not covered" >(i</span>tem, index) =&gt; {</span>
+      const { time, amount } = <span class="cstat-no" title="statement not covered" >item;</span>
+<span class="cstat-no" title="statement not covered" >      total += (amount / 100);</span>
+<span class="cstat-no" title="statement not covered" >      return {</span>
+        time: getTime(time), donation: (amount / 100), total, average: total / (index + 1),
+      };
+    });
+&nbsp;
+    const signupData = <span class="cstat-no" title="statement not covered" >[</span>
+      { name: 'Recipients', today: 4, other: 13 },
+      { name: 'Donors', today: 14, other: 148 },
+    ];
+&nbsp;
+    // radar
+&nbsp;
+    const dailySeries = <span class="cstat-no" title="statement not covered" >donations.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {</span>
+      const { time, amount } = <span class="cstat-no" title="statement not covered" >item;</span>
+<span class="cstat-no" title="statement not covered" >      return { day: format(time, 'dddd'), amount: amount / 100 };</span>
+    });
+&nbsp;
+    const days = <span class="cstat-no" title="statement not covered" >[</span>
+      { day: 'Monday', amount: 0 },
+      { day: 'Tuesday', amount: 0 },
+      { day: 'Wednesday', amount: 0 },
+      { day: 'Thursday', amount: 0 },
+      { day: 'Friday', amount: 0 },
+      { day: 'Saturday', amount: 0 },
+      { day: 'Sunday', amount: 0 }];
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    dailySeries.forEach(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      if (days.find(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; <span class="cstat-no" title="statement not covered" >element.day === item.day)</span>) {</span>
+<span class="cstat-no" title="statement not covered" >        days.find(<span class="fstat-no" title="function not covered" >el</span>ement =&gt; <span class="cstat-no" title="statement not covered" >element.day === item.day)</span>.amount += item.amount;</span>
+      } else {
+<span class="cstat-no" title="statement not covered" >        days.push(item);</span>
+      }
+    });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;section className="dashboard"&gt;
+        &lt;h2 className="dashboard__title"&gt;Dashboard (beta)&lt;/h2&gt;
+        &lt;dl className="dashboard__totals__overall"&gt;
+          &lt;dd&gt;Total Donations&lt;/dd&gt;
+          &lt;dt&gt;{`£${total.toFixed(2)}`}&lt;/dt&gt;
+        &lt;/dl&gt;
+        &lt;dl className="dashboard__totals__daily"&gt;
+          &lt;dd&gt;Today’s total&lt;/dd&gt;
+          &lt;dt&gt;{`£${todaysTotal}`}&lt;/dt&gt;
+        &lt;/dl&gt;
+        &lt;section className="dashboard__progress"&gt;
+          &lt;h3&gt;Donations timeline&lt;/h3&gt;
+          &lt;ComposedChart
+            width={960}
+            height={400}
+            data={timeSeries}
+            margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+          &gt;
+            &lt;CartesianGrid stroke="#f5f5f5" /&gt;
+            &lt;XAxis dataKey="time" type="number" stroke="#aaa" domain={['auto', 'auto']} tickFormatter={<span class="fstat-no" title="function not covered" >ti</span>me =&gt; <span class="cstat-no" title="statement not covered" >format(time, 'D MMM')}</span> /&gt;
+            &lt;YAxis yAxisId="left" orientation="left" stroke="#aaa" label={{ value: 'total (£)', angle: -90, position: 'left' }} /&gt;
+            &lt;YAxis yAxisId="right" orientation="right" stroke="#aaa" label={{ value: 'donation (£)', angle: -90, position: 'right' }} /&gt;
+            &lt;Tooltip labelFormatter={<span class="fstat-no" title="function not covered" >la</span>bel =&gt; <span class="cstat-no" title="statement not covered" >format(label, 'D/M/YYYY')}</span> formatter={<span class="fstat-no" title="function not covered" >va</span>lue =&gt; <span class="cstat-no" title="statement not covered" >`£${value.toFixed(2)}`}</span> /&gt;
+            &lt;Legend /&gt;
+            &lt;Area yAxisId="left" type="basisOpen" dataKey="total" fill="#BCF1FF" stroke="#AB90A4" /&gt;
+            &lt;Line yAxisId="right" type="basisOpen" dataKey="average" stroke="#D1008E" /&gt;
+            &lt;Bar yAxisId="right" dataKey="donation" barSize={10} fill="#350078" /&gt;
+          &lt;/ComposedChart&gt;
+        &lt;/section&gt;
+&nbsp;
+        &lt;section className="dashboard__signups"&gt;
+          &lt;h3&gt;Sign-ups by type&lt;/h3&gt;
+          &lt;BarChart
+            width={300}
+            height={400}
+            data={signupData}
+            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+          &gt;
+            &lt;CartesianGrid strokeDasharray="3 3" /&gt;
+            &lt;XAxis dataKey="name" /&gt;
+            &lt;YAxis /&gt;
+            &lt;Tooltip /&gt;
+            &lt;Legend /&gt;
+            &lt;Bar dataKey="other" stackId="a" fill="#BCF1FF" /&gt;
+            &lt;Bar dataKey="today" stackId="a" fill="#350078" /&gt;
+          &lt;/BarChart&gt;
+        &lt;/section&gt;
+&nbsp;
+        &lt;section className="dashboard__daily"&gt;
+          &lt;h3&gt;Donations by day of the week&lt;/h3&gt;
+          &lt;RadarChart outerRadius="80%" width={600} height={400} data={days}&gt;
+            &lt;PolarGrid /&gt;
+            &lt;PolarAngleAxis dataKey="day" /&gt;
+            &lt;Tooltip formatter={<span class="fstat-no" title="function not covered" >va</span>lue =&gt; <span class="cstat-no" title="statement not covered" >`£${value.toFixed()}`}</span> /&gt;
+            &lt;Radar name="Donations" dataKey="amount" stroke="#bbb" fill="#BCF1FF" fillOpacity={0.6} /&gt;
+          &lt;/RadarChart&gt;
+        &lt;/section&gt;
+        &lt;section className="dashboard__donations"&gt;
+          &lt;h3&gt;Donations data&lt;/h3&gt;
+          &lt;table className="dashboard__donations__table"&gt;
+            &lt;thead&gt;
+              &lt;tr&gt;
+                &lt;th&gt;Date&lt;/th&gt;
+                &lt;th&gt;Amount&lt;/th&gt;
+                &lt;th&gt;Recipient&lt;/th&gt;
+                &lt;th&gt;Donor&lt;/th&gt;
+              &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              {donations.map(<span class="fstat-no" title="function not covered" >(d</span>onation) =&gt; {
+                const { id, time, amount, recipient, donor } = <span class="cstat-no" title="statement not covered" >donation;</span>
+<span class="cstat-no" title="statement not covered" >                return (</span>
+                  &lt;tr key={id}&gt;
+                    &lt;td&gt;{format(time, 'D/M/YYYY')}&lt;/td&gt;
+                    &lt;td&gt;{`£ ${Number.parseFloat(amount / 100).toFixed(2)}`}&lt;/td&gt;
+                    &lt;td&gt;{recipient}&lt;/td&gt;
+                    &lt;td&gt;{donor}&lt;/td&gt;
+                  &lt;/tr&gt;
+                );
+              })}
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+&nbsp;
+        &lt;/section&gt;
+      &lt;/section&gt;
+    );
+  }
+}
+&nbsp;
+Dashboard.propTypes = {
+  id: PropTypes.number.isRequired,
+  getDonationsByOrganisationID: PropTypes.func.isRequired,
+  donations: PropTypes.instanceOf(Array).isRequired,
+};
+&nbsp;
+export default Dashboard;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 17 2018 22:53:20 GMT+0000 (Greenwich Mean Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
