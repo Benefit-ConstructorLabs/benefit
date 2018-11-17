@@ -20,14 +20,16 @@ const HomePage = () => (
     <section className="getStarted">
       <h2 className="getStarted__header">Give generously</h2>
       <Link className="btn btn__secondary" to="/recipient">
-        Receive donations
+        <div>Receive donations</div>
+        {/* <i className="fas next-arrow fa-arrow-right" /> */}
       </Link>
       <Link className="btn btn__secondary" to="/donor">
-        Become a donor
+        <div>Become a donor</div>
+        {/* <i className="fas next-arrow fa-arrow-right" /> */}
       </Link>
       <h3 className="getStarted__strapline">Better Change solves a modern-day problem</h3>
       <p>
-        Have you ever wanted to donate to a good cause but didn’t have any cash on you. Or you were
+        Have you ever wanted to donate to a good cause but didn’t have any cash on you? Or you were
         put off because we are unsure of where your money was going?
       </p>
       <p>

@@ -174,7 +174,8 @@ const uploadFile = (buffer, name, type) => {
     ContentType: type.mime,
     Key: `${name}.${type.ext}`,
   };
-  const s3 = new AWS.S3();
+  //const s3 = new AWS.S3();
+  const s3 = new AWS.S3({ signatureVersion: 'v2' });
   return s3.upload(params).promise();
 };
 
@@ -192,6 +193,7 @@ app.post('/api/upload', (request, response) => {
       const data = await uploadFile(buffer, fileName, type);
       return response.status(200).send(data);
     } catch (err) {
+      console.error(err);
       return response.status(400).send(err);
     }
   });
@@ -363,6 +365,8 @@ app.use('/.well-known/apple-developer-merchantid-domain-association', (req, res)
 app.use('/', (req, res) => {
   res.render('index');
 });
+
+app.timeout = 0;
 
 app.listen(app.get('port'), () => {
   console.log(`Listening on ${app.get('port')}`);

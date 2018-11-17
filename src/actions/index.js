@@ -19,20 +19,20 @@ export function toggleDonationComplete() {
   };
 }
 
-export function getQRCode(id) {
-  return function (dispatch) {
-    fetch(`/api/recipient/${id}`)
-      .then(response => response.json())
-      .then((body) => {
-        const qrCodeUrl = `/recipient/${body.id}/donation`;
-        dispatch({
-          type: 'SET_QRCODE_URL',
-          qrCodeUrl,
-        });
-      })
-      .catch(error => console.log(error));
-  };
-}
+// export function getQRCode(id) {
+//   return function (dispatch) {
+//     fetch(`/api/recipient/${id}`)
+//       .then(response => response.json())
+//       .then((body) => {
+//         const qrCodeUrl = `/recipient/${body.id}/donation`;
+//         dispatch({
+//           type: 'SET_QRCODE_URL',
+//           qrCodeUrl,
+//         });
+//       })
+//       .catch(error => console.log(error));
+//   };
+// }
 
 export function setRecipientFromDB(recipient) {
   return {

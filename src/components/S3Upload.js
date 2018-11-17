@@ -12,6 +12,7 @@ class S3Upload extends React.Component {
     const { onChange, name } = this.props;
     const formData = new FormData();
     const fileObj = event.target.files[0];
+    console.log(fileObj);
 
     if (!fileObj) {
       onChange({
@@ -20,6 +21,11 @@ class S3Upload extends React.Component {
     }
 
     formData.append('file', fileObj);
+
+    // for (let pair of formData.entries()) {
+    //   console.log(pair[0]+ ', ' + pair[1]); 
+    // }
+
     fetch('/api/upload', {
       method: 'post',
       body: formData,
@@ -57,7 +63,8 @@ class S3Upload extends React.Component {
         }
 
         <label className="fileUpload visuallyhidden" htmlFor="pictureupload">
-          Add a photo </label>
+          Add a photo
+        </label>
         <button className="btn btn__secondary btn__upload" type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>
           {value ? 'Change photo' : 'Add photo'}
         </button>
