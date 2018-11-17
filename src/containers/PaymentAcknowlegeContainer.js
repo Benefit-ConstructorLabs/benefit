@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import PaymentAcknowledge from '../components/PaymentAcknowledge';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   firstName: state.recipient.firstName,
 });
 

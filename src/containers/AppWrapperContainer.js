@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import AppWrapper from '../components/AppWrapper';
 import { checkLogin } from '../actions';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   hasCheckedUser: state.login.hasCheckedUser,
 });
 

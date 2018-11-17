@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import NewRecipient from '../components/NewRecipient';
 import { addRecipient } from '../actions';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   firstName: state.recipient.firstName,
   lastName: state.recipient.lastName,
   tel: state.recipient.tel,
