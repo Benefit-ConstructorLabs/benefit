@@ -9,9 +9,7 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('actions', () => {
-
   describe('Recipient', () => {
-
     const recipient = {
       id: 1,
       first_name: 'John',
@@ -55,7 +53,8 @@ describe('actions', () => {
       );
       const expectedActions = [
         {
-          type: 'SET_RECIPIENT_FROM_DB', id: 1,
+          type: 'SET_RECIPIENT_FROM_DB',
+          id: 1,
           firstName: 'John',
           lastName: 'Smith',
           tel: '01234567890',
@@ -90,7 +89,6 @@ describe('actions', () => {
 
 
   describe('Payment', () => {
-
     test('togglePaymentDetails returns the expected action', () => {
       const expectedAction = {
         type: 'TOGGLE_PAYMENT_DETAILS',
