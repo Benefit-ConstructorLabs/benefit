@@ -45,7 +45,7 @@ const DonationForm = ({ donationAmount, setDonationAmount, setDonorID, firstName
 );
 
 DonationForm.propTypes = {
-  donationAmount: PropTypes.number,
+  donationAmount: PropTypes.string,
   setDonationAmount: PropTypes.func.isRequired,
   firstName: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
