@@ -8,7 +8,7 @@ class CardSection extends React.Component {
 
     return (
       <label>
-        Card details
+        <p>Enter your Card details:</p>
         <ul className=".input" >
           <li>
             <div className="input">
