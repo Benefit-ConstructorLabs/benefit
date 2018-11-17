@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import Login from '../components/Login';
 import { login, logout, setLoginDetails, setUserFromPassport, setLogout } from '../actions';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   isLoggedIn: state.login.isLoggedIn,
   userID: state.login.userId,
   username: state.login.username,
