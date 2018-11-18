@@ -257,7 +257,6 @@ export function getProfileDetailsByID(id) {
 }
 
 export function setDonorDonationsFromDB(donations) {
-  console.log(donations);
   return {
     type: 'SET_DONOR_DONATIONS_FROM_DB',
     donations,
