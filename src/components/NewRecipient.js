@@ -11,7 +11,7 @@ function StyledMessage({ errors, touched, values, elem }) {
   if (errors[elem] && touched[elem]) {
     return (
       <div className={errors[elem] ? 'errorMessage' : 'validMessage'}>
-        <i className="fas cross fa-1x fa-times" />
+        <i className="fas cross fa-1x fa-times" title={errors[elem]} />
         {/* {errors[elem]} */}
       </div>);
   }
