@@ -1,7 +1,7 @@
 import { mapStateToProps } from '../../src/containers/AppWrapperContainer';
 
 describe('App Wrapper Container', () => {
-  test.skip('mapStateToProps extracts hasCheckedUser from state', () => {
+  test('mapStateToProps extracts hasCheckedUser from state', () => {
     const mockState = {
       login: {
         hasCheckedUser: true,
