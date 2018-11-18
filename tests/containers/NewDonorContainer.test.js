@@ -1,7 +1,7 @@
 import { mapStateToProps } from '../../src/containers/NewDonorContainer';
 
 describe('New Donor Container', () => {
-  test.skip('mapStateToProps extracts newDonorId from state', () => {
+  test('mapStateToProps extracts newDonorId from state', () => {
     const mockState = {
       donor: {
         newDonorId: 4,
