@@ -1,2 +1,18 @@
+@import '../base.scss';
 
-
+.btn-upload,
+a.btn-upload {
+  background: white;
+  border: 1px solid $grey;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px $grey;
+  color: $primary-blue;
+  cursor: pointer;
+  display: initial;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  width: 85%;
+}

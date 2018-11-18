@@ -21,9 +21,10 @@ class QRCode extends React.Component {
       `${window.location.origin}/recipient/${id}/donation`,
       {
         errorCorrectionLevel: 'M',
+        margin: 3,
         maskPattern: 4,
-        scale: 4,
-        version: 5,
+        scale: 6,
+        version: 6,
         color: {
           dark: '#000000',
           light: '#FFFFFF',
