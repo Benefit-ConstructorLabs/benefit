@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NewRecipient from '../components/NewRecipient';
-import { addRecipient } from '../actions';
+import { addRecipient, setRecipientIdForQrCode } from '../actions';
 
 export const mapStateToProps = state => ({
   firstName: state.recipient.firstName,
@@ -17,6 +17,7 @@ export const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   addRecipient,
+  setRecipientIdForQrCode,
 };
 
 export default connect(

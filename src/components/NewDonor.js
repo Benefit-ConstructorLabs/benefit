@@ -83,7 +83,7 @@ class NewDonor extends React.Component {
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-              console.log(JSON.stringify(values, null, 2));
+              // console.log(JSON.stringify(values, null, 2));
               setSubmitting(false);
               addDonor(values);
             }, 400);
@@ -98,200 +98,200 @@ class NewDonor extends React.Component {
             handleSubmit,
             isSubmitting,
           }) => (
-              <form className="newrecipient__form" onSubmit={handleSubmit}>
-                <h3 className="newrecipient__form__heading">Add your personal details</h3>
-                <ul>
-                  <li>
-                    <label className="visuallyhidden" htmlFor="firstName">
-                      First name
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      placeholder="First name"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.firstName, touched.firstName)}
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="firstName"
-                    />
-                  </li>
-                  <li>
-                    <label className="visuallyhidden" htmlFor="lastName">
-                      Last name
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      id="lastName"
-                      placeholder="Last name"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.lastName, touched.lastName)}
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="lastName"
-                    />
-                  </li>
-                  <li>
-                    <label className="visuallyhidden" htmlFor="tel">
-                      Telephone
-                    </label>
-                    <input
-                      type="text"
-                      name="tel"
-                      id="tel"
-                      placeholder="Eg. 07993 852 721"
-                      value={values.tel}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.tel, touched.tel)}
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="tel"
-                    />
-                  </li>
-                  <li>
-                    <label className="visuallyhidden" htmlFor="email">
-                      Email
-                    </label>
-                    <input
-                      type="text"
-                      name="email"
-                      id="email"
-                      placeholder="Email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.email, touched.email)}
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="email"
-                    />
-                  </li>
-                  <li>
-                    <label className="visuallyhidden" htmlFor="password">Password</label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="Enter a password"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.password, touched.password)}
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="password"
-                    />
-                  </li>
-                  <li>
-                    <S3Upload
-                      name="imageUrl"
-                      value={values.imageUrl}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="imageUrl"
-                    />
-                  </li>
-                </ul>
+            <form className="newrecipient__form" onSubmit={handleSubmit}>
+              <h3 className="newrecipient__form__heading">Add your personal details</h3>
+              <ul>
+                <li>
+                  <label className="visuallyhidden" htmlFor="firstName">
+                    First name
+                  </label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    placeholder="First name"
+                    value={values.firstName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.firstName, touched.firstName)}
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="firstName"
+                  />
+                </li>
+                <li>
+                  <label className="visuallyhidden" htmlFor="lastName">
+                    Last name
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    placeholder="Last name"
+                    value={values.lastName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.lastName, touched.lastName)}
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="lastName"
+                  />
+                </li>
+                <li>
+                  <label className="visuallyhidden" htmlFor="tel">
+                    Telephone
+                  </label>
+                  <input
+                    type="text"
+                    name="tel"
+                    id="tel"
+                    placeholder="Eg. 07993 852 721"
+                    value={values.tel}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.tel, touched.tel)}
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="tel"
+                  />
+                </li>
+                <li>
+                  <label className="visuallyhidden" htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.email, touched.email)}
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="email"
+                  />
+                </li>
+                <li>
+                  <label className="visuallyhidden" htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter a password"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.password, touched.password)}
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="password"
+                  />
+                </li>
+                <li>
+                  <S3Upload
+                    name="imageUrl"
+                    value={values.imageUrl}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="imageUrl"
+                  />
+                </li>
+              </ul>
 
-                <h3 className="newrecipient__form__heading">
-                  Add your payment details
-                </h3>
+              <h3 className="newrecipient__form__heading">
+                Add your payment details
+              </h3>
 
-                <ul>
-                  <li>
-                    <label className="visuallyhidden" htmlFor="cardNum">Card number</label>
-                    <input
-                      className={setInputClass(errors.cardNum, touched.cardNum)}
-                      type="text"
-                      id="cardNum"
-                      name="cardNum"
-                      value={values.cardNum}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="Card Number"
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="cardNum"
-                    />
-                  </li>
-                  <li>
-                    <label className="visuallyhidden" htmlFor="cardExp">Card number</label>
-                    <input
-                      className={setInputClass(errors.cardExp, touched.cardExp)}
-                      type="text"
-                      id="cardExp"
-                      name="cardExp"
-                      placeholder="Expiry Date"
-                      value={values.cardExp}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="cardExp"
-                    />
-                  </li>
-                  <li>
-                    <label className="visuallyhidden" htmlFor="cardCCV">Card number</label>
-                    <input
-                      className={setInputClass(errors.cardCCV, touched.cardCCV)}
-                      type="text"
-                      id="cardCCV"
-                      name="cardCCV"
-                      placeholder="CCV"
-                      value={values.cardCCV}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    <StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="cardCCV"
-                    />
-                  </li>
-                </ul>
-                <button
-                  className="btn btn__primary btn__submit"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  {Object.keys(touched).length === 0 || Object.keys(errors).length > 0 ? 'Complete required details' : 'Create account'}
-                </button>
-              </form>
-            )}
+              <ul>
+                <li>
+                  <label className="visuallyhidden" htmlFor="cardNum">Card number</label>
+                  <input
+                    className={setInputClass(errors.cardNum, touched.cardNum)}
+                    type="text"
+                    id="cardNum"
+                    name="cardNum"
+                    value={values.cardNum}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Card Number"
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="cardNum"
+                  />
+                </li>
+                <li>
+                  <label className="visuallyhidden" htmlFor="cardExp">Card number</label>
+                  <input
+                    className={setInputClass(errors.cardExp, touched.cardExp)}
+                    type="text"
+                    id="cardExp"
+                    name="cardExp"
+                    placeholder="Expiry Date"
+                    value={values.cardExp}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="cardExp"
+                  />
+                </li>
+                <li>
+                  <label className="visuallyhidden" htmlFor="cardCCV">Card number</label>
+                  <input
+                    className={setInputClass(errors.cardCCV, touched.cardCCV)}
+                    type="text"
+                    id="cardCCV"
+                    name="cardCCV"
+                    placeholder="CCV"
+                    value={values.cardCCV}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  <StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="cardCCV"
+                  />
+                </li>
+              </ul>
+              <button
+                className="btn btn__primary btn__submit"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {Object.keys(touched).length === 0 || Object.keys(errors).length > 0 ? 'Complete required details' : 'Create account'}
+              </button>
+            </form>
+          )}
         </Formik>
       </div>
     );
