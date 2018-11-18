@@ -30,7 +30,6 @@ class AppHeader extends React.Component {
       redirectTo = '/login';
       history.push(redirectTo);
     }
-    console.log(redirectTo);
   }
 
   handleClick(event) {

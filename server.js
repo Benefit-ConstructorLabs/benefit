@@ -174,8 +174,10 @@ const uploadFile = (buffer, name, type) => {
     ContentType: type.mime,
     Key: `${name}.${type.ext}`,
   };
-  //const s3 = new AWS.S3();
-  const s3 = new AWS.S3({ signatureVersion: 'v2' });
+  
+  const s3 = new AWS.S3();
+  // const s3 = new AWS.S3({ endpoint: 'eu-west-1', signatureVersion: 'v2' });
+  // https://stackoverflow.com/questions/37856644/connectivity-issues-econnreset-with-dynamic-storage-s3-and-node-js
   return s3.upload(params).promise();
 };
 
@@ -366,7 +368,8 @@ app.use('/', (req, res) => {
   res.render('index');
 });
 
-app.timeout = 0;
+// https://stackoverflow.com/questions/17245881/node-js-econnreset
+// app.timeout = 0;
 
 app.listen(app.get('port'), () => {
   console.log(`Listening on ${app.get('port')}`);

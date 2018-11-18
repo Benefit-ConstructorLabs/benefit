@@ -12,7 +12,6 @@ class S3Upload extends React.Component {
     const { onChange, name } = this.props;
     const formData = new FormData();
     const fileObj = event.target.files[0];
-    console.log(fileObj);
 
     if (!fileObj) {
       onChange({
@@ -32,6 +31,7 @@ class S3Upload extends React.Component {
     })
       .then(response => response.json())
       .then((data) => {
+        console.log(data);
         if (onChange) {
           onChange({
             target: { name, value: data.Location },
