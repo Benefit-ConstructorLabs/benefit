@@ -1,7 +1,7 @@
 import { mapStateToProps } from '../../src/containers/AppHeaderContainer';
 
 describe('App Header Container', () => {
-  test.skip('mapStateToProps extracts isLoggedIn, name, userID & userType from state', () => {
+  test('mapStateToProps extracts isLoggedIn, name, userID & userType from state', () => {
     const mockState = {
       login: {
         isLoggedIn: true,
