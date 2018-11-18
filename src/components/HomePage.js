@@ -20,11 +20,11 @@ const HomePage = () => (
     <section className="getStarted">
       <h2 className="getStarted__header">Give generously</h2>
       <Link className="btn btn__secondary" to="/recipient">
-        <div>Receive donations</div>
+        Receive donations
         {/* <i className="fas next-arrow fa-arrow-right" /> */}
       </Link>
       <Link className="btn btn__secondary" to="/donor">
-        <div>Become a donor</div>
+        Become a donor
         {/* <i className="fas next-arrow fa-arrow-right" /> */}
       </Link>
       <h3 className="getStarted__strapline">Better Change solves a modern-day problem</h3>
