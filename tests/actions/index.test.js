@@ -9,10 +9,11 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('actions', () => {
-  afterEach(() => {
-    fetch.resetMocks();
-  });
   describe('Recipient', () => {
+    beforeEach(() => {
+      fetch.resetMocks();
+    });
+
     const recipient = {
       id: 1,
       first_name: 'John',
@@ -50,7 +51,7 @@ describe('actions', () => {
       fetch.mockResponse(
         JSON.stringify(recipient),
       );
-      const expectedActions = [
+      const expectedAction = [
         {
           type: 'SET_RECIPIENT_FROM_DB',
           id: 1,
@@ -66,28 +67,41 @@ describe('actions', () => {
           ],
         },
       ];
-      const store = mockStore({});
+      const store = mockStore();
       return store.dispatch(getRecipientFromDB(1)).then(() => {
-        expect(store.getActions()).toEqual(expectedActions);
+        expect(store.getActions()).toEqual(expectedAction);
       });
     });
+
     test('submitRecipientForm returns the expected action', () => {
       const expectedAction = { type: 'SUBMIT_RECIPIENT_FORM' };
       const outputAction = submitRecipientForm();
       expect(outputAction).toEqual(expectedAction);
     });
+
     test('setRecipientIdForQrCode returns the expected action', () => {
       const expectedAction = { type: 'SET_RECIPIENT_ID', id: 5 };
       const outputAction = setRecipientIdForQrCode(5);
       expect(outputAction).toEqual(expectedAction);
     });
-    // TODO: addRecipient test
-    test.skip('addRecipient calls fetch', () => {
-      //
+
+    test('addRecipient returns SET_RECIPIENT_ID action on fetch success', () => {
+      const store = mockStore();
+      const mockRecipient = { firstName: 'Mandy', lastName: 'Nelson' };
+      fetch.mockResponse(
+        JSON.stringify({ recipient_id: 1 }),
+      );
+      return store.dispatch(addRecipient(mockRecipient)).then(() => {
+        expect(store.getActions()).toEqual([{ type: 'SET_RECIPIENT_ID', id: 1 }]);
+      });
     });
   });
 
   describe('Donor', () => {
+    beforeEach(() => {
+      fetch.resetMocks();
+    });
+
     test('setDonorID returns expected action', () => {
       const expectedAction = {
         type: 'SET_DONOR_ID',
@@ -95,6 +109,7 @@ describe('actions', () => {
       const outputAction = setDonorID();
       expect(outputAction).toEqual(expectedAction);
     });
+
     test('setNewDonorId returns the expected action', () => {
       const expectedAction = {
         type: 'SET_NEW_DONOR_ID',
@@ -103,18 +118,47 @@ describe('actions', () => {
       const outputAction = setNewDonorId(6);
       expect(outputAction).toEqual(expectedAction);
     });
-    // TODO: addDonor test
-    test.skip('addDonor call fetch', () => {
+
+    test('addDonor call fetch', () => {
+      const store = mockStore();
+      const mockDonor = { first_name: 'Barry', last_name: 'Flash' };
+      fetch.mockResponse(JSON.stringify({ id: 4 }));
+      return store.dispatch(addDonor(mockDonor)).then(() => {
+        expect(store.getActions()).toEqual([{ type: 'SET_NEW_DONOR_ID', newDonorId: 4 }]);
+      });
+    });
+
+    test.skip('getDonorDetailsByID call fetch', () => {
       //
     });
-    test.skip('getDonorDetailsByID call fetch', () => {
-      const output = getDonorDetailsByID(3);
-      expect(output).toEqual(expectedOutput);
+
+    test('getDonorFromDB call fetch', () => {
+      const donor = {
+        id: 1,
+        first_name: 'Larry',
+        last_name: 'Manson',
+        username: 'LALMAN',
+        tel: '049582773',
+        photo: 'photo/url',
+      };
+      fetch.mockResponse(
+        JSON.stringify({ ...donor }),
+      );
+      const expectedAction = {
+        type: 'SET_DONOR_FROM_DB',
+        id: 1,
+        firstName: 'Larry',
+        lastName: 'Manson',
+        username: 'LALMAN',
+        tel: '049582773',
+        photo: 'photo/url',
+      };
+      const store = mockStore();
+      return store.dispatch(getDonorFromDB(1)).then(() => {
+        expect(store.getActions()).toEqual([expectedAction]);
+      });
     });
-    test.skip('getDonorFromDB call fetch', () => {
-      const output = getDonorFromDB(3);
-      expect(output).toEqual(expectedOutput);
-    });
+
     test('setDonorFromDB returns the expected action', () => {
       const donor = {
         id: 1,
@@ -139,6 +183,10 @@ describe('actions', () => {
   });
 
   describe('Donation', () => {
+    beforeEach(() => {
+      fetch.resetMocks();
+    });
+
     test('setDonationAmount returns expected action', () => {
       const expectedAction = {
         type: 'SET_DONATION_AMOUNT',
@@ -147,6 +195,7 @@ describe('actions', () => {
       const outputAction = setDonationAmount('£30');
       expect(outputAction).toEqual(expectedAction);
     });
+
     test('setDonationID returns expected action', () => {
       const expectedAction = {
         type: 'SET_DONATION_ID',
@@ -155,6 +204,7 @@ describe('actions', () => {
       const outputAction = setDonationID(5);
       expect(outputAction).toEqual(expectedAction);
     });
+
     test('setDonationsFromDB returns the expectedaction', () => {
       const expectedAction = {
         type: 'SET_RECIEVED_DONATIONS_FROM_DB',
@@ -163,10 +213,25 @@ describe('actions', () => {
       const outputAction = setDonationsFromDB([20, 30, 40]);
       expect(outputAction).toEqual(expectedAction);
     });
-    // TODO: getDonationsByDonorID test
-    test.skip('getDonationsByDonorID call fetch', () => {
-      //
+
+    test('getDonationsByDonorID call fetch', () => {
+      fetch.mockResponse(
+        JSON.stringify({ donations: [10, 20, 30] }),
+      );
+      const expectedActions = [
+        {
+          type: 'SET_DONOR_DONATIONS_FROM_DB',
+          donations: {
+            donations: [10, 20, 30],
+          },
+        },
+      ];
+      const store = mockStore();
+      return store.dispatch(getDonationsByDonorID(1)).then(() => {
+        expect(store.getActions()).toEqual(expectedActions);
+      });
     });
+
     test('setDonorDonationsFromDB returns the expected action', () => {
       const expectedAction = {
         type: 'SET_DONOR_DONATIONS_FROM_DB',
@@ -175,9 +240,32 @@ describe('actions', () => {
       const outputAction = setDonorDonationsFromDB([20, 30, 40]);
       expect(outputAction).toEqual(expectedAction);
     });
-    // TODO: getDonationsByRecipientID test
-    test.skip('getDonationsByRecipientID call fetch', () => {
-      //
+
+    test('getDonationsByRecipientID call fetch', () => {
+      fetch.mockResponse(
+        JSON.stringify([
+          {
+            id: 1,
+            photo: '/static/assets/images/donorplaceholder.jpg',
+            first_name: 'Anon',
+            last_name: 'Anonymous',
+            amount: 200,
+          }]),
+      );
+      const store = mockStore();
+      return store.dispatch(getDonationsByRecipientID(1)).then(() => {
+        expect(store.getActions()).toEqual([{
+          type: 'SET_RECIEVED_DONATIONS_FROM_DB',
+          donations: [
+            {
+              id: 1,
+              photo: '/static/assets/images/donorplaceholder.jpg',
+              first_name: 'Anon',
+              last_name: 'Anonymous',
+              amount: 200,
+            }],
+        }]);
+      });
     });
   });
 
@@ -198,6 +286,7 @@ describe('actions', () => {
       };
       expect(action).toEqual(expectedAction);
     });
+
     // TODO: createPaymentDetails test
     test.skip('createPaymentDetails calls fetch', () => {
       //
@@ -214,6 +303,7 @@ describe('actions', () => {
       const outputAction = setLoginDetails('name', 'Terri');
       expect(outputAction).toEqual(expectedAction);
     });
+
     test('setUserFromPassport returns the expected action', () => {
       const expectedAction = {
         type: 'SET_USER_FROM_PASSPORT',
@@ -225,6 +315,7 @@ describe('actions', () => {
       const outputAction = setUserFromPassport({ userId: 3, userType: 'recipient', name: 'Nigel' });
       expect(outputAction).toEqual(expectedAction);
     });
+
     // TODO: login test
     test.skip('login calls fetch', () => {
       const store = mockStore({ login: { user: 'Terri', password: 'password1' } });
@@ -238,6 +329,7 @@ describe('actions', () => {
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
+
     test('setHasCheckedUser returns expected action', () => {
       const expectedAction = {
         type: 'SET_HAS_CHECKED_USER',
@@ -246,11 +338,12 @@ describe('actions', () => {
       const outputAction = setHasCheckedUser();
       expect(outputAction).toEqual(expectedAction);
     });
+
     // TODO: checkLogin test
     test.skip('checkLogin calls fetch', () => {
-      const output = checkLogin();
-      expect(output).toEqual(expectedOutput);
+      //
     });
+
     test('setLogout returns the expected action', () => {
       const expectedAction = {
         type: 'SET_LOGOUT',
@@ -258,38 +351,40 @@ describe('actions', () => {
       const outputAction = setLogout();
       expect(outputAction).toEqual(expectedAction);
     });
+
     // TODO: logout test
     test.skip('logout calls fetch', () => {
-      const output = logout();
-      expect(output).toEqual(expectedOutput);
+      //
     });
   });
 
   describe('Organisation', () => {
+    beforeEach(() => {
+      fetch.resetMocks();
+    });
+
     test('setOrganisationDonations returns the expected action', () => {
       const expectedAction = {
-        type: "SET_ORGANISATION_DONATIONS",
+        type: 'SET_ORGANISATION_DONATIONS',
         donations: [20, 30, 40],
       };
       const outputAction = setOrganisationDonations([20, 30, 40]);
       expect(outputAction).toEqual(expectedAction);
     });
-    // TODO: getDonationsByOrganisationID test
-    test.skip('getDonationsByOrganisationID creates SET_ORGANISATION_DONATIONS action when fetch is complete', () => {
-      const response = {
-        donations: [10, 20, 30],
-      };
+
+    test('getDonationsByOrganisationID creates SET_ORGANISATION_DONATIONS action when fetch is complete', () => {
       fetch.mockResponse(
-        JSON.stringify(response),
+        JSON.stringify({ donations: [10, 20, 30] }),
       );
       const expectedActions = [
         {
           type: 'SET_ORGANISATION_DONATIONS',
-          id: 1,
-          donations: [10, 20, 30],
+          donations: {
+            donations: [10, 20, 30],
+          },
         },
       ];
-      const store = mockStore({});
+      const store = mockStore();
       return store.dispatch(getDonationsByOrganisationID(1)).then(() => {
         expect(store.getActions()).toEqual(expectedActions);
       });
