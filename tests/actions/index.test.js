@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { setDonationAmount, togglePaymentDetails, setRecipientFromDB, getRecipientFromDB, receiveStripeToken, setDonorID, setDonationID, createPaymentDetails, submitRecipientForm, setRecipientIdForQrCode, addRecipient, setNewDonorId, addDonor } from '../../src/actions';
+import { setDonationAmount, togglePaymentDetails, setRecipientFromDB, getRecipientFromDB, receiveStripeToken, setDonorID, setDonationID, createPaymentDetails, submitRecipientForm, setRecipientIdForQrCode, addRecipient, setNewDonorId, addDonor, setLoginDetails, setUserFromPassport, login, setHasCheckedUser, checkLogin, setLogout, logout, setDonationsFromDB } from '../../src/actions';
 
 global.fetch = require('jest-fetch-mock');
 
@@ -131,6 +131,14 @@ describe('actions', () => {
       const outputAction = setDonationID(5);
       expect(outputAction).toEqual(expectedAction);
     });
+    test('setDonationsFromDB returns the expectedaction', () => {
+      const expectedAction = {
+        type: 'SET_RECIEVED_DONATIONS_FROM_DB',
+        donations: [20, 30, 40],
+      };
+      const outputAction = setDonationsFromDB([20, 30, 40]);
+      expect(outputAction).toEqual(expectedAction);
+    });
   });
 
   describe('Payment', () => {
@@ -154,5 +162,56 @@ describe('actions', () => {
       expect(outputAction).toEqual(expectedAction);
     });
     expect(action).toEqual(expectedAction);
+  });
+
+});
+
+describe('Login', () => {
+  test('setLoginDetails returns the expected action', () => {
+    const expectedAction = {
+      type: 'SET_LOGIN_DETAILS',
+      fieldName: 'name',
+      fieldValue: 'Terri',
+    };
+    const outputAction = setLoginDetails('name', 'Terri');
+    expect(outputAction).toEqual(expectedAction);
+  });
+  test('setUserFromPassport returns the expected action', () => {
+    const expectedAction = {
+      type: 'SET_USER_FROM_PASSPORT',
+      isLoggedIn: true,
+      userID: 3,
+      userType: 'recipient',
+      name: 'Nigel',
+    };
+    const outputAction = setUserFromPassport({ userId: 3, userType: 'recipient', name: 'Nigel' });
+    expect(outputAction).toEqual(expectedAction);
+  });
+  test('login calls fetch', () => {
+    const output = login();
+    expect(output).toEqual(expectedOutput);
+  });
+  test('setHasCheckedUser returns expected action', () => {
+    const expectedAction = {
+      type: 'SET_HAS_CHECKED_USER',
+      hasCheckedUser: true,
+    };
+    const outputAction = setHasCheckedUser();
+    expect(outputAction).toEqual(expectedAction);
+  });
+  test('checkLogin calls fetch', () => {
+    const output = checkLogin();
+    expect(output).toEqual(expectedOutput);
+  });
+  test('setLogout returns the expected action', () => {
+    const expectedAction = {
+      type: 'SET_LOGOUT',
+    };
+    const outputAction = setLogout();
+    expect(outputAction).toEqual(expectedAction);
+  });
+  test('logout calls fetch', () => {
+    const output = logout();
+    expect(output).toEqual(expectedOutput);
   });
 });
