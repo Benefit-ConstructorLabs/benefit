@@ -9,12 +9,14 @@ describe('donation reducer', () => {
       firstName: 'Bill',
       id: 1,
       photo: 'photoURL',
+      reason: 'reasonString',
     };
     const expectedState = {
       bio: ['one', 'two', 'three'],
       firstName: 'Bill',
       recipientID: 1,
       photo: 'photoURL',
+      reason: 'reasonString',
     };
     const outputState = recipient(initialState, action);
     expect(outputState).toEqual(expectedState);
