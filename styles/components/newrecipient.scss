@@ -1,55 +1,18 @@
 @import '../base.scss';
 
-.newrecipient{
-  display: flex;
-  flex-direction: column;
-  padding: 0 0.5rem;
-  &__title{
-    font-size: 1.75rem;
-    margin: 0.25rem 0 0.5rem 0;
-  }
-  &__form{
-    border: 1px solid $grey;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    &__heading{
-      background-color: $primary-color;
-      color: white;
-      margin:0 0 0.5rem 0;
-      padding: 0.5rem;
-    }
-    ul{
-      margin:0;
-      padding:0.5rem;
-      &:last-of-type{
-        padding-bottom:0;
-      }
-      li{
-        margin-bottom: 1rem;
-      }
-      label {
-        display:flex;
-        align-content: center;
-      }
-    }
-    input {
-      border: 1px solid $grey;
-      margin: -0.25rem 0 0 0.75rem;
-      padding: 0.25rem;
-      // flex: 1;
-      &.nolabel{
-        width:100%;
-        margin-left: 0;
-      }
-    }
-    input[type="file"]{
-      width: 30%;
-      border-radius: 4px;
-      box-shadow: 0 2px 5px $grey;
-      flex: none;
-    }
-  }
-  &__photo{
-    margin-bottom: 1rem;
-  }
+.btn-upload,
+a.btn-upload {
+  background: white;
+  border: 1px solid $grey;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px $grey;
+  color: $primary-blue;
+  cursor: pointer;
+  display: initial;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  width: 85%;
 }

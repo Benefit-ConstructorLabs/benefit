@@ -23,15 +23,21 @@
 }
 
 .tab-list-item {
+  cursor: pointer;
   flex: 1;
   display: inline-block;
   list-style: none;
   padding-top: 20px;
   margin: -1px 0 0 0;
   text-align: center;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .tab-list-active {
-  background-color: white;
   color: $primary-blue;
+  cursor: pointer;
+  background-color: white;
 }
