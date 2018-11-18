@@ -9,6 +9,7 @@ export const mapStateToProps = state => ({
   username: state.recipient.username,
   password: state.recipient.password,
   photo: state.recipient.photo,
+  reason: state.recipient.reason,
   bio1: state.recipient.bio1,
   bio2: state.recipient.bio2,
   bio3: state.recipient.bio3,

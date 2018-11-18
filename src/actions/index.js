@@ -28,6 +28,7 @@ export function setRecipientFromDB(recipient) {
     username: recipient.username,
     tel: recipient.tel,
     photo: recipient.photo,
+    reason: recipient.reason,
     bio: recipient.bio,
   };
 }

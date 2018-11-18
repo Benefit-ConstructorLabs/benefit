@@ -39,7 +39,7 @@ class NewRecipient extends React.Component {
         <h2 className="newrecipient__title">Start taking digital donations in 3 steps</h2>
         <img src="" alt="" className="newrecipient__header-image" />
         <Formik
-          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '', bio1: '', bio2: '', bio3: '', imageUrl: '' }}
+          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '', reason: '', bio1: '', bio2: '', bio3: '', imageUrl: '' }}
           validate={(values) => {
             const errors = {};
             if (!values.firstName) {
@@ -205,8 +205,25 @@ class NewRecipient extends React.Component {
                 </ul>
 
                 <h3 className="newrecipient__form__heading">
+                  What are you raising funds towards?
+                </h3>
+                <ul>
+                  <li>
+                    <input
+                      type="text"
+                      name="reason"
+                      className="nolabel"
+                      placeholder="Eg. Cancer Research UK"
+                      value={values.reason}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                  </li>
+                </ul>
+
+                <h3 className="newrecipient__form__heading">
                   Tell people three things about yourself
-              </h3>
+                </h3>
                 <ul>
                   <li>
                     <input

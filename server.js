@@ -208,7 +208,7 @@ app.get('/api/recipient', (req, res) => {
 app.get('/api/recipient/:id', (req, res) => {
   const { id } = req.params;
   return db
-    .one('SELECT id, first_name, last_name, tel, username, photo FROM recipient WHERE id=$1', [id])
+    .one('SELECT id, first_name, last_name, tel, username, photo, reason FROM recipient WHERE id=$1', [id])
     .then(data => db
       .one('SELECT * FROM biography WHERE recipient_id = $1', [data.id])
       /* eslint-disable camelcase */
@@ -225,7 +225,7 @@ app.post('/api/recipient', (req, res) => {
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
-      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
+      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type, reason) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
       [
         recipient.firstName,
         recipient.lastName,
@@ -234,6 +234,7 @@ app.post('/api/recipient', (req, res) => {
         recipient.username,
         hash,
         'recipient',
+        recipient.reason,
       ],
     ))
     .then(result => db.one(

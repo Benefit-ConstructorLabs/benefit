@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AnimationWrapper from './AnimationWrapper';
 
 const RecipientProfile = ({ profile }) => {
-  const { firstName, lastName, photo, username, tel, bio } = profile;
+  const { firstName, lastName, photo, username, tel, bio, reason } = profile;
   return (
     <section className="recipient__profile">
       <img className="recipient__profile__photo" alt="recipient" src={photo} />
@@ -15,6 +15,8 @@ const RecipientProfile = ({ profile }) => {
         <dd>{username}</dd>
         <dt>Telephone</dt>
         <dd>{tel}</dd>
+        <dt>Reason</dt>
+        <dd>{reason}</dd>
         <dt>Your bio</dt>
         <dd>
           {bio.length > 0
