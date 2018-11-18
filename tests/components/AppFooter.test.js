@@ -4,7 +4,7 @@ import AppFooter from '../../src/components/AppFooter';
 
 
 describe('AppFooter', () => {
-  test.skip('should render correctly', () => {
+  test('should render correctly', () => {
     const tree = renderer
       .create(<AppFooter />)
       .toJSON();
