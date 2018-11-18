@@ -76,7 +76,7 @@ VALUES
 ALTER SEQUENCE organisation_id_seq RESTART WITH 2 INCREMENT BY 1;
 
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason,creation_date) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason, creation_date) 
   VALUES 
   (1, 'John', 'Smith', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/man1.jpg', '01234567890', 'jsmith', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, 'Raising funds for MacMillan Cancer Support', '2018-10-28T10:37:33.735972Z');
 INSERT INTO recipient 
@@ -88,7 +88,7 @@ INSERT INTO recipient
   VALUES 
   (3, 'Sam', 'Dean', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/man2.jpg', '9876543221678', 'sdean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, 'Raising funds for MacMillan Cancer Support', '2018-10-15T10:37:33.735972Z');
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason,  creation_date) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason, creation_date) 
   VALUES 
   (4, 'Sara', 'Peterson', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/woman2.jpg', '4563728921', 'speterson', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, 'Raising funds for MacMillan Cancer Support', '2018-11-10T10:37:33.735972Z');
 INSERT INTO recipient 
