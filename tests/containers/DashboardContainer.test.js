@@ -1,7 +1,7 @@
 import { mapStateToProps } from '../../src/containers/DashboardContainer';
 
 describe('Dashboard Container', () => {
-  test.skip('mapStateToProps extracts id and donations from state', () => {
+  test('mapStateToProps extracts id and donations from state', () => {
     const mockState = {
       organisation: {
         id: 1,
