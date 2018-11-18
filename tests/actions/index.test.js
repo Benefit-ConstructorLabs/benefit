@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { setDonationAmount, togglePaymentDetails, setRecipientFromDB, getRecipientFromDB, receiveStripeToken } from '../../src/actions';
+import { setDonationAmount, togglePaymentDetails, setRecipientFromDB, getRecipientFromDB, receiveStripeToken, setDonorID } from '../../src/actions';
 
 global.fetch = require('jest-fetch-mock');
 
@@ -47,7 +47,7 @@ describe('actions', () => {
       expect(outputAction).toEqual(expectedAction);
     });
 
-    test('getRecipientFromDB creates SET_RECIPIENT_FROM_DB when fetch is complete', () => {
+    test('getRecipientFromDB creates SET_RECIPIENT_FROM_DB action when fetch is complete', () => {
       fetch.mockResponse(
         JSON.stringify(recipient),
       );
@@ -70,7 +70,6 @@ describe('actions', () => {
       const store = mockStore({ firstName: '', bio: [], photo: '', donations: [] });
 
       return store.dispatch(getRecipientFromDB(1)).then(() => {
-        // return of async actions
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
@@ -83,6 +82,13 @@ describe('actions', () => {
         donationAmount: 30,
       };
       const outputAction = setDonationAmount('£30');
+      expect(outputAction).toEqual(expectedAction);
+    });
+    test('setDonorID returns expected action', () => {
+      const expectedAction = {
+        type: 'SET_DONOR_ID',
+      };
+      const outputAction = setDonorId();
       expect(outputAction).toEqual(expectedAction);
     });
   });
