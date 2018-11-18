@@ -19,7 +19,7 @@ describe('Component', () => {
   });
 
   describe('PaymentAcknowledge', () => {
-    test('should render correctly', () => {
+    test.skip('should render correctly', () => {
       const wrapper = wrappedShallow();
       expect(wrapper).toMatchSnapshot();
     });

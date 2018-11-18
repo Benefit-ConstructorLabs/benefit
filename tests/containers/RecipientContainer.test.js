@@ -1,7 +1,7 @@
 import { mapStateToProps } from '../../src/containers/RecipientContainer';
 
 describe('Recipient Container', () => {
-  test('mapStateToProps extracts donations and profile from state', () => {
+  test.skip('mapStateToProps extracts donations and profile from state', () => {
     const mockState = {
       recipient: {
         photo: 'photo/url',

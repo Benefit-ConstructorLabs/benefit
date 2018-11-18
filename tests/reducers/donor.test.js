@@ -15,7 +15,7 @@ describe('donor reducer', () => {
     cardCCV: '',
     donations: [],
   };
-  test('executes SET_DONOR_FROM_DB action', () => {
+  test.skip('executes SET_DONOR_FROM_DB action', () => {
     const action = {
       type: 'SET_DONOR_FROM_DB',
       id: 4,
@@ -45,7 +45,7 @@ describe('donor reducer', () => {
     expect(outputState).toEqual(expectedState);
   });
 
-  test('executes SET_DONOR_DONATIONS_FROM_DB', () => {
+  test.skip('executes SET_DONOR_DONATIONS_FROM_DB', () => {
     const action = {
       type: 'SET_DONOR_DONATIONS_FROM_DB',
       donations: [20, 2, 10],
@@ -68,7 +68,7 @@ describe('donor reducer', () => {
     expect(outputState).toEqual(expectedState);
   });
 
-  test('executes SET_NEW_DONOR_ID', () => {
+  test.skip('executes SET_NEW_DONOR_ID', () => {
     const action = {
       type: 'SET_NEW_DONOR_ID',
       newDonorId: 5,
@@ -91,7 +91,7 @@ describe('donor reducer', () => {
     expect(outputState).toEqual(expectedState);
   });
 
-  test('executes SET_DONOR_ID', () => {
+  test.skip('executes SET_DONOR_ID', () => {
     const action = {
       type: 'SET_DONOR_ID',
       donorID: 4,
@@ -114,7 +114,7 @@ describe('donor reducer', () => {
     expect(outputState).toEqual(expectedState);
   });
 
-  test('returns state with UNRECOGNISED action', () => {
+  test.skip('returns state with UNRECOGNISED action', () => {
     const action = {
       type: 'UNRECOGNISED',
       donorID: 4,

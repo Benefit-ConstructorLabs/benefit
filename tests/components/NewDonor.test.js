@@ -1,13 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import AppFooter from '../../src/components/AppFooter';
+import NewDonor from '../../src/components/NewDonor';
 
-
-describe('AppFooter', () => {
+describe(NewDonor, () => {
   test.skip('should render correctly', () => {
-    const tree = renderer
-      .create(<AppFooter />)
-      .toJSON();
+    const tree = renderer.create(<NewDonor />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

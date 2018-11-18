@@ -1,7 +1,7 @@
 import { mapStateToProps } from '../../src/containers/PaymentAcknowlegeContainer';
 
 describe(' Payment Acknowledge Container', () => {
-  test('mapStateToProps extracts recipient name from state', () => {
+  test.skip('mapStateToProps extracts recipient name from state', () => {
     const mockState = {
       recipient: {
         firstName: 'Bob',

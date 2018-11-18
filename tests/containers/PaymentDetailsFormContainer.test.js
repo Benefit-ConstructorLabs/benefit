@@ -1,7 +1,7 @@
 import { mapStateToProps } from '../../src/containers/PaymentDetailsFormContainer';
 
 describe('Payment Details Form Container', () => {
-  test('mapStateToProps extracts name, donation amount, isLoggedIn and user type from state', () => {
+  test.skip('mapStateToProps extracts name, donation amount, isLoggedIn and user type from state', () => {
     const mockState = {
       recipient: {
         firstName: 'Bob',
