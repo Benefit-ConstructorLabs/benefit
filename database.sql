@@ -31,6 +31,7 @@ CREATE TABLE recipient(
   password VARCHAR(200) NOT NULL,
   type VARCHAR(20),
   organisation_id INT,
+  reason VARCHAR(500),
   creation_date TIMESTAMP WITH TIME ZONE,
   FOREIGN KEY (organisation_id) REFERENCES organisation(id)
 );
@@ -75,25 +76,25 @@ VALUES
 ALTER SEQUENCE organisation_id_seq RESTART WITH 2 INCREMENT BY 1;
 
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, creation_date) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason,creation_date) 
   VALUES 
-  (1, 'John', 'Smith', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/man1.jpg', '01234567890', 'jsmith', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, '2018-10-28T10:37:33.735972Z');
+  (1, 'John', 'Smith', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/man1.jpg', '01234567890', 'jsmith', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, 'Raising funds for MacMillan Cancer Support', '2018-10-28T10:37:33.735972Z');
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, creation_date) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason, creation_date) 
   VALUES 
-  (2, 'Anna', 'Boolean', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/woman1.jpg', '23456789012', 'aboolean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, '2018-10-20T10:37:33.735972Z');
+  (2, 'Anna', 'Boolean', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/woman1.jpg', '23456789012', 'aboolean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, 'Raising funds for MacMillan Cancer Support', '2018-10-20T10:37:33.735972Z');
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, creation_date) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason, creation_date) 
   VALUES 
-  (3, 'Sam', 'Dean', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/man2.jpg', '9876543221678', 'sdean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, '2018-10-15T10:37:33.735972Z');
+  (3, 'Sam', 'Dean', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/man2.jpg', '9876543221678', 'sdean', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, 'Raising funds for MacMillan Cancer Support', '2018-10-15T10:37:33.735972Z');
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, creation_date) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason,  creation_date) 
   VALUES 
-  (4, 'Sara', 'Peterson', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/woman2.jpg', '4563728921', 'speterson', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, '2018-11-10T10:37:33.735972Z');
+  (4, 'Sara', 'Peterson', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/woman2.jpg', '4563728921', 'speterson', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, 'Raising funds for MacMillan Cancer Support', '2018-11-10T10:37:33.735972Z');
 INSERT INTO recipient 
-  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, creation_date) 
+  (id, first_name, last_name, photo, tel, username, password, type, organisation_id, reason, creation_date) 
   VALUES 
-  (5, 'Wyatt', 'Holt', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/man3.jpg', '647383221678', 'wholt', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, '2018-11-15T10:37:33.735972Z');
+  (5, 'Wyatt', 'Holt', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/man3.jpg', '647383221678', 'wholt', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', 'recipient', 1, 'Raising funds for MacMillan Cancer Support', '2018-11-15T10:37:33.735972Z');
 ALTER SEQUENCE recipient_id_seq RESTART WITH 6 INCREMENT BY 1;
 
 INSERT INTO donor
