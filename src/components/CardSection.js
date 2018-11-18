@@ -9,7 +9,7 @@ class CardSection extends React.Component {
     return (
       <label>
         <p>Enter your Card details:</p>
-        <ul className=".input" >
+        <ul>
           <li>
             <div className="input">
               <CardElement style={{base: {fontSize: '20px'}}} />
