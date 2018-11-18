@@ -1,5 +1,10 @@
 @import '../base.scss';
 
+body {
+  background: url('/static/assets/images/homepage-bg-grey.png') center repeat-x;
+  background-size: cover;
+}
+
 .homepage {
   background: url('/static/assets/images/homepage_bg_gradient.png') 98% -12% no-repeat;
   header *,
