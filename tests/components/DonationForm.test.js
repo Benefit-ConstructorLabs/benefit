@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import DonationForm from '../../src/components/DonationForm';
 
 describe('DonationForm', () => {
-  test.skip('should render correctly', () => {
+  test('should render correctly', () => {
     const mockSetDonationAmount = jest.fn();
     const mockSubmitDonation = jest.fn();
     const mockTogglePaymentDetails = jest.fn();
