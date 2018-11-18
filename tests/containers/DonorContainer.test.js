@@ -1,7 +1,7 @@
 import { mapStateToProps } from '../../src/containers/DonorContainer';
 
 describe('Doner Container', () => {
-  test.skip('mapStateToProps extracts donations and profile from state', () => {
+  test('mapStateToProps extracts donations and profile from state', () => {
     const mockState = {
       donor: {
         donations: ['1', '2', '3'],
