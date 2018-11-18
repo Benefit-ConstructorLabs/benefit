@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import DonationHeader from '../../src/components/DonationHeader';
 
 describe('DonationHeader', () => {
-  test.skip('should render correctly', () => {
+  test('should render correctly', () => {
     const tree = renderer
       .create(<DonationHeader firstName="Bill" />)
       .toJSON();

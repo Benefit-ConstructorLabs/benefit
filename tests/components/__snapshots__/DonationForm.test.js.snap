@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DonationForm should render correctly 1`] = `
+Array [
+  <img
+    alt="Ted"
+    className="donation__recipient__photo"
+    src="photo/url"
+  />,
+  <h3
+    className="donation__purpose"
+  >
+    Donate to Ted
+  </h3>,
+  <form
+    className="donation__form"
+    onSubmit={[Function]}
+  >
+    <h3
+      className="donation__form__heading"
+    >
+      How much?
+    </h3>
+    <p>
+      <input
+        className="nolabel donation__form__amount"
+        id="donation__amount"
+        onChange={[Function]}
+        type="text"
+        value="£5"
+      />
+    </p>
+    <p>
+      <input
+        className="donation__form__slider"
+        max="10"
+        min="1"
+        onChange={[Function]}
+        type="range"
+        value="5"
+      />
+    </p>
+    <p
+      className="donation__form__quick-amount"
+    >
+      <button
+        className="btn btn__quick-amount"
+        onClick={[Function]}
+        type="button"
+        value="1"
+      >
+        £1
+      </button>
+      <button
+        className="btn btn__quick-amount"
+        onClick={[Function]}
+        type="button"
+        value="2"
+      >
+        £2
+      </button>
+      <button
+        className="btn btn__quick-amount"
+        onClick={[Function]}
+        type="button"
+        value="5"
+      >
+        £5
+      </button>
+    </p>
+    <button
+      className="btn btn__primary btn__submit"
+      type="submit"
+    >
+      Donate to
+       
+      Ted
+    </button>
+  </form>,
+]
+`;
