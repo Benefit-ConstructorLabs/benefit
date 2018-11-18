@@ -2,7 +2,7 @@ import paymentDetails from '../../src/reducers/paymentDetails';
 
 describe('paymentDetails reducer', () => {
 
-  test.skip('executes RECEIVE_STRIPE_TOKEN action', () => {
+  test('executes RECEIVE_STRIPE_TOKEN action', () => {
     const initialState = {
       stripeToken: '',
     };
