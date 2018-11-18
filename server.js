@@ -140,13 +140,6 @@ app.get('/api/user', (req, res) => {
   res.json(userMaybe);
 })
 
-// PASSPORT profile page - only accessible to logged in users
-app.get('/api/wallet', isLoggedIn, (req, res) => {
-  // send user info. It should strip password at this stage
-  console.log('5. Use user id to load user from DB');
-  res.render('wallet', { user: req.user });
-});
-
 // PASSPORT route to log out users
 app.get('/api/logout', (req, res) => {
   console.log('7. Log user out');
@@ -225,7 +218,7 @@ app.post('/api/recipient', (req, res) => {
   bcrypt
     .hash(recipient.password, saltRounds)
     .then(hash => db.one(
-      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
+      'INSERT INTO recipient (first_name, last_name, tel, photo, username, password, type, organisation_id, creation_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, clock_timestamp()) RETURNING id',
       [
         recipient.firstName,
         recipient.lastName,
@@ -234,6 +227,7 @@ app.post('/api/recipient', (req, res) => {
         recipient.username,
         hash,
         'recipient',
+        1,
       ],
     ))
     .then(result => db.one(
@@ -303,7 +297,7 @@ app.post('/api/donor', (req, res) => {
   bcrypt
     .hash(donor.password, saltRounds)
     .then(hash => db.one(
-      'INSERT INTO donor (first_name, last_name, photo, username, password, tel, stripe, type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
+      'INSERT INTO donor (first_name, last_name, photo, username, password, tel, stripe, type, creation_date) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, clock_timestamp()) RETURNING id',
       [donor.firstName, donor.lastName, donor.imageUrl, donor.email, hash, donor.tel, JSON.stringify(stripeTemp), 'donor'],
     ))
     .then(result => console.log(result) || res.json(result))
