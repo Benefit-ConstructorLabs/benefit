@@ -1,7 +1,7 @@
 import donation from '../../src/reducers/donation';
 
 describe('donation reducer', () => {
-  test.skip('executes SET_DONATION_AMOUNT action', () => {
+  test('executes SET_DONATION_AMOUNT action', () => {
     const initialState = { donationAmount: 1 };
     const action = {
       type: 'SET_DONATION_AMOUNT',
