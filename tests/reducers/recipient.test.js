@@ -1,7 +1,7 @@
 import recipient from '../../src/reducers/recipient';
 
 describe('donation reducer', () => {
-  test.skip('executes SET_RECIPIENT_FROM_DB action', () => {
+  test('executes SET_RECIPIENT_FROM_DB action', () => {
     const initialState = {};
     const action = {
       type: 'SET_RECIPIENT_FROM_DB',
