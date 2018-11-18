@@ -5,6 +5,7 @@
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -40,7 +41,7 @@ a.btn {
   padding: 1rem;
   text-align: center;
   text-decoration: none;
-  width: 90%;
+  width: 85%;
   &__primary {
     background: $primary-pink;
     opacity: 0.75;
@@ -51,11 +52,6 @@ a.btn {
   }
   &__secondary {
     color: $primary-blue;
-  }
-  &__upload {
-    width: 85%;
-    margin: 0;
-    margin-right: 0;
   }
 }
 

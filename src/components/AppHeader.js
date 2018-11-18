@@ -50,13 +50,13 @@ class AppHeader extends React.Component {
     const classes = cx('dropdown', {
       'dropdown--open': dropdown,
     });
-    const loginMessage = isLoggedIn ? 'Log Out' : 'Log In';
+    const loginMessage = isLoggedIn ? name : 'Log In';
     const loginClass = isLoggedIn ? 'fas active fa-inverse fa-1x fa-user-circle' : 'fas inactive fa-inverse fa-1x fa-user-circle';
     return (
       <header className="app__header">
         <h1 className="app__title">
           <a href="/">
-          + Better Change
+            + Better Change
           </a>
         </h1>
         {!isLoggedIn && <LoginContainer classes={classes} />}

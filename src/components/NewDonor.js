@@ -114,6 +114,7 @@ class NewDonor extends React.Component {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     className={setInputClass(errors.firstName, touched.firstName)}
+                    autoFocus="true"
                   />
                   <StyledMessage
                     errors={errors}
