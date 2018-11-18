@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '../../styles/components/payment-acknowledge.scss';
 
 // TODO recipientName in curlies below, h2 tag
-const PaymentAcknowledge = ({ firstName }) => (
+export const PaymentAcknowledge = ({ firstName }) => (
   <section className="acknowledgement">
     <h2 className="acknowledgement__confirmation">
       {`All done.Thanks for helping ${firstName} out!`}
@@ -14,5 +15,13 @@ const PaymentAcknowledge = ({ firstName }) => (
     </Link>
   </section>
 );
+
+PaymentAcknowledge.propTypes = {
+  firstName: PropTypes.string,
+};
+
+PaymentAcknowledge.defaultProps = {
+  firstName: '',
+};
 
 export default PaymentAcknowledge;
