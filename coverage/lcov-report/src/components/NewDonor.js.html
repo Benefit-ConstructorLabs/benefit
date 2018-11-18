@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">4.17% </span>
+        <span class="strong">4.26% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/48</span>
+        <span class='fraction'>2/47</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">4.17% </span>
+        <span class="strong">4.26% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/48</span>
+        <span class='fraction'>2/47</span>
       </div>
     </div>
   </div>
@@ -438,21 +438,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -466,6 +453,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -653,12 +641,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -748,7 +748,7 @@ class NewDonor extends React.Component {
           }}
           onSubmit={<span class="fstat-no" title="function not covered" >(v</span>alues, { setSubmitting }) =&gt; {
 <span class="cstat-no" title="statement not covered" >            setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >              console.log(JSON.stringify(values, null, 2));</span>
+              // console.log(JSON.stringify(values, null, 2));
 <span class="cstat-no" title="statement not covered" >              setSubmitting(false);</span>
 <span class="cstat-no" title="statement not covered" >              addDonor(values);</span>
             }, 400);
@@ -763,200 +763,200 @@ class NewDonor extends React.Component {
             handleSubmit,
             isSubmitting,
           }) =&gt; (
-<span class="cstat-no" title="statement not covered" >              &lt;form className="newrecipient__form" onSubmit={handleSubmit}&gt;</span>
-                &lt;h3 className="newrecipient__form__heading"&gt;Add your personal details&lt;/h3&gt;
-                &lt;ul&gt;
-                  &lt;li&gt;
-                    &lt;label className="visuallyhidden" htmlFor="firstName"&gt;
-                      First name
-                    &lt;/label&gt;
-                    &lt;input
-                      type="text"
-                      name="firstName"
-                      id="firstName"
-                      placeholder="First name"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.firstName, touched.firstName)}
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="firstName"
-                    /&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;
-                    &lt;label className="visuallyhidden" htmlFor="lastName"&gt;
-                      Last name
-                    &lt;/label&gt;
-                    &lt;input
-                      type="text"
-                      name="lastName"
-                      id="lastName"
-                      placeholder="Last name"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.lastName, touched.lastName)}
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="lastName"
-                    /&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;
-                    &lt;label className="visuallyhidden" htmlFor="tel"&gt;
-                      Telephone
-                    &lt;/label&gt;
-                    &lt;input
-                      type="text"
-                      name="tel"
-                      id="tel"
-                      placeholder="Eg. 07993 852 721"
-                      value={values.tel}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.tel, touched.tel)}
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="tel"
-                    /&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;
-                    &lt;label className="visuallyhidden" htmlFor="email"&gt;
-                      Email
-                    &lt;/label&gt;
-                    &lt;input
-                      type="text"
-                      name="email"
-                      id="email"
-                      placeholder="Email"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.email, touched.email)}
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="email"
-                    /&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;
-                    &lt;label className="visuallyhidden" htmlFor="password"&gt;Password&lt;/label&gt;
-                    &lt;input
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="Enter a password"
-                      value={values.password}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      className={setInputClass(errors.password, touched.password)}
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="password"
-                    /&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;
-                    &lt;S3Upload
-                      name="imageUrl"
-                      value={values.imageUrl}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="imageUrl"
-                    /&gt;
-                  &lt;/li&gt;
-                &lt;/ul&gt;
+<span class="cstat-no" title="statement not covered" >            &lt;form className="newrecipient__form" onSubmit={handleSubmit}&gt;</span>
+              &lt;h3 className="newrecipient__form__heading"&gt;Add your personal details&lt;/h3&gt;
+              &lt;ul&gt;
+                &lt;li&gt;
+                  &lt;label className="visuallyhidden" htmlFor="firstName"&gt;
+                    First name
+                  &lt;/label&gt;
+                  &lt;input
+                    type="text"
+                    name="firstName"
+                    id="firstName"
+                    placeholder="First name"
+                    value={values.firstName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.firstName, touched.firstName)}
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="firstName"
+                  /&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;label className="visuallyhidden" htmlFor="lastName"&gt;
+                    Last name
+                  &lt;/label&gt;
+                  &lt;input
+                    type="text"
+                    name="lastName"
+                    id="lastName"
+                    placeholder="Last name"
+                    value={values.lastName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.lastName, touched.lastName)}
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="lastName"
+                  /&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;label className="visuallyhidden" htmlFor="tel"&gt;
+                    Telephone
+                  &lt;/label&gt;
+                  &lt;input
+                    type="text"
+                    name="tel"
+                    id="tel"
+                    placeholder="Eg. 07993 852 721"
+                    value={values.tel}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.tel, touched.tel)}
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="tel"
+                  /&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;label className="visuallyhidden" htmlFor="email"&gt;
+                    Email
+                  &lt;/label&gt;
+                  &lt;input
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.email, touched.email)}
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="email"
+                  /&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;label className="visuallyhidden" htmlFor="password"&gt;Password&lt;/label&gt;
+                  &lt;input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Enter a password"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={setInputClass(errors.password, touched.password)}
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="password"
+                  /&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;S3Upload
+                    name="imageUrl"
+                    value={values.imageUrl}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="imageUrl"
+                  /&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
 &nbsp;
-                &lt;h3 className="newrecipient__form__heading"&gt;
-                  Add your payment details
-                &lt;/h3&gt;
+              &lt;h3 className="newrecipient__form__heading"&gt;
+                Add your payment details
+              &lt;/h3&gt;
 &nbsp;
-                &lt;ul&gt;
-                  &lt;li&gt;
-                    &lt;label className="visuallyhidden" htmlFor="cardNum"&gt;Card number&lt;/label&gt;
-                    &lt;input
-                      className={setInputClass(errors.cardNum, touched.cardNum)}
-                      type="text"
-                      id="cardNum"
-                      name="cardNum"
-                      value={values.cardNum}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      placeholder="Card Number"
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="cardNum"
-                    /&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;
-                    &lt;label className="visuallyhidden" htmlFor="cardExp"&gt;Card number&lt;/label&gt;
-                    &lt;input
-                      className={setInputClass(errors.cardExp, touched.cardExp)}
-                      type="text"
-                      id="cardExp"
-                      name="cardExp"
-                      placeholder="Expiry Date"
-                      value={values.cardExp}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="cardExp"
-                    /&gt;
-                  &lt;/li&gt;
-                  &lt;li&gt;
-                    &lt;label className="visuallyhidden" htmlFor="cardCCV"&gt;Card number&lt;/label&gt;
-                    &lt;input
-                      className={setInputClass(errors.cardCCV, touched.cardCCV)}
-                      type="text"
-                      id="cardCCV"
-                      name="cardCCV"
-                      placeholder="CCV"
-                      value={values.cardCCV}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    /&gt;
-                    &lt;StyledMessage
-                      errors={errors}
-                      touched={touched}
-                      values={values}
-                      elem="cardCCV"
-                    /&gt;
-                  &lt;/li&gt;
-                &lt;/ul&gt;
-                &lt;button
-                  className="btn btn__primary btn__submit"
-                  type="submit"
-                  disabled={isSubmitting}
-                &gt;
-                  {Object.keys(touched).length === 0 || Object.keys(errors).length &gt; 0 ? 'Complete required details' : 'Create account'}
-                &lt;/button&gt;
-              &lt;/form&gt;
-            )}
+              &lt;ul&gt;
+                &lt;li&gt;
+                  &lt;label className="visuallyhidden" htmlFor="cardNum"&gt;Card number&lt;/label&gt;
+                  &lt;input
+                    className={setInputClass(errors.cardNum, touched.cardNum)}
+                    type="text"
+                    id="cardNum"
+                    name="cardNum"
+                    value={values.cardNum}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    placeholder="Card Number"
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="cardNum"
+                  /&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;label className="visuallyhidden" htmlFor="cardExp"&gt;Card number&lt;/label&gt;
+                  &lt;input
+                    className={setInputClass(errors.cardExp, touched.cardExp)}
+                    type="text"
+                    id="cardExp"
+                    name="cardExp"
+                    placeholder="Expiry Date"
+                    value={values.cardExp}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="cardExp"
+                  /&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                  &lt;label className="visuallyhidden" htmlFor="cardCCV"&gt;Card number&lt;/label&gt;
+                  &lt;input
+                    className={setInputClass(errors.cardCCV, touched.cardCCV)}
+                    type="text"
+                    id="cardCCV"
+                    name="cardCCV"
+                    placeholder="CCV"
+                    value={values.cardCCV}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  /&gt;
+                  &lt;StyledMessage
+                    errors={errors}
+                    touched={touched}
+                    values={values}
+                    elem="cardCCV"
+                  /&gt;
+                &lt;/li&gt;
+              &lt;/ul&gt;
+              &lt;button
+                className="btn btn__primary btn__submit"
+                type="submit"
+                disabled={isSubmitting}
+              &gt;
+                {Object.keys(touched).length === 0 || Object.keys(errors).length &gt; 0 ? 'Complete required details' : 'Create account'}
+              &lt;/button&gt;
+            &lt;/form&gt;
+          )}
         &lt;/Formik&gt;
       &lt;/div&gt;
     );
@@ -979,7 +979,7 @@ export default NewDonor;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Nov 17 2018 22:53:20 GMT+0000 (Greenwich Mean Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 18 2018 13:17:34 GMT+0000 (Greenwich Mean Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
