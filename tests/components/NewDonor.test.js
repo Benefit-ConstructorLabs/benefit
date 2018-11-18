@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import NewRecipient from '../../src/components/NewRecipient';
+import NewDonor from '../../src/components/NewDonor';
 
-describe(NewRecipient, () => {
+describe(NewDonor, () => {
   test('should render correctly', () => {
-    const tree = renderer.create(<NewRecipient />).toJSON();
+    const tree = renderer.create(<NewDonor />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

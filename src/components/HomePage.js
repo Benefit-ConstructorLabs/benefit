@@ -19,11 +19,11 @@ const HomePage = () => (
     </header>
     <section className="getStarted">
       <h2 className="getStarted__header">Give generously</h2>
-      <Link className="btn btn__secondary" to="/recipient#root">
+      <Link className="btn btn__secondary" to="/recipient">
         Receive donations
         {/* <i className="fas next-arrow fa-arrow-right" /> */}
       </Link>
-      <Link className="btn btn__secondary" to="/donor#root">
+      <Link className="btn btn__secondary" to="/donor">
         Become a donor
         {/* <i className="fas next-arrow fa-arrow-right" /> */}
       </Link>
