@@ -1,7 +1,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import { setDonationAmount, togglePaymentDetails, setRecipientFromDB, getRecipientFromDB, receiveStripeToken, setDonorID } from '../../src/actions';
+import { setDonationAmount, togglePaymentDetails, setRecipientFromDB, getRecipientFromDB, receiveStripeToken, setDonorID, setDonationID, createPaymentDetails, submitRecipientForm, setRecipientIdForQrCode, addRecipient, setNewDonorId, addDonor } from '../../src/actions';
 
 global.fetch = require('jest-fetch-mock');
 
@@ -73,6 +73,45 @@ describe('actions', () => {
         expect(store.getActions()).toEqual(expectedActions);
       });
     });
+    test('submitRecipientForm returns the expected action', () => {
+      const expectedAction = { type: 'SUBMIT_RECIPIENT_FORM' };
+      const outputAction = submitRecipientForm();
+      expect(outputAction).toEqual(expectedAction);
+    });
+    test('setRecipientIdForQrCode returns the expected action', () => {
+      const expectedAction = { type: 'SET_RECIPIENT_ID', id: 5 };
+      const outputAction = setRecipientIdForQrCode(5);
+      expect(outputAction).toEqual(expectedAction);
+    });
+    test('addRecipient calls fetch', () => {
+      expect(output).toEqual(expectedOutput);
+    });
+    test('addRecipient dispatches setRecipientIdForQrCode on fetch success', () => {
+      const output = addRecipient({ name: 'Bill' });
+      expect(output).toEqual(expectedOutput);
+    });
+  });
+
+  describe('Donor', () => {
+    test('setDonorID returns expected action', () => {
+      const expectedAction = {
+        type: 'SET_DONOR_ID',
+      };
+      const outputAction = setDonorID();
+      expect(outputAction).toEqual(expectedAction);
+    });
+    test('setNewDonorId returns the expected action', () => {
+      const expectedAction = {
+        type: 'SET_NEW_DONOR_ID',
+        newDonorId: 6,
+      };
+      const outputAction = setNewDonorId(6);
+      expect(outputAction).toEqual(expectedAction);
+    });
+    test('addDonor call fetch', () => {
+      const output = addDonor({});
+      expect(output).toEqual(expectedOutput);
+    });
   });
 
   describe('Donation', () => {
@@ -84,15 +123,15 @@ describe('actions', () => {
       const outputAction = setDonationAmount('£30');
       expect(outputAction).toEqual(expectedAction);
     });
-    test('setDonorID returns expected action', () => {
+    test('setDonationID returns expected action', () => {
       const expectedAction = {
-        type: 'SET_DONOR_ID',
+        type: 'SET_DONATION_ID',
+        donationID: 5,
       };
-      const outputAction = setDonorId();
+      const outputAction = setDonationID(5);
       expect(outputAction).toEqual(expectedAction);
     });
   });
-
 
   describe('Payment', () => {
     test('togglePaymentDetails returns the expected action', () => {
@@ -103,14 +142,17 @@ describe('actions', () => {
       expect(outputAction).toEqual(expectedAction);
     });
 
-    test('Submit payment details form and receive stripe token', () => {
+    test('receiveStripeToken returns exepected action', () => {
       const action = receiveStripeToken('tok_1DTtwg2eZvKYlo2C0OVGbY7U');
       const expectedAction = {
         type: 'RECEIVE_STRIPE_TOKEN',
         stripeToken: 'tok_1DTtwg2eZvKYlo2C0OVGbY7U',
       };
-
-      expect(action).toEqual(expectedAction);
     });
+    test('createPaymentDetails calls fetch', () => {
+      const outputAction = createPaymentDetails('stripeToken');
+      expect(outputAction).toEqual(expectedAction);
+    });
+    expect(action).toEqual(expectedAction);
   });
 });
