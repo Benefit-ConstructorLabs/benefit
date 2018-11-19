@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppHeader should render correctly 1`] = `
+<h1
+  className="app__title"
+>
+  Benefit
+</h1>
+`;

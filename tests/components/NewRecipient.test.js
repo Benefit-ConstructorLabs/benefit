@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import NewRecipient from '../../src/components/NewRecipient';
 
 describe(NewRecipient, () => {
-  test('should render correctly', () => {
+  test('matches the snapshot', () => {
     const tree = renderer.create(<NewRecipient />).toJSON();
     expect(tree).toMatchSnapshot();
   });
