@@ -35,7 +35,10 @@ function getUserByUsername(username) {
   return db.one(
     'SELECT id, first_name, username, password, type FROM recipient WHERE username=$1 UNION ALL SELECT id, first_name, username, password, type FROM donor WHERE username=$1',
     [username],
-  );
+  )
+    .catch((error) => {
+      console.log('failed to get user', error);
+    });
 }
 
 // PASSPORT
@@ -74,14 +77,12 @@ app.set('port', process.env.PORT || 8080);
 
 // PASSPORT serialise user into session
 passport.serializeUser((user, done) => {
-  console.log('4. Extract user id from user for serialisation', user);
   done(null, user.username);
 });
 
 // PASSPORT deserialise user from session
 passport.deserializeUser((id, done) => {
   getUserById(id).then((user) => {
-    console.log('deserialise user', user);
     done(null, user);
   });
 });
@@ -90,9 +91,7 @@ passport.deserializeUser((id, done) => {
 // that is use locally stored credentials
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    console.log('Loggin in', username, password);
     const user = await getUserByUsername(username);
-    console.log('User', user);
     if (!user) return done(null, false);
     bcrypt.compare(password, user.password, (err) => {
       if (err) {
@@ -109,7 +108,6 @@ app.use(passport.session());
 
 // PASSPORT middleware function to check user is logged in
 function isLoggedIn(req, res, next) {
-  console.log('6. Check that we have a logged in user before allowing access to protected route');
   if (req.user && req.user.id) {
     next();
   } else {
@@ -124,7 +122,6 @@ app.get('/', (req, res) => {
 
 // PASSORT login page
 app.get('/', (req, res) => {
-  console.log('1. Receive username and password');
   res.render('login', {});
 });
 
@@ -138,12 +135,10 @@ app.get('/api/user', (req, res) => {
     ? { userId: req.user.id, userType: req.user.type, name: req.user.first_name }
     : {};
   res.json(userMaybe);
-})
+});
 
 // PASSPORT route to log out users
 app.get('/api/logout', (req, res) => {
-  console.log('7. Log user out');
-  // log user out and redirect them to home page
   req.logout();
   res.json({ response: 'You have sucessfully logged out' });
 });
@@ -239,15 +234,16 @@ app.post('/api/recipient', (req, res) => {
 });
 
 // Sends confirmation message via Twilio
-const sendSMS = (name, tel) => {
+const sendSMS = (tel, name, amount) => {
   const accountSid = process.env.TWILIO_ACCOUNT_SID;
   const authToken = process.env.TWILIO_AUTH_TOKEN;
   const fromNumber = process.env.TWILIO_FROM_NUMBER;
   const client = require('twilio')(accountSid, authToken);
   const number = tel;
+  const donation = amount / 100;
   client.messages
     .create({
-      body: `${name} says thank you for your donation!`,
+      body: `${name} just donated £${donation} towards your cause`,
       from: fromNumber,
       to: number,
     })
@@ -271,19 +267,14 @@ app.post('/api/donation', (req, res) => {
       'INSERT INTO donation (recipient_id, donor_id, amount, stripe_id, time_stamp) VALUES ($1, $2, $3, $4, clock_timestamp()) RETURNING id',
       [donation.recipient_id, donation.donor_id, donation.amount, donation.stripe_id],
     )
+    .then(result => db.any('SELECT recipient.tel, donor.first_name, donation.id, donation.amount FROM recipient, donor, donation WHERE recipient.id=$1 AND donor.id=$2 AND donation.id=$3', [donation.recipient_id, donation.donor_id, result.id]))
     .then((result) => {
       // the below code is commented out until we can add new donors and send text messages
-      console.log(result);
+      console.log(result[0]);
       const json = {
-        // recipient_name: donation.recipient_name,
-        // donor_name: donation.donor_name,
-        // amount: donation.amount,
-        // transaction_id: result.id,
-        transaction_id: result.id,
+        transaction_id: result[0].id,
       };
-
-      console.log(json);
-      // sendSMS(donation.recipient_name, donation.tel);
+      sendSMS(result[0].tel, result[0].first_name, result[0].amount);
       return res.json(json);
     })
     .catch(error => res.json({ error: error.message }));

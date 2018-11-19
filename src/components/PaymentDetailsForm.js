@@ -79,6 +79,7 @@ PaymentDetailsForm.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   dropdown: PropTypes.bool.isRequired,
   setDropdown: PropTypes.func.isRequired,
+  stripe: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default injectStripe(PaymentDetailsForm);

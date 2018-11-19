@@ -25,7 +25,6 @@ const App = () => (
         <Route exact path="/donor" component={NewDonorContainer} />
         <PrivateRouteContainer exact path="/donor/:id" component={DonorContainer} />
         <Route exact path="/organisation/:id/dashboard" component={DashboardContainer} />
-        {/* <Route exact path="/login" render={() => <div />} /> */}
       </Switch>
       <AppFooter />
     </React.Fragment>
