@@ -28,7 +28,7 @@ const DonationForm = ({ donationAmount, setDonationAmount, setDonorID, firstName
         />
       </p>
       <p>
-        <input onChange={event => setDonationAmount(event.target.value)} value={donationAmount} className="donation__form__slider" type="range" min="1" max="10" />
+        <input onChange={event => setDonationAmount(event.target.value)} value={donationAmount} className="donation__form__slider" type="range" min="1" max="20" />
       </p>
       <p className="donation__form__quick-amount">
         <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="1">£1</button>
