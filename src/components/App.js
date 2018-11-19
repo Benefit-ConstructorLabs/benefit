@@ -10,12 +10,13 @@ import NewDonorContainer from '../containers/NewDonorContainer';
 import DonorContainer from '../containers/DonorContainer';
 import DashboardContainer from '../containers/DashboardContainer';
 import AppFooter from './AppFooter';
+import ScrollToTop from './ScrollToTop';
 
 import '../../styles/components/app.scss';
 
 const App = () => (
   <Router>
-    <React.Fragment>
+    <ScrollToTop>
       <AppHeaderContainer />
       <Route exact path="/" component={HomePage} />
       <Route exact path="/recipient/" component={NewRecipientContainer} />
@@ -25,7 +26,7 @@ const App = () => (
       <PrivateRouteContainer exact path="/donor/:id" component={DonorContainer} />
       <Route exact path="/organisation/:id/dashboard" component={DashboardContainer} />
       <AppFooter />
-    </React.Fragment>
+    </ScrollToTop>
   </Router>
 );
 
