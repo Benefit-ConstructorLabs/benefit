@@ -199,6 +199,13 @@ export function setHasCheckedUser() {
   };
 }
 
+export function setDropdown(dropdown) {
+  return {
+    type: 'SET_DROPDOWN',
+    dropdown,
+  };
+}
+
 export function checkLogin() {
   return function (dispatch) {
     fetch('/api/user', { credentials: 'same-origin' })
@@ -300,7 +307,6 @@ export function getDonorDetailsByID(id) {
     dispatch(getDonorFromDB(id));
   };
 }
-
 
 export function setOrganisationDonations(donations) {
   return {
