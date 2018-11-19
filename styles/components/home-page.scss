@@ -1,12 +1,9 @@
 @import '../base.scss';
 
-body {
-  background: url('/static/assets/images/homepage-bg-grey.png') center repeat-x;
-  background-size: cover;
-}
-
 .homepage {
-  background: url('/static/assets/images/homepage_bg_gradient.png') 98% -12% no-repeat;
+  background: 
+    url('/static/assets/images/homepage_bg_gradient.png') 98% -12% no-repeat,
+    linear-gradient(to bottom,#F5F2F4, #D8CAD4 70%) no-repeat;
   header *,
   section * {
     width: 80%;
@@ -40,7 +37,8 @@ body {
 
   .getStarted__header {
     transform: rotate(-8deg);
-    margin: 0 0 20% 15%;
+    margin: 0 0 4rem 3rem;
+    padding: 0;
   }
 
   h2 {
@@ -66,9 +64,9 @@ body {
     color: $primary-blue;
     font-size: 1.5rem;
     font-weight: 600;
-    margin: 2.5rem 0 1.5rem 10%;
+    margin: 0.5rem 0 2rem 3.5rem;
   }
-
+  
   p {
     font-size: 1rem;
     line-height: 1.4;
