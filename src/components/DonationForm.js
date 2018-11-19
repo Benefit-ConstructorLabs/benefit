@@ -32,8 +32,8 @@ const DonationForm = ({ donationAmount, setDonationAmount, setDonorID, firstName
       </p>
       <p className="donation__form__quick-amount">
         <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="1">£1</button>
-        <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="2">£2</button>
         <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="5">£5</button>
+        <button onClick={event => setDonationAmount(event.target.value)} type="button" className="btn btn__quick-amount" value="10">£10</button>
       </p>
       <button className="btn btn__primary btn__submit" type="submit">
         Donate to

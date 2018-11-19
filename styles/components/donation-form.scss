@@ -69,8 +69,12 @@
           cursor: pointer;
       }
     }
+
+    &__quick-amount{
+      display: flex;
+    }
     .btn__quick-amount{
-    margin-bottom: 1rem;
+      margin: 0.1rem 0.6rem;
     }
   }
 }
