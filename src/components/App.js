@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AppHeaderContainer from '../containers/AppHeaderContainer';
 import NewRecipientContainer from '../containers/NewRecipientContainer';
-import HomePage from '../components/HomePage';
+import HomePage from './HomePage';
 import PrivateRouteContainer from '../containers/PrivateRouteContainer';
 import RecipientContainer from '../containers/RecipientContainer';
 import NewDonationContainer from '../containers/NewDonationContainer';
@@ -17,13 +17,16 @@ const App = () => (
   <Router>
     <React.Fragment>
       <AppHeaderContainer />
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/recipient/" component={NewRecipientContainer} />
-      <PrivateRouteContainer exact path="/recipient/:id" component={RecipientContainer} />
-      <Route path="/recipient/:id/donation" component={NewDonationContainer} />
-      <Route exact path="/donor" component={NewDonorContainer} />
-      <PrivateRouteContainer exact path="/donor/:id" component={DonorContainer} />
-      <Route exact path="/organisation/:id/dashboard" component={DashboardContainer} />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/recipient" component={NewRecipientContainer} />
+        <PrivateRouteContainer exact path="/recipient/:id" component={RecipientContainer} />
+        <Route path="/recipient/:id/donation" component={NewDonationContainer} />
+        <Route exact path="/donor" component={NewDonorContainer} />
+        <PrivateRouteContainer exact path="/donor/:id" component={DonorContainer} />
+        <Route exact path="/organisation/:id/dashboard" component={DashboardContainer} />
+        {/* <Route exact path="/login" render={() => <div />} /> */}
+      </Switch>
       <AppFooter />
     </React.Fragment>
   </Router>

@@ -14,16 +14,16 @@ class AppHeader extends React.Component {
   componentWillReceiveProps({ isLoggedIn: isNowLoggedIn, userID, userType, location, history }) {
     const { isLoggedIn: wasLoggedIn } = this.props;
     let redirectTo = '';
+    console.log({ wasLoggedIn, isNowLoggedIn, userID, userType, oldProps: this.props });
     if (!wasLoggedIn && isNowLoggedIn) {
+      console.info('LOGGED IN');
       redirectTo = `/${userType}/${userID}`;
       if (location.state && location.state.from) {
         redirectTo = location.state.from.pathname;
       }
-    } else if (wasLoggedIn && isNowLoggedIn) {
-      redirectTo = `/${userType}/${userID}`;
-    }
-    if (redirectTo) {
       history.push(redirectTo);
+    } else if (wasLoggedIn && !isNowLoggedIn) {
+      history.push('/');
     }
   }
 

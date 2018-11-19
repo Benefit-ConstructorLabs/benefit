@@ -16,7 +16,9 @@ const mapDispatchToProps = {
   setDropdown,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(withRouter(AppHeader));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(AppHeader),
+);
