@@ -3,10 +3,11 @@ const login = (
     isLoggedIn: false,
     userId: null,
     username: '',
-    userType: null,
+    userType: '',
     password: '',
     name: '',
     hasCheckedUser: false,
+    dropdown: false,
   },
   action,
 ) => {
@@ -31,6 +32,8 @@ const login = (
         password: '',
         name: '',
       });
+    case 'SET_DROPDOWN':
+      return Object.assign({}, state, { dropdown: !action.dropdown });
     default:
       return state;
   }
