@@ -1,6 +1,6 @@
 require('dotenv').config();
 // Send donation details off to stripe to charge token
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const express = require('express');
 
@@ -16,7 +16,6 @@ const multiparty = require('multiparty');
 // passport
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-const expressSession = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 
 const db = pgp({
@@ -105,15 +104,6 @@ passport.use(
 // PASSPORT initialise passport and session
 app.use(passport.initialize());
 app.use(passport.session());
-
-// PASSPORT middleware function to check user is logged in
-function isLoggedIn(req, res, next) {
-  if (req.user && req.user.id) {
-    next();
-  } else {
-    res.json({ response: 'incorrect username or password' });
-  }
-}
 
 // PASSPORT
 app.get('/', (req, res) => {
@@ -270,7 +260,6 @@ app.post('/api/donation', (req, res) => {
     .then(result => db.any('SELECT recipient.tel, donor.first_name, donation.id, donation.amount FROM recipient, donor, donation WHERE recipient.id=$1 AND donor.id=$2 AND donation.id=$3', [donation.recipient_id, donation.donor_id, result.id]))
     .then((result) => {
       // the below code is commented out until we can add new donors and send text messages
-      console.log(result[0]);
       const json = {
         transaction_id: result[0].id,
       };

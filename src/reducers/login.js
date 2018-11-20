@@ -3,7 +3,7 @@ const login = (
     isLoggedIn: false,
     userId: null,
     username: '',
-    userType: null,
+    userType: '',
     password: '',
     name: '',
     hasCheckedUser: false,
