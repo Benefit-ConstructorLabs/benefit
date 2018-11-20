@@ -3,8 +3,11 @@
 @import '_colors.scss';
 @import '_typography.scss';
 
+$mobile-max-width: 400px;
+
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -22,7 +25,11 @@ body {
   div:first-of-type {
     padding: 0.5rem;
     margin: auto;
-    max-width: 400px;
+    max-width: $mobile-max-width;
+  }
+  main:first-of-type {
+    max-width: $mobile-max-width;
+    margin: auto;
   }
 }
 
@@ -40,7 +47,7 @@ a.btn {
   padding: 1rem;
   text-align: center;
   text-decoration: none;
-  width: 90%;
+  width: 85%;
   &__primary {
     background: $primary-pink;
     opacity: 0.75;
@@ -51,11 +58,6 @@ a.btn {
   }
   &__secondary {
     color: $primary-blue;
-  }
-  &__upload {
-    width: 85%;
-    margin: 0;
-    margin-right: 0;
   }
 }
 

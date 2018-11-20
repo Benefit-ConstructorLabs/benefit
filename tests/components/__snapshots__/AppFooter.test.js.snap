@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppFooter should render correctly 1`] = `
+<footer>
+  <p
+    className="copyright"
+  >
+    © 2018 Better Change Team
+  </p>
+</footer>
+`;

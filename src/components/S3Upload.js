@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../../styles/components/newrecipient.scss';
 
 class S3Upload extends React.Component {
   constructor() {
@@ -57,9 +58,11 @@ class S3Upload extends React.Component {
         }
 
         <label className="fileUpload visuallyhidden" htmlFor="pictureupload">
-          Add a photo </label>
-        <button className="btn btn__secondary btn__upload" type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>
-          {value ? 'Change photo' : 'Add photo'}
+          Add a photo
+        </label>
+        <button className="btn-upload" type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}>
+          <i className="fas fa-file-upload" />
+          {value ? ' Change photo' : ' Add photo'}
         </button>
         <input
           ref={this.inputRef}

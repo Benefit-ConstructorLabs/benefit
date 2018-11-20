@@ -17,12 +17,15 @@ const PaymentDetailsForm = ({
   location,
   isLoggedIn,
   userType,
+  setDropdown,
+  dropdown,
 }) => {
   const handleLogin = () => {
     history.push({
       pathname: '/login',
       state: { from: location },
     });
+    setDropdown(dropdown);
   };
 
   return !isLoggedIn && userType !== 'donor' ? (
@@ -70,6 +73,13 @@ PaymentDetailsForm.propTypes = {
   toggleDonationComplete: PropTypes.func.isRequired,
   donationAmount: PropTypes.number.isRequired,
   firstName: PropTypes.string.isRequired,
+  userType: PropTypes.string.isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  dropdown: PropTypes.bool.isRequired,
+  setDropdown: PropTypes.func.isRequired,
+  stripe: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default injectStripe(PaymentDetailsForm);

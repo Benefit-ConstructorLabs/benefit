@@ -7,9 +7,6 @@ import LoginContainer from '../containers/LoginContainer';
 class AppHeader extends React.Component {
   constructor() {
     super();
-    this.state = {
-      dropdown: false,
-    };
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -23,41 +20,33 @@ class AppHeader extends React.Component {
         redirectTo = location.state.from.pathname;
       }
       history.push(redirectTo);
-    } else if (wasLoggedIn && isNowLoggedIn) {
-      redirectTo = `/${userType}/${userID}`;
-      history.push(redirectTo);
-    } else {
-      redirectTo = '/login';
-      history.push(redirectTo);
+    } else if (wasLoggedIn && !isNowLoggedIn) {
+      history.push('/');
     }
   }
 
   handleClick(event) {
-    const { dropdown } = this.state;
-    const { isLoggedIn, logout } = this.props;
+    const { dropdown, setDropdown, isLoggedIn, logout } = this.props;
     event.preventDefault();
-    this.setState({
-      dropdown: !dropdown,
-    });
+    setDropdown(dropdown);
     if (isLoggedIn) {
       logout();
     }
   }
 
   render() {
-    const { dropdown } = this.state;
-    const { isLoggedIn, name } = this.props;
+    const { dropdown, isLoggedIn, location } = this.props;
     const classes = cx('dropdown', {
-      'dropdown--open': dropdown,
+      'dropdown--open': dropdown || location.pathname === '/login',
     });
     const loginMessage = isLoggedIn ? 'Log Out' : 'Log In';
-    const loginClass = isLoggedIn ? 'fas active fa-inverse fa-1x fa-user-circle' : 'fas inactive fa-inverse fa-1x fa-user-circle';
+    const loginClass = isLoggedIn
+      ? 'fas active fa-inverse fa-1x fa-user-circle'
+      : 'fas inactive fa-inverse fa-1x fa-user-circle';
     return (
       <header className="app__header">
         <h1 className="app__title">
-          <a href="/">
-          + Better Change
-          </a>
+          <a href="/">+ Better Change</a>
         </h1>
         {!isLoggedIn && <LoginContainer classes={classes} />}
         <a href="#" className="login__text" onClick={this.handleClick}>
@@ -71,7 +60,8 @@ class AppHeader extends React.Component {
 
 AppHeader.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
+  dropdown: PropTypes.bool.isRequired,
+  setDropdown: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   userID: PropTypes.number,
   userType: PropTypes.string,

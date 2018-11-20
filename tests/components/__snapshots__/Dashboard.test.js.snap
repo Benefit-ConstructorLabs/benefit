@@ -1,0 +1,1610 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard should render correctly 1`] = `
+<section
+  className="dashboard"
+>
+  <h2
+    className="dashboard__title"
+  >
+    Dashboard (beta)
+  </h2>
+  <dl
+    className="dashboard__totals__overall"
+  >
+    <dd>
+      Total Donations
+    </dd>
+    <dt>
+      £NaN
+    </dt>
+  </dl>
+  <dl
+    className="dashboard__totals__daily"
+  >
+    <dd>
+      Today’s total
+    </dd>
+    <dt>
+      £0.00
+    </dt>
+  </dl>
+  <section
+    className="dashboard__progress"
+  >
+    <h3>
+      Donations timeline
+    </h3>
+    <div
+      className="recharts-wrapper"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "cursor": "default",
+          "height": 400,
+          "position": "relative",
+          "width": 960,
+        }
+      }
+    >
+      <svg
+        className="recharts-surface"
+        height={400}
+        version="1.1"
+        viewBox="0 0 960 400"
+        width={960}
+      >
+        <clipPath
+          id="recharts4-clip"
+        >
+          <rect
+            height={330}
+            width={800}
+            x={80}
+            y={20}
+          />
+        </clipPath>
+        <g
+          className="recharts-cartesian-grid"
+        >
+          <g
+            className="recharts-cartesian-grid-horizontal"
+          >
+            <line
+              fill="none"
+              height={330}
+              stroke="#f5f5f5"
+              width={800}
+              x={80}
+              x1={80}
+              x2={880}
+              y={20}
+              y1={20}
+              y2={20}
+            />
+            <line
+              fill="none"
+              height={330}
+              stroke="#f5f5f5"
+              width={800}
+              x={80}
+              x1={80}
+              x2={880}
+              y={20}
+              y1={350}
+              y2={350}
+            />
+          </g>
+          <g
+            className="recharts-cartesian-grid-vertical"
+          >
+            <line
+              fill="none"
+              height={330}
+              stroke="#f5f5f5"
+              width={800}
+              x={80}
+              x1={80}
+              x2={80}
+              y={20}
+              y1={20}
+              y2={350}
+            />
+            <line
+              fill="none"
+              height={330}
+              stroke="#f5f5f5"
+              width={800}
+              x={80}
+              x1={880}
+              x2={880}
+              y={20}
+              y1={20}
+              y2={350}
+            />
+          </g>
+        </g>
+        <g
+          className="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+        >
+          <line
+            className="recharts-cartesian-axis-line"
+            fill="none"
+            height={30}
+            stroke="#aaa"
+            width={800}
+            x={80}
+            x1={80}
+            x2={880}
+            y={350}
+            y1={350}
+            y2={350}
+          />
+          <g
+            className="recharts-cartesian-axis-ticks"
+          />
+        </g>
+        <g
+          className="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+        >
+          <line
+            className="recharts-cartesian-axis-line"
+            fill="none"
+            height={330}
+            stroke="#aaa"
+            width={60}
+            x={20}
+            x1={80}
+            x2={80}
+            y={20}
+            y1={20}
+            y2={350}
+          />
+          <g
+            className="recharts-cartesian-axis-ticks"
+          />
+          <text
+            className="recharts-text recharts-label"
+            textAnchor="end"
+            transform="rotate(-90, 15, 185)"
+            x={15}
+            y={185}
+          >
+            <tspan
+              dy="0.355em"
+              x={15}
+            >
+              total (£)
+            </tspan>
+          </text>
+        </g>
+        <g
+          className="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+        >
+          <line
+            className="recharts-cartesian-axis-line"
+            fill="none"
+            height={330}
+            stroke="#aaa"
+            width={60}
+            x={880}
+            x1={880}
+            x2={880}
+            y={20}
+            y1={20}
+            y2={350}
+          />
+          <g
+            className="recharts-cartesian-axis-ticks"
+          />
+          <text
+            className="recharts-text recharts-label"
+            textAnchor="start"
+            transform="rotate(-90, 945, 185)"
+            x={945}
+            y={185}
+          >
+            <tspan
+              dy="0.355em"
+              x={945}
+            >
+              donation (£)
+            </tspan>
+          </text>
+        </g>
+        <g
+          className="recharts-layer recharts-area"
+        >
+          <g
+            className="recharts-layer"
+          >
+            <defs>
+              <clipPath
+                id="animationClipPath-recharts-area-5"
+              >
+                <rect
+                  height={1}
+                  width={NaN}
+                  x={NaN}
+                  y={0}
+                />
+              </clipPath>
+            </defs>
+            <g
+              className="recharts-layer"
+              clipPath="url(#animationClipPath-recharts-area-5)"
+            >
+              <g
+                className="recharts-layer"
+                clipPath={null}
+              >
+                <path
+                  className="recharts-curve recharts-area-area"
+                  d={null}
+                  fill="#BCF1FF"
+                  fillOpacity={0.6}
+                  height={330}
+                  stroke="none"
+                  width={800}
+                />
+                <path
+                  className="recharts-curve recharts-area-curve"
+                  d={null}
+                  fill="none"
+                  fillOpacity={0.6}
+                  height={330}
+                  stroke="#AB90A4"
+                  width={800}
+                />
+              </g>
+            </g>
+          </g>
+        </g>
+        <g
+          className="recharts-layer recharts-line"
+        >
+          <path
+            className="recharts-curve recharts-line-curve"
+            clipPath={null}
+            d={null}
+            fill="none"
+            height={330}
+            stroke="#D1008E"
+            strokeDasharray="0px 0px"
+            strokeWidth={1}
+            width={800}
+          />
+        </g>
+        <g
+          className="recharts-layer recharts-bar"
+        >
+          <g
+            className="recharts-layer recharts-bar-rectangles"
+            clipPath={null}
+          >
+            <g
+              className="recharts-layer"
+            >
+              <g
+                className="recharts-layer recharts-bar-rectangle"
+              />
+              <g
+                className="recharts-layer recharts-bar-rectangle"
+              />
+              <g
+                className="recharts-layer recharts-bar-rectangle"
+              />
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div
+        className="recharts-legend-wrapper"
+        style={
+          Object {
+            "bottom": 20,
+            "height": "auto",
+            "left": 20,
+            "position": "absolute",
+            "width": 920,
+          }
+        }
+      >
+        <ul
+          className="recharts-default-legend"
+          style={
+            Object {
+              "margin": 0,
+              "padding": 0,
+              "textAlign": "center",
+            }
+          }
+        >
+          <li
+            className="recharts-legend-item legend-item-0"
+            style={
+              Object {
+                "display": "inline-block",
+                "marginRight": 10,
+              }
+            }
+          >
+            <svg
+              className="recharts-surface"
+              height={14}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "marginRight": 4,
+                  "verticalAlign": "middle",
+                }
+              }
+              version="1.1"
+              viewBox="0 0 32 32"
+              width={14}
+            >
+              <path
+                className="recharts-legend-icon"
+                d="M0,16h10.666666666666666
+            A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16
+            H32M21.333333333333332,16
+            A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"
+                fill="none"
+                stroke="#AB90A4"
+                strokeWidth={4}
+              />
+            </svg>
+            <span
+              className="recharts-legend-item-text"
+            >
+              total
+            </span>
+          </li>
+          <li
+            className="recharts-legend-item legend-item-1"
+            style={
+              Object {
+                "display": "inline-block",
+                "marginRight": 10,
+              }
+            }
+          >
+            <svg
+              className="recharts-surface"
+              height={14}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "marginRight": 4,
+                  "verticalAlign": "middle",
+                }
+              }
+              version="1.1"
+              viewBox="0 0 32 32"
+              width={14}
+            >
+              <path
+                className="recharts-legend-icon"
+                d="M0,16h10.666666666666666
+            A5.333333333333333,5.333333333333333,0,1,1,21.333333333333332,16
+            H32M21.333333333333332,16
+            A5.333333333333333,5.333333333333333,0,1,1,10.666666666666666,16"
+                fill="none"
+                stroke="#D1008E"
+                strokeWidth={4}
+              />
+            </svg>
+            <span
+              className="recharts-legend-item-text"
+            >
+              average
+            </span>
+          </li>
+          <li
+            className="recharts-legend-item legend-item-2"
+            style={
+              Object {
+                "display": "inline-block",
+                "marginRight": 10,
+              }
+            }
+          >
+            <svg
+              className="recharts-surface"
+              height={14}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "marginRight": 4,
+                  "verticalAlign": "middle",
+                }
+              }
+              version="1.1"
+              viewBox="0 0 32 32"
+              width={14}
+            >
+              <path
+                className="recharts-legend-icon"
+                d="M0,4h32v24h-32z"
+                fill="#350078"
+                stroke="none"
+              />
+            </svg>
+            <span
+              className="recharts-legend-item-text"
+            >
+              donation
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="recharts-tooltip-wrapper"
+        style={
+          Object {
+            "MozTransform": "translate(undefinedpx, undefinedpx)",
+            "OTransform": "translate(undefinedpx, undefinedpx)",
+            "WebkitTransform": "translate(undefinedpx, undefinedpx)",
+            "msTransform": "translate(undefinedpx, undefinedpx)",
+            "pointerEvents": "none",
+            "position": "absolute",
+            "top": 0,
+            "transform": "translate(undefinedpx, undefinedpx)",
+            "visibility": "hidden",
+          }
+        }
+      >
+        <div
+          className="recharts-default-tooltip"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "border": "1px solid #ccc",
+              "margin": 0,
+              "padding": 10,
+              "whiteSpace": "nowrap",
+            }
+          }
+        >
+          <p
+            className="recharts-tooltip-label"
+            style={
+              Object {
+                "margin": 0,
+              }
+            }
+          >
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    className="dashboard__signups"
+  >
+    <h3>
+      Sign-ups by type
+    </h3>
+    <div
+      className="recharts-wrapper"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "cursor": "default",
+          "height": 400,
+          "position": "relative",
+          "width": 300,
+        }
+      }
+    >
+      <svg
+        className="recharts-surface"
+        height={400}
+        version="1.1"
+        viewBox="0 0 300 400"
+        width={300}
+      >
+        <clipPath
+          id="recharts8-clip"
+        >
+          <rect
+            height={345}
+            width={190}
+            x={80}
+            y={20}
+          />
+        </clipPath>
+        <g
+          className="recharts-cartesian-grid"
+        >
+          <g
+            className="recharts-cartesian-grid-horizontal"
+          >
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={80}
+              x2={270}
+              y={20}
+              y1={365}
+              y2={365}
+            />
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={80}
+              x2={270}
+              y={20}
+              y1={278.75}
+              y2={278.75}
+            />
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={80}
+              x2={270}
+              y={20}
+              y1={192.5}
+              y2={192.5}
+            />
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={80}
+              x2={270}
+              y={20}
+              y1={106.25}
+              y2={106.25}
+            />
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={80}
+              x2={270}
+              y={20}
+              y1={20}
+              y2={20}
+            />
+          </g>
+          <g
+            className="recharts-cartesian-grid-vertical"
+          >
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={127.5}
+              x2={127.5}
+              y={20}
+              y1={20}
+              y2={365}
+            />
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={222.5}
+              x2={222.5}
+              y={20}
+              y1={20}
+              y2={365}
+            />
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={80}
+              x2={80}
+              y={20}
+              y1={20}
+              y2={365}
+            />
+            <line
+              fill="none"
+              height={345}
+              stroke="#ccc"
+              strokeDasharray="3 3"
+              width={190}
+              x={80}
+              x1={270}
+              x2={270}
+              y={20}
+              y1={20}
+              y2={365}
+            />
+          </g>
+        </g>
+        <g
+          className="recharts-layer recharts-cartesian-axis recharts-xAxis xAxis"
+        >
+          <line
+            className="recharts-cartesian-axis-line"
+            fill="none"
+            height={30}
+            stroke="#666"
+            width={190}
+            x={80}
+            x1={80}
+            x2={270}
+            y={365}
+            y1={365}
+            y2={365}
+          />
+          <g
+            className="recharts-cartesian-axis-ticks"
+          >
+            <g
+              className="recharts-layer recharts-cartesian-axis-tick"
+            >
+              <line
+                className="recharts-cartesian-axis-tick-line"
+                fill="none"
+                height={30}
+                stroke="#666"
+                width={190}
+                x={80}
+                x1={127.5}
+                x2={127.5}
+                y={365}
+                y1={371}
+                y2={365}
+              />
+              <text
+                className="recharts-text recharts-cartesian-axis-tick-value"
+                fill="#666"
+                height={30}
+                stroke="none"
+                textAnchor="middle"
+                width={190}
+                x={127.5}
+                y={373}
+              >
+                <tspan
+                  dy="0.71em"
+                  x={127.5}
+                >
+                  Recipients
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-cartesian-axis-tick"
+            >
+              <line
+                className="recharts-cartesian-axis-tick-line"
+                fill="none"
+                height={30}
+                stroke="#666"
+                width={190}
+                x={80}
+                x1={222.5}
+                x2={222.5}
+                y={365}
+                y1={371}
+                y2={365}
+              />
+              <text
+                className="recharts-text recharts-cartesian-axis-tick-value"
+                fill="#666"
+                height={30}
+                stroke="none"
+                textAnchor="middle"
+                width={190}
+                x={222.5}
+                y={373}
+              >
+                <tspan
+                  dy="0.71em"
+                  x={222.5}
+                >
+                  Donors
+                </tspan>
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          className="recharts-layer recharts-cartesian-axis recharts-yAxis yAxis"
+        >
+          <line
+            className="recharts-cartesian-axis-line"
+            fill="none"
+            height={345}
+            stroke="#666"
+            width={60}
+            x={20}
+            x1={80}
+            x2={80}
+            y={20}
+            y1={20}
+            y2={365}
+          />
+          <g
+            className="recharts-cartesian-axis-ticks"
+          >
+            <g
+              className="recharts-layer recharts-cartesian-axis-tick"
+            >
+              <line
+                className="recharts-cartesian-axis-tick-line"
+                fill="none"
+                height={345}
+                stroke="#666"
+                width={60}
+                x={20}
+                x1={74}
+                x2={80}
+                y={20}
+                y1={365}
+                y2={365}
+              />
+              <text
+                className="recharts-text recharts-cartesian-axis-tick-value"
+                fill="#666"
+                height={345}
+                stroke="none"
+                textAnchor="end"
+                width={60}
+                x={72}
+                y={365}
+              >
+                <tspan
+                  dy="0.355em"
+                  x={72}
+                >
+                  0
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-cartesian-axis-tick"
+            >
+              <line
+                className="recharts-cartesian-axis-tick-line"
+                fill="none"
+                height={345}
+                stroke="#666"
+                width={60}
+                x={20}
+                x1={74}
+                x2={80}
+                y={20}
+                y1={278.75}
+                y2={278.75}
+              />
+              <text
+                className="recharts-text recharts-cartesian-axis-tick-value"
+                fill="#666"
+                height={345}
+                stroke="none"
+                textAnchor="end"
+                width={60}
+                x={72}
+                y={278.75}
+              >
+                <tspan
+                  dy="0.355em"
+                  x={72}
+                >
+                  45
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-cartesian-axis-tick"
+            >
+              <line
+                className="recharts-cartesian-axis-tick-line"
+                fill="none"
+                height={345}
+                stroke="#666"
+                width={60}
+                x={20}
+                x1={74}
+                x2={80}
+                y={20}
+                y1={192.5}
+                y2={192.5}
+              />
+              <text
+                className="recharts-text recharts-cartesian-axis-tick-value"
+                fill="#666"
+                height={345}
+                stroke="none"
+                textAnchor="end"
+                width={60}
+                x={72}
+                y={192.5}
+              >
+                <tspan
+                  dy="0.355em"
+                  x={72}
+                >
+                  90
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-cartesian-axis-tick"
+            >
+              <line
+                className="recharts-cartesian-axis-tick-line"
+                fill="none"
+                height={345}
+                stroke="#666"
+                width={60}
+                x={20}
+                x1={74}
+                x2={80}
+                y={20}
+                y1={106.25}
+                y2={106.25}
+              />
+              <text
+                className="recharts-text recharts-cartesian-axis-tick-value"
+                fill="#666"
+                height={345}
+                stroke="none"
+                textAnchor="end"
+                width={60}
+                x={72}
+                y={106.25}
+              >
+                <tspan
+                  dy="0.355em"
+                  x={72}
+                >
+                  135
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-cartesian-axis-tick"
+            >
+              <line
+                className="recharts-cartesian-axis-tick-line"
+                fill="none"
+                height={345}
+                stroke="#666"
+                width={60}
+                x={20}
+                x1={74}
+                x2={80}
+                y={20}
+                y1={20}
+                y2={20}
+              />
+              <text
+                className="recharts-text recharts-cartesian-axis-tick-value"
+                fill="#666"
+                height={345}
+                stroke="none"
+                textAnchor="end"
+                width={60}
+                x={72}
+                y={20}
+              >
+                <tspan
+                  dy="0.355em"
+                  x={72}
+                >
+                  180
+                </tspan>
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          className="recharts-layer recharts-bar"
+        >
+          <g
+            className="recharts-layer recharts-bar-rectangles"
+            clipPath={null}
+          >
+            <g
+              className="recharts-layer"
+            >
+              <g
+                className="recharts-layer recharts-bar-rectangle"
+              />
+              <g
+                className="recharts-layer recharts-bar-rectangle"
+              />
+            </g>
+          </g>
+        </g>
+        <g
+          className="recharts-layer recharts-bar"
+        >
+          <g
+            className="recharts-layer recharts-bar-rectangles"
+            clipPath={null}
+          >
+            <g
+              className="recharts-layer"
+            >
+              <g
+                className="recharts-layer recharts-bar-rectangle"
+              />
+              <g
+                className="recharts-layer recharts-bar-rectangle"
+              />
+            </g>
+          </g>
+        </g>
+      </svg>
+      <div
+        className="recharts-legend-wrapper"
+        style={
+          Object {
+            "bottom": 5,
+            "height": "auto",
+            "left": 20,
+            "position": "absolute",
+            "width": 250,
+          }
+        }
+      >
+        <ul
+          className="recharts-default-legend"
+          style={
+            Object {
+              "margin": 0,
+              "padding": 0,
+              "textAlign": "center",
+            }
+          }
+        >
+          <li
+            className="recharts-legend-item legend-item-0"
+            style={
+              Object {
+                "display": "inline-block",
+                "marginRight": 10,
+              }
+            }
+          >
+            <svg
+              className="recharts-surface"
+              height={14}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "marginRight": 4,
+                  "verticalAlign": "middle",
+                }
+              }
+              version="1.1"
+              viewBox="0 0 32 32"
+              width={14}
+            >
+              <path
+                className="recharts-legend-icon"
+                d="M0,4h32v24h-32z"
+                fill="#BCF1FF"
+                stroke="none"
+              />
+            </svg>
+            <span
+              className="recharts-legend-item-text"
+            >
+              other
+            </span>
+          </li>
+          <li
+            className="recharts-legend-item legend-item-1"
+            style={
+              Object {
+                "display": "inline-block",
+                "marginRight": 10,
+              }
+            }
+          >
+            <svg
+              className="recharts-surface"
+              height={14}
+              style={
+                Object {
+                  "display": "inline-block",
+                  "marginRight": 4,
+                  "verticalAlign": "middle",
+                }
+              }
+              version="1.1"
+              viewBox="0 0 32 32"
+              width={14}
+            >
+              <path
+                className="recharts-legend-icon"
+                d="M0,4h32v24h-32z"
+                fill="#350078"
+                stroke="none"
+              />
+            </svg>
+            <span
+              className="recharts-legend-item-text"
+            >
+              today
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="recharts-tooltip-wrapper"
+        style={
+          Object {
+            "MozTransform": "translate(undefinedpx, undefinedpx)",
+            "OTransform": "translate(undefinedpx, undefinedpx)",
+            "WebkitTransform": "translate(undefinedpx, undefinedpx)",
+            "msTransform": "translate(undefinedpx, undefinedpx)",
+            "pointerEvents": "none",
+            "position": "absolute",
+            "top": 0,
+            "transform": "translate(undefinedpx, undefinedpx)",
+            "visibility": "hidden",
+          }
+        }
+      >
+        <div
+          className="recharts-default-tooltip"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "border": "1px solid #ccc",
+              "margin": 0,
+              "padding": 10,
+              "whiteSpace": "nowrap",
+            }
+          }
+        >
+          <p
+            className="recharts-tooltip-label"
+            style={
+              Object {
+                "margin": 0,
+              }
+            }
+          >
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    className="dashboard__daily"
+  >
+    <h3>
+      Donations by day of the week
+    </h3>
+    <div
+      className="recharts-wrapper"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      onMouseMove={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "cursor": "default",
+          "height": 400,
+          "position": "relative",
+          "width": 600,
+        }
+      }
+    >
+      <svg
+        className="recharts-surface"
+        height={400}
+        version="1.1"
+        viewBox="0 0 600 400"
+        width={600}
+      >
+        <clipPath
+          id="recharts12-clip"
+        >
+          <rect
+            height={390}
+            width={590}
+            x={5}
+            y={5}
+          />
+        </clipPath>
+        <g
+          className="recharts-polar-grid"
+        >
+          <g
+            className="recharts-polar-grid-angle"
+          >
+            <line
+              stroke="#ccc"
+              x1={300}
+              x2={300}
+              y1={200}
+              y2={44}
+            />
+            <line
+              stroke="#ccc"
+              x1={300}
+              x2={410.3086578651014}
+              y1={200}
+              y2={89.69134213489859}
+            />
+            <line
+              stroke="#ccc"
+              x1={300}
+              x2={456}
+              y1={200}
+              y2={200}
+            />
+            <line
+              stroke="#ccc"
+              x1={300}
+              x2={410.3086578651014}
+              y1={200}
+              y2={310.3086578651014}
+            />
+            <line
+              stroke="#ccc"
+              x1={300}
+              x2={300}
+              y1={200}
+              y2={356}
+            />
+            <line
+              stroke="#ccc"
+              x1={300}
+              x2={189.6913421348986}
+              y1={200}
+              y2={310.3086578651014}
+            />
+            <line
+              stroke="#ccc"
+              x1={300}
+              x2={144}
+              y1={200}
+              y2={200.00000000000003}
+            />
+            <line
+              stroke="#ccc"
+              x1={300}
+              x2={189.69134213489855}
+              y1={200}
+              y2={89.69134213489859}
+            />
+          </g>
+          <g
+            className="recharts-polar-grid-concentric"
+          >
+            <path
+              className="recharts-polar-grid-concentric-polygon"
+              d="M 300,200L 300,200L 300,200L 300,200L 300,200L 300,200L 300,200L 300,200Z"
+              fill="none"
+              stroke="#ccc"
+            />
+            <path
+              className="recharts-polar-grid-concentric-polygon"
+              d="M 300,161L 327.57716446627535,172.42283553372465L 339,200L 327.57716446627535,227.57716446627535L 300,239L 272.42283553372465,227.57716446627535L 261,200L 272.42283553372465,172.42283553372465Z"
+              fill="none"
+              stroke="#ccc"
+            />
+            <path
+              className="recharts-polar-grid-concentric-polygon"
+              d="M 300,122L 355.1543289325507,144.8456710674493L 378,200L 355.1543289325507,255.1543289325507L 300,278L 244.8456710674493,255.1543289325507L 222,200L 244.84567106744927,144.8456710674493Z"
+              fill="none"
+              stroke="#ccc"
+            />
+            <path
+              className="recharts-polar-grid-concentric-polygon"
+              d="M 300,83L 382.73149339882605,117.26850660117395L 417,200L 382.73149339882605,282.73149339882605L 300,317L 217.26850660117395,282.73149339882605L 183,200.00000000000003L 217.26850660117393,117.26850660117395Z"
+              fill="none"
+              stroke="#ccc"
+            />
+            <path
+              className="recharts-polar-grid-concentric-polygon"
+              d="M 300,44L 410.3086578651014,89.69134213489859L 456,200L 410.3086578651014,310.3086578651014L 300,356L 189.6913421348986,310.3086578651014L 144,200.00000000000003L 189.69134213489855,89.69134213489859Z"
+              fill="none"
+              stroke="#ccc"
+            />
+          </g>
+        </g>
+        <g
+          className="recharts-layer recharts-polar-angle-axis"
+        >
+          <polygon
+            className="recharts-polygon recharts-polar-angle-axis-line"
+            fill="none"
+            points="300,44 410.3086578651014,89.69134213489859 456,200 410.3086578651014,310.3086578651014 300,356 189.6913421348986,310.3086578651014 144,200.00000000000003 189.69134213489855,89.69134213489859"
+            radius={156}
+          />
+          <g
+            className="recharts-layer recharts-polar-angle-axis-ticks"
+          >
+            <g
+              className="recharts-layer recharts-polar-angle-axis-tick"
+            >
+              <line
+                className="recharts-polar-angle-axis-tick-line"
+                fill="none"
+                radius={156}
+                x1={300}
+                x2={300}
+                y1={44}
+                y2={36}
+              />
+              <text
+                className="recharts-text recharts-polar-angle-axis-tick-value"
+                radius={156}
+                stroke="none"
+                textAnchor="middle"
+                x={300}
+                y={36}
+              >
+                <tspan
+                  dy="0em"
+                  x={300}
+                >
+                  Monday
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-polar-angle-axis-tick"
+            >
+              <line
+                className="recharts-polar-angle-axis-tick-line"
+                fill="none"
+                radius={156}
+                x1={410.3086578651014}
+                x2={415.9655121145938}
+                y1={89.69134213489859}
+                y2={84.03448788540622}
+              />
+              <text
+                className="recharts-text recharts-polar-angle-axis-tick-value"
+                radius={156}
+                stroke="none"
+                textAnchor="start"
+                x={415.9655121145938}
+                y={84.03448788540622}
+              >
+                <tspan
+                  dy="0em"
+                  x={415.9655121145938}
+                >
+                  Tuesday
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-polar-angle-axis-tick"
+            >
+              <line
+                className="recharts-polar-angle-axis-tick-line"
+                fill="none"
+                radius={156}
+                x1={456}
+                x2={464}
+                y1={200}
+                y2={200}
+              />
+              <text
+                className="recharts-text recharts-polar-angle-axis-tick-value"
+                radius={156}
+                stroke="none"
+                textAnchor="start"
+                x={464}
+                y={200}
+              >
+                <tspan
+                  dy="0em"
+                  x={464}
+                >
+                  Wednesday
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-polar-angle-axis-tick"
+            >
+              <line
+                className="recharts-polar-angle-axis-tick-line"
+                fill="none"
+                radius={156}
+                x1={410.3086578651014}
+                x2={415.9655121145938}
+                y1={310.3086578651014}
+                y2={315.96551211459376}
+              />
+              <text
+                className="recharts-text recharts-polar-angle-axis-tick-value"
+                radius={156}
+                stroke="none"
+                textAnchor="start"
+                x={415.9655121145938}
+                y={315.96551211459376}
+              >
+                <tspan
+                  dy="0em"
+                  x={415.9655121145938}
+                >
+                  Thursday
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-polar-angle-axis-tick"
+            >
+              <line
+                className="recharts-polar-angle-axis-tick-line"
+                fill="none"
+                radius={156}
+                x1={300}
+                x2={300}
+                y1={356}
+                y2={364}
+              />
+              <text
+                className="recharts-text recharts-polar-angle-axis-tick-value"
+                radius={156}
+                stroke="none"
+                textAnchor="middle"
+                x={300}
+                y={364}
+              >
+                <tspan
+                  dy="0em"
+                  x={300}
+                >
+                  Friday
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-polar-angle-axis-tick"
+            >
+              <line
+                className="recharts-polar-angle-axis-tick-line"
+                fill="none"
+                radius={156}
+                x1={189.6913421348986}
+                x2={184.03448788540624}
+                y1={310.3086578651014}
+                y2={315.9655121145938}
+              />
+              <text
+                className="recharts-text recharts-polar-angle-axis-tick-value"
+                radius={156}
+                stroke="none"
+                textAnchor="end"
+                x={184.03448788540624}
+                y={315.9655121145938}
+              >
+                <tspan
+                  dy="0em"
+                  x={184.03448788540624}
+                >
+                  Saturday
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-polar-angle-axis-tick"
+            >
+              <line
+                className="recharts-polar-angle-axis-tick-line"
+                fill="none"
+                radius={156}
+                x1={144}
+                x2={136}
+                y1={200.00000000000003}
+                y2={200.00000000000003}
+              />
+              <text
+                className="recharts-text recharts-polar-angle-axis-tick-value"
+                radius={156}
+                stroke="none"
+                textAnchor="end"
+                x={136}
+                y={200.00000000000003}
+              >
+                <tspan
+                  dy="0em"
+                  x={136}
+                >
+                  Sunday
+                </tspan>
+              </text>
+            </g>
+            <g
+              className="recharts-layer recharts-polar-angle-axis-tick"
+            >
+              <line
+                className="recharts-polar-angle-axis-tick-line"
+                fill="none"
+                radius={156}
+                x1={189.69134213489855}
+                x2={184.03448788540618}
+                y1={89.69134213489859}
+                y2={84.03448788540622}
+              />
+              <text
+                className="recharts-text recharts-polar-angle-axis-tick-value"
+                radius={156}
+                stroke="none"
+                textAnchor="end"
+                x={184.03448788540618}
+                y={84.03448788540622}
+              >
+                <tspan
+                  dy="0em"
+                  x={184.03448788540618}
+                >
+                  Invalid Date
+                </tspan>
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          className="recharts-layer recharts-radar"
+        >
+          <g
+            className="recharts-layer recharts-radar-polygon"
+          >
+            <polygon
+              className="recharts-polygon"
+              fill="#BCF1FF"
+              fillOpacity={0.6}
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
+              points="300,200 300,200 300,200 300,200 300,200 300,200 300,200"
+              stroke="#bbb"
+            />
+          </g>
+        </g>
+      </svg>
+      <div
+        className="recharts-tooltip-wrapper"
+        style={
+          Object {
+            "MozTransform": "translate(undefinedpx, undefinedpx)",
+            "OTransform": "translate(undefinedpx, undefinedpx)",
+            "WebkitTransform": "translate(undefinedpx, undefinedpx)",
+            "msTransform": "translate(undefinedpx, undefinedpx)",
+            "pointerEvents": "none",
+            "position": "absolute",
+            "top": 0,
+            "transform": "translate(undefinedpx, undefinedpx)",
+            "visibility": "hidden",
+          }
+        }
+      >
+        <div
+          className="recharts-default-tooltip"
+          style={
+            Object {
+              "backgroundColor": "#fff",
+              "border": "1px solid #ccc",
+              "margin": 0,
+              "padding": 10,
+              "whiteSpace": "nowrap",
+            }
+          }
+        >
+          <p
+            className="recharts-tooltip-label"
+            style={
+              Object {
+                "margin": 0,
+              }
+            }
+          >
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    className="dashboard__donations"
+  >
+    <h3>
+      Donations data
+    </h3>
+    <table
+      className="dashboard__donations__table"
+    >
+      <thead>
+        <tr>
+          <th>
+            Date
+          </th>
+          <th>
+            Amount
+          </th>
+          <th>
+            Recipient
+          </th>
+          <th>
+            Donor
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Invalid Date
+          </td>
+          <td>
+            £ NaN
+          </td>
+          <td />
+          <td />
+        </tr>
+        <tr>
+          <td>
+            Invalid Date
+          </td>
+          <td>
+            £ NaN
+          </td>
+          <td />
+          <td />
+        </tr>
+        <tr>
+          <td>
+            Invalid Date
+          </td>
+          <td>
+            £ NaN
+          </td>
+          <td />
+          <td />
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+`;

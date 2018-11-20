@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/NewRecipient.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/components</a> NewRecipient.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.69% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/39</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/38</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/8</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">7.69% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/39</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import PropTypes from 'prop-types';
+import { Formik } from 'formik';
+import S3Upload from './S3Upload';
+import '../../styles/components/newrecipient.scss';
+&nbsp;
+function <span class="fstat-no" title="function not covered" >setInputClass(</span>errors, touched) {
+<span class="cstat-no" title="statement not covered" >  return errors &amp;&amp; touched ? 'errorInput' : 'validInput';</span>
+}
+&nbsp;
+function <span class="fstat-no" title="function not covered" >StyledMessage(</span>{ errors, touched, values, elem }) {
+<span class="cstat-no" title="statement not covered" >  if (errors[elem] &amp;&amp; touched[elem]) {</span>
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;div className={errors[elem] ? 'errorMessage' : 'validMessage'}&gt;
+        &lt;i className="fas cross fa-1x fa-times" title={errors[elem]} /&gt;
+        {/* {errors[elem]} */}
+      &lt;/div&gt;);
+  }
+<span class="cstat-no" title="statement not covered" >  if (!errors[elem] &amp;&amp; values[elem] !== '') {</span>
+<span class="cstat-no" title="statement not covered" >    return (&lt;div className="validMessage"&gt;&lt;i className="fas tick fa-1x fa-check-square" /&gt;&lt;/div&gt;);</span>
+  }
+<span class="cstat-no" title="statement not covered" >  return null;</span>
+}
+&nbsp;
+class NewRecipient extends React.Component {
+<span class="fstat-no" title="function not covered" >  co</span>mponentWillReceiveProps(newProps) {
+    const { recipientIdForQrCode, history } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+<span class="cstat-no" title="statement not covered" >    if (newProps.recipientIdForQrCode !== recipientIdForQrCode) {</span>
+      const url = <span class="cstat-no" title="statement not covered" >`/recipient/${newProps.recipientIdForQrCode}`;</span>
+<span class="cstat-no" title="statement not covered" >      history.push(url);</span>
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  re</span>nder() {
+    const {
+      addRecipient,
+    } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;div className="newrecipient"&gt;
+        &lt;h2 className="newrecipient__title"&gt;Start taking digital donations in 3 steps&lt;/h2&gt;
+        &lt;img src="" alt="" className="newrecipient__header-image" /&gt;
+        &lt;Formik
+          initialValues={{ firstName: '', lastName: '', tel: '', username: '', password: '', bio1: '', bio2: '', bio3: '', imageUrl: '' }}
+          validate={<span class="fstat-no" title="function not covered" >(v</span>alues) =&gt; {
+            const errors = <span class="cstat-no" title="statement not covered" >{};</span>
+<span class="cstat-no" title="statement not covered" >            if (!values.firstName) {</span>
+<span class="cstat-no" title="statement not covered" >              errors.firstName = 'Required';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (!values.lastName) {</span>
+<span class="cstat-no" title="statement not covered" >              errors.lastName = 'Required';</span>
+            }
+            const telTrimmed = <span class="cstat-no" title="statement not covered" >values.tel.split(' ').join('');</span>
+            const validTelNum = <span class="cstat-no" title="statement not covered" >!isNaN(telTrimmed) &amp;&amp; telTrimmed.length === 11;</span>
+<span class="cstat-no" title="statement not covered" >            if (!values.tel) {</span>
+<span class="cstat-no" title="statement not covered" >              errors.tel = 'Required';</span>
+            } else <span class="cstat-no" title="statement not covered" >if (!validTelNum) {</span>
+<span class="cstat-no" title="statement not covered" >              errors.tel = 'Invalid number. Use numbers which are 11 digits long';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (!values.username) {</span>
+<span class="cstat-no" title="statement not covered" >              errors.username = 'Required';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (!values.password) {</span>
+<span class="cstat-no" title="statement not covered" >              errors.password = 'Required';</span>
+            } else <span class="cstat-no" title="statement not covered" >if (values.password.length &lt; 8) {</span>
+<span class="cstat-no" title="statement not covered" >              errors.password = 'Password must have at least 8 characters';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            if (!values.imageUrl) {</span>
+<span class="cstat-no" title="statement not covered" >              errors.imageUrl = 'Required';</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return errors;</span>
+          }}
+          onSubmit={<span class="fstat-no" title="function not covered" >(v</span>alues, { setSubmitting }) =&gt; {
+<span class="cstat-no" title="statement not covered" >            setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >              setSubmitting(false);</span>
+<span class="cstat-no" title="statement not covered" >              addRecipient(values);</span>
+            }, 400);
+          }}
+        &gt;
+          {<span class="fstat-no" title="function not covered" >({</span>
+            values,
+            errors,
+            touched,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+          }) =&gt; (
+<span class="cstat-no" title="statement not covered" >              &lt;form className="newrecipient__form" onSubmit={handleSubmit} &gt;</span>
+                &lt;h3 className="newrecipient__form__heading"&gt;Add your personal details&lt;/h3&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;
+                    &lt;label className="visuallyhidden" htmlFor="firstName"&gt;
+                      First name&lt;/label&gt;
+                    &lt;input
+                      type="text"
+                      name="firstName"
+                      id="firstName"
+                      placeholder="First name"
+                      value={values.firstName}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={setInputClass(errors.firstName, touched.firstName)}
+                      autoFocus="true"
+                    /&gt;
+                    &lt;StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="firstName"
+                    /&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;label className="visuallyhidden" htmlFor="lastName"&gt;
+                      Last name
+                      &lt;/label&gt;
+                    &lt;input
+                      type="text"
+                      name="lastName"
+                      id="lastName"
+                      placeholder="Last name"
+                      value={values.lastName}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={setInputClass(errors.lastName, touched.lastName)}
+                    /&gt;
+                    &lt;StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="lastName"
+                    /&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;label className="visuallyhidden" htmlFor="tel"&gt;
+                      Telephone
+                    &lt;/label&gt;
+                    &lt;input
+                      type="text"
+                      name="tel"
+                      id="tel"
+                      placeholder="Eg. 07993 852 721"
+                      value={values.tel}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={setInputClass(errors.tel, touched.tel)}
+                    /&gt;
+                    &lt;StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="tel"
+                    /&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;label className="visuallyhidden" htmlFor="username"&gt;
+                      Username
+                    &lt;/label&gt;
+                    &lt;input
+                      type="text"
+                      name="username"
+                      id="username"
+                      placeholder="Choose a username"
+                      value={values.username}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={setInputClass(errors.username, touched.username)}
+                    /&gt;
+                    &lt;StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="username"
+                    /&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;label className="visuallyhidden" htmlFor="password"&gt;Password&lt;/label&gt;
+                    &lt;input
+                      type="password"
+                      name="password"
+                      id="password"
+                      placeholder="Enter a password"
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={setInputClass(errors.password, touched.password)}
+                    /&gt;
+                    &lt;StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="password"
+                    /&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;S3Upload
+                      name="imageUrl"
+                      value={values.imageUrl}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    /&gt;
+                    &lt;StyledMessage
+                      errors={errors}
+                      touched={touched}
+                      values={values}
+                      elem="imageUrl"
+                    /&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+&nbsp;
+                &lt;h3 className="newrecipient__form__heading"&gt;
+                  Tell people three things about yourself
+                &lt;/h3&gt;
+                &lt;ul&gt;
+                  &lt;li&gt;
+                    &lt;input
+                      type="text"
+                      name="bio1"
+                      className="nolabel"
+                      placeholder="I play..."
+                      value={values.bio1}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    /&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;input
+                      type="text"
+                      name="bio2"
+                      className="nolabel"
+                      placeholder="I like..."
+                      value={values.bio2}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    /&gt;
+                  &lt;/li&gt;
+                  &lt;li&gt;
+                    &lt;input
+                      type="text"
+                      name="bio3"
+                      className="nolabel"
+                      placeholder="I enjoy..."
+                      value={values.bio3}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    /&gt;
+                  &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;button
+                  className="btn btn__primary btn__submit"
+                  type="submit"
+                  disabled={isSubmitting}
+                &gt;
+                  {Object.keys(touched).length === 0 || Object.keys(errors).length &gt; 0 ? 'Complete required details' : 'Create account'}
+                &lt;/button&gt;
+              &lt;/form&gt;
+            )}
+        &lt;/Formik&gt;
+      &lt;/div&gt;
+    );
+  }
+}
+&nbsp;
+NewRecipient.propTypes = {
+  addRecipient: PropTypes.func.isRequired,
+  recipientIdForQrCode: PropTypes.number,
+};
+&nbsp;
+NewRecipient.defaultProps = {
+  recipientIdForQrCode: null,
+};
+&nbsp;
+StyledMessage.propTypes = {
+  // TODO: Add proper PropTypes, Jim is sorry.
+  errors: PropTypes.shape({}).isRequired,
+  touched: PropTypes.shape({}).isRequired,
+  values: PropTypes.shape({}).isRequired,
+  elem: PropTypes.string.isRequired,
+};
+&nbsp;
+export default NewRecipient;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 18 2018 17:11:17 GMT+0000 (Greenwich Mean Time)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

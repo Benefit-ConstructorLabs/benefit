@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import S3Upload from './S3Upload';
+import '../../styles/components/newrecipient.scss';
 
 function setInputClass(errors, touched) {
   return errors && touched ? 'errorInput' : 'validInput';
@@ -99,6 +100,7 @@ class NewRecipient extends React.Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       className={setInputClass(errors.firstName, touched.firstName)}
+                      autoFocus="true"
                     />
                     <StyledMessage
                       errors={errors}
@@ -130,7 +132,8 @@ class NewRecipient extends React.Component {
                   </li>
                   <li>
                     <label className="visuallyhidden" htmlFor="tel">
-                      Telephone</label>
+                      Telephone
+                    </label>
                     <input
                       type="text"
                       name="tel"
@@ -151,7 +154,7 @@ class NewRecipient extends React.Component {
                   <li>
                     <label className="visuallyhidden" htmlFor="username">
                       Username
-                      </label>
+                    </label>
                     <input
                       type="text"
                       name="username"
