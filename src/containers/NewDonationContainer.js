@@ -7,6 +7,7 @@ export const mapStateToProps = state => ({
   showPaymentDetails: state.view.showPaymentDetails,
   firstName: state.recipient.firstName,
   photo: state.recipient.photo,
+  reason: state.recipient.reason,
   bio: state.recipient.bio,
   donationComplete: state.view.donationComplete,
 });

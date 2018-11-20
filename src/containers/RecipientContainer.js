@@ -12,6 +12,7 @@ export const mapStateToProps = state => (
       username: state.recipient.username,
       tel: state.recipient.tel,
       bio: state.recipient.bio,
+      reason: state.recipient.reason,
     },
   }
 );

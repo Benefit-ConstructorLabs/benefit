@@ -9,12 +9,14 @@ describe('Donation Form Container', () => {
       recipient: {
         firstName: 'Bill',
         photo: '',
+        reason: '',
       },
     };
     const expectedOutput = {
       donationAmount: 5,
       firstName: 'Bill',
       photo: '',
+      reason: '',
     };
     const output = mapStateToProps(mockState);
     expect(output).toEqual(expectedOutput);
