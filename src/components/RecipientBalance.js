@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import AnimationWrapper from './AnimationWrapper';
 
 const RecipientBalance = ({ donations }) => {
-  const donationTotal = donations.reduce((acc, donation) => acc + donation.amount, 0);
+  const donationTotal = donations.reduce((acc, donation) => acc + donation.amount / 100, 0).toFixed(2);
 
   return (
     <section className="recipient__account">
@@ -11,7 +11,7 @@ const RecipientBalance = ({ donations }) => {
       <p className="recipient__account__balance">{`£${donationTotal}`}</p>
       <h3>Latest donations</h3>
       <ul className="recipient__account__donations">
-        {donations.map((donation) => {
+        {donations.reverse().map((donation) => {
           const { id, photo, first_name: firstName, last_name: lastName, amount } = donation;
           return (
             <li className="recipient__account__donations__donation" key={id}>
@@ -19,7 +19,7 @@ const RecipientBalance = ({ donations }) => {
               <span className="donor__name">
                 {`${firstName} ${lastName}`}
               </span>
-              <span className="amount">{`£${amount}`}</span>
+              <span className="amount">{`£${(amount / 100).toFixed(2)}`}</span>
             </li>
           );
         })}
