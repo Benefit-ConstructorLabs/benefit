@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DonationHeader should render correctly 1`] = `
+Array [
+  <h2
+    className="donation__headline"
+  >
+    Cashless donations that make a difference.
+  </h2>,
+  <h3
+    className="donation__strapline"
+  >
+    Quick. Secure. Cashless.
+  </h3>,
+  <ol
+    className="donation__steps"
+  >
+    <li
+      className="donation__step"
+    >
+      Decide how much you would like to donate to Bill.
+    </li>
+    <li
+      className="donation__step"
+    >
+      Set your payment amount.
+    </li>
+    <li
+      className="donation__step"
+    >
+      Help Bill out.
+    </li>
+  </ol>,
+]
+`;

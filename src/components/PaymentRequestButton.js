@@ -19,17 +19,17 @@ class PaymentRequestButton extends React.Component {
       requestPayerEmail: true,
     });
 
-    paymentRequest.on('token', ({complete, token, ...data}) => {
+    paymentRequest.on('token', ( {complete, token, ...data} ) => {
       console.log('Received Stripe token: ', token);
       console.log('Received customer information: ', data);
-      const test_token = 'tok_visa'
-      this.props.createPaymentDetails(test_token)
+      const test_token = 'tok_visa';
+      this.props.createPaymentDetails(test_token);
       this.props.toggleDonationComplete();
       complete('success');
     });
 
     paymentRequest.canMakePayment().then((result) => {
-      this.setState({canMakePayment: !!result});
+      this.setState({ canMakePayment: !!result });
     });
 
     this.state = {

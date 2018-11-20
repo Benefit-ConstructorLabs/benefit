@@ -34,7 +34,7 @@ export function setRecipientFromDB(recipient) {
 
 export function getRecipientFromDB(id) {
   return function (dispatch) {
-    fetch(`/api/recipient/${id}`, { credentials: 'same-origin' })
+    return fetch(`/api/recipient/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(recipient => dispatch(setRecipientFromDB(recipient)))
       .catch(error => console.log('FETCH ERROR', error.message));
@@ -106,7 +106,7 @@ export function setRecipientIdForQrCode(id) {
 
 export function addRecipient(recipient) {
   return function (dispatch) {
-    fetch('/api/recipient', {
+    return fetch('/api/recipient', {
       method: 'post',
       body: JSON.stringify(recipient),
       headers: {
@@ -130,7 +130,7 @@ export function setNewDonorId(newDonorId) {
 
 export function addDonor(donor) {
   return function (dispatch) {
-    fetch('/api/donor', {
+    return fetch('/api/donor', {
       method: 'post',
       body: JSON.stringify(donor),
       headers: {
@@ -139,7 +139,6 @@ export function addDonor(donor) {
     })
       .then(response => response.json())
       .then((newDonor) => {
-        console.info(newDonor);
         dispatch(setNewDonorId(newDonor.id));
       })
       .catch(error => console.error(error));
@@ -250,7 +249,7 @@ export function setDonationsFromDB(donations) {
 
 export function getDonationsByRecipientID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/recipient/${id}`, { credentials: 'same-origin' })
+    return fetch(`/api/donations/recipient/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(donations => dispatch(setDonationsFromDB(donations)))
       .catch(error => console.log(error.message));
@@ -273,7 +272,7 @@ export function setDonorDonationsFromDB(donations) {
 
 export function getDonationsByDonorID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/donor/${id}`, { credentials: 'same-origin' })
+    return fetch(`/api/donations/donor/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(donations => dispatch(setDonorDonationsFromDB(donations)))
       .catch(error => console.log(error.message));
@@ -294,7 +293,7 @@ export function setDonorFromDB(donor) {
 
 export function getDonorFromDB(id) {
   return function (dispatch) {
-    fetch(`/api/donor/${id}`, { credentials: 'same-origin' })
+    return fetch(`/api/donor/${id}`, { credentials: 'same-origin' })
       .then(response => response.json())
       .then(donor => dispatch(setDonorFromDB(donor)))
       .catch(error => console.log('FETCH ERROR', error.message));
@@ -317,7 +316,7 @@ export function setOrganisationDonations(donations) {
 
 export function getDonationsByOrganisationID(id) {
   return function (dispatch) {
-    fetch(`/api/donations/organisation/${id}`)
+    return fetch(`/api/donations/organisation/${id}`)
       .then(response => response.json())
       .then(donations => dispatch(setOrganisationDonations(donations)))
       .catch(error => console.log(error.message));

@@ -9,6 +9,8 @@ const AnimationWrapper = Component => (
       transitionName="example"
       transitionAppear={true}
       transitionAppearTimeout={500}
+      transitionEnterTimeout={500}
+      transitionLeaveTimeout={500}
     >
       <div>
         <Component {...props} />

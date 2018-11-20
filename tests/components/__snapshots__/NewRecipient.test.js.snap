@@ -1,0 +1,198 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewRecipient matches the snapshot 1`] = `
+<div
+  className="newrecipient"
+>
+  <h2
+    className="newrecipient__title"
+  >
+    Start taking digital donations in 3 steps
+  </h2>
+  <img
+    alt=""
+    className="newrecipient__header-image"
+    src=""
+  />
+  <form
+    className="newrecipient__form"
+    onSubmit={[Function]}
+  >
+    <h3
+      className="newrecipient__form__heading"
+    >
+      Add your personal details
+    </h3>
+    <ul>
+      <li>
+        <label
+          className="visuallyhidden"
+          htmlFor="firstName"
+        >
+          First name
+        </label>
+        <input
+          autoFocus="true"
+          className="validInput"
+          id="firstName"
+          name="firstName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="First name"
+          type="text"
+          value=""
+        />
+      </li>
+      <li>
+        <label
+          className="visuallyhidden"
+          htmlFor="lastName"
+        >
+          Last name
+        </label>
+        <input
+          className="validInput"
+          id="lastName"
+          name="lastName"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Last name"
+          type="text"
+          value=""
+        />
+      </li>
+      <li>
+        <label
+          className="visuallyhidden"
+          htmlFor="tel"
+        >
+          Telephone
+        </label>
+        <input
+          className="validInput"
+          id="tel"
+          name="tel"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Eg. 07993 852 721"
+          type="text"
+          value=""
+        />
+      </li>
+      <li>
+        <label
+          className="visuallyhidden"
+          htmlFor="username"
+        >
+          Username
+        </label>
+        <input
+          className="validInput"
+          id="username"
+          name="username"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Choose a username"
+          type="text"
+          value=""
+        />
+      </li>
+      <li>
+        <label
+          className="visuallyhidden"
+          htmlFor="password"
+        >
+          Password
+        </label>
+        <input
+          className="validInput"
+          id="password"
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Enter a password"
+          type="password"
+          value=""
+        />
+      </li>
+      <li>
+        
+        <label
+          className="fileUpload visuallyhidden"
+          htmlFor="pictureupload"
+        >
+          Add a photo
+        </label>
+        <button
+          className="btn-upload"
+          onClick={[Function]}
+          onMouseDown={[Function]}
+          type="button"
+        >
+          <i
+            className="fas fa-file-upload"
+          />
+           Add photo
+        </button>
+        <input
+          id="pictureUpload"
+          onChange={[Function]}
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+          type="file"
+        />
+      </li>
+    </ul>
+    <h3
+      className="newrecipient__form__heading"
+    >
+      Tell people three things about yourself
+    </h3>
+    <ul>
+      <li>
+        <input
+          className="nolabel"
+          name="bio1"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="I play..."
+          type="text"
+          value=""
+        />
+      </li>
+      <li>
+        <input
+          className="nolabel"
+          name="bio2"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="I like..."
+          type="text"
+          value=""
+        />
+      </li>
+      <li>
+        <input
+          className="nolabel"
+          name="bio3"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="I enjoy..."
+          type="text"
+          value=""
+        />
+      </li>
+    </ul>
+    <button
+      className="btn btn__primary btn__submit"
+      disabled={false}
+      type="submit"
+    >
+      Complete required details
+    </button>
+  </form>
+</div>
+`;
