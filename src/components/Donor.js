@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Tabs from './Tabs';
 import DonorBalance from './DonorBalance';
 import DonorProfile from './DonorProfile';
@@ -21,5 +22,12 @@ class Donor extends React.Component {
     );
   }
 }
+
+Donor.propTypes = {
+  match: PropTypes.instanceOf(Object).isRequired,
+  getDonorDetailsByID: PropTypes.func.isRequired,
+  donations: PropTypes.instanceOf(Array).isRequired,
+  profile: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default Donor;

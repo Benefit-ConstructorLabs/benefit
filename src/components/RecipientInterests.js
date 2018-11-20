@@ -2,7 +2,7 @@ import React from 'react';
 import PropType from 'prop-types';
 import '../../styles/components/recipient-profile.scss';
 
-const RecipientProfile = ({ firstName, bio }) => (
+const RecipientInterests = ({ firstName, bio }) => (
   <div className="recipient-profile">
     {bio
       && (
@@ -27,13 +27,13 @@ const RecipientProfile = ({ firstName, bio }) => (
   </div>
 );
 
-RecipientProfile.propTypes = {
+RecipientInterests.propTypes = {
   firstName: PropType.string.isRequired,
   bio: PropType.arrayOf(PropType.string),
 };
 
-RecipientProfile.defaultProps = {
-  bio: [undefined],
+RecipientInterests.defaultProps = {
+  bio: [],
 };
 
-export default RecipientProfile;
+export default RecipientInterests;

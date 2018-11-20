@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">6.9% </span>
+        <span class="strong">8.7% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/29</span>
+        <span class='fraction'>2/23</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/20</span>
+        <span class='fraction'>0/22</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">6.9% </span>
+        <span class="strong">8.7% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/29</span>
+        <span class='fraction'>2/23</span>
       </div>
     </div>
   </div>
@@ -120,17 +120,7 @@
 75
 76
 77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+78</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -139,9 +129,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,10 +144,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,9 +152,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -179,14 +159,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -202,6 +181,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -226,9 +206,6 @@ import LoginContainer from '../containers/LoginContainer';
 class AppHeader extends React.Component {
 <span class="fstat-no" title="function not covered" >  co</span>nstructor() {
 <span class="cstat-no" title="statement not covered" >    super();</span>
-<span class="cstat-no" title="statement not covered" >    this.state = {</span>
-      dropdown: false,
-    };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    this.handleClick = this.handleClick.bind(this);</span>
   }
@@ -242,41 +219,33 @@ class AppHeader extends React.Component {
 <span class="cstat-no" title="statement not covered" >        redirectTo = location.state.from.pathname;</span>
       }
 <span class="cstat-no" title="statement not covered" >      history.push(redirectTo);</span>
-    } else <span class="cstat-no" title="statement not covered" >if (wasLoggedIn &amp;&amp; isNowLoggedIn) {</span>
-<span class="cstat-no" title="statement not covered" >      redirectTo = `/${userType}/${userID}`;</span>
-<span class="cstat-no" title="statement not covered" >      history.push(redirectTo);</span>
-    } else {
-<span class="cstat-no" title="statement not covered" >      redirectTo = '/login';</span>
-<span class="cstat-no" title="statement not covered" >      history.push(redirectTo);</span>
+    } else <span class="cstat-no" title="statement not covered" >if (wasLoggedIn &amp;&amp; !isNowLoggedIn) {</span>
+<span class="cstat-no" title="statement not covered" >      history.push('/');</span>
     }
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  ha</span>ndleClick(event) {
-    const { dropdown } = <span class="cstat-no" title="statement not covered" >this.state;</span>
-    const { isLoggedIn, logout } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+    const { dropdown, setDropdown, isLoggedIn, logout } = <span class="cstat-no" title="statement not covered" >this.props;</span>
 <span class="cstat-no" title="statement not covered" >    event.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >    this.setState({</span>
-      dropdown: !dropdown,
-    });
+<span class="cstat-no" title="statement not covered" >    setDropdown(dropdown);</span>
 <span class="cstat-no" title="statement not covered" >    if (isLoggedIn) {</span>
 <span class="cstat-no" title="statement not covered" >      logout();</span>
     }
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  re</span>nder() {
-    const { dropdown } = <span class="cstat-no" title="statement not covered" >this.state;</span>
-    const { isLoggedIn, name } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+    const { dropdown, isLoggedIn, location } = <span class="cstat-no" title="statement not covered" >this.props;</span>
     const classes = <span class="cstat-no" title="statement not covered" >cx('dropdown', {</span>
-      'dropdown--open': dropdown,
+      'dropdown--open': dropdown || location.pathname === '/login',
     });
-    const loginMessage = <span class="cstat-no" title="statement not covered" >isLoggedIn ? name : 'Log In';</span>
-    const loginClass = <span class="cstat-no" title="statement not covered" >isLoggedIn ? 'fas active fa-inverse fa-1x fa-user-circle' : 'fas inactive fa-inverse fa-1x fa-user-circle';</span>
+    const loginMessage = <span class="cstat-no" title="statement not covered" >isLoggedIn ? 'Log Out' : 'Log In';</span>
+    const loginClass = <span class="cstat-no" title="statement not covered" >isLoggedIn</span>
+      ? 'fas active fa-inverse fa-1x fa-user-circle'
+      : 'fas inactive fa-inverse fa-1x fa-user-circle';
 <span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;header className="app__header"&gt;
         &lt;h1 className="app__title"&gt;
-          &lt;a href="/"&gt;
-            + Better Change
-          &lt;/a&gt;
+          &lt;a href="/"&gt;+ Better Change&lt;/a&gt;
         &lt;/h1&gt;
         {!isLoggedIn &amp;&amp; &lt;LoginContainer classes={classes} /&gt;}
         &lt;a href="#" className="login__text" onClick={this.handleClick}&gt;
@@ -290,7 +259,8 @@ class AppHeader extends React.Component {
 &nbsp;
 AppHeader.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
+  dropdown: PropTypes.bool.isRequired,
+  setDropdown: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   userID: PropTypes.number,
   userType: PropTypes.string,
@@ -310,7 +280,7 @@ export default AppHeader;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 18 2018 17:11:17 GMT+0000 (Greenwich Mean Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 22:26:11 GMT+0000 (Greenwich Mean Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

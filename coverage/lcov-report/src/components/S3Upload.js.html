@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">9.52% </span>
+        <span class="strong">28.57% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/21</span>
+        <span class='fraction'>6/21</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>2/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>2/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">9.52% </span>
+        <span class="strong">28.57% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/21</span>
+        <span class='fraction'>6/21</span>
       </div>
     </div>
   </div>
@@ -138,8 +138,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,8 +180,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -210,13 +210,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -226,9 +226,9 @@ import PropTypes from 'prop-types';
 import '../../styles/components/newrecipient.scss';
 &nbsp;
 class S3Upload extends React.Component {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor() {
-<span class="cstat-no" title="statement not covered" >    super();</span>
-<span class="cstat-no" title="statement not covered" >    this.inputRef = React.createRef();</span>
+  constructor() {
+    super();
+    this.inputRef = React.createRef();
   }
 &nbsp;
   uploadFile = <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
@@ -268,13 +268,13 @@ class S3Upload extends React.Component {
 <span class="cstat-no" title="statement not covered" >    event.preventDefault();</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder() {
-    const { value } = <span class="cstat-no" title="statement not covered" >this.props;</span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
+  render() {
+    const { value } = this.props;
+    return (
       &lt;React.Fragment&gt;
         {value
           &amp;&amp; (
-            &lt;div className="newrecipient__photo"&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >            &lt;div className="newrecipient__photo"&gt;</span>
               &lt;img alt="portrait" src={value} height="100" /&gt;
             &lt;/div&gt;
           )
@@ -285,7 +285,7 @@ class S3Upload extends React.Component {
         &lt;/label&gt;
         &lt;button className="btn-upload" type="button" onMouseDown={this.handleMouseDown} onClick={this.handleClick}&gt;
           &lt;i className="fas fa-file-upload" /&gt;
-          {value ? ' Change photo' : ' Add photo'}
+          {value ? <span class="branch-0 cbranch-no" title="branch not covered" >' Change photo' </span>: ' Add photo'}
         &lt;/button&gt;
         &lt;input
           ref={this.inputRef}
@@ -316,7 +316,7 @@ export default S3Upload;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 18 2018 17:11:17 GMT+0000 (Greenwich Mean Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 22:26:11 GMT+0000 (Greenwich Mean Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -60,6 +60,7 @@ NewDonation.propTypes = {
   donationAmount: PropTypes.number.isRequired,
   setDonationAmount: PropTypes.func.isRequired,
   donationComplete: PropTypes.bool.isRequired,
+  reason: PropTypes.string.isRequired,
 };
 
 NewDonation.defaultProps = {

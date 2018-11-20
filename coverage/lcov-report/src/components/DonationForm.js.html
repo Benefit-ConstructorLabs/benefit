@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">36.36% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/12</span>
+        <span class='fraction'>4/11</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>1/7</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">33.33% </span>
+        <span class="strong">36.36% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/12</span>
+        <span class='fraction'>4/11</span>
       </div>
     </div>
   </div>
@@ -108,7 +108,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,6 +116,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -129,16 +149,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,18 +158,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -168,17 +168,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/components/donation-form.scss';
 &nbsp;
-const DonationForm = ({ donationAmount, setDonationAmount, setDonorID, firstName, photo, togglePaymentDetails }) =&gt; (
+const DonationForm = ({ donationAmount, setDonationAmount, firstName, photo, togglePaymentDetails, reason }) =&gt; (
   &lt;React.Fragment&gt;
     &lt;img className="donation__recipient__photo" alt={firstName} src={photo} /&gt;
     &lt;h3 className="donation__purpose"&gt;
       {`Donate to ${firstName}`}
     &lt;/h3&gt;
+    &lt;p className="donation__purpose__string"&gt;{reason}&lt;/p&gt;
     &lt;form
       onSubmit={<span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
 <span class="cstat-no" title="statement not covered" >        event.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >        togglePaymentDetails();</span>
-<span class="cstat-no" title="statement not covered" >        setDonorID();</span>
       }}
       className="donation__form"
     &gt;
@@ -193,12 +193,12 @@ const DonationForm = ({ donationAmount, setDonationAmount, setDonorID, firstName
         /&gt;
       &lt;/p&gt;
       &lt;p&gt;
-        &lt;input onChange={<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; <span class="cstat-no" title="statement not covered" >setDonationAmount(event.target.value)}</span> value={donationAmount} className="donation__form__slider" type="range" min="1" max="10" /&gt;
+        &lt;input onChange={<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; <span class="cstat-no" title="statement not covered" >setDonationAmount(event.target.value)}</span> value={donationAmount} className="donation__form__slider" type="range" min="1" max="20" /&gt;
       &lt;/p&gt;
       &lt;p className="donation__form__quick-amount"&gt;
         &lt;button onClick={<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; <span class="cstat-no" title="statement not covered" >setDonationAmount(event.target.value)}</span> type="button" className="btn btn__quick-amount" value="1"&gt;£1&lt;/button&gt;
-        &lt;button onClick={<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; <span class="cstat-no" title="statement not covered" >setDonationAmount(event.target.value)}</span> type="button" className="btn btn__quick-amount" value="2"&gt;£2&lt;/button&gt;
         &lt;button onClick={<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; <span class="cstat-no" title="statement not covered" >setDonationAmount(event.target.value)}</span> type="button" className="btn btn__quick-amount" value="5"&gt;£5&lt;/button&gt;
+        &lt;button onClick={<span class="fstat-no" title="function not covered" >ev</span>ent =&gt; <span class="cstat-no" title="statement not covered" >setDonationAmount(event.target.value)}</span> type="button" className="btn btn__quick-amount" value="10"&gt;£10&lt;/button&gt;
       &lt;/p&gt;
       &lt;button className="btn btn__primary btn__submit" type="submit"&gt;
         Donate to
@@ -210,16 +210,16 @@ const DonationForm = ({ donationAmount, setDonationAmount, setDonorID, firstName
 );
 &nbsp;
 DonationForm.propTypes = {
-  donationAmount: PropTypes.string,
+  donationAmount: PropTypes.number,
   setDonationAmount: PropTypes.func.isRequired,
   firstName: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
   togglePaymentDetails: PropTypes.func.isRequired,
-  setDonorID: PropTypes.func.isRequired,
+  reason: PropTypes.string.isRequired,
 };
 &nbsp;
 DonationForm.defaultProps = {
-  donationAmount: undefined,
+  donationAmount: null,
 };
 &nbsp;
 export default DonationForm;
@@ -229,7 +229,7 @@ export default DonationForm;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 18 2018 17:11:17 GMT+0000 (Greenwich Mean Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 22:26:11 GMT+0000 (Greenwich Mean Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

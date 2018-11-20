@@ -14,7 +14,9 @@ Array [
   </h3>,
   <p
     className="donation__purpose__string"
-  />,
+  >
+    Raising money for Cancer Research
+  </p>,
   <form
     className="donation__form"
     onSubmit={[Function]}
@@ -40,7 +42,7 @@ Array [
         min="1"
         onChange={[Function]}
         type="range"
-        value="5"
+        value={5}
       />
     </p>
     <p

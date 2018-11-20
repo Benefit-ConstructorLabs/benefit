@@ -34,7 +34,7 @@ const RecipientProfile = ({ profile }) => {
 };
 
 RecipientProfile.propTypes = {
-  profile: PropTypes.instanceOf(Array).isRequired,
+  profile: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default AnimationWrapper(RecipientProfile);

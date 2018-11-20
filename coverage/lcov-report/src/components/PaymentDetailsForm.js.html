@@ -118,7 +118,16 @@
 73
 74
 75
-76</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,26 +147,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -186,6 +197,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -212,12 +230,15 @@ const PaymentDetailsForm = <span class="fstat-no" title="function not covered" >
   location,
   isLoggedIn,
   userType,
+  setDropdown,
+  dropdown,
 }) =&gt; {
   const handleLogin = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    history.push({</span>
       pathname: '/login',
       state: { from: location },
     });
+<span class="cstat-no" title="statement not covered" >    setDropdown(dropdown);</span>
   };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return !isLoggedIn &amp;&amp; userType !== 'donor' ? (</span>
@@ -234,7 +255,6 @@ const PaymentDetailsForm = <span class="fstat-no" title="function not covered" >
         onSubmit={<span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
 <span class="cstat-no" title="statement not covered" >          event.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >          stripe.createToken().then(<span class="fstat-no" title="function not covered" >({</span> token }) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            console.log('Received Stripe token:', token);</span>
 <span class="cstat-no" title="statement not covered" >            toggleDonationComplete();</span>
 <span class="cstat-no" title="statement not covered" >            createPaymentDetails(token.id);</span>
           });
@@ -252,12 +272,12 @@ const PaymentDetailsForm = <span class="fstat-no" title="function not covered" >
       &lt;/form&gt;
     &lt;/div&gt;
   ) : (
-    &lt;div&gt;
-      &lt;button className="btn btn__primary btn__submit" type="submit"&gt;
-        {`Donate £${donationAmount} to ${firstName}`}
-      &lt;/button&gt;
-    &lt;/div&gt;
-  );
+      &lt;div&gt;
+        &lt;button className="btn btn__primary btn__submit" type="submit"&gt;
+          {`Donate £${donationAmount} to ${firstName}`}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
 };
 &nbsp;
 PaymentDetailsForm.propTypes = {
@@ -265,6 +285,13 @@ PaymentDetailsForm.propTypes = {
   toggleDonationComplete: PropTypes.func.isRequired,
   donationAmount: PropTypes.number.isRequired,
   firstName: PropTypes.string.isRequired,
+  userType: PropTypes.string.isRequired,
+  location: PropTypes.instanceOf(Object).isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  dropdown: PropTypes.bool.isRequired,
+  setDropdown: PropTypes.func.isRequired,
+  stripe: PropTypes.instanceOf(Object).isRequired,
 };
 &nbsp;
 export default injectStripe(PaymentDetailsForm);
@@ -274,7 +301,7 @@ export default injectStripe(PaymentDetailsForm);
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 18 2018 17:11:17 GMT+0000 (Greenwich Mean Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Nov 20 2018 22:26:11 GMT+0000 (Greenwich Mean Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
