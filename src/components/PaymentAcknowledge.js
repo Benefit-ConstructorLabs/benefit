@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import AnimationWrapper from './AnimationWrapper';
 import '../../styles/components/payment-acknowledge.scss';
 
 // TODO recipientName in curlies below, h2 tag
@@ -24,4 +25,4 @@ PaymentAcknowledge.defaultProps = {
   firstName: '',
 };
 
-export default PaymentAcknowledge;
+export default AnimationWrapper(PaymentAcknowledge);
