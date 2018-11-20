@@ -12,6 +12,9 @@ Array [
   >
     Donate to Ted
   </h3>,
+  <p
+    className="donation__purpose__string"
+  />,
   <form
     className="donation__form"
     onSubmit={[Function]}
@@ -33,7 +36,7 @@ Array [
     <p>
       <input
         className="donation__form__slider"
-        max="10"
+        max="20"
         min="1"
         onChange={[Function]}
         type="range"
@@ -55,17 +58,17 @@ Array [
         className="btn btn__quick-amount"
         onClick={[Function]}
         type="button"
-        value="2"
+        value="5"
       >
-        £2
+        £5
       </button>
       <button
         className="btn btn__quick-amount"
         onClick={[Function]}
         type="button"
-        value="5"
+        value="10"
       >
-        £5
+        £10
       </button>
     </p>
     <button
