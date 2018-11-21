@@ -25,7 +25,7 @@ CREATE TABLE recipient(
   id SERIAL PRIMARY KEY,
   first_name VARCHAR(100) NOT NULL,
   last_name VARCHAR(100),
-  photo VARCHAR(500) NOT NULL UNIQUE,
+  photo VARCHAR(500) NOT NULL,
   tel VARCHAR(30) UNIQUE,
   username VARCHAR(200) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE donor(
   photo VARCHAR(500) NOT NULL UNIQUE,
   username VARCHAR(200) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL,
-  tel VARCHAR(30) NOT NULL UNIQUE,
+  tel VARCHAR(30) NOT NULL,
   stripe JSON,
   creation_date TIMESTAMP WITH TIME ZONE,
   type VARCHAR(20)
@@ -100,7 +100,7 @@ ALTER SEQUENCE recipient_id_seq RESTART WITH 6 INCREMENT BY 1;
 INSERT INTO donor
   (id, first_name, last_name, photo, username, password, tel, stripe, type, creation_date) 
   VALUES 
-  (1, 'Anon', 'Anonymous', '/static/assets/images/donorplaceholder.jpg', 'anon@anonymous.com', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', '02345678989', '{
+  (1, 'Anon', 'Anonymous', 'https://s3.eu-west-2.amazonaws.com/recipient-photo/avatar.png', 'anon@anonymous.com', '$2b$10$500GIG4.3n33UAM75N2hieln0OFO0zu7GjzkRdqCjUBxbahVATwBS', '02345678989', '{
   "stripe": "Some stripe stuff"
   }', 'donor', '2018-10-21T10:37:33.735972Z');
 INSERT INTO donor
