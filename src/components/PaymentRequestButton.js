@@ -13,7 +13,7 @@ class PaymentRequestButton extends React.Component {
       currency: 'gbp',
       total: {
         label: 'Demo total',
-        amount: props.donationAmount,
+        amount: props.donationAmount * 100,
       },
       requestPayerName: true,
       requestPayerEmail: true,
