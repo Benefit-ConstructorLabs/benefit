@@ -30,7 +30,7 @@ exports[`NewDonor should render correctly 1`] = `
           First name
         </label>
         <input
-          autoFocus="true"
+          autoFocus={true}
           className="validInput"
           id="firstName"
           name="firstName"
