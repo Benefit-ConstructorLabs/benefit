@@ -9,7 +9,16 @@ describe('DonationForm', () => {
     const mockTogglePaymentDetails = jest.fn();
     const mockSetDonorID = jest.fn();
     const tree = renderer
-      .create(<DonationForm setDonationAmount={mockSetDonationAmount} submitDonation={mockSubmitDonation} togglePaymentDetails={mockTogglePaymentDetails} firstName="Ted" photo="photo/url" donationAmount="5" setDonorID={mockSetDonorID} />)
+      .create(<DonationForm
+        setDonationAmount={mockSetDonationAmount}
+        submitDonation={mockSubmitDonation}
+        togglePaymentDetails={mockTogglePaymentDetails}
+        firstName="Ted"
+        photo="photo/url"
+        donationAmount={5}
+        setDonorID={mockSetDonorID}
+        reason="Raising money for Cancer Research"
+      />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -29,7 +29,7 @@ Recipient.propTypes = {
   match: PropTypes.instanceOf(Object).isRequired,
   donations: PropTypes.instanceOf(Array).isRequired,
   getProfileDetailsByID: PropTypes.func.isRequired,
-  profile: PropTypes.instanceOf(Array).isRequired,
+  profile: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Recipient;

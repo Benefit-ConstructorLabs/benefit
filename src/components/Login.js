@@ -25,7 +25,7 @@ const Login = ({ username, password, login, setLoginDetails, classes }) => {
               value={username}
               placeholder="Your Username"
               onChange={handleChange}
-              autoFocus="true"
+              autoFocus={true}
             />
           </li>
           <li>

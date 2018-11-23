@@ -75,7 +75,6 @@ export function createPaymentDetails(token) {
         stripe_id: token,
       },
     };
-    console.log('donation object sent to server', newDataKeysObject);
     fetch('/api/donation', {
       method: 'post',
       body: JSON.stringify(newDataKeysObject),
@@ -85,7 +84,6 @@ export function createPaymentDetails(token) {
     })
       .then(response => response.json())
       .then((donationID) => {
-        console.log('returned transaction id', donationID.transaction_id);
         dispatch(receiveStripeToken(token));
         dispatch(setDonationID(donationID.transaction_id));
       });
@@ -234,7 +232,6 @@ export function logout() {
     fetch('/api/logout')
       .then(response => response.json())
       .then((body) => {
-        console.log(body);
         dispatch(setLogout());
       })
       .catch(error => console.log(error));

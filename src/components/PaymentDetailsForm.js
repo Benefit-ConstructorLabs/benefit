@@ -42,7 +42,6 @@ const PaymentDetailsForm = ({
         onSubmit={(event) => {
           event.preventDefault();
           stripe.createToken().then(({ token }) => {
-            console.log('Received Stripe token:', token);
             toggleDonationComplete();
             createPaymentDetails(token.id);
           });
@@ -60,12 +59,12 @@ const PaymentDetailsForm = ({
       </form>
     </div>
   ) : (
-    <div>
-      <button className="btn btn__primary btn__submit" type="submit">
-        {`Donate £${donationAmount} to ${firstName}`}
-      </button>
-    </div>
-  );
+      <div>
+        <button className="btn btn__primary btn__submit" type="submit">
+          {`Donate £${donationAmount} to ${firstName}`}
+        </button>
+      </div>
+    );
 };
 
 PaymentDetailsForm.propTypes = {

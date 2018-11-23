@@ -149,6 +149,24 @@ exports[`NewRecipient matches the snapshot 1`] = `
     <h3
       className="newrecipient__form__heading"
     >
+      What are you raising funds towards?
+    </h3>
+    <ul>
+      <li>
+        <input
+          className="nolabel"
+          name="reason"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Eg. Cancer Research UK"
+          type="text"
+          value=""
+        />
+      </li>
+    </ul>
+    <h3
+      className="newrecipient__form__heading"
+    >
       Tell people three things about yourself
     </h3>
     <ul>

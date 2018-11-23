@@ -4,7 +4,8 @@ import NewRecipient from '../../src/components/NewRecipient';
 
 describe(NewRecipient, () => {
   test('matches the snapshot', () => {
-    const tree = renderer.create(<NewRecipient />).toJSON();
+    const mockAddRecipient = jest.fn();
+    const tree = renderer.create(<NewRecipient addRecipient={mockAddRecipient} />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
