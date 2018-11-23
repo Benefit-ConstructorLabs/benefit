@@ -1,7 +1,7 @@
-# Benefit
-## Enabling the unbanked to take contactless payments in person.
+# Better Change
+## Enabling contactless charity donations without a card reader
 
-> [View 'Benefit' repo on Github](https://github.com/Benefit-ConstructorLabs/benefit)
+> [Visit live demo](https://www.beterchange.net)
 
 --- 
 
@@ -19,6 +19,22 @@ Clone the project and run `npm install`
 
 Create your own local PostreSQL database and create the tables by running `pgweb` navigating to localhost:8081 and running the query in the database.sql file.
 
+Create a `.env` file with the following variables
+```
+DB_HOST=localhost
+DB_NAME=
+DB_USERNAME=
+DB_PASSWORD=
+TWILIO_SID_TEST=
+TWILIO_AUTH_TEST=
+TWILIO_SID_LIVE=
+TWILIO_AUTH_LIVE=
+S3_REGION=
+S3_BUCKET=
+S3_ACCESS_KEY_ID=
+S3_SECRET_ACCESS_KEY=
+STRIPE_SECRET_KEY=
+```
 Run `npm start` to launch the app and navigate to localhost:8080
 
 ---
@@ -27,6 +43,8 @@ Run `npm start` to launch the app and navigate to localhost:8080
 
 #### Front end
  - React
+ - Redux
+ - React Router
  - Handlebars
  - SCSS
 
@@ -41,6 +59,10 @@ Run `npm start` to launch the app and navigate to localhost:8080
 
 #### Unit Testing
 - Jest
+- Enzyme
+---
+
+### Features
 
 #### QR code 
 
