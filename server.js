@@ -88,18 +88,22 @@ passport.deserializeUser((id, done) => {
 
 // PASSPORT configure passport to use local strategy
 // that is use locally stored credentials
-passport.use(
-  new LocalStrategy(async (username, password, done) => {
-    const user = await getUserByUsername(username);
-    if (!user) return done(null, false);
-    bcrypt.compare(password, user.password, (err) => {
-      if (err) {
-        return done(null, false);
-      }
-      return done(null, user);
-    });
-  }),
-);
+passport.use(new LocalStrategy(async (username, password, done) => {
+  let user;
+  try {
+    user = await getUserByUsername(username);
+    if (!user) {
+      return done(null, false, { message: 'No user with this username' });
+    }
+  } catch (e) {
+    return done(e);
+  }
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) {
+    return done(null, false, { message: 'Not a matching password' });
+  }
+  return done(null, user);
+}));
 
 // PASSPORT initialise passport and session
 app.use(passport.initialize());
