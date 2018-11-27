@@ -2,7 +2,7 @@
 ## In person cashless donations.
 ## Enabling contactless charity donations without a card reader
 
-> [Visit live demo](https://www.beterchange.net)
+> [Visit live demo](https://www.betterchange.net)
 
 --- 
 
@@ -22,7 +22,7 @@ By enabling these people to receive contactless payments, **BENEFIT** aims to ma
 ### Installation and set up
 Clone the project and run `npm install`
 
-Create your own local PostreSQL database insatnce and create the tables by running `pgweb` navigating to localhost:8081 and running the query in the database.sql file.
+Create your own local PostreSQL database instance and create the tables by running `pgweb` navigating to localhost:8081 and running the query in the database.sql file.
 
 Create a `.env` file with the following variables
 ```
