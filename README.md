@@ -6,10 +6,6 @@
 
 --- 
 
-> [Visit live demo](https://www.betterchange.net)
-
---- 
-
 ### The vision
 
 + We live in an increasingly cashless society. Fewer people carry loose change.
