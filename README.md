@@ -1,16 +1,16 @@
 # Better Change
 ## Enabling contactless charity donations without a card reader
 
-> [Visit live demo](https://www.beterchange.net)
+> [Visit live demo](https://www.betterchange.net)
 
 --- 
 
 ### The vision
-In an increasingly cashless society, those who rely on cash are hardest hit.
 
-As fewer people carry loose change, those who rely on the generosity of strangers - homeless people, buskers etc. - are losing the income stream they rely on.
-
-By enabling these people to receive contactless payments, **BENEFIT** aims to make a big difference with a small change in how we give.
++ We live in an increasingly cashless society. Fewer people carry loose change.
++ Card readers cost £25–100 each and are expensive to distribute and manage.
++ Charity fundraisers and others who rely on cash donations are losing out.
++ **Better Change** solves this problem by enabling people to receive contactless payments without a card reader.
 
 ---
 
