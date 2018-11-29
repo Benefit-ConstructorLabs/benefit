@@ -1,4 +1,4 @@
-![Screenshot](./static/assets/images/screen-shots.jpg)
+![Screenshot](./static/assets/images/screen-shots.png)
 
 # Better Change
 ## In person cashless donations.
