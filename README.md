@@ -1,3 +1,5 @@
+![Screenshot](./static/assets/images/screen-shots.png)
+
 # Better Change
 ## In person cashless donations.
 ## Enabling contactless charity donations without a card reader
@@ -70,32 +72,30 @@ API Keys needed:
 ### Features
 
 #### QR code 
-
-- We used 'qrcode' node package to create the QR code
-+ The QR code image is generated inside the app
-+ Not reliant on a 3rd party API to create the image
-+ THe QR code can be scaled and styled
-+ We can set the error correction level
-
+- 'qrcode' node package creates the QR code dynamically
+- The QR code isn't reliant on a 3rd party API
+- The QR code size, style and error correction level are customisable
 > ['qrcode' node package](https://www.npmjs.com/package/qrcode)
 
 #### Card and native payment - Stripe elements
-
 - Stripe Elements API provides our secure hosting
- 
 > ['Stripe elements' node package](https://stripe.com/payments/elements)
 
-#### Authorisation and authentication - Passport
-
 #### Image hosting - Amazon S3
+- We used the AWS-SDK node package to host images
+- Enabled us to upload / download images to an S3 bucket
+> [Aws-sdk node package](https://www.npmjs.com/package/aws-sdk)
 
-
-
+#### Form validation - Formik
+- Formik node package managed the form validation
+- Solved the problem of getting values in and out of form state
+- Streamlined handling error messages and form submission
+> [Formik node package](https://www.npmjs.com/package/formik)
 
 #### Data visulisations - Recharts.js
-
-
 > ['Recharts' node package](http://recharts.org/en-US/)
+
+#### Authorisation and authentication - Passport
 
 #### Next Steps
 - Create React Native app
@@ -105,8 +105,3 @@ API Keys needed:
 QR codes are not always the best solution for in person payment because they require you to be in close proximity to capture with a camera.
 
 We have started playing around with Bluetooth beacons and have used an android phone to emit our unique payment urls for people to pick up in the immediate area.
-
-
-
-
-
