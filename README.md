@@ -4,7 +4,7 @@
 ## In person cashless donations.
 ## Enabling contactless charity donations without a card reader
 
-> [Visit live demo](https://www.betterchange.net)
+> [Visit live demo](http://www.betterchange.net)
 
 --- 
 
